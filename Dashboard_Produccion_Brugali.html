@@ -1,0 +1,1585 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>📊 Producción — Brugali</title>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.5.0/dist/chart.umd.js" integrity="sha384-iU8HYtnGQ8Cy4zl7gbNMOhsDTTKX02BTXptVP/vqAWIaTfM7isw76iyZCsjL2eVi" crossorigin="anonymous"></script>
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: 'Nunito', Arial, sans-serif; background: #F5F5F5; color: #221F1F; min-height: 100vh; }
+
+header {
+  background: #1D4856;
+  color: white; padding: 18px 28px;
+  display: flex; align-items: center; justify-content: space-between;
+  flex-wrap: wrap; gap: 10px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+}
+header h1 { font-size: 1.35rem; font-weight: 700; letter-spacing: -0.01em; }
+.badge { background: rgba(255,255,255,0.18); border-radius: 20px; padding: 5px 14px; font-size: 0.82rem; font-weight: 600; }
+
+/* TABS */
+.tab-nav {
+  background: white;
+  border-bottom: 2px solid #e2e8f0;
+  display: flex; gap: 0;
+  padding: 0 24px;
+  position: sticky; top: 0; z-index: 100;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.06);
+}
+.tab-btn {
+  background: none; border: none; cursor: pointer;
+  padding: 14px 22px; font-size: 0.9rem; font-weight: 600;
+  color: #999999; border-bottom: 3px solid transparent;
+  margin-bottom: -2px; transition: all 0.15s;
+}
+.tab-btn:hover { color: #33A392; }
+.tab-btn.active { color: #1D4856; border-bottom-color: #33A392; }
+
+.tab-panel { display: none; }
+.tab-panel.active { display: block; }
+
+main { max-width: 1120px; margin: 0 auto; padding: 24px 18px; }
+
+/* ALERTA */
+.alerta {
+  background: #fffbeb; border: 1px solid #f6ad55; border-left: 4px solid #E3A127;
+  border-radius: 8px; padding: 10px 16px; margin-bottom: 22px;
+  font-size: 0.85rem; color: #7b5e1a;
+}
+.alerta-ok {
+  background: #f0fff4; border: 1px solid #68d391; border-left: 4px solid #33A392;
+  border-radius: 8px; padding: 10px 16px; margin-bottom: 22px;
+  font-size: 0.85rem; color: #33A392;
+}
+
+/* KPIs */
+.kpi-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 14px; margin-bottom: 24px; }
+.kpi-card {
+  background: white; border-radius: 12px; padding: 18px 16px;
+  box-shadow: 0 1px 6px rgba(0,0,0,0.08); text-align: center;
+}
+.kpi-card .lbl { font-size: 0.72rem; color: #999999; text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 8px; }
+.kpi-card .val { font-size: 1.7rem; font-weight: 700; color: #1D4856; line-height: 1; }
+.kpi-card .sub { font-size: 0.74rem; color: #BBBBBB; margin-top: 5px; }
+
+/* CARDS */
+.card {
+  background: white; border-radius: 12px; padding: 22px;
+  box-shadow: 0 1px 6px rgba(0,0,0,0.08); margin-bottom: 22px;
+}
+.card h2 { font-size: 0.95rem; color: #221F1F; margin-bottom: 16px; font-weight: 600;
+  display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 8px; }
+.chart-wrap { position: relative; height: 260px; }
+
+select {
+  border: 1px solid #e2e8f0; border-radius: 7px; padding: 5px 10px;
+  font-size: 0.83rem; background: #f7fafc; color: #221F1F; cursor: pointer;
+}
+
+/* TABLA */
+.table-wrap { overflow-x: auto; }
+table { width: 100%; border-collapse: collapse; font-size: 0.82rem; }
+thead th {
+  background: #edf2f7; padding: 9px 10px; text-align: right;
+  font-weight: 600; color: #221F1F; border-bottom: 2px solid #e2e8f0;
+}
+thead th:first-child { text-align: left; }
+tbody td { padding: 8px 10px; text-align: right; border-bottom: 1px solid #f0f4f8; }
+tbody td:first-child { text-align: left; font-weight: 500; }
+.row-total td { background: #f7fafc; font-weight: 700; border-top: 2px solid #e2e8f0; }
+.row-entrada td { background: #ebf8ff; color: #1D4856; font-style: italic; }
+.row-highlight td { background: #fef3c7; }
+.cero { color: #cbd5e0; }
+.dot { display: inline-block; width: 10px; height: 10px; border-radius: 50%; margin-right: 5px; vertical-align: middle; }
+
+/* BADGES STATUS */
+.pill { display: inline-block; border-radius: 12px; padding: 2px 10px; font-size: 0.75rem; font-weight: 600; }
+.pill-ok { background: #c6f6d5; color: #33A392; }
+.pill-warn { background: #feebc8; color: #c05621; }
+.pill-nd { background: #e2e8f0; color: #999999; }
+
+/* SECTION TITLE */
+.section-title {
+  font-size: 0.78rem; color: #BBBBBB; text-transform: uppercase;
+  letter-spacing: 0.08em; font-weight: 600; margin-bottom: 12px;
+}
+
+footer { text-align: center; color: #BBBBBB; font-size: 0.76rem; padding: 20px 0 28px; }
+</style>
+</head>
+<body>
+
+<header>
+  <div style="display:flex;align-items:center;gap:14px;">
+    <svg width="38" height="54" viewBox="0 0 100 140" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <rect x="25" y="10" width="50" height="50" rx="12" fill="#1D4856" transform="rotate(45 50 35)"/>
+      <rect x="25" y="38" width="50" height="50" rx="12" fill="#33A392" transform="rotate(45 50 63)"/>
+      <rect x="25" y="66" width="50" height="50" rx="12" fill="#E3A127" transform="rotate(45 50 91)"/>
+      <rect x="25" y="80" width="50" height="50" rx="12" fill="#EF402F" transform="rotate(45 50 105)"/>
+    </svg>
+    <div>
+      <div style="font-size:1.5rem;font-weight:900;color:white;letter-spacing:-0.01em;line-height:1;">brugali</div>
+      <div style="font-size:0.7rem;font-weight:700;color:rgba(255,255,255,0.6);text-transform:uppercase;letter-spacing:0.12em;margin-top:2px;">Dashboard de Producción</div>
+    </div>
+  </div>
+  <span class="badge">📅 Actualizado: 22/06/2026</span>
+</header>
+
+<div class="tab-nav">
+  <button class="tab-btn active" onclick="switchTab('trucha')">🐟 Trucha</button>
+  <button class="tab-btn" onclick="switchTab('langostino')">🦐 Langostino</button>
+  <button class="tab-btn" onclick="switchTab('cocina')">🍳 Cocina Caliente</button>
+  <button class="tab-btn" onclick="switchTab('recetas')">📋 Recetas</button>
+  <button class="tab-btn" onclick="switchTab('procesos')">⚙️ Procesos</button>
+  <button class="tab-btn" onclick="switchTab('calidad')">🔍 Calidad</button>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════ TRUCHA ═══ -->
+<div id="tab-trucha" class="tab-panel active">
+<main>
+
+  <div class="alerta">
+    ✅ <strong>S25 cerrada: 712,6 kg · 41,7% uso (4 días activos, lun 15–vie 19/06).</strong>
+    S26 inicia hoy lun 22/06, sin producción registrada aún. S24 cerrada con 858,2 kg · 39,2% uso. Objetivo semanal: 1.067,2 kg.
+  </div>
+
+  <div class="kpi-grid">
+    <div class="kpi-card">
+      <div class="lbl">Última semana (S25)</div>
+      <div class="val">712,6 <span style="font-size:.85rem;color:#BBBBBB">kg</span></div>
+      <div class="sub">lun 15 – vie 19/06 · 4 días activos</div>
+    </div>
+    <div class="kpi-card">
+      <div class="lbl">Semana anterior (S24)</div>
+      <div class="val" style="color:#221F1F">858,2 <span style="font-size:.85rem;color:#BBBBBB">kg</span></div>
+      <div class="sub">5 días activos (lun 08 – vie 12/06)</div>
+    </div>
+    <div class="kpi-card">
+      <div class="lbl">Variación S25 vs S24</div>
+      <div class="val" style="color:#33A392">+3,8%</div>
+      <div class="sub">178,1 kg/día vs 171,6 kg/día</div>
+    </div>
+    <div class="kpi-card">
+      <div class="lbl">Acumulado total</div>
+      <div class="val" style="color:#1D4856">5.111,1 <span style="font-size:.85rem;color:#BBBBBB">kg</span></div>
+      <div class="sub">S20–S25</div>
+    </div>
+    <div class="kpi-card">
+      <div class="lbl">% uso S25</div>
+      <div class="val">41,7 <span style="font-size:.85rem;color:#BBBBBB">%</span></div>
+      <div class="sub">712,6 kg de 1.710 kg entrada</div>
+    </div>
+    <div class="kpi-card">
+      <div class="lbl">% uso general</div>
+      <div class="val">41,3 <span style="font-size:.85rem;color:#BBBBBB">%</span></div>
+      <div class="sub">promedio S20–S25</div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h2>📊 Evolución semanal — kg producidos totales</h2>
+    <div class="chart-wrap"><canvas id="chartSemanal"></canvas></div>
+  </div>
+
+  <div class="card">
+    <h2>
+      📅 Producción diaria por producto
+      <select id="selDiario">
+        <option value="0">S20 — 11 al 16/05</option>
+        <option value="1">S21 — 18–22/05</option>
+        <option value="2">S22 — 25–29/05</option>
+        <option value="3">S23 — 01–06/06</option>
+        <option value="4">S24 — 08–12/06</option>
+        <option value="5" selected>S25 — 15–19/06</option>
+      </select>
+    </h2>
+    <div class="chart-wrap"><canvas id="chartDiario"></canvas></div>
+    <div style="font-size:0.75rem;color:#BBBBBB;margin-top:10px;">L = lunes · M = martes · M = miércoles · J = jueves · V = viernes · S = sábado</div>
+  </div>
+
+  <div class="card">
+    <h2>
+      🗂 Detalle diario por producto (kg)
+      <select id="selTabla">
+        <option value="0">S20 — 11 al 16/05</option>
+        <option value="1">S21 — 18–22/05</option>
+        <option value="2">S22 — 25–29/05</option>
+        <option value="3">S23 — 01–06/06</option>
+        <option value="4">S24 — 08–12/06</option>
+        <option value="5" selected>S25 — 15–19/06</option>
+      </select>
+    </h2>
+    <div class="table-wrap"><table id="tablaDetalle"></table></div>
+  </div>
+
+  <div class="card" style="border-left:4px solid #E3A127;background:white;">
+    <h2 style="color:#E3A127;margin-bottom:16px;">❓ Preguntas de la semana — Trucha</h2>
+    <div style="display:flex;flex-direction:column;gap:10px;">
+      <div style="display:flex;gap:12px;align-items:flex-start;padding:10px 12px;background:#fffbeb;border-radius:8px;">
+        <span style="font-size:1rem;flex-shrink:0">📦</span>
+        <div><div style="font-size:0.85rem;font-weight:700;color:#221F1F;">¿A dónde va el ~58% de la trucha que entra?</div><div style="font-size:0.78rem;color:#999999;margin-top:2px;">El % de uso promedio es 41,3%. ¿Hay registro de merma (piel, espinas, grasa, recortes)? ¿Se pesa el descarte?</div></div>
+      </div>
+      <div style="display:flex;gap:12px;align-items:flex-start;padding:10px 12px;background:#fffbeb;border-radius:8px;">
+        <span style="font-size:1rem;flex-shrink:0">📅</span>
+        <div><div style="font-size:0.85rem;font-weight:700;color:#221F1F;">¿Por qué el lunes 16/06 no hubo producción?</div><div style="font-size:0.78rem;color:#999999;margin-top:2px;">S25 tuvo solo 4 días activos. ¿Fue falta de materia prima, feriado o problema operativo?</div></div>
+      </div>
+      <div style="display:flex;gap:12px;align-items:flex-start;padding:10px 12px;background:#fffbeb;border-radius:8px;">
+        <span style="font-size:1rem;flex-shrink:0">🔢</span>
+        <div><div style="font-size:0.85rem;font-weight:700;color:#221F1F;">¿Cuántas cajas de entrada es el máximo posible por día?</div><div style="font-size:0.78rem;color:#999999;margin-top:2px;">Entran entre 26 y 30 cajas/día de 15 kg cada una (390–450 kg de MP). ¿Ese es el techo de capacidad o hay margen para subir?</div></div>
+      </div>
+      <div style="display:flex;gap:12px;align-items:flex-start;padding:10px 12px;background:#fffbeb;border-radius:8px;">
+        <span style="font-size:1rem;flex-shrink:0">📉</span>
+        <div><div style="font-size:0.85rem;font-weight:700;color:#221F1F;">¿Qué pasó en S22? Fue la semana más baja (650 kg)</div><div style="font-size:0.78rem;color:#999999;margin-top:2px;">El martes 27/05 no hubo producción. ¿Hubo algún incidente, falta de insumos o parada planificada?</div></div>
+      </div>
+      <div style="display:flex;gap:12px;align-items:flex-start;padding:10px 12px;background:#fffbeb;border-radius:8px;">
+        <span style="font-size:1rem;flex-shrink:0">🎯</span>
+        <div><div style="font-size:0.85rem;font-weight:700;color:#221F1F;">¿Es realista el objetivo de 1.067,2 kg semanales?</div><div style="font-size:0.78rem;color:#999999;margin-top:2px;">Ninguna semana lo alcanzó aún. ¿El objetivo contempla 5 días activos? ¿Hay plan para llegar?</div></div>
+      </div>
+    </div>
+  </div>
+
+</main>
+</div>
+
+<!-- ════════════════════════════════════════════════════ LANGOSTINO ═══ -->
+<div id="tab-langostino" class="tab-panel">
+<main>
+
+  <div class="alerta-ok">
+    ✅ <strong>Lote 26052026 registrado.</strong> Producto principal: Langostino Rebozado. Peso promedio por unidad: 0,0103 kg.
+  </div>
+
+  <div class="kpi-grid">
+    <div class="kpi-card">
+      <div class="lbl">Entrada (ENTRADA)</div>
+      <div class="val">1.140 <span style="font-size:.85rem;color:#BBBBBB">kg</span></div>
+      <div class="sub">95 bandejas × 12 kg/bandeja</div>
+    </div>
+    <div class="kpi-card">
+      <div class="lbl">Langostino Rebozado</div>
+      <div class="val" style="color:#33A392">1.644 <span style="font-size:.85rem;color:#BBBBBB">kg</span></div>
+      <div class="sub">404 band. × 4 kg + 14 band. × 2 kg</div>
+    </div>
+    <div class="kpi-card">
+      <div class="lbl">Mezcla</div>
+      <div class="val" style="color:#E3A127">256,5 <span style="font-size:.85rem;color:#BBBBBB">kg</span></div>
+      <div class="sub">95 bandejas × 2,7 kg/bandeja</div>
+    </div>
+    <div class="kpi-card">
+      <div class="lbl">Rendimiento rebozado</div>
+      <div class="val" style="color:#1D4856">144%</div>
+      <div class="sub">1.644 kg producido / 1.140 kg entrada</div>
+    </div>
+    <div class="kpi-card">
+      <div class="lbl">Peso prom. por unidad</div>
+      <div class="val">0,0103 <span style="font-size:.85rem;color:#BBBBBB">kg</span></div>
+      <div class="sub">10,3 g por unidad</div>
+    </div>
+    <div class="kpi-card">
+      <div class="lbl">Lote</div>
+      <div class="val" style="font-size:1.1rem;color:#221F1F">26/05</div>
+      <div class="sub">#26052026</div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h2>🦐 Distribución de producción — Lote 26052026</h2>
+    <div class="chart-wrap"><canvas id="chartLangostino"></canvas></div>
+  </div>
+
+  <div class="card">
+    <h2>📋 Detalle de producción por producto</h2>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>Producto</th>
+            <th>Bandejas</th>
+            <th>kg / bandeja</th>
+            <th>kg total</th>
+            <th>Estado</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="row-entrada">
+            <td>⬆️ ENTRADA (materia prima)</td>
+            <td>95</td>
+            <td>12,00</td>
+            <td><strong>1.140,00</strong></td>
+            <td><span class="pill pill-ok">Registrado</span></td>
+          </tr>
+          <tr>
+            <td><span class="dot" style="background:#f6ad55"></span>Mezcla</td>
+            <td>95</td>
+            <td>2,70</td>
+            <td>256,50</td>
+            <td><span class="pill pill-ok">Registrado</span></td>
+          </tr>
+          <tr>
+            <td><span class="dot" style="background:#4299e1"></span>Langostino Rebozado (grande)</td>
+            <td>404</td>
+            <td>4,00</td>
+            <td>1.616,00</td>
+            <td><span class="pill pill-ok">Registrado</span></td>
+          </tr>
+          <tr>
+            <td><span class="dot" style="background:#76e4f7"></span>Langostino Rebozado (chico)</td>
+            <td>14</td>
+            <td>2,00</td>
+            <td>28,00</td>
+            <td><span class="pill pill-ok">Registrado</span></td>
+          </tr>
+          <tr class="row-total">
+            <td>TOTAL PRODUCIDO</td>
+            <td>513</td>
+            <td>—</td>
+            <td>1.900,50</td>
+            <td>—</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="card" style="border-left:4px solid #E3A127;background:white;">
+    <h2 style="color:#E3A127;margin-bottom:16px;">❓ Preguntas de la semana — Langostino</h2>
+    <div style="display:flex;flex-direction:column;gap:10px;">
+      <div style="display:flex;gap:12px;align-items:flex-start;padding:10px 12px;background:#fffbeb;border-radius:8px;">
+        <span style="font-size:1rem;flex-shrink:0">📆</span>
+        <div><div style="font-size:0.85rem;font-weight:700;color:#221F1F;">¿Con qué frecuencia se procesa langostino?</div><div style="font-size:0.78rem;color:#999999;margin-top:2px;">Solo hay un lote registrado. ¿Es producción bajo pedido, semanal o mensual? ¿Hay cronograma?</div></div>
+      </div>
+      <div style="display:flex;gap:12px;align-items:flex-start;padding:10px 12px;background:#fffbeb;border-radius:8px;">
+        <span style="font-size:1rem;flex-shrink:0">⚖️</span>
+        <div><div style="font-size:0.85rem;font-weight:700;color:#221F1F;">¿El rendimiento del rebozado está dentro de lo esperado?</div><div style="font-size:0.78rem;color:#999999;margin-top:2px;">El producto sale más pesado que la entrada (por el rebozado). ¿Hay un % de absorción teórico para comparar?</div></div>
+      </div>
+      <div style="display:flex;gap:12px;align-items:flex-start;padding:10px 12px;background:#fffbeb;border-radius:8px;">
+        <span style="font-size:1rem;flex-shrink:0">❄️</span>
+        <div><div style="font-size:0.85rem;font-weight:700;color:#221F1F;">¿Se controló la temperatura durante el descongelado de 24 hs?</div><div style="font-size:0.78rem;color:#999999;margin-top:2px;">El descongelado a temperatura ambiente es un punto crítico de inocuidad. ¿Queda registrado?</div></div>
+      </div>
+      <div style="display:flex;gap:12px;align-items:flex-start;padding:10px 12px;background:#fffbeb;border-radius:8px;">
+        <span style="font-size:1rem;flex-shrink:0">📋</span>
+        <div><div style="font-size:0.85rem;font-weight:700;color:#221F1F;">¿Las cantidades de la receta de rebozado están documentadas?</div><div style="font-size:0.78rem;color:#999999;margin-top:2px;">En TOTVS solo figura pimienta con cantidad. Pan rallado, batter, harina y mostaza figuran "según proceso". ¿Hay registro?</div></div>
+      </div>
+    </div>
+  </div>
+
+</main>
+</div>
+
+<!-- ══════════════════════════════════════════════ COCINA CALIENTE ═══ -->
+<div id="tab-cocina" class="tab-panel">
+<main>
+
+  <div class="alerta-ok">
+    ✅ <strong>Período registrado: 08/06 – 22/06/2026.</strong> 5 productos activos. Reducción de Teriyaki y Vinagreta con mayor volumen acumulado.
+  </div>
+
+  <div class="kpi-grid">
+    <div class="kpi-card">
+      <div class="lbl">Reducción Teriyaki</div>
+      <div class="val" style="color:#EF402F">200 <span style="font-size:.85rem;color:#BBBBBB">u</span></div>
+      <div class="sub">100% envasado</div>
+    </div>
+    <div class="kpi-card">
+      <div class="lbl">Vinagreta 20L</div>
+      <div class="val" style="color:#33A392">204 <span style="font-size:.85rem;color:#BBBBBB">u</span></div>
+      <div class="sub">100% envasado</div>
+    </div>
+    <div class="kpi-card">
+      <div class="lbl">Salsa Naranja y Miel</div>
+      <div class="val" style="color:#E3A127">50 <span style="font-size:.85rem;color:#BBBBBB">u</span></div>
+      <div class="sub">100% envasado</div>
+    </div>
+    <div class="kpi-card">
+      <div class="lbl">Pollo Teriyaki</div>
+      <div class="val" style="color:#1D4856">90 <span style="font-size:.85rem;color:#BBBBBB">caj</span></div>
+      <div class="sub">18 envasadas · 20% envasado</div>
+    </div>
+    <div class="kpi-card">
+      <div class="lbl">Pasta Honey</div>
+      <div class="val" style="color:#33A392">26,5 <span style="font-size:.85rem;color:#BBBBBB">caj</span></div>
+      <div class="sub">12 envasadas · 45% envasado</div>
+    </div>
+    <div class="kpi-card">
+      <div class="lbl">Días registrados</div>
+      <div class="val" style="color:#221F1F">11</div>
+      <div class="sub">08-jun al 22-jun</div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h2>📈 Producción diaria por producto</h2>
+    <div class="chart-wrap"><canvas id="chartCocinaLine"></canvas></div>
+  </div>
+
+  <div class="card">
+    <h2>📊 Producido vs Envasado — totales acumulados</h2>
+    <div class="chart-wrap" style="height:220px"><canvas id="chartCocinaBar"></canvas></div>
+  </div>
+
+  <div class="card">
+    <h2>🗂 Registro diario completo</h2>
+    <div class="table-wrap">
+      <table id="tablaCocina"></table>
+    </div>
+  </div>
+
+  <div class="card" style="border-left:4px solid #E3A127;background:white;">
+    <h2 style="color:#E3A127;margin-bottom:16px;">❓ Preguntas de la semana — Cocina Caliente</h2>
+    <div style="display:flex;flex-direction:column;gap:10px;">
+      <div style="display:flex;gap:12px;align-items:flex-start;padding:10px 12px;background:#fffbeb;border-radius:8px;">
+        <span style="font-size:1rem;flex-shrink:0">🍗</span>
+        <div><div style="font-size:0.85rem;font-weight:700;color:#221F1F;">¿Dónde están las 72 cajas de Pollo Teriyaki producidas y no envasadas?</div><div style="font-size:0.78rem;color:#999999;margin-top:2px;">Se produjeron 90 cajas y solo se envasaron 18. ¿Están en cámara esperando envase, o hubo descarte?</div></div>
+      </div>
+      <div style="display:flex;gap:12px;align-items:flex-start;padding:10px 12px;background:#fffbeb;border-radius:8px;">
+        <span style="font-size:1rem;flex-shrink:0">🍯</span>
+        <div><div style="font-size:0.85rem;font-weight:700;color:#221F1F;">Pasta de Honey: 26,5 cajas producidas, solo 12 envasadas. ¿Cuándo se envasa el resto?</div><div style="font-size:0.78rem;color:#999999;margin-top:2px;">El envasado pendiente tiene fecha de vencimiento. ¿Hay un plazo máximo establecido desde la cocción?</div></div>
+      </div>
+      <div style="display:flex;gap:12px;align-items:flex-start;padding:10px 12px;background:#fffbeb;border-radius:8px;">
+        <span style="font-size:1rem;flex-shrink:0">🥗</span>
+        <div><div style="font-size:0.85rem;font-weight:700;color:#221F1F;">¿Por qué no se produce Vinagreta todos los días?</div><div style="font-size:0.78rem;color:#999999;margin-top:2px;">Hay varios días sin producción (11, 12, 17, 18/06). ¿Es por demanda, por falta de insumos o por capacidad de olla?</div></div>
+      </div>
+      <div style="display:flex;gap:12px;align-items:flex-start;padding:10px 12px;background:#fffbeb;border-radius:8px;">
+        <span style="font-size:1rem;flex-shrink:0">🎯</span>
+        <div><div style="font-size:0.85rem;font-weight:700;color:#221F1F;">¿Cuál es el objetivo semanal para cada producto de Cocina Caliente?</div><div style="font-size:0.78rem;color:#999999;margin-top:2px;">Trucha tiene objetivo definido (1.067,2 kg). Cocina Caliente no tiene uno aún. ¿Con qué número arrancar?</div></div>
+      </div>
+      <div style="display:flex;gap:12px;align-items:flex-start;padding:10px 12px;background:#fffbeb;border-radius:8px;">
+        <span style="font-size:1rem;flex-shrink:0">🧉</span>
+        <div><div style="font-size:0.85rem;font-weight:700;color:#221F1F;">¿La Reducción de Teriyaki se hace todos los días por consistencia o por pedido?</div><div style="font-size:0.78rem;color:#999999;margin-top:2px;">Es el producto más regular (36 u/día casi siempre). ¿Hay stock acumulado o se despacha diario?</div></div>
+      </div>
+    </div>
+  </div>
+
+</main>
+</div>
+
+<!-- ═══════════════════════════════════════════════════ RECETAS ═══ -->
+<div id="tab-recetas" class="tab-panel">
+<style>
+.recipe-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(300px,1fr)); gap:18px; margin-bottom:24px; }
+.recipe-card { background:white; border-radius:12px; box-shadow:0 1px 6px rgba(0,0,0,0.08); overflow:hidden; }
+.recipe-header { padding:16px 18px 12px; }
+.recipe-header .area-tag { font-size:0.7rem; text-transform:uppercase; letter-spacing:0.07em; font-weight:700; margin-bottom:6px; }
+.recipe-header h3 { font-size:1rem; font-weight:700; color:#1a365d; margin-bottom:2px; }
+.recipe-header .codigo { font-size:0.75rem; color:#BBBBBB; }
+.recipe-header .presentacion { font-size:0.78rem; color:#999999; margin-top:4px; }
+.recipe-ing { padding:0 0 14px; }
+.recipe-ing table { width:100%; border-collapse:collapse; font-size:0.8rem; }
+.recipe-ing th { background:#f7fafc; padding:7px 14px; text-align:left; font-weight:600; color:#999999; font-size:0.72rem; text-transform:uppercase; letter-spacing:0.05em; }
+.recipe-ing th:last-child { text-align:right; }
+.recipe-ing td { padding:6px 14px; border-top:1px solid #f0f4f8; color:#2d3748; }
+.recipe-ing td:last-child { text-align:right; font-weight:600; color:#1D4856; }
+.recipe-ing .mp-row td { background:#f0fff4; }
+.pct-bar { display:inline-block; height:6px; border-radius:3px; background:#bee3f8; vertical-align:middle; margin-right:6px; }
+</style>
+<main>
+
+  <!-- ÍNDICE DE PRODUCTOS -->
+  <div class="card" style="margin-bottom:28px">
+    <h2 style="margin-bottom:18px">📦 Catálogo de productos — Centro de Producción</h2>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th style="text-align:left">Código</th>
+            <th style="text-align:left">Descripción</th>
+            <th style="text-align:center">Lote</th>
+            <th style="text-align:center">Área</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td style="font-family:monospace;color:#1D4856;font-weight:700">L2000029</td>
+            <td>Corte de Trucha — Caja × 240 un (24 bolsas · 1,920 kg)</td>
+            <td style="text-align:center"><span class="pill" style="background:#ebf8ff;color:#1D4856">CT</span></td>
+            <td style="text-align:center"><span class="pill" style="background:#ebf8ff;color:#1D4856">Cocina Fría</span></td>
+          </tr>
+          <tr>
+            <td style="font-family:monospace;color:#1D4856;font-weight:700">L2000030</td>
+            <td>Tira de Trucha — Caja × 7 kg</td>
+            <td style="text-align:center"><span class="pill" style="background:#ebf8ff;color:#1D4856">TT</span></td>
+            <td style="text-align:center"><span class="pill" style="background:#ebf8ff;color:#1D4856">Cocina Fría</span></td>
+          </tr>
+          <tr>
+            <td style="font-family:monospace;color:#1D4856;font-weight:700">L2000031</td>
+            <td>Cubos de Trucha — Caja × 7 kg (20 bolsas)</td>
+            <td style="text-align:center"><span class="pill" style="background:#ebf8ff;color:#1D4856">GT</span></td>
+            <td style="text-align:center"><span class="pill" style="background:#ebf8ff;color:#1D4856">Cocina Fría</span></td>
+          </tr>
+          <tr>
+            <td style="font-family:monospace;color:#1D4856;font-weight:700">L2000034</td>
+            <td>Tamago — Caja × 60 un (6 bolsas)</td>
+            <td style="text-align:center"><span class="pill" style="background:#ebf8ff;color:#1D4856">TA</span></td>
+            <td style="text-align:center"><span class="pill" style="background:#ebf8ff;color:#1D4856">Cocina Fría</span></td>
+          </tr>
+          <tr>
+            <td style="font-family:monospace;color:#1D4856;font-weight:700">L2000018</td>
+            <td>Langostino Rebozado — Caja × 6 kg</td>
+            <td style="text-align:center"><span class="pill" style="background:#fefcbf;color:#744210">LR</span></td>
+            <td style="text-align:center"><span class="pill" style="background:#fefcbf;color:#744210">Cocina Fría</span></td>
+          </tr>
+          <tr style="border-top:2px solid #e2e8f0">
+            <td style="font-family:monospace;color:#1D4856;font-weight:700">L2000017</td>
+            <td>Pollo Teriyaki — Caja × 6 kg (IQF)</td>
+            <td style="text-align:center"><span class="pill" style="background:#faf5ff;color:#1D4856">PY</span></td>
+            <td style="text-align:center"><span class="pill" style="background:#fed7e2;color:#97266d">Cocina Caliente</span></td>
+          </tr>
+          <tr>
+            <td style="font-family:monospace;color:#1D4856;font-weight:700">L2000036</td>
+            <td>Pasta de Honey — Caja × 6 kg (10 bolsas)</td>
+            <td style="text-align:center"><span class="pill" style="background:#faf5ff;color:#1D4856">HO</span></td>
+            <td style="text-align:center"><span class="pill" style="background:#fed7e2;color:#97266d">Cocina Caliente</span></td>
+          </tr>
+          <tr>
+            <td style="font-family:monospace;color:#1D4856;font-weight:700">L3000312</td>
+            <td>Salsa Teriyaki × 5 lt</td>
+            <td style="text-align:center"><span class="pill" style="background:#faf5ff;color:#1D4856">SY</span></td>
+            <td style="text-align:center"><span class="pill" style="background:#fed7e2;color:#97266d">Cocina Caliente</span></td>
+          </tr>
+          <tr>
+            <td style="font-family:monospace;color:#1D4856;font-weight:700">L3000302</td>
+            <td>Reducción de Teriyaki × 500 cc</td>
+            <td style="text-align:center"><span class="pill" style="background:#faf5ff;color:#1D4856">RY</span></td>
+            <td style="text-align:center"><span class="pill" style="background:#fed7e2;color:#97266d">Cocina Caliente</span></td>
+          </tr>
+          <tr>
+            <td style="font-family:monospace;color:#1D4856;font-weight:700">L3000303</td>
+            <td>Salsa Naranja y Miel × 500 cc</td>
+            <td style="text-align:center"><span class="pill" style="background:#faf5ff;color:#1D4856">SN</span></td>
+            <td style="text-align:center"><span class="pill" style="background:#fed7e2;color:#97266d">Cocina Caliente</span></td>
+          </tr>
+          <tr>
+            <td style="font-family:monospace;color:#1D4856;font-weight:700">L1000644</td>
+            <td>Vinagreta × 20 lt (Caja × 4 bidones)</td>
+            <td style="text-align:center"><span class="pill" style="background:#faf5ff;color:#1D4856">VI</span></td>
+            <td style="text-align:center"><span class="pill" style="background:#fed7e2;color:#97266d">Cocina Caliente</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="alerta-ok">
+    ✅ <strong>Fichas técnicas — fuente: TOTVS.</strong> Ingredientes y cantidades por unidad de producción según última revisión vigente.
+  </div>
+
+  <div class="recipe-grid">
+
+    <!-- REDUCCIÓN TERIYAKI -->
+    <div class="recipe-card" style="border-top:4px solid #EF402F">
+      <div class="recipe-header" style="background:#fff5f5">
+        <div class="area-tag" style="color:#EF402F">🍳 Cocina Caliente</div>
+        <h3>Reducción de Teriyaki</h3>
+        <div class="codigo">L3000302</div>
+        <div class="presentacion">Botella × 500 cc · 1 receta = 1 botella</div>
+      </div>
+      <div class="recipe-ing">
+        <table>
+          <thead><tr><th>Ingrediente</th><th>Cantidad</th><th>Unidad</th></tr></thead>
+          <tbody>
+            <tr><td>Azúcar pack × 10 kg</td><td>0,27</td><td>kg</td></tr>
+            <tr><td>Miel bidón × 10 kg</td><td>0,30</td><td>kg</td></tr>
+            <tr><td>Salsa de soja bidón × 5L</td><td>0,39</td><td>lt</td></tr>
+            <tr class="mp-row"><td>Vino blanco × lt</td><td>0,60</td><td>lt</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- SALSA NARANJA Y MIEL -->
+    <div class="recipe-card" style="border-top:4px solid #E3A127">
+      <div class="recipe-header" style="background:#fffff0">
+        <div class="area-tag" style="color:#E3A127">🍳 Cocina Caliente</div>
+        <h3>Salsa Naranja y Miel</h3>
+        <div class="codigo">L3000303</div>
+        <div class="presentacion">Botella × 500 cc · 1 receta = 1 botella</div>
+      </div>
+      <div class="recipe-ing">
+        <table>
+          <thead><tr><th>Ingrediente</th><th>Cantidad</th><th>Unidad</th></tr></thead>
+          <tbody>
+            <tr class="mp-row"><td>Jugo naranja cítric × lt</td><td>0,90</td><td>lt</td></tr>
+            <tr><td>Miel bidón × 10 kg</td><td>0,60</td><td>kg</td></tr>
+            <tr><td>Botella plástico × 500cc</td><td>1</td><td>un</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- VINAGRETA -->
+    <div class="recipe-card" style="border-top:4px solid #33A392">
+      <div class="recipe-header" style="background:#f0fff4">
+        <div class="area-tag" style="color:#33A392">🍳 Cocina Caliente</div>
+        <h3>Vinagreta</h3>
+        <div class="codigo">L1000644</div>
+        <div class="presentacion">Caja × 4 bidones (20 lt total) · 1 receta = 1 caja</div>
+      </div>
+      <div class="recipe-ing">
+        <table>
+          <thead><tr><th>Ingrediente</th><th>Cantidad</th><th>Unidad</th></tr></thead>
+          <tbody>
+            <tr class="mp-row"><td>Vinagre de alcohol × 20 lt</td><td>11,78</td><td>lt</td></tr>
+            <tr><td>Azúcar pack × 25 kg</td><td>11,78</td><td>kg</td></tr>
+            <tr><td>Sal fina paquete × 500 gr</td><td>0,118</td><td>kg</td></tr>
+            <tr><td>Ajinomoto pack × 1 kg</td><td>0,06</td><td>kg</td></tr>
+            <tr><td>Bidón × 5L</td><td>4</td><td>un</td></tr>
+            <tr><td>Caja mediana</td><td>1</td><td>un</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- POLLO TERIYAKI -->
+    <div class="recipe-card" style="border-top:4px solid #1D4856">
+      <div class="recipe-header" style="background:#faf5ff">
+        <div class="area-tag" style="color:#1D4856">🍳 Cocina Caliente</div>
+        <h3>Pollo Teriyaki</h3>
+        <div class="codigo">L2000017</div>
+        <div class="presentacion">Caja × 6 kg (IQF) · 1 receta = 1 caja</div>
+      </div>
+      <div class="recipe-ing">
+        <table>
+          <thead><tr><th>Ingrediente</th><th>Cantidad</th><th>Unidad</th></tr></thead>
+          <tbody>
+            <tr class="mp-row"><td>Pechuga de pollo caja × 15 kg</td><td>10,50</td><td>kg</td></tr>
+            <tr><td>Vino blanco × lt</td><td>2,60</td><td>lt</td></tr>
+            <tr><td>Salsa de soja bidón × 5L</td><td>1,65</td><td>lt</td></tr>
+            <tr><td>Miel bidón × 10 kg</td><td>1,30</td><td>kg</td></tr>
+            <tr><td>Azúcar pack × 10 kg</td><td>1,10</td><td>kg</td></tr>
+            <tr><td>Bolsa corte 60×90</td><td>1</td><td>un</td></tr>
+            <tr><td>Caja grande</td><td>1</td><td>un</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- PASTA DE HONEY -->
+    <div class="recipe-card" style="border-top:4px solid #33A392">
+      <div class="recipe-header" style="background:#e6fffa">
+        <div class="area-tag" style="color:#33A392">🍳 Cocina Caliente</div>
+        <h3>Pasta de Honey</h3>
+        <div class="codigo">L2000036</div>
+        <div class="presentacion">Caja × 6 kg (10 bolsas) · 1 receta = 1 caja</div>
+      </div>
+      <div class="recipe-ing">
+        <table>
+          <thead><tr><th>Ingrediente</th><th>Cantidad</th><th>Unidad</th></tr></thead>
+          <tbody>
+            <tr class="mp-row"><td>Pasta de trucha × kg</td><td>6,52</td><td>kg</td></tr>
+            <tr><td>Salsa teriyaki × lt</td><td>3,91</td><td>lt</td></tr>
+            <tr><td>Azúcar pack × 25 kg</td><td>2,50</td><td>kg</td></tr>
+            <tr><td>Miel bidón × 10 kg</td><td>1,00</td><td>kg</td></tr>
+            <tr><td>Salsa de soja bidón × 5L</td><td>0,50</td><td>lt</td></tr>
+            <tr><td>Vino blanco × lt</td><td>0,10</td><td>lt</td></tr>
+            <tr><td>Bolsa corte 20×30</td><td>0,1</td><td>un</td></tr>
+            <tr><td>Caja grande</td><td>1</td><td>un</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- LANGOSTINO REBOZADO -->
+    <div class="recipe-card" style="border-top:4px solid #f6ad55">
+      <div class="recipe-header" style="background:#fffaf0">
+        <div class="area-tag" style="color:#c05621">🦐 Cocina Fría</div>
+        <h3>Langostino Rebozado</h3>
+        <div class="codigo">L2000058 / L2000018</div>
+        <div class="presentacion">Caja × 6 kg · 1 receta = 1 kg de rebozado</div>
+      </div>
+      <div class="recipe-ing">
+        <table>
+          <thead><tr><th>Ingrediente</th><th>Cantidad</th><th>Unidad</th></tr></thead>
+          <tbody>
+            <tr class="mp-row"><td>Langostino devenado</td><td>MP</td><td>principal</td></tr>
+            <tr><td>Pan rallado × 10 kg</td><td>—</td><td>según proceso</td></tr>
+            <tr><td>Batter SS × 5 kg</td><td>—</td><td>según proceso</td></tr>
+            <tr><td>Pimienta blanca × 250 gr</td><td>0,0025</td><td>kg</td></tr>
+            <tr><td>Harina 000 · Mostaza · Ajinomoto</td><td>—</td><td>según proceso</td></tr>
+          </tbody>
+        </table>
+        <div style="font-size:0.75rem;color:#BBBBBB;padding:8px 14px 0">⚠️ Cantidades exactas pendientes de carga en TOTVS</div>
+      </div>
+    </div>
+
+  </div>
+
+</main>
+</div>
+
+<!-- ═══════════════════════════════════════════════════ PROCESOS ═══ -->
+<div id="tab-procesos" class="tab-panel">
+<style>
+/* ── PFD Layout ── */
+.pfd-wrap { display:grid; grid-template-columns:repeat(auto-fit,minmax(270px,1fr)); gap:22px; margin-bottom:28px; }
+.pfd-card { background:white; border-radius:12px; box-shadow:0 1px 6px rgba(0,0,0,0.08); overflow:hidden; }
+.pfd-title { padding:14px 16px 10px; border-bottom:1px solid #e2e8f0; display:flex; align-items:center; gap:10px; }
+.pfd-title h3 { font-size:0.95rem; font-weight:700; color:#1a365d; margin:0; }
+.pfd-title .codigo { font-size:0.72rem; color:#BBBBBB; font-family:monospace; margin-left:auto; }
+.pfd-flow { padding:16px 14px 20px; display:flex; flex-direction:column; align-items:center; }
+
+/* ── Nodes ── */
+.pfd-node { width:100%; max-width:230px; position:relative; }
+
+/* Parallelogram: entrada/salida */
+.fb-io {
+  clip-path: polygon(8px 0%, 100% 0%, calc(100% - 8px) 100%, 0% 100%);
+  padding:7px 18px; text-align:center;
+}
+.fb-io.entrada { background:#c6f6d5; color:#33A392; }
+.fb-io.salida  { background:#33A392; color:white; }
+
+/* Rectangle: operación manual */
+.fb-op {
+  border:2px solid #1D4856; border-radius:3px;
+  padding:7px 10px; text-align:center; background:#ebf8ff;
+}
+
+/* Rounded rect: operación mecánica / equipo */
+.fb-equip {
+  border:2px solid #221F1F; border-radius:10px;
+  padding:7px 10px; text-align:center; background:#edf2f7;
+}
+
+/* Diamond: operación de control / condición crítica */
+.fb-diamond-wrap { display:flex; justify-content:center; }
+.fb-diamond {
+  width:140px; height:140px; position:relative;
+  display:flex; align-items:center; justify-content:center;
+  flex-shrink:0;
+}
+.fb-diamond::before {
+  content:''; position:absolute; inset:0;
+  transform:rotate(45deg); border-radius:4px;
+}
+.fb-diamond.cold::before  { background:#bee3f8; border:2px solid #1a365d; }
+.fb-diamond.hot::before   { background:#fed7d7; border:2px solid #EF402F; }
+.fb-diamond-inner { position:relative; z-index:1; text-align:center; padding:4px; }
+
+/* Text inside nodes */
+.fb-op-name  { font-size:0.72rem; font-weight:700; text-transform:uppercase; letter-spacing:0.05em; display:block; }
+.fb-op-desc  { font-size:0.71rem; display:block; margin-top:2px; }
+.fb-cond     { font-size:0.7rem; font-weight:700; display:block; margin-top:4px; }
+.fb-cond.cold-cond { color:#1a365d; }
+.fb-cond.hot-cond  { color:#EF402F; }
+
+/* ── Connector ── */
+.pfd-conn { display:flex; flex-direction:column; align-items:center; margin:1px 0; }
+.conn-line { width:2px; height:18px; background:#999999; }
+.conn-label { font-size:0.64rem; color:#BBBBBB; letter-spacing:0.03em; }
+.conn-arrow { width:0; height:0; border-left:5px solid transparent; border-right:5px solid transparent; border-top:7px solid #999999; }
+
+/* ── Side stream (materia prima que entra lateralmente) ── */
+.pfd-side { display:flex; align-items:center; gap:0; margin-bottom:-2px; }
+.side-box { font-size:0.68rem; padding:4px 8px; border-radius:3px; border:1px dashed #BBBBBB; color:#999999; white-space:nowrap; }
+.side-arrow-h { width:20px; height:2px; background:#BBBBBB; }
+.side-arrow-tip { width:0; height:0; border-top:4px solid transparent; border-bottom:4px solid transparent; border-left:6px solid #BBBBBB; }
+
+/* ── Legend ── */
+.pfd-legend { display:flex; flex-wrap:wrap; gap:10px; margin-bottom:20px; font-size:0.75rem; }
+.leg-item { display:flex; align-items:center; gap:6px; color:#221F1F; }
+.leg-box { width:22px; height:14px; border-radius:2px; flex-shrink:0; }
+.leg-para { width:22px; height:14px; clip-path:polygon(3px 0%,100% 0%,calc(100% - 3px) 100%,0% 100%); flex-shrink:0; }
+.leg-dia { width:14px; height:14px; transform:rotate(45deg); border-radius:2px; flex-shrink:0; }
+</style>
+<main>
+
+  <div class="alerta-ok">
+    ✅ <strong>Diagramas de flujo de proceso (PFD) — relevados en planta mayo–junio 2026.</strong>
+  </div>
+
+  <!-- Leyenda -->
+  <div class="card" style="margin-bottom:20px;padding:14px 20px">
+    <div style="font-size:0.78rem;font-weight:700;color:#221F1F;margin-bottom:10px;text-transform:uppercase;letter-spacing:0.06em">Nomenclatura</div>
+    <div class="pfd-legend">
+      <div class="leg-item"><div class="leg-para" style="background:#c6f6d5"></div> Entrada / Salida de material</div>
+      <div class="leg-item"><div class="leg-box" style="background:#ebf8ff;border:2px solid #1D4856"></div> Operación manual</div>
+      <div class="leg-item"><div class="leg-box" style="background:#edf2f7;border:2px solid #221F1F;border-radius:4px"></div> Equipo / máquina</div>
+      <div class="leg-item"><div class="leg-dia" style="background:#bee3f8;border:2px solid #1a365d"></div> Operación de frío (T, t)</div>
+      <div class="leg-item"><div class="leg-dia" style="background:#fed7d7;border:2px solid #EF402F"></div> Operación de calor (T, t)</div>
+      <div class="leg-item"><div style="width:22px;height:2px;background:#BBBBBB;border-top:1px dashed #BBBBBB"></div> Corriente auxiliar</div>
+    </div>
+  </div>
+
+  <div class="pfd-wrap">
+
+    <!-- ══════════════ TRUCHA ══════════════ -->
+    <div class="pfd-card">
+      <div class="pfd-title">
+        <span style="font-size:1.1rem">🐟</span>
+        <div>
+          <h3>Cortes de Trucha</h3>
+          <div style="font-size:0.72rem;color:#999999">Cocina Fría · TT / GT / CT</div>
+        </div>
+        <div class="codigo">L2000029 · L2000030 · L2000031</div>
+      </div>
+      <div class="pfd-flow">
+
+        <div class="pfd-node">
+          <div class="fb-io entrada">
+            <span class="fb-op-name">Trucha Trim A</span>
+            <span class="fb-op-desc">Materia prima congelada — desde depósito</span>
+          </div>
+        </div>
+
+        <div class="pfd-conn"><div class="conn-line"></div><div class="conn-arrow"></div></div>
+
+        <div class="pfd-node">
+          <div class="fb-op">
+            <span class="fb-op-name">Depostado</span>
+            <span class="fb-op-desc">Corte de aletas + extracción de grasa</span>
+          </div>
+        </div>
+
+        <div class="pfd-conn"><div class="conn-line"></div><div class="conn-arrow"></div></div>
+
+        <div class="pfd-node">
+          <div class="fb-op">
+            <span class="fb-op-name">Despinado</span>
+            <span class="fb-op-desc">Extracción manual de espinas</span>
+          </div>
+        </div>
+
+        <div class="pfd-conn"><div class="conn-line"></div><div class="conn-arrow"></div></div>
+
+        <div class="pfd-node">
+          <div class="fb-op">
+            <span class="fb-op-name">Desollado + Desgrasado</span>
+            <span class="fb-op-desc">Extracción de piel y grasa residual</span>
+          </div>
+        </div>
+
+        <div class="pfd-conn"><div class="conn-line"></div><div class="conn-arrow"></div></div>
+
+        <div class="pfd-node">
+          <div class="fb-op">
+            <span class="fb-op-name">Corte</span>
+            <span class="fb-op-desc">División en tiras · cubos · cortes</span>
+          </div>
+        </div>
+
+        <div class="pfd-conn"><div class="conn-line"></div><div class="conn-arrow"></div></div>
+
+        <div class="pfd-node">
+          <div class="fb-op">
+            <span class="fb-op-name">Embolsado</span>
+            <span class="fb-op-desc">Bolsas → bandejas de acero inoxidable</span>
+          </div>
+        </div>
+
+        <div class="pfd-conn"><div class="conn-line"></div><div class="conn-arrow"></div></div>
+
+        <div class="pfd-node">
+          <div class="fb-diamond-wrap">
+            <div class="fb-diamond cold">
+              <div class="fb-diamond-inner">
+                <span class="fb-op-name" style="color:#1a365d">Congelado</span>
+                <span class="fb-cond cold-cond">T = −16 °C</span>
+                <span class="fb-cond cold-cond">t = 24 h</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="pfd-conn"><div class="conn-line"></div><div class="conn-arrow"></div></div>
+
+        <div class="pfd-node">
+          <div class="fb-io salida">
+            <span class="fb-op-name">Producto terminado</span>
+            <span class="fb-op-desc" style="color:#c6f6d5">Tiras 7 kg · Cubos 7 kg · Corte 1,920 kg</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- ══════════════ LANGOSTINO ══════════════ -->
+    <div class="pfd-card">
+      <div class="pfd-title">
+        <span style="font-size:1.1rem">🦐</span>
+        <div>
+          <h3>Langostino Rebozado</h3>
+          <div style="font-size:0.72rem;color:#999999">Cocina Fría · LR</div>
+        </div>
+        <div class="codigo">L2000018</div>
+      </div>
+      <div class="pfd-flow">
+
+        <div class="pfd-node">
+          <div class="fb-io entrada">
+            <span class="fb-op-name">Langostino devenado</span>
+            <span class="fb-op-desc">MP desde depósito — llega 1 día antes</span>
+          </div>
+        </div>
+
+        <div class="pfd-conn"><div class="conn-line"></div><div class="conn-arrow"></div></div>
+
+        <div class="pfd-node">
+          <div class="fb-diamond-wrap">
+            <div class="fb-diamond cold">
+              <div class="fb-diamond-inner">
+                <span class="fb-op-name" style="color:#1a365d">Descongelado</span>
+                <span class="fb-cond cold-cond">T ambiente</span>
+                <span class="fb-cond cold-cond">t = 24 h</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="pfd-conn"><div class="conn-line"></div><div class="conn-arrow"></div></div>
+
+        <!-- Corriente auxiliar: mezcla rebozado -->
+        <div style="display:flex;align-items:center;width:100%;max-width:230px;gap:0;margin-bottom:4px">
+          <div class="side-box">Pan rallado · Batter · Harina · Especias</div>
+          <div class="side-arrow-h"></div>
+          <div class="side-arrow-tip"></div>
+        </div>
+
+        <div class="pfd-node">
+          <div class="fb-equip">
+            <span class="fb-op-name">Hormigonera</span>
+            <span class="fb-op-desc">Mezcla rebozado + langostino</span>
+          </div>
+        </div>
+
+        <div class="pfd-conn"><div class="conn-line"></div><div class="conn-arrow"></div></div>
+
+        <div class="pfd-node">
+          <div class="fb-equip">
+            <span class="fb-op-name">Máquina de Apanado</span>
+            <span class="fb-op-desc">Cobertura uniforme de rebozado</span>
+          </div>
+        </div>
+
+        <div class="pfd-conn"><div class="conn-line"></div><div class="conn-arrow"></div></div>
+
+        <div class="pfd-node">
+          <div class="fb-op">
+            <span class="fb-op-name">Distribución en bandejas</span>
+            <span class="fb-op-desc">Bandejas de acero inoxidable</span>
+          </div>
+        </div>
+
+        <div class="pfd-conn"><div class="conn-line"></div><div class="conn-arrow"></div></div>
+
+        <div class="pfd-node">
+          <div class="fb-diamond-wrap">
+            <div class="fb-diamond cold">
+              <div class="fb-diamond-inner">
+                <span class="fb-op-name" style="color:#1a365d">Congelado</span>
+                <span class="fb-cond cold-cond">T = −16 °C</span>
+                <span class="fb-cond cold-cond">t = 24–48 h</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="pfd-conn"><div class="conn-line"></div><div class="conn-arrow"></div></div>
+
+        <div class="pfd-node">
+          <div class="fb-op">
+            <span class="fb-op-name">Embolsado</span>
+            <span class="fb-op-desc">Bolsas individuales</span>
+          </div>
+        </div>
+
+        <div class="pfd-conn"><div class="conn-line"></div><div class="conn-arrow"></div></div>
+
+        <div class="pfd-node">
+          <div class="fb-io salida">
+            <span class="fb-op-name">Producto terminado</span>
+            <span class="fb-op-desc" style="color:#c6f6d5">Caja × 6 kg</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- ══════════════ POLLO TERIYAKI ══════════════ -->
+    <div class="pfd-card">
+      <div class="pfd-title">
+        <span style="font-size:1.1rem">🍳</span>
+        <div>
+          <h3>Pollo Teriyaki</h3>
+          <div style="font-size:0.72rem;color:#999999">Cocina Caliente · PY</div>
+        </div>
+        <div class="codigo">L2000017</div>
+      </div>
+      <div class="pfd-flow">
+
+        <div class="pfd-node">
+          <div class="fb-io entrada">
+            <span class="fb-op-name">Pechuga de pollo</span>
+            <span class="fb-op-desc">MP desde depósito — congelada</span>
+          </div>
+        </div>
+
+        <div class="pfd-conn"><div class="conn-line"></div><div class="conn-arrow"></div></div>
+
+        <div class="pfd-node">
+          <div class="fb-diamond-wrap">
+            <div class="fb-diamond cold">
+              <div class="fb-diamond-inner">
+                <span class="fb-op-name" style="color:#1a365d">Descongelado</span>
+                <span class="fb-cond cold-cond">T ambiente</span>
+                <span class="fb-cond cold-cond">t = 24 h</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="pfd-conn"><div class="conn-line"></div><div class="conn-arrow"></div></div>
+
+        <div class="pfd-node">
+          <div class="fb-op">
+            <span class="fb-op-name">Corte</span>
+            <span class="fb-op-desc">Trozos — lote estándar 60 kg</span>
+          </div>
+        </div>
+
+        <div class="pfd-conn"><div class="conn-line"></div><div class="conn-arrow"></div></div>
+
+        <!-- Corriente auxiliar: salsa -->
+        <div style="display:flex;align-items:center;width:100%;max-width:230px;gap:0;margin-bottom:4px">
+          <div class="side-box">Salsa Teriyaki<br><span style="font-size:0.62rem">Vino 1L · Soja 650ml · Azúcar 450g · Miel 500g</span></div>
+          <div class="side-arrow-h"></div>
+          <div class="side-arrow-tip"></div>
+        </div>
+
+        <div class="pfd-node">
+          <div class="fb-equip">
+            <span class="fb-op-name">Marmita (MARM01)</span>
+            <span class="fb-op-desc">Mezcla pollo + 15 recetas salsa teriyaki</span>
+          </div>
+        </div>
+
+        <div class="pfd-conn"><div class="conn-line"></div><div class="conn-arrow"></div></div>
+
+        <div class="pfd-node">
+          <div class="fb-diamond-wrap">
+            <div class="fb-diamond hot">
+              <div class="fb-diamond-inner">
+                <span class="fb-op-name" style="color:#EF402F">Cocción</span>
+                <span class="fb-cond hot-cond">T = 110 °C</span>
+                <span class="fb-cond hot-cond">t = 50 min</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="pfd-conn"><div class="conn-line"></div><div class="conn-arrow"></div></div>
+
+        <div class="pfd-node">
+          <div class="fb-diamond-wrap">
+            <div class="fb-diamond cold">
+              <div class="fb-diamond-inner">
+                <span class="fb-op-name" style="color:#1a365d">Congelado IQF</span>
+                <span class="fb-cond cold-cond">T = −16 °C</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="pfd-conn"><div class="conn-line"></div><div class="conn-arrow"></div></div>
+
+        <div class="pfd-node">
+          <div class="fb-op">
+            <span class="fb-op-name">Envasado</span>
+            <span class="fb-op-desc">Bolsas + etiquetado</span>
+          </div>
+        </div>
+
+        <div class="pfd-conn"><div class="conn-line"></div><div class="conn-arrow"></div></div>
+
+        <div class="pfd-node">
+          <div class="fb-io salida">
+            <span class="fb-op-name">Producto terminado</span>
+            <span class="fb-op-desc" style="color:#c6f6d5">Caja × 6 kg (IQF)</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+
+</div>
+
+<!-- ════════════════════════════════════════════════════ CALIDAD ═══ -->
+<div id="tab-calidad" class="tab-panel">
+    <main>
+
+    <div class="alerta" style="background:#fff5f5;border-color:#EF402F;border-left-color:#EF402F;color:#7b1a1a;">
+      ⚠️ Datos de reclamos de franquicias desde oct 2025. Solo se muestran productos elaborados en el centro de producción.
+    </div>
+
+    <!-- KPIs -->
+    <div class="kpi-grid" style="grid-template-columns:repeat(auto-fit,minmax(140px,1fr))">
+      <div class="kpi-card"><div class="lbl">Total reclamos CP</div><div class="val" style="color:#EF402F">96</div><div class="sub">productos propios</div></div>
+      <div class="kpi-card"><div class="lbl">Producto top</div><div class="val" style="color:#EF402F;font-size:1.1rem">TAMAGO</div><div class="sub">45 reclamos</div></div>
+      <div class="kpi-card"><div class="lbl">Mes pico</div><div class="val" style="color:#E3A127">Feb 2026</div><div class="sub">mayor volumen</div></div>
+      <div class="kpi-card"><div class="lbl">Reclamos abiertos</div><div class="val" style="color:#F58232">21</div><div class="sub">en gestión</div></div>
+      <div class="kpi-card"><div class="lbl">Tasa cierre</div><div class="val" style="color:#33A392">78%</div><div class="sub">de tickets CP</div></div>
+    </div>
+
+    <!-- Reclamos por producto -->
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-bottom:22px;">
+      <div class="card">
+        <h2>Reclamos por producto — CP</h2>
+        <div class="chart-wrap"><canvas id="chartCalidadProd"></canvas></div>
+      </div>
+      <div class="card">
+        <h2>Evolución mensual — CP</h2>
+        <div class="chart-wrap"><canvas id="chartCalidadMes"></canvas></div>
+      </div>
+    </div>
+
+    <!-- Principales fallas por producto -->
+    <div class="card" style="margin-bottom:22px;">
+      <h2>Principales fallas por producto</h2>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:14px;margin-top:4px;">
+
+        <div style="border:1px solid #fed7d7;border-radius:10px;padding:14px;background:#fff5f5;">
+          <div style="font-weight:700;font-size:0.95rem;color:#EF402F;margin-bottom:8px;">🍣 TAMAGO <span style="font-weight:400;color:#999;font-size:0.8rem">(45 reclamos)</span></div>
+          <ul style="font-size:0.83rem;color:#444;line-height:1.9;list-style:none;padding:0;">
+            <li>🔴 Pelo / cabello en el producto — recurrente</li>
+            <li>🔴 Textura grumosa / se deshace / desgrana</li>
+            <li>🟠 Manchas blancas / aspecto de hongo</li>
+            <li>🟠 Mal olor al descongelar</li>
+            <li>🟡 Pérdida de cadena de frío</li>
+          </ul>
+        </div>
+
+        <div style="border:1px solid #bee3f8;border-radius:10px;padding:14px;background:#ebf8ff;">
+          <div style="font-weight:700;font-size:0.95rem;color:#1D4856;margin-bottom:8px;">🦐 LANGOSTINOS REBOZADOS <span style="font-weight:400;color:#999;font-size:0.8rem">(13 reclamos)</span></div>
+          <ul style="font-size:0.83rem;color:#444;line-height:1.9;list-style:none;padding:0;">
+            <li>🔴 Mal olor / color inadecuado (olor a podrido)</li>
+            <li>🔴 Objeto extraño: plástico (feb 2026)</li>
+            <li>🔴 Objeto extraño: alambre (abr 2026)</li>
+            <li>🟠 Exceso de pan rallado / poco langostino</li>
+            <li>🟡 Pelo en el producto</li>
+          </ul>
+        </div>
+
+        <div style="border:1px solid #c6f6d5;border-radius:10px;padding:14px;background:#f0fff4;">
+          <div style="font-weight:700;font-size:0.95rem;color:#2f855a;margin-bottom:8px;">🍗 POLLO TERIYAKI <span style="font-weight:400;color:#999;font-size:0.8rem">(8 reclamos)</span></div>
+          <ul style="font-size:0.83rem;color:#444;line-height:1.9;list-style:none;padding:0;">
+            <li>🔴 Muy seco, sin sabor, color pálido</li>
+            <li>🟠 Pequeños huesos entre las porciones</li>
+            <li>🟡 Producto mezclado: caja pollo con langostinos</li>
+          </ul>
+        </div>
+
+        <div style="border:1px solid #bee3f8;border-radius:10px;padding:14px;background:#ebf8ff;">
+          <div style="font-weight:700;font-size:0.95rem;color:#1D4856;margin-bottom:8px;">🐟 TRUCHA (corte + tira + cubos) <span style="font-weight:400;color:#999;font-size:0.8rem">(19 reclamos)</span></div>
+          <ul style="font-size:0.83rem;color:#444;line-height:1.9;list-style:none;padding:0;">
+            <li>🔴 Cubos: mal olor, color, quemado por frío</li>
+            <li>🔴 Corte: gramaje excedido (10–12g vs 8g estándar)</li>
+            <li>🔴 Corte: exceso de grasa al descongelar</li>
+            <li>🔴 Tira: sello de lote ilegible</li>
+            <li>🟠 Espina encontrada en el producto final</li>
+            <li>🟡 Tiras fragmentadas (truchas pequeñas)</li>
+          </ul>
+        </div>
+
+        <div style="border:1px solid #feebc8;border-radius:10px;padding:14px;background:#fffbeb;">
+          <div style="font-weight:700;font-size:0.95rem;color:#c05621;margin-bottom:8px;">🍯 PASTA DE HONEY <span style="font-weight:400;color:#999;font-size:0.8rem">(4 reclamos)</span></div>
+          <ul style="font-size:0.83rem;color:#444;line-height:1.9;list-style:none;padding:0;">
+            <li>🔴 Mal olor al descongelar</li>
+            <li>🟡 Mencionada junto a reclamo Neuquén (gastroenteritis)</li>
+          </ul>
+        </div>
+
+        <div style="border:1px solid #feebc8;border-radius:10px;padding:14px;background:#fffbeb;">
+          <div style="font-weight:700;font-size:0.95rem;color:#c05621;margin-bottom:8px;">🍊 SALSA NARANJA Y MIEL <span style="font-weight:400;color:#999;font-size:0.8rem">(4 reclamos)</span></div>
+          <ul style="font-size:0.83rem;color:#444;line-height:1.9;list-style:none;padding:0;">
+            <li>🔴 Sabor quemado / salado</li>
+            <li>🟡 Lote viejo — falla FIFO en local</li>
+            <li>🟡 Vencida al recibir</li>
+          </ul>
+        </div>
+
+        <div style="border:1px solid #c6f6d5;border-radius:10px;padding:14px;background:#f0fff4;">
+          <div style="font-weight:700;font-size:0.95rem;color:#2f855a;margin-bottom:8px;">🍶 REDUCCIÓN DE TERIYAKI <span style="font-weight:400;color:#999;font-size:0.8rem">(2 reclamos)</span></div>
+          <ul style="font-size:0.83rem;color:#444;line-height:1.9;list-style:none;padding:0;">
+            <li>🔴 Sabor quemado y salado (may 2026)</li>
+            <li>🟡 Vencida al recibir (ene 2026)</li>
+          </ul>
+        </div>
+
+        <div style="border:1px solid #c6f6d5;border-radius:10px;padding:14px;background:#f0fff4;">
+          <div style="font-weight:700;font-size:0.95rem;color:#2f855a;margin-bottom:8px;">🥗 VINAGRETA <span style="font-weight:400;color:#999;font-size:0.8rem">(1 reclamo)</span></div>
+          <ul style="font-size:0.83rem;color:#444;line-height:1.9;list-style:none;padding:0;">
+            <li>🟠 Color oscura, amarillaba el arroz muy rápido</li>
+          </ul>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Tickets abiertos del CP -->
+    <div class="card">
+      <h2>Tickets activos — productos del CP <span style="font-weight:400;color:#999;font-size:0.82rem">(Esperando respuesta interna / Nuevo)</span></h2>
+      <div style="overflow-x:auto;">
+        <table style="width:100%;border-collapse:collapse;font-size:0.83rem;">
+          <thead>
+            <tr style="background:#1D4856;color:white;">
+              <th style="padding:8px 12px;text-align:left;border-radius:8px 0 0 0">Ticket</th>
+              <th style="padding:8px 12px;text-align:left">Sucursal</th>
+              <th style="padding:8px 12px;text-align:left">Producto</th>
+              <th style="padding:8px 12px;text-align:left">Descripción</th>
+              <th style="padding:8px 12px;text-align:left">Fecha</th>
+              <th style="padding:8px 12px;text-align:left;border-radius:0 8px 0 0">Lote</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr style="background:#fff5f5;border-bottom:1px solid #fed7d7;">
+              <td style="padding:8px 12px;font-family:monospace;font-size:0.75rem;color:#999">45758527856</td>
+              <td style="padding:8px 12px;font-weight:600">Alberdi</td>
+              <td style="padding:8px 12px">TAMAGO</td>
+              <td style="padding:8px 12px">Cabello al descongelar — 6 cajas</td>
+              <td style="padding:8px 12px">14-jun-26</td>
+              <td style="padding:8px 12px;font-family:monospace;font-size:0.8rem">AUTO000026</td>
+            </tr>
+            <tr style="background:#fff;border-bottom:1px solid #e2e8f0;">
+              <td style="padding:8px 12px;font-family:monospace;font-size:0.75rem;color:#999">45745755171</td>
+              <td style="padding:8px 12px;font-weight:600">Rafaela</td>
+              <td style="padding:8px 12px">LANGOSTINOS REBOZADOS</td>
+              <td style="padding:8px 12px">Sin descripción — 6 cajas</td>
+              <td style="padding:8px 12px">12-jun-26</td>
+              <td style="padding:8px 12px;font-family:monospace;font-size:0.8rem">—</td>
+            </tr>
+            <tr style="background:#fff5f5;border-bottom:1px solid #fed7d7;">
+              <td style="padding:8px 12px;font-family:monospace;font-size:0.75rem;color:#999">45668232288</td>
+              <td style="padding:8px 12px;font-weight:600">Río Cuarto</td>
+              <td style="padding:8px 12px">TAMAGO</td>
+              <td style="padding:8px 12px">Pelos — 4 unidades afectadas</td>
+              <td style="padding:8px 12px">04-jun-26</td>
+              <td style="padding:8px 12px;font-family:monospace;font-size:0.8rem">2205261</td>
+            </tr>
+            <tr style="background:#fff;border-bottom:1px solid #e2e8f0;">
+              <td style="padding:8px 12px;font-family:monospace;font-size:0.75rem;color:#999">45694080547</td>
+              <td style="padding:8px 12px;font-weight:600">Alberdi</td>
+              <td style="padding:8px 12px">TAMAGO</td>
+              <td style="padding:8px 12px">Pelos — 1 caja</td>
+              <td style="padding:8px 12px">03-jun-26</td>
+              <td style="padding:8px 12px;font-family:monospace;font-size:0.8rem">24/7</td>
+            </tr>
+            <tr style="background:#fff5f5;border-bottom:1px solid #fed7d7;">
+              <td style="padding:8px 12px;font-family:monospace;font-size:0.75rem;color:#999">45694501543</td>
+              <td style="padding:8px 12px;font-weight:600">Villa Allende</td>
+              <td style="padding:8px 12px">TAMAGO</td>
+              <td style="padding:8px 12px">Con pelos — 2 cajas</td>
+              <td style="padding:8px 12px">02-jun-26</td>
+              <td style="padding:8px 12px;font-family:monospace;font-size:0.8rem">TA 2205261</td>
+            </tr>
+            <tr style="background:#fff;border-bottom:1px solid #e2e8f0;">
+              <td style="padding:8px 12px;font-family:monospace;font-size:0.75rem;color:#999">45654816925</td>
+              <td style="padding:8px 12px;font-weight:600">Mendoza</td>
+              <td style="padding:8px 12px">TAMAGO</td>
+              <td style="padding:8px 12px">Vino con una hormiga — 1 unidad</td>
+              <td style="padding:8px 12px">31-may-26</td>
+              <td style="padding:8px 12px;font-family:monospace;font-size:0.8rem">TA1004261</td>
+            </tr>
+            <tr style="background:#fff5f5;border-bottom:1px solid #fed7d7;">
+              <td style="padding:8px 12px;font-family:monospace;font-size:0.75rem;color:#999">45578154363</td>
+              <td style="padding:8px 12px;font-weight:600">Recoleta</td>
+              <td style="padding:8px 12px">TAMAGO</td>
+              <td style="padding:8px 12px">Pelo entre folex y tamago — 3 cajas</td>
+              <td style="padding:8px 12px">27-may-26</td>
+              <td style="padding:8px 12px;font-family:monospace;font-size:0.8rem">TA1004261</td>
+            </tr>
+            <tr style="background:#fff;border-bottom:1px solid #e2e8f0;">
+              <td style="padding:8px 12px;font-family:monospace;font-size:0.75rem;color:#999">45571498615</td>
+              <td style="padding:8px 12px;font-weight:600">Nueva Córdoba</td>
+              <td style="padding:8px 12px">REDUCCIÓN DE TERIYAKI</td>
+              <td style="padding:8px 12px">Todas quemadas, gusto salado y quemado — 7 botellas</td>
+              <td style="padding:8px 12px">26-may-26</td>
+              <td style="padding:8px 12px;font-family:monospace;font-size:0.8rem">RY 1105261</td>
+            </tr>
+            <tr style="background:#fff5f5;border-bottom:1px solid #fed7d7;">
+              <td style="padding:8px 12px;font-family:monospace;font-size:0.75rem;color:#999">45298004356</td>
+              <td style="padding:8px 12px;font-weight:600">Santa Fe</td>
+              <td style="padding:8px 12px">TAMAGO</td>
+              <td style="padding:8px 12px">Textura desgranada, pelos en la masa — 1 caja</td>
+              <td style="padding:8px 12px">15-may-26</td>
+              <td style="padding:8px 12px;font-family:monospace;font-size:0.8rem">TA2002261</td>
+            </tr>
+            <tr style="background:#fff;border-bottom:1px solid #e2e8f0;">
+              <td style="padding:8px 12px;font-family:monospace;font-size:0.75rem;color:#999">45212243973</td>
+              <td style="padding:8px 12px;font-weight:600">Godoy Cruz</td>
+              <td style="padding:8px 12px">POLLO TERIYAKI</td>
+              <td style="padding:8px 12px">Seco, sin sabor, color pálido — 2 cajas 6kg</td>
+              <td style="padding:8px 12px">08-may-26</td>
+              <td style="padding:8px 12px;font-family:monospace;font-size:0.8rem">PY3004261</td>
+            </tr>
+            <tr style="background:#fff5f5;border-bottom:1px solid #fed7d7;">
+              <td style="padding:8px 12px;font-family:monospace;font-size:0.75rem;color:#999">45140695681</td>
+              <td style="padding:8px 12px;font-weight:600">Mendoza</td>
+              <td style="padding:8px 12px">PASTA DE HONEY</td>
+              <td style="padding:8px 12px">Mal olor al descongelar</td>
+              <td style="padding:8px 12px">04-may-26</td>
+              <td style="padding:8px 12px;font-family:monospace;font-size:0.8rem">20/04</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- Preguntas de la semana -->
+    <div class="card" style="background:linear-gradient(135deg,#1D4856 0%,#2d6a7a 100%);color:white;border:none;">
+      <h2 style="color:white;border-bottom:1px solid rgba(255,255,255,0.2);padding-bottom:12px;margin-bottom:16px;">🤔 Preguntas de la semana — Calidad</h2>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:12px;">
+        <div style="background:rgba(255,255,255,0.1);border-radius:10px;padding:14px;">
+          <div style="font-weight:700;margin-bottom:6px;">🔴 ¿Por qué el TAMAGO tiene reclamos recurrentes de pelo?</div>
+          <div style="font-size:0.82rem;opacity:0.85">45 reclamos totales. ¿Está documentado el procedimiento de uso de cofia y malla en la elaboración? ¿Hay control de MP (arroz/relleno)?</div>
+        </div>
+        <div style="background:rgba(255,255,255,0.1);border-radius:10px;padding:14px;">
+          <div style="font-weight:700;margin-bottom:6px;">🦐 Langostinos: 2 cuerpos extraños críticos (plástico + alambre)</div>
+          <div style="font-size:0.82rem;opacity:0.85">¿Hay detector de metales en la línea? ¿Se revisó la MP de origen? Estos son los dos reclamos de mayor riesgo para el consumidor.</div>
+        </div>
+        <div style="background:rgba(255,255,255,0.1);border-radius:10px;padding:14px;">
+          <div style="font-weight:700;margin-bottom:6px;">🐟 Trucha: corte de gramaje excedido y etiqueta ilegible</div>
+          <div style="font-size:0.82rem;opacity:0.85">¿Se pesa el corte en la línea antes del embolsado? ¿El sello de lote tiene tinta suficiente? Dos puntos de control simples de implementar.</div>
+        </div>
+        <div style="background:rgba(255,255,255,0.1);border-radius:10px;padding:14px;">
+          <div style="font-weight:700;margin-bottom:6px;">🍶 Salsa Naranja y Reducción de Teriyaki: sabor quemado</div>
+          <div style="font-size:0.82rem;opacity:0.85">¿Se registra temperatura/tiempo de cocción por lote? ¿Coincide el lote RY 1105261 con algún día de producción donde se prolongó el proceso?</div>
+        </div>
+        <div style="background:rgba(255,255,255,0.1);border-radius:10px;padding:14px;">
+          <div style="font-weight:700;margin-bottom:6px;">📦 ¿Tienen trazabilidad todos los lotes de reclamos?</div>
+          <div style="font-size:0.82rem;opacity:0.85">Varios tickets no tienen lote registrado. Sin lote no se puede hacer análisis de causa raíz. ¿Cómo se mejora el etiquetado en destino?</div>
+        </div>
+      </div>
+    </div>
+
+    </main>
+</div>
+
+<footer>Brugali — Ingeniería de Procesos · Dashboard generado con IA · Debo Páez</footer>
+
+<script>
+// ═══════════════════════════════ TABS ═══════════════════════════════
+function switchTab(name) {
+  document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+  document.getElementById('tab-' + name).classList.add('active');
+  event.target.classList.add('active');
+  if (name === 'langostino' && !window._langInit) { initLangostino(); window._langInit = true; }
+  if (name === 'cocina'     && !window._cocinaInit) { initCocina(); window._cocinaInit = true; }
+  if (name === 'calidad'    && !window._calidadInit) { initCalidad(); window._calidadInit = true; }
+}
+
+// ═══════════════════════════════ TRUCHA ══════════════════════════════
+const WEEKS = [
+  { label:"S20", dateRange:"11–16 may", isPartial:false, total:931.225,
+    daily:[140.125,175.225,158.425,199.2,186.2,72.05],
+    dailyByProd:{ "Tiras":[35.525,31.85,15.925,29.4,44.1,19.6], "cortes":[22,16,13,16,28,8], "tiras unidas":[44.1,39.2,24.5,49,68.6,26.95], "cubos":[38.5,49,105,0,45.5,17.5], "sin embolsar":[0,39.175,0,104.8,0,0] },
+    entradaBandejasDia:[24,29,28,30,28,17], activeDaysCount:6 },
+  { label:"S21", dateRange:"18–22 may", isPartial:false, total:915.525,
+    daily:[188.1,185.8,178.575,180.275,182.775,0],
+    dailyByProd:{ "Tiras":[41.7,34.3,47.775,39.2,45.325,0], "cortes":[22,10,16,12,19.5,0], "tiras unidas":[69.8,53.9,68.6,39.2,61.25,0], "cubos":[54.6,12.6,46.2,56.7,56.7,0], "sin embolsar":[0,75,0,33.175,0,0] },
+    entradaBandejasDia:[28,28,26,28,28,0], activeDaysCount:5 },
+  { label:"S22", dateRange:"25–29 may", isPartial:false, total:650.0,
+    daily:[140.25,0,174.9,159.8,175.05,0],
+    dailyByProd:{ "Tiras":[36.75,0,33.1,33.7,26.95,0], "cortes":[16,0,22,12,20,0], "tiras unidas":[53.9,0,44.1,39.2,66.15,0], "cubos":[33.6,0,62,39.9,61.95,0], "sin embolsar":[0,0,13.7,35,0,0] },
+    entradaBandejasDia:[21,0,28,28,28,0], activeDaysCount:4 },
+  { label:"S23", dateRange:"01–06 jun", isPartial:false, total:1043.5625,
+    daily:[161,164.4,195.875,165.2375,178.425,178.625],
+    dailyByProd:{ "Tiras":[35.525,29.4,33.075,31.2375,40.425,44.1], "cortes":[14,6,4,22,19,18.5], "tiras unidas":[37.975,49,34.3,63.7,68.6,62.475], "cubos":[73.5,0,0,48.3,50.4,53.55], "sin embolsar":[0,80,124.5,0,0,0] },
+    entradaBandejasDia:[29,26,28,27,28,28], activeDaysCount:6 },
+  { label:"S24", dateRange:"08–12 jun", isPartial:false, total:858.24,
+    daily:[170.6,181.075,172.35,185.865,148.35,0],
+    dailyByProd:{ "Tiras":[31.85,33.075,31.85,31.85,17.15,0], "cortes":[21.5,22,21.5,14,22,0], "tiras unidas":[71.05,66.15,68.6,51.94,58.8,0], "cubos":[46.2,59.85,50.4,33.6,50.4,0], "sin embolsar":[0,0,0,54.475,0,0] },
+    entradaBandejasDia:[28,30,30,30,28,0], activeDaysCount:5 },
+  { label:"S25", dateRange:"15–19 jun", isPartial:false, total:712.565,
+    daily:[157.1,0,189.975,192.465,173.025,0],
+    dailyByProd:{ "Tiras":[26.95,0,35.525,41.65,40.425,0], "cortes":[22,0,26,24.5,22,0], "tiras unidas":[66.15,0,61.25,62.475,61.25,0], "cubos":[42,0,67.2,63.84,49.35,0], "sin embolsar":[0,0,0,0,0,0] },
+    entradaBandejasDia:[26,0,30,30,28,0], activeDaysCount:4 }
+];
+
+const PRODUCTOS = ["Tiras","cortes","tiras unidas","cubos","sin embolsar"];
+const COLORES = { "Tiras":"#1D4856","cortes":"#33A392","tiras unidas":"#E3A127","cubos":"#EF402F","sin embolsar":"#F58232" };
+const DIAS = ["L","M","M","J","V","S"];
+
+new Chart(document.getElementById("chartSemanal").getContext("2d"), {
+  type:"bar",
+  data:{ labels:WEEKS.map(w=>w.label), datasets:[{ label:"kg producidos", data:WEEKS.map(w=>w.total), backgroundColor:"#1D4856", borderRadius:7, borderSkipped:false }] },
+  options:{ responsive:true, maintainAspectRatio:false, plugins:{ legend:{display:false}, tooltip:{ callbacks:{ label:ctx=>" "+ctx.parsed.y.toFixed(1)+" kg" } } }, scales:{ y:{ beginAtZero:true, grid:{color:"#edf2f7"}, ticks:{callback:v=>v+" kg"} }, x:{grid:{display:false}} } }
+});
+
+let chartDiario;
+function buildDiarioDatasets(wi) {
+  return PRODUCTOS.map(p=>({ label:p, data:WEEKS[wi].dailyByProd[p], backgroundColor:COLORES[p], borderRadius:4, borderSkipped:false }));
+}
+function initDiario(wi) {
+  if (chartDiario) chartDiario.destroy();
+  chartDiario = new Chart(document.getElementById("chartDiario").getContext("2d"), {
+    type:"bar", data:{ labels:DIAS, datasets:buildDiarioDatasets(wi) },
+    options:{ responsive:true, maintainAspectRatio:false, plugins:{ legend:{position:"bottom",labels:{usePointStyle:true,padding:14,font:{size:11}}}, tooltip:{callbacks:{label:ctx=>" "+ctx.dataset.label+": "+ctx.parsed.y.toFixed(2)+" kg"}} }, scales:{ x:{stacked:true,grid:{display:false}}, y:{stacked:true,beginAtZero:true,grid:{color:"#edf2f7"},ticks:{callback:v=>v+" kg"}} } }
+  });
+}
+document.getElementById("selDiario").addEventListener("change", function(){ initDiario(+this.value); });
+initDiario(5);
+
+function buildTabla(wi) {
+  const w = WEEKS[wi];
+  const t = document.getElementById("tablaDetalle");
+  let h = "<thead><tr><th>Producto</th>";
+  DIAS.forEach(d=>{ h+=`<th>${d}</th>`; });
+  h += "<th>Total</th></tr></thead><tbody>";
+  PRODUCTOS.forEach(p=>{
+    const vals = w.dailyByProd[p];
+    const tot = vals.reduce((a,b)=>a+b,0);
+    if(tot===0) return;
+    h += `<tr><td><span class="dot" style="background:${COLORES[p]}"></span>${p}</td>`;
+    vals.forEach(v=>{ h += v>0 ? `<td>${v.toFixed(2)}</td>` : `<td class="cero">—</td>`; });
+    h += `<td><strong>${tot.toFixed(2)}</strong></td></tr>`;
+  });
+  h += `<tr class="row-total"><td>TOTAL</td>`;
+  w.daily.forEach(v=>{ h += v>0 ? `<td>${v.toFixed(2)}</td>` : `<td class="cero">—</td>`; });
+  h += `<td>${w.total.toFixed(2)}</td></tr>`;
+  const eb = w.entradaBandejasDia;
+  h += `<tr class="row-entrada"><td>Entrada (bandejas)</td>`;
+  eb.forEach(v=>{ h += v>0 ? `<td>${v}</td>` : `<td class="cero">—</td>`; });
+  h += `<td>${eb.reduce((a,b)=>a+b,0)||"—"}</td></tr>`;
+  h += "</tbody>";
+  t.innerHTML = h;
+}
+document.getElementById("selTabla").addEventListener("change", function(){ buildTabla(+this.value); });
+buildTabla(5);
+
+// ═══════════════════════════ LANGOSTINO ══════════════════════════════
+function initLangostino() {
+  new Chart(document.getElementById("chartLangostino").getContext("2d"), {
+    type:"doughnut",
+    data:{
+      labels:["Langostino Rebozado grande","Langostino Rebozado chico","Mezcla"],
+      datasets:[{ data:[1616,28,256.5], backgroundColor:["#4299e1","#76e4f7","#f6ad55"], borderWidth:2 }]
+    },
+    options:{ responsive:true, maintainAspectRatio:false, plugins:{ legend:{position:"bottom",labels:{usePointStyle:true,padding:16}}, tooltip:{callbacks:{label:ctx=>" "+ctx.label+": "+ctx.parsed.toFixed(1)+" kg"}} } }
+  });
+}
+
+// ══════════════════════════ COCINA CALIENTE ══════════════════════════
+const CC_FECHAS = ["08-06","09-06","10-06","11-06","12-06","15-06","16-06","17-06","18-06","19-06","22-06"];
+const CC_DATA = {
+  "Teriyaki 500cc": { color:"#EF402F", prod:[22,36,28,42,36,36,30,36,36,36,0], env:[22,36,28,42,36,36,30,0,36,0,0] },
+  "Salsa Naranja":  { color:"#E3A127", prod:[12,0,14,0,12,12,0,0,12,12,0],   env:[12,0,14,0,12,12,0,0,0,12,0] },
+  "Vinagreta 20L":  { color:"#33A392", prod:[51,51,51,0,0,51,43,0,0,51,34],  env:[51,51,51,0,0,51,43,0,0,51,34] },
+  "Pollo Teriyaki": { color:"#1D4856", prod:[0,12,6,38,34,0,6,41,35,0,0],    env:[0,12,6,0,0,0,0,0,0,0,0] },
+  "Pasta Honey":    { color:"#F58232", prod:[7.5,4.5,8,2.5,4,0,7,0,7,11,3], env:[8,4,0,0,0,0,0,0,0,0,0] }
+};
+const CC_TOTALES = {
+  "Teriyaki 500cc": {prod:200,env:200}, "Salsa Naranja":{prod:50,env:50},
+  "Vinagreta 20L":{prod:204,env:204}, "Pollo Teriyaki":{prod:90,env:18}, "Pasta Honey":{prod:26.5,env:12}
+};
+
+function initCocina() {
+  // Líneas diarias
+  new Chart(document.getElementById("chartCocinaLine").getContext("2d"), {
+    type:"line",
+    data:{
+      labels:CC_FECHAS,
+      datasets: Object.entries(CC_DATA).map(([nombre,d])=>({
+        label:nombre, data:d.prod, borderColor:d.color, backgroundColor:d.color+"22",
+        pointRadius:4, pointHoverRadius:6, fill:false, tension:0.3, borderWidth:2
+      }))
+    },
+    options:{ responsive:true, maintainAspectRatio:false, plugins:{ legend:{position:"bottom",labels:{usePointStyle:true,padding:14,font:{size:11}}}, tooltip:{mode:"index",intersect:false} }, scales:{ y:{beginAtZero:true,grid:{color:"#edf2f7"}}, x:{grid:{display:false}} } }
+  });
+
+  // Barras agrupadas totales
+  const nombres = Object.keys(CC_TOTALES);
+  new Chart(document.getElementById("chartCocinaBar").getContext("2d"), {
+    type:"bar",
+    data:{
+      labels:nombres,
+      datasets:[
+        { label:"Producido", data:nombres.map(n=>CC_TOTALES[n].prod), backgroundColor:"#4299e1", borderRadius:5 },
+        { label:"Envasado",  data:nombres.map(n=>CC_TOTALES[n].env),  backgroundColor:"#68d391", borderRadius:5 }
+      ]
+    },
+    options:{ responsive:true, maintainAspectRatio:false, plugins:{ legend:{position:"bottom",labels:{usePointStyle:true,padding:14}}, tooltip:{mode:"index",intersect:false} }, scales:{ y:{beginAtZero:true,grid:{color:"#edf2f7"}}, x:{grid:{display:false}} } }
+  });
+
+  // Tabla diaria
+  const t = document.getElementById("tablaCocina");
+  let h = "<thead><tr><th>Fecha</th>";
+  Object.keys(CC_DATA).forEach(n=>{ h+=`<th>${n}</th>`; });
+  h += "</tr></thead><tbody>";
+  CC_FECHAS.forEach((fecha,i)=>{
+    h += `<tr><td><strong>${fecha}</strong></td>`;
+    Object.values(CC_DATA).forEach(d=>{
+      const v = d.prod[i];
+      const ev = d.env[i];
+      if(v>0) {
+        const badge = ev===v ? `<span class="pill pill-ok">✓env</span>` : ev>0 ? `<span class="pill pill-warn">parcial</span>` : `<span class="pill pill-nd">—</span>`;
+        h += `<td>${v} ${badge}</td>`;
+      } else {
+        h += `<td class="cero">—</td>`;
+      }
+    });
+    h += "</tr>";
+  });
+  h += `<tr class="row-total"><td>TOTAL</td>`;
+  Object.values(CC_TOTALES).forEach(d=>{ h+=`<td>${d.prod} / ${d.env} env</td>`; });
+  h += "</tr></tbody>";
+  t.innerHTML = h;
+}
+
+// ═══════════════════════════════ CALIDAD ═════════════════════════════
+function initCalidad() {
+  // Reclamos por producto (filtrado CP)
+  new Chart(document.getElementById('chartCalidadProd'), {
+    type: 'bar',
+    data: {
+      labels: ['TAMAGO','LANGOSTINO\nREBOZADO','TIRA\nTRUCHA','CORTE\nTRUCHA','CUBOS\nTRUCHA','POLLO\nTERIYAKI','PASTA\nHONEY','SALSA\nNARANJA','REDUCCIÓN\nTERIYAKI','VINAGRETA'],
+      datasets: [{
+        label: 'Reclamos',
+        data: [45, 13, 5, 7, 7, 8, 4, 4, 2, 1],
+        backgroundColor: ['#EF402F','#1D4856','#33A392','#33A392','#33A392','#E3A127','#F58232','#F58232','#E3A127','#33A392'],
+        borderRadius: 6
+      }]
+    },
+    options: {
+      responsive: true, maintainAspectRatio: false,
+      plugins: { legend: { display: false } },
+      scales: {
+        x: { ticks: { font: { size: 10 } } },
+        y: { beginAtZero: true, ticks: { stepSize: 5 } }
+      }
+    }
+  });
+
+  // Evolución mensual CP
+  new Chart(document.getElementById('chartCalidadMes'), {
+    type: 'line',
+    data: {
+      labels: ['Oct-25','Nov-25','Dic-25','Ene-26','Feb-26','Mar-26','Abr-26','May-26','Jun-26'],
+      datasets: [{
+        label: 'Reclamos CP',
+        data: [1, 3, 8, 14, 19, 18, 12, 12, 9],
+        borderColor: '#EF402F',
+        backgroundColor: 'rgba(239,64,47,0.12)',
+        borderWidth: 2.5,
+        pointRadius: 5,
+        pointBackgroundColor: '#EF402F',
+        fill: true,
+        tension: 0.3
+      }]
+    },
+    options: {
+      responsive: true, maintainAspectRatio: false,
+      plugins: { legend: { display: false } },
+      scales: {
+        y: { beginAtZero: true }
+      }
+    }
+  });
+}
+</script>
+</body>
+</html>
