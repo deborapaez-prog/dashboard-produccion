@@ -125,7 +125,7 @@ footer { text-align: center; color: #BBBBBB; font-size: 0.76rem; padding: 20px 0
       <div style="font-size:0.7rem;font-weight:700;color:rgba(255,255,255,0.6);text-transform:uppercase;letter-spacing:0.12em;margin-top:2px;">Dashboard de Producción</div>
     </div>
   </div>
-  <span class="badge">📅 Actualizado: 22/06/2026</span>
+  <span class="badge">📅 Actualizado: 24/06/2026</span>
 </header>
 
 <div class="tab-nav">
@@ -142,40 +142,40 @@ footer { text-align: center; color: #BBBBBB; font-size: 0.76rem; padding: 20px 0
 <main>
 
   <div class="alerta">
-    ✅ <strong>S25 cerrada: 712,6 kg · 41,7% uso (4 días activos, lun 15–vie 19/06).</strong>
-    S26 inicia hoy lun 22/06, sin producción registrada aún. S24 cerrada con 858,2 kg · 39,2% uso. Objetivo semanal: 1.067,2 kg.
+    ✅ <strong>S26 en curso: 312,8 kg (lun 22 + mar 23/06, 2 días).</strong>
+    S25 cerrada: 712,6 kg · 41,7% uso. Objetivo semanal: 1.067,2 kg · por día: 213,4 kg.
   </div>
 
   <div class="kpi-grid">
     <div class="kpi-card">
-      <div class="lbl">Última semana (S25)</div>
-      <div class="val">712,6 <span style="font-size:.85rem;color:#BBBBBB">kg</span></div>
-      <div class="sub">lun 15 – vie 19/06 · 4 días activos</div>
+      <div class="lbl">Semana actual (S26 parcial)</div>
+      <div class="val">312,8 <span style="font-size:.85rem;color:#BBBBBB">kg</span></div>
+      <div class="sub">lun 22 + mar 23/06 · 2 días activos</div>
     </div>
     <div class="kpi-card">
-      <div class="lbl">Semana anterior (S24)</div>
-      <div class="val" style="color:#221F1F">858,2 <span style="font-size:.85rem;color:#BBBBBB">kg</span></div>
-      <div class="sub">5 días activos (lun 08 – vie 12/06)</div>
+      <div class="lbl">Semana anterior (S25)</div>
+      <div class="val" style="color:#221F1F">712,6 <span style="font-size:.85rem;color:#BBBBBB">kg</span></div>
+      <div class="sub">4 días activos (lun 15 – vie 19/06)</div>
     </div>
     <div class="kpi-card">
-      <div class="lbl">Variación S25 vs S24</div>
-      <div class="val" style="color:#33A392">+3,8%</div>
-      <div class="sub">178,1 kg/día vs 171,6 kg/día</div>
+      <div class="lbl">kg/día S26 vs S25</div>
+      <div class="val" style="color:#E3A127">156,4</div>
+      <div class="sub">vs 178,1 kg/día S25 (S26 parcial)</div>
     </div>
     <div class="kpi-card">
       <div class="lbl">Acumulado total</div>
-      <div class="val" style="color:#1D4856">5.111,1 <span style="font-size:.85rem;color:#BBBBBB">kg</span></div>
-      <div class="sub">S20–S25</div>
+      <div class="val" style="color:#1D4856">5.423,9 <span style="font-size:.85rem;color:#BBBBBB">kg</span></div>
+      <div class="sub">S20–S26 (parcial)</div>
     </div>
     <div class="kpi-card">
-      <div class="lbl">% uso S25</div>
-      <div class="val">41,7 <span style="font-size:.85rem;color:#BBBBBB">%</span></div>
-      <div class="sub">712,6 kg de 1.710 kg entrada</div>
+      <div class="lbl">% uso S26</div>
+      <div class="val">40,1 <span style="font-size:.85rem;color:#BBBBBB">%</span></div>
+      <div class="sub">312,8 kg de 780 kg entrada</div>
     </div>
     <div class="kpi-card">
       <div class="lbl">% uso general</div>
-      <div class="val">41,3 <span style="font-size:.85rem;color:#BBBBBB">%</span></div>
-      <div class="sub">promedio S20–S25</div>
+      <div class="val">41,2 <span style="font-size:.85rem;color:#BBBBBB">%</span></div>
+      <div class="sub">promedio S20–S26</div>
     </div>
   </div>
 
@@ -193,7 +193,8 @@ footer { text-align: center; color: #BBBBBB; font-size: 0.76rem; padding: 20px 0
         <option value="2">S22 — 25–29/05</option>
         <option value="3">S23 — 01–06/06</option>
         <option value="4">S24 — 08–12/06</option>
-        <option value="5" selected>S25 — 15–19/06</option>
+        <option value="5">S25 — 15–19/06</option>
+        <option value="6" selected>S26 — 22–27/06 (parcial)</option>
       </select>
     </h2>
     <div class="chart-wrap"><canvas id="chartDiario"></canvas></div>
@@ -209,7 +210,8 @@ footer { text-align: center; color: #BBBBBB; font-size: 0.76rem; padding: 20px 0
         <option value="2">S22 — 25–29/05</option>
         <option value="3">S23 — 01–06/06</option>
         <option value="4">S24 — 08–12/06</option>
-        <option value="5" selected>S25 — 15–19/06</option>
+        <option value="5">S25 — 15–19/06</option>
+        <option value="6" selected>S26 — 22–27/06 (parcial)</option>
       </select>
     </h2>
     <div class="table-wrap"><table id="tablaDetalle"></table></div>
@@ -374,7 +376,7 @@ footer { text-align: center; color: #BBBBBB; font-size: 0.76rem; padding: 20px 0
 <main>
 
   <div class="alerta-ok">
-    ✅ <strong>Período registrado: 08/06 – 22/06/2026.</strong> 5 productos activos. Reducción de Teriyaki y Vinagreta con mayor volumen acumulado.
+    ✅ <strong>Período registrado: 08/06 – 23/06/2026.</strong> 5 productos activos. Reducción de Teriyaki y Vinagreta con mayor volumen acumulado.
   </div>
 
   <div class="kpi-grid">
@@ -1397,7 +1399,11 @@ const WEEKS = [
   { label:"S25", dateRange:"15–19 jun", isPartial:false, total:712.565,
     daily:[157.1,0,189.975,192.465,173.025,0],
     dailyByProd:{ "Tiras":[26.95,0,35.525,41.65,40.425,0], "cortes":[22,0,26,24.5,22,0], "tiras unidas":[66.15,0,61.25,62.475,61.25,0], "cubos":[42,0,67.2,63.84,49.35,0], "sin embolsar":[0,0,0,0,0,0] },
-    entradaBandejasDia:[26,0,30,30,28,0], activeDaysCount:4 }
+    entradaBandejasDia:[26,0,30,30,28,0], activeDaysCount:4 },
+  { label:"S26", dateRange:"22–27 jun (parcial)", isPartial:true, total:312.8,
+    daily:[120.2,192.6,0,0,0,0],
+    dailyByProd:{ "Tiras":[22.05,34.3,0,0,0,0], "cortes":[18,26,0,0,0,0], "tiras unidas":[46.55,73.5,0,0,0,0], "cubos":[33.6,58.8,0,0,0,0], "sin embolsar":[0,0,0,0,0,0] },
+    entradaBandejasDia:[20,32,0,0,0,0], activeDaysCount:2 }
 ];
 
 const PRODUCTOS = ["Tiras","cortes","tiras unidas","cubos","sin embolsar"];
@@ -1422,7 +1428,7 @@ function initDiario(wi) {
   });
 }
 document.getElementById("selDiario").addEventListener("change", function(){ initDiario(+this.value); });
-initDiario(5);
+initDiario(6);
 
 function buildTabla(wi) {
   const w = WEEKS[wi];
@@ -1449,7 +1455,7 @@ function buildTabla(wi) {
   t.innerHTML = h;
 }
 document.getElementById("selTabla").addEventListener("change", function(){ buildTabla(+this.value); });
-buildTabla(5);
+buildTabla(6);
 
 // ═══════════════════════════ LANGOSTINO ══════════════════════════════
 function initLangostino() {
@@ -1464,17 +1470,17 @@ function initLangostino() {
 }
 
 // ══════════════════════════ COCINA CALIENTE ══════════════════════════
-const CC_FECHAS = ["08-06","09-06","10-06","11-06","12-06","15-06","16-06","17-06","18-06","19-06","22-06"];
+const CC_FECHAS = ["08-06","09-06","10-06","11-06","12-06","15-06","16-06","17-06","18-06","19-06","22-06","23-06"];
 const CC_DATA = {
-  "Teriyaki 500cc": { color:"#EF402F", prod:[22,36,28,42,36,36,30,36,36,36,0], env:[22,36,28,42,36,36,30,0,36,0,0] },
-  "Salsa Naranja":  { color:"#E3A127", prod:[12,0,14,0,12,12,0,0,12,12,0],   env:[12,0,14,0,12,12,0,0,0,12,0] },
-  "Vinagreta 20L":  { color:"#33A392", prod:[51,51,51,0,0,51,43,0,0,51,34],  env:[51,51,51,0,0,51,43,0,0,51,34] },
-  "Pollo Teriyaki": { color:"#1D4856", prod:[0,12,6,38,34,0,6,41,35,0,0],    env:[0,12,6,0,0,0,0,0,0,0,0] },
-  "Pasta Honey":    { color:"#F58232", prod:[7.5,4.5,8,2.5,4,0,7,0,7,11,3], env:[8,4,0,0,0,0,0,0,0,0,0] }
+  "Teriyaki 500cc": { color:"#EF402F", prod:[22,36,28,42,36,36,30,36,36,36,0,24], env:[22,36,28,42,36,36,30,0,36,0,0,0] },
+  "Salsa Naranja":  { color:"#E3A127", prod:[12,0,14,0,12,12,0,0,12,12,0,24],    env:[12,0,14,0,12,12,0,0,0,12,0,0] },
+  "Vinagreta 20L":  { color:"#33A392", prod:[51,51,51,0,0,51,43,0,0,51,34,51],   env:[51,51,51,0,0,51,43,0,0,51,34,0] },
+  "Pollo Teriyaki": { color:"#1D4856", prod:[0,12,6,38,34,0,6,41,35,0,0,6],      env:[0,12,6,0,0,0,0,0,0,0,0,0] },
+  "Pasta Honey":    { color:"#F58232", prod:[7.5,4.5,8,2.5,4,0,7,0,7,11,3,9.5], env:[8,4,0,0,0,0,0,0,0,0,0,0] }
 };
 const CC_TOTALES = {
-  "Teriyaki 500cc": {prod:200,env:200}, "Salsa Naranja":{prod:50,env:50},
-  "Vinagreta 20L":{prod:204,env:204}, "Pollo Teriyaki":{prod:90,env:18}, "Pasta Honey":{prod:26.5,env:12}
+  "Teriyaki 500cc": {prod:224,env:200}, "Salsa Naranja":{prod:74,env:50},
+  "Vinagreta 20L":{prod:255,env:204}, "Pollo Teriyaki":{prod:96,env:18}, "Pasta Honey":{prod:36,env:12}
 };
 
 function initCocina() {
