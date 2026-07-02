@@ -125,7 +125,7 @@ footer { text-align: center; color: #BBBBBB; font-size: 0.76rem; padding: 20px 0
       <div style="font-size:0.7rem;font-weight:700;color:rgba(255,255,255,0.6);text-transform:uppercase;letter-spacing:0.12em;margin-top:2px;">Dashboard de Producción</div>
     </div>
   </div>
-  <span class="badge">📅 Actualizado: 30/06/2026</span>
+  <span class="badge">📅 Actualizado: 02/07/2026</span>
 </header>
 
 <div class="tab-nav">
@@ -142,15 +142,15 @@ footer { text-align: center; color: #BBBBBB; font-size: 0.76rem; padding: 20px 0
 <main>
 
   <div class="alerta">
-    ✅ <strong>S26 cerrada: 893,2 kg (5 días activos, 22–26/06). S27 iniciada: 177,5 kg (1 día, 29/06).</strong>
+    ✅ <strong>S27 en curso: 551,6 kg (3 días activos, 29/06–01/07). S26 cerrada: 893,2 kg (5 días, 22–26/06).</strong>
     S25 cerrada: 712,6 kg · 41,7% uso. Objetivo semanal: 1.067,2 kg · por día: 213,4 kg.
   </div>
 
   <div class="kpi-grid">
     <div class="kpi-card">
       <div class="lbl">Semana actual (S27)</div>
-      <div class="val">177,5 <span style="font-size:.85rem;color:#BBBBBB">kg</span></div>
-      <div class="sub">1 día activo (29/06) · en curso</div>
+      <div class="val">551,6 <span style="font-size:.85rem;color:#BBBBBB">kg</span></div>
+      <div class="sub">3 días activos (29/06–01/07) · en curso</div>
     </div>
     <div class="kpi-card">
       <div class="lbl">Semana anterior (S26)</div>
@@ -159,18 +159,18 @@ footer { text-align: center; color: #BBBBBB; font-size: 0.76rem; padding: 20px 0
     </div>
     <div class="kpi-card">
       <div class="lbl">kg/día S27 vs S26</div>
-      <div class="val" style="color:#33A392">177,5</div>
-      <div class="sub">vs 178,6 kg/día S26 (S27 parcial, 1 día)</div>
+      <div class="val" style="color:#33A392">183,9</div>
+      <div class="sub">vs 178,6 kg/día S26 (S27 parcial, 3 días)</div>
     </div>
     <div class="kpi-card">
       <div class="lbl">Acumulado total</div>
-      <div class="val" style="color:#1D4856">6.181,8 <span style="font-size:.85rem;color:#BBBBBB">kg</span></div>
+      <div class="val" style="color:#1D4856">6.556,0 <span style="font-size:.85rem;color:#BBBBBB">kg</span></div>
       <div class="sub">S20–S27 parcial</div>
     </div>
     <div class="kpi-card">
       <div class="lbl">% uso S27</div>
-      <div class="val">39,4 <span style="font-size:.85rem;color:#BBBBBB">%</span></div>
-      <div class="sub">177,5 kg de 450 kg entrada</div>
+      <div class="val">40,9 <span style="font-size:.85rem;color:#BBBBBB">%</span></div>
+      <div class="sub">551,6 kg de 1.350 kg entrada</div>
     </div>
     <div class="kpi-card">
       <div class="lbl">% uso general</div>
@@ -1429,10 +1429,10 @@ const WEEKS = [
     daily:[120.2,192.6,199.025,185.695,195.725,0],
     dailyByProd:{ "Tiras":[22.05,34.3,42.875,40.425,37.975,0], "cortes":[18,26,23.5,22,23,0], "tiras unidas":[46.55,73.5,75.95,60.27,73.01,0], "cubos":[33.6,58.8,56.7,63,61.74,0], "sin embolsar":[0,0,0,0,0,0] },
     entradaBandejasDia:[20,32,32,31,31,0], activeDaysCount:5 },
-  { label:"S27", dateRange:"29 jun – 04 jul", isPartial:true, total:177.45,
-    daily:[177.45,0,0,0,0,0],
-    dailyByProd:{ "Tiras":[36.75,0,0,0,0,0], "cortes":[21,0,0,0,0,0], "tiras unidas":[58.8,0,0,0,0,0], "cubos":[60.9,0,0,0,0,0], "sin embolsar":[0,0,0,0,0,0] },
-    entradaBandejasDia:[30,0,0,0,0,0], activeDaysCount:1 }
+  { label:"S27", dateRange:"29 jun – 04 jul", isPartial:true, total:551.6155,
+    daily:[177.45,188.9155,185.25,0,0,0],
+    dailyByProd:{ "Tiras":[36.75,37.3625,41.65,0,0,0], "cortes":[21,21.5,22.5,0,0,0], "tiras unidas":[58.8,58.653,53.9,0,0,0], "cubos":[60.9,71.4,67.2,0,0,0], "sin embolsar":[0,0,0,0,0,0] },
+    entradaBandejasDia:[30,30,30,0,0,0], activeDaysCount:3 }
 ];
 
 const PRODUCTOS = ["Tiras","cortes","tiras unidas","cubos","sin embolsar"];
