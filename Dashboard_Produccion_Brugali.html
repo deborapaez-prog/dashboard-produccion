@@ -143,8 +143,8 @@ footer { text-align: center; color: #BBBBBB; font-size: 0.76rem; padding: 20px 0
 
   <div class="alerta">
     ✅ <strong>S27 cerrada: 1.084,7 kg (6 días activos, 29/06–04/07) — corrige el dato de 04/07 con valores definitivos del sheet, y supera el objetivo semanal.</strong>
-    S28 iniciada: 32,9 kg (06/07, 1 día activo; 07/07 sin producción de trucha, se hizo langostino).
-    Acumulado S20–S28: 7.121,9 kg · 41,5% uso general. Objetivo semanal: 1.067,2 kg · por día: 213,4 kg.
+    S28 iniciada: 32,9 kg de 420 kg de entrada (8 cajas 06/07 + 20 cajas 07/07, ese día se hizo langostino) · 7,8% uso.
+    Acumulado S20–S28: 7.121,9 kg · 40,6% uso general. Objetivo semanal: 1.067,2 kg · por día: 213,4 kg.
   </div>
 
   <div class="kpi-grid">
@@ -170,12 +170,12 @@ footer { text-align: center; color: #BBBBBB; font-size: 0.76rem; padding: 20px 0
     </div>
     <div class="kpi-card">
       <div class="lbl">% uso S28</div>
-      <div class="val">N/D</div>
-      <div class="sub">falta dato de entrada del 06/07 en el sheet</div>
+      <div class="val">7,8 <span style="font-size:.85rem;color:#BBBBBB">%</span></div>
+      <div class="sub">32,9 / 420 kg entrada (8 caj 06/07 + 20 caj 07/07)</div>
     </div>
     <div class="kpi-card">
       <div class="lbl">% uso general</div>
-      <div class="val">41,5 <span style="font-size:.85rem;color:#BBBBBB">%</span></div>
+      <div class="val">40,6 <span style="font-size:.85rem;color:#BBBBBB">%</span></div>
       <div class="sub">promedio S20–S28</div>
     </div>
   </div>
@@ -1438,7 +1438,7 @@ const WEEKS = [
   { label:"S28", dateRange:"06–11 jul", isPartial:true, total:32.875,
     daily:[32.875,0,0,0,0,0],
     dailyByProd:{ "Tiras":[8.575,0,0,0,0,0], "cortes":[4,0,0,0,0,0], "tiras unidas":[9.8,0,0,0,0,0], "cubos":[10.5,0,0,0,0,0], "sin embolsar":[0,0,0,0,0,0] },
-    entradaBandejasDia:[0,0,0,0,0,0], activeDaysCount:1 }
+    entradaBandejasDia:[8,20,0,0,0,0], activeDaysCount:1 }
 ];
 
 const PRODUCTOS = ["Tiras","cortes","tiras unidas","cubos","sin embolsar"];
