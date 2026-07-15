@@ -421,8 +421,24 @@ footer { text-align: center; color: #BBBBBB; font-size: 0.76rem; padding: 20px 0
   </div>
 
   <div class="card">
-    <h2>📈 Producción diaria por producto</h2>
-    <div class="chart-wrap"><canvas id="chartCocinaLine"></canvas></div>
+    <h2>📊 Evolución semanal por producto</h2>
+    <div class="chart-wrap"><canvas id="chartCocinaSemanal"></canvas></div>
+  </div>
+
+  <div class="card">
+    <h2>
+      📅 Producción diaria por producto
+      <select id="selCocinaDiario">
+        <option value="0">S24 — 08–12 jun</option>
+        <option value="1">S25 — 15–19 jun</option>
+        <option value="2">S26 — 22–26 jun</option>
+        <option value="3">S27 — 29 jun–04 jul</option>
+        <option value="4">S28 — 06–11 jul</option>
+        <option value="5" selected>S29 — 13–18 jul</option>
+      </select>
+    </h2>
+    <div class="chart-wrap"><canvas id="chartCocinaDiario"></canvas></div>
+    <div style="font-size:0.75rem;color:#BBBBBB;margin-top:10px;">L = lunes · M = martes · M = miércoles · J = jueves · V = viernes · S = sábado</div>
   </div>
 
   <div class="card">
@@ -431,7 +447,17 @@ footer { text-align: center; color: #BBBBBB; font-size: 0.76rem; padding: 20px 0
   </div>
 
   <div class="card">
-    <h2>🗂 Registro diario completo</h2>
+    <h2>
+      🗂 Detalle semanal por producto (producido / envasado)
+      <select id="selCocinaTabla">
+        <option value="0">S24 — 08–12 jun</option>
+        <option value="1">S25 — 15–19 jun</option>
+        <option value="2">S26 — 22–26 jun</option>
+        <option value="3">S27 — 29 jun–04 jul</option>
+        <option value="4">S28 — 06–11 jul</option>
+        <option value="5" selected>S29 — 13–18 jul</option>
+      </select>
+    </h2>
     <div class="table-wrap">
       <table id="tablaCocina"></table>
     </div>
@@ -1525,21 +1551,58 @@ const CC_TOTALES = {
   "Vinagreta 20L":{prod:774,env:689}, "Pollo Teriyaki":{prod:337,env:100}, "Pasta Honey":{prod:197,env:74}
 };
 
+// Mismas semanas que la pestaña Trucha (S24–S29 — Cocina Caliente no tiene registros previos a S24)
+const CC_WEEKS = [
+  { label:"S24", dateRange:"08–12 jun", isPartial:false,
+    prod:{ "Teriyaki 500cc":[22,36,28,42,36,0], "Salsa Naranja":[12,0,14,0,12,0], "Vinagreta 20L":[51,51,51,0,0,0], "Pollo Teriyaki":[0,12,6,38,34,0], "Pasta Honey":[7.5,4.5,8,2.5,4,0] },
+    env:{ "Teriyaki 500cc":[22,36,28,42,36,0], "Salsa Naranja":[12,0,14,0,12,0], "Vinagreta 20L":[51,51,51,0,0,0], "Pollo Teriyaki":[0,12,6,0,0,0], "Pasta Honey":[8,4,0,0,0,0] } },
+  { label:"S25", dateRange:"15–19 jun", isPartial:false,
+    prod:{ "Teriyaki 500cc":[36,30,36,36,36,0], "Salsa Naranja":[12,0,0,12,12,0], "Vinagreta 20L":[51,43,0,0,51,0], "Pollo Teriyaki":[0,6,41,35,0,0], "Pasta Honey":[0,7,0,7,11,0] },
+    env:{ "Teriyaki 500cc":[36,30,0,36,0,0], "Salsa Naranja":[12,0,0,0,12,0], "Vinagreta 20L":[51,43,0,0,51,0], "Pollo Teriyaki":[0,0,0,35,0,0], "Pasta Honey":[0,0,0,7,11,0] } },
+  { label:"S26", dateRange:"22–26 jun", isPartial:false,
+    prod:{ "Teriyaki 500cc":[0,30,24,36,50,0], "Salsa Naranja":[0,26,24,0,0,0], "Vinagreta 20L":[34,51,0,0,51,0], "Pollo Teriyaki":[0,6,30,29,0,0], "Pasta Honey":[3,9.5,3,8.5,8,0] },
+    env:{ "Teriyaki 500cc":[0,0,24,36,50,0], "Salsa Naranja":[0,26,24,0,0,0], "Vinagreta 20L":[34,51,0,0,51,0], "Pollo Teriyaki":[0,0,30,0,0,0], "Pasta Honey":[3,0,3,0,0,0] } },
+  { label:"S27", dateRange:"29 jun–04 jul", isPartial:false,
+    prod:{ "Teriyaki 500cc":[32,36,41,37,0,12], "Salsa Naranja":[24,0,0,12,0,36], "Vinagreta 20L":[51,51,51,0,0,0], "Pollo Teriyaki":[0,5,0,19,12,0], "Pasta Honey":[9,0,16,0,19.5,11.5] },
+    env:{ "Teriyaki 500cc":[0,36,41,0,0,0], "Salsa Naranja":[0,0,0,0,0,0], "Vinagreta 20L":[51,51,51,0,0,0], "Pollo Teriyaki":[0,5,0,0,12,0], "Pasta Honey":[0,0,0,0,20,0] } },
+  { label:"S28", dateRange:"06–11 jul", isPartial:false,
+    prod:{ "Teriyaki 500cc":[36,0,24,0,24,0], "Salsa Naranja":[15,0,24,0,24,0], "Vinagreta 20L":[51,42,0,0,0,0], "Pollo Teriyaki":[0,12,42,0,4,0], "Pasta Honey":[11,0,5.5,0,22.5,0] },
+    env:{ "Teriyaki 500cc":[34,0,0,0,24,0], "Salsa Naranja":[14,0,0,0,24,0], "Vinagreta 20L":[51,0,0,0,0,0], "Pollo Teriyaki":[0,0,0,0,0,0], "Pasta Honey":[0,0,0,0,0,0] } },
+  { label:"S29", dateRange:"13–18 jul", isPartial:true,
+    prod:{ "Teriyaki 500cc":[36,24,0,0,0,0], "Salsa Naranja":[0,12,0,0,0,0], "Vinagreta 20L":[51,43,0,0,0,0], "Pollo Teriyaki":[0,6,0,0,0,0], "Pasta Honey":[12,6.5,0,0,0,0] },
+    env:{ "Teriyaki 500cc":[36,24,0,0,0,0], "Salsa Naranja":[0,12,0,0,0,0], "Vinagreta 20L":[51,0,0,0,0,0], "Pollo Teriyaki":[0,0,0,0,0,0], "Pasta Honey":[12,6,0,0,0,0] } }
+];
+function ccWeekTotal(w, metric, prod) { return w[metric][prod].reduce((a,b)=>a+b,0); }
+
 function initCocina() {
-  // Líneas diarias
-  new Chart(document.getElementById("chartCocinaLine").getContext("2d"), {
+  // Evolución semanal por producto (total producido cada semana)
+  new Chart(document.getElementById("chartCocinaSemanal").getContext("2d"), {
     type:"line",
     data:{
-      labels:CC_FECHAS,
-      datasets: Object.entries(CC_DATA).map(([nombre,d])=>({
-        label:nombre, data:d.prod, borderColor:d.color, backgroundColor:d.color+"22",
+      labels: CC_WEEKS.map(w=>w.label),
+      datasets: Object.keys(CC_DATA).map(nombre=>({
+        label:nombre, data:CC_WEEKS.map(w=>ccWeekTotal(w,"prod",nombre)), borderColor:CC_DATA[nombre].color, backgroundColor:CC_DATA[nombre].color+"22",
         pointRadius:4, pointHoverRadius:6, fill:false, tension:0.3, borderWidth:2
       }))
     },
     options:{ responsive:true, maintainAspectRatio:false, plugins:{ legend:{position:"bottom",labels:{usePointStyle:true,padding:14,font:{size:11}}}, tooltip:{mode:"index",intersect:false} }, scales:{ y:{beginAtZero:true,grid:{color:"#edf2f7"}}, x:{grid:{display:false}} } }
   });
 
-  // Barras agrupadas totales
+  // Producción diaria por producto (semana seleccionada)
+  let chartCocinaDiario;
+  function buildCocinaDiario(wi) {
+    if (chartCocinaDiario) chartCocinaDiario.destroy();
+    const w = CC_WEEKS[wi];
+    chartCocinaDiario = new Chart(document.getElementById("chartCocinaDiario").getContext("2d"), {
+      type:"bar",
+      data:{ labels:DIAS, datasets: Object.keys(CC_DATA).map(nombre=>({ label:nombre, data:w.prod[nombre], backgroundColor:CC_DATA[nombre].color, borderRadius:4 })) },
+      options:{ responsive:true, maintainAspectRatio:false, plugins:{ legend:{position:"bottom",labels:{usePointStyle:true,padding:14,font:{size:11}}}, tooltip:{mode:"index",intersect:false} }, scales:{ x:{grid:{display:false}}, y:{beginAtZero:true,grid:{color:"#edf2f7"}} } }
+    });
+  }
+  document.getElementById("selCocinaDiario").addEventListener("change", function(){ buildCocinaDiario(+this.value); });
+  buildCocinaDiario(5);
+
+  // Barras agrupadas totales acumulados
   const nombres = Object.keys(CC_TOTALES);
   new Chart(document.getElementById("chartCocinaBar").getContext("2d"), {
     type:"bar",
@@ -1553,29 +1616,35 @@ function initCocina() {
     options:{ responsive:true, maintainAspectRatio:false, plugins:{ legend:{position:"bottom",labels:{usePointStyle:true,padding:14}}, tooltip:{mode:"index",intersect:false} }, scales:{ y:{beginAtZero:true,grid:{color:"#edf2f7"}}, x:{grid:{display:false}} } }
   });
 
-  // Tabla diaria
-  const t = document.getElementById("tablaCocina");
-  let h = "<thead><tr><th>Fecha</th>";
-  Object.keys(CC_DATA).forEach(n=>{ h+=`<th>${n}</th>`; });
-  h += "</tr></thead><tbody>";
-  CC_FECHAS.forEach((fecha,i)=>{
-    h += `<tr><td><strong>${fecha}</strong></td>`;
-    Object.values(CC_DATA).forEach(d=>{
-      const v = d.prod[i];
-      const ev = d.env[i];
-      if(v>0) {
-        const badge = ev===v ? `<span class="pill pill-ok">✓env</span>` : ev>0 ? `<span class="pill pill-warn">parcial</span>` : `<span class="pill pill-nd">—</span>`;
-        h += `<td>${v} ${badge}</td>`;
-      } else {
-        h += `<td class="cero">—</td>`;
-      }
+  // Tabla detalle semanal
+  function buildTablaCocina(wi) {
+    const w = CC_WEEKS[wi];
+    const t = document.getElementById("tablaCocina");
+    let h = "<thead><tr><th>Producto</th>";
+    DIAS.forEach(d=>{ h+=`<th>${d}</th>`; });
+    h += "<th>Total</th></tr></thead><tbody>";
+    Object.keys(CC_DATA).forEach(nombre=>{
+      const prodVals = w.prod[nombre];
+      const envVals = w.env[nombre];
+      const totProd = prodVals.reduce((a,b)=>a+b,0);
+      const totEnv = envVals.reduce((a,b)=>a+b,0);
+      h += `<tr><td><span class="dot" style="background:${CC_DATA[nombre].color}"></span>${nombre}</td>`;
+      prodVals.forEach((v,i)=>{
+        if(v>0) {
+          const ev = envVals[i];
+          const badge = ev===v ? `<span class="pill pill-ok">✓env</span>` : ev>0 ? `<span class="pill pill-warn">parcial</span>` : `<span class="pill pill-nd">—</span>`;
+          h += `<td>${v} ${badge}</td>`;
+        } else {
+          h += `<td class="cero">—</td>`;
+        }
+      });
+      h += `<td><strong>${totProd} / ${totEnv} env</strong></td></tr>`;
     });
-    h += "</tr>";
-  });
-  h += `<tr class="row-total"><td>TOTAL</td>`;
-  Object.values(CC_TOTALES).forEach(d=>{ h+=`<td>${d.prod} / ${d.env} env</td>`; });
-  h += "</tr></tbody>";
-  t.innerHTML = h;
+    h += "</tbody>";
+    t.innerHTML = h;
+  }
+  document.getElementById("selCocinaTabla").addEventListener("change", function(){ buildTablaCocina(+this.value); });
+  buildTablaCocina(5);
 }
 
 // ═══════════════════════════════ CALIDAD ═════════════════════════════
