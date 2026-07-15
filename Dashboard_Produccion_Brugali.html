@@ -135,6 +135,7 @@ footer { text-align: center; color: #BBBBBB; font-size: 0.76rem; padding: 20px 0
   <button class="tab-btn" onclick="switchTab('recetas')">📋 Recetas</button>
   <button class="tab-btn" onclick="switchTab('procesos')">⚙️ Procesos</button>
   <button class="tab-btn" onclick="switchTab('calidad')">🔍 Calidad</button>
+  <button class="tab-btn" onclick="switchTab('cumplimiento')">📦 Cumplimiento</button>
 </div>
 
 <!-- ═══════════════════════════════════════════════════════ TRUCHA ═══ -->
@@ -1400,6 +1401,82 @@ footer { text-align: center; color: #BBBBBB; font-size: 0.76rem; padding: 20px 0
     </main>
 </div>
 
+<!-- ══════════════════════════════════════════════ CUMPLIMIENTO ═══ -->
+<div id="tab-cumplimiento" class="tab-panel">
+    <main>
+
+    <div class="alerta">
+      ⚠️ <strong>Compara lo pedido a Centro de Producción vs. lo entregado por CP vs. lo que realmente salió a franquicias.</strong>
+      Fuentes: planilla "Producción CP" (Drive, pestaña JULIO 26) y salidas TOTVS (export 15/07/2026), filtrado solo a los 10 productos del CP.
+      El cruce solo cubre S2–S4 (30/06 en adelante) porque el export de TOTVS empieza el 30/06. S4 (14–20/07) está en curso.
+    </div>
+
+    <div class="kpi-grid" style="grid-template-columns:repeat(auto-fit,minmax(160px,1fr))">
+      <div class="kpi-card">
+        <div class="lbl">Cumplimiento producción (mensual)</div>
+        <div class="val" style="color:#1D4856">68,5 <span style="font-size:.85rem;color:#BBBBBB">%</span></div>
+        <div class="sub">2.550 / 3.723 u pedidas</div>
+      </div>
+      <div class="kpi-card">
+        <div class="lbl">Cumplimiento salidas a franquicias</div>
+        <div class="val" style="color:#33A392">62,6 <span style="font-size:.85rem;color:#BBBBBB">%</span></div>
+        <div class="sub">1.891 / 3.023 u pedidas (S2–S4)</div>
+      </div>
+      <div class="kpi-card">
+        <div class="lbl">Menor cumplimiento (mensual)</div>
+        <div class="val" style="color:#EF402F;font-size:1.1rem">LANGOSTINOS</div>
+        <div class="sub">24,3% — 114 / 470 u</div>
+      </div>
+      <div class="kpi-card">
+        <div class="lbl">Mejor cumplimiento (mensual)</div>
+        <div class="val" style="color:#33A392;font-size:1.1rem">VINAGRETA</div>
+        <div class="sub">98,3% — 450 / 458 u</div>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>
+        📊 Pedido vs Entregado (producción) vs Salidas a franquicias
+        <select id="selCumplSemana">
+          <option value="0">S2 — 30/06–06/07</option>
+          <option value="1">S3 — 07–13/07</option>
+          <option value="2" selected>S4 — 14–20/07 (en curso)</option>
+        </select>
+      </h2>
+      <div class="chart-wrap" style="height:320px"><canvas id="chartCumplSemanal"></canvas></div>
+    </div>
+
+    <div class="card">
+      <h2>🗂 Detalle por producto — semana seleccionada</h2>
+      <div class="table-wrap"><table id="tablaCumpl"></table></div>
+    </div>
+
+    <div class="card">
+      <h2>📈 Evolución del cumplimiento (todos los productos, S2–S4)</h2>
+      <div class="chart-wrap"><canvas id="chartCumplEvolucion"></canvas></div>
+    </div>
+
+    <div class="card" style="border-left:4px solid #E3A127;background:white;">
+      <h2 style="color:#E3A127;margin-bottom:16px;">❓ Preguntas de la semana — Cumplimiento</h2>
+      <div style="display:flex;flex-direction:column;gap:10px;">
+        <div style="display:flex;gap:12px;align-items:flex-start;padding:10px 12px;background:#fffbeb;border-radius:8px;">
+          <span style="font-size:1rem;flex-shrink:0">🦐</span>
+          <div><div style="font-size:0.85rem;font-weight:700;color:#221F1F;">Langostinos: salió mucho más de lo que CP entregó esa semana</div><div style="font-size:0.78rem;color:#999999;margin-top:2px;">S2: CP entregó 10 u pero salieron 127 a franquicias — se tiró de stock. S4: se pidieron 370 u y CP solo entregó 36. ¿Hay capacidad para sostener ese pedido?</div></div>
+        </div>
+        <div style="display:flex;gap:12px;align-items:flex-start;padding:10px 12px;background:#fffbeb;border-radius:8px;">
+          <span style="font-size:1rem;flex-shrink:0">📉</span>
+          <div><div style="font-size:0.85rem;font-weight:700;color:#221F1F;">S4 (en curso) tiene el cumplimiento más bajo de producción: 21,3%</div><div style="font-size:0.78rem;color:#999999;margin-top:2px;">Se pidieron 1.307 u y hasta el 15/07 CP entregó 279. ¿Es solo que la semana no cerró, o hay una caída real?</div></div>
+        </div>
+        <div style="display:flex;gap:12px;align-items:flex-start;padding:10px 12px;background:#fffbeb;border-radius:8px;">
+          <span style="font-size:1rem;flex-shrink:0">🥗</span>
+          <div><div style="font-size:0.85rem;font-weight:700;color:#221F1F;">Vinagreta y Salsa Naranja entregan por encima del pedido en varias semanas</div><div style="font-size:0.78rem;color:#999999;margin-top:2px;">Cumplimiento &gt;100% (ej. Vinagreta S2 117,7%). ¿Se está sobreproduciendo para generar stock, o el pedido está mal calculado?</div></div>
+        </div>
+      </div>
+    </div>
+
+    </main>
+</div>
+
 <footer>Brugali — Ingeniería de Procesos · Dashboard generado con IA · Debo Páez</footer>
 
 <script>
@@ -1412,6 +1489,7 @@ function switchTab(name) {
   if (name === 'langostino' && !window._langInit) { initLangostino(); window._langInit = true; }
   if (name === 'cocina'     && !window._cocinaInit) { initCocina(); window._cocinaInit = true; }
   if (name === 'calidad'    && !window._calidadInit) { initCalidad(); window._calidadInit = true; }
+  if (name === 'cumplimiento' && !window._cumplInit) { initCumplimiento(); window._cumplInit = true; }
 }
 
 // ═══════════════════════════════ TRUCHA ══════════════════════════════
@@ -1679,6 +1757,97 @@ function initCalidad() {
         y: { beginAtZero: true }
       }
     }
+  });
+}
+
+// ═══════════════════════════ CUMPLIMIENTO ═════════════════════════════
+const CUMPL_COLORES = {
+  "CORTE DE TRUCHA":"#1D4856", "CUBOS DE TRUCHA":"#33A392", "LANGOSTINOS REBOZADOS":"#EF402F",
+  "PASTA DE HONEY":"#F58232", "POLLO TERIYAKI":"#221F1F", "REDUCCIÓN DE TERIYAKI":"#EF402F",
+  "SALSA NARANJA Y MIEL":"#E3A127", "TAMAGO":"#4299e1", "TIRA DE TRUCHA":"#33A392", "VINAGRETA":"#68d391"
+};
+// pedido = lo pedido a CP (Drive "Producción CP", pestaña JULIO 26) · entregado = lo que CP entregó (misma planilla)
+// salidas = lo que realmente salió a franquicias (TOTVS salidas, filtrado a estos 10 productos por código)
+const CUMPL_WEEKS = [
+  { label:"S2", dateRange:"30/06–06/07", isPartial:false,
+    pedido:   { "CORTE DE TRUCHA":65, "CUBOS DE TRUCHA":55, "LANGOSTINOS REBOZADOS":10, "PASTA DE HONEY":50, "POLLO TERIYAKI":70, "REDUCCIÓN DE TERIYAKI":140, "SALSA NARANJA Y MIEL":55, "TAMAGO":199, "TIRA DE TRUCHA":70, "VINAGRETA":130 },
+    entregado:{ "CORTE DE TRUCHA":36, "CUBOS DE TRUCHA":32, "LANGOSTINOS REBOZADOS":10, "PASTA DE HONEY":59, "POLLO TERIYAKI":36, "REDUCCIÓN DE TERIYAKI":156, "SALSA NARANJA Y MIEL":65, "TAMAGO":199, "TIRA DE TRUCHA":53, "VINAGRETA":153 },
+    salidas:  { "CORTE DE TRUCHA":21, "CUBOS DE TRUCHA":18, "LANGOSTINOS REBOZADOS":127, "PASTA DE HONEY":34, "POLLO TERIYAKI":46, "REDUCCIÓN DE TERIYAKI":98, "SALSA NARANJA Y MIEL":21, "TAMAGO":135, "TIRA DE TRUCHA":46, "VINAGRETA":74 } },
+  { label:"S3", dateRange:"07–13/07", isPartial:false,
+    pedido:   { "CORTE DE TRUCHA":50, "CUBOS DE TRUCHA":40, "LANGOSTINOS REBOZADOS":90, "PASTA DE HONEY":60, "POLLO TERIYAKI":80, "REDUCCIÓN DE TERIYAKI":120, "SALSA NARANJA Y MIEL":60, "TAMAGO":200, "TIRA DE TRUCHA":70, "VINAGRETA":102 },
+    entregado:{ "CORTE DE TRUCHA":50, "CUBOS DE TRUCHA":40, "LANGOSTINOS REBOZADOS":68, "PASTA DE HONEY":47, "POLLO TERIYAKI":59, "REDUCCIÓN DE TERIYAKI":89, "SALSA NARANJA Y MIEL":59, "TAMAGO":200, "TIRA DE TRUCHA":62, "VINAGRETA":93 },
+    salidas:  { "CORTE DE TRUCHA":45, "CUBOS DE TRUCHA":38, "LANGOSTINOS REBOZADOS":157, "PASTA DE HONEY":49, "POLLO TERIYAKI":86, "REDUCCIÓN DE TERIYAKI":167, "SALSA NARANJA Y MIEL":49, "TAMAGO":187, "TIRA DE TRUCHA":68, "VINAGRETA":103 } },
+  { label:"S4", dateRange:"14–20/07 (en curso)", isPartial:true,
+    pedido:   { "CORTE DE TRUCHA":48, "CUBOS DE TRUCHA":40, "LANGOSTINOS REBOZADOS":370, "PASTA DE HONEY":72, "POLLO TERIYAKI":75, "REDUCCIÓN DE TERIYAKI":200, "SALSA NARANJA Y MIEL":50, "TAMAGO":280, "TIRA DE TRUCHA":70, "VINAGRETA":102 },
+    entregado:{ "CORTE DE TRUCHA":0, "CUBOS DE TRUCHA":0, "LANGOSTINOS REBOZADOS":36, "PASTA DE HONEY":18, "POLLO TERIYAKI":0, "REDUCCIÓN DE TERIYAKI":24, "SALSA NARANJA Y MIEL":12, "TAMAGO":138, "TIRA DE TRUCHA":0, "VINAGRETA":51 },
+    salidas:  { "CORTE DE TRUCHA":19, "CUBOS DE TRUCHA":14, "LANGOSTINOS REBOZADOS":48, "PASTA DE HONEY":26, "POLLO TERIYAKI":23, "REDUCCIÓN DE TERIYAKI":49, "SALSA NARANJA Y MIEL":7, "TAMAGO":72, "TIRA DE TRUCHA":29, "VINAGRETA":35 } }
+];
+const CUMPL_PRODUCTOS = Object.keys(CUMPL_WEEKS[0].pedido);
+
+function initCumplimiento() {
+  let chartCumplSemanal;
+  function buildCumplSemanal(wi) {
+    if (chartCumplSemanal) chartCumplSemanal.destroy();
+    const w = CUMPL_WEEKS[wi];
+    chartCumplSemanal = new Chart(document.getElementById("chartCumplSemanal").getContext("2d"), {
+      type:"bar",
+      data:{
+        labels: CUMPL_PRODUCTOS,
+        datasets:[
+          { label:"Pedido a CP", data:CUMPL_PRODUCTOS.map(p=>w.pedido[p]), backgroundColor:"#BBBBBB", borderRadius:4 },
+          { label:"Entregado (producción)", data:CUMPL_PRODUCTOS.map(p=>w.entregado[p]), backgroundColor:"#1D4856", borderRadius:4 },
+          { label:"Salidas a franquicias", data:CUMPL_PRODUCTOS.map(p=>w.salidas[p]), backgroundColor:"#33A392", borderRadius:4 }
+        ]
+      },
+      options:{ responsive:true, maintainAspectRatio:false, plugins:{ legend:{position:"bottom",labels:{usePointStyle:true,padding:14,font:{size:11}}}, tooltip:{mode:"index",intersect:false} }, scales:{ x:{ticks:{font:{size:9}},grid:{display:false}}, y:{beginAtZero:true,grid:{color:"#edf2f7"}} } }
+    });
+  }
+  document.getElementById("selCumplSemana").addEventListener("change", function(){ buildCumplSemanal(+this.value); });
+  buildCumplSemanal(2);
+
+  function buildTablaCumpl(wi) {
+    const w = CUMPL_WEEKS[wi];
+    const t = document.getElementById("tablaCumpl");
+    let h = "<thead><tr><th>Producto</th><th>Pedido a CP</th><th>Entregado (CP)</th><th>% Cumpl. producción</th><th>Salidas a franquicias</th><th>% Cumpl. salidas</th></tr></thead><tbody>";
+    let totP=0, totE=0, totS=0;
+    CUMPL_PRODUCTOS.forEach(p=>{
+      const pedido = w.pedido[p], entregado = w.entregado[p], salidas = w.salidas[p];
+      totP += pedido; totE += entregado; totS += salidas;
+      const pctE = pedido ? (100*entregado/pedido) : 0;
+      const pctS = pedido ? (100*salidas/pedido) : 0;
+      const clsE = pctE < 50 ? "pill-warn" : pctE >= 90 ? "pill-ok" : "pill-nd";
+      const clsS = pctS < 50 ? "pill-warn" : pctS >= 90 ? "pill-ok" : "pill-nd";
+      h += `<tr><td><span class="dot" style="background:${CUMPL_COLORES[p]}"></span>${p}</td>`;
+      h += `<td>${pedido}</td><td>${entregado}</td><td><span class="pill ${clsE}">${pctE.toFixed(1)}%</span></td>`;
+      h += `<td>${salidas}</td><td><span class="pill ${clsS}">${pctS.toFixed(1)}%</span></td></tr>`;
+    });
+    const totPctE = totP ? (100*totE/totP) : 0;
+    const totPctS = totP ? (100*totS/totP) : 0;
+    h += `<tr class="row-total"><td>TOTAL</td><td>${totP}</td><td>${totE}</td><td>${totPctE.toFixed(1)}%</td><td>${totS}</td><td>${totPctS.toFixed(1)}%</td></tr>`;
+    h += "</tbody>";
+    t.innerHTML = h;
+  }
+  document.getElementById("selCumplSemana").addEventListener("change", function(){ buildTablaCumpl(+this.value); });
+  buildTablaCumpl(2);
+
+  // Evolución del cumplimiento agregado (todos los productos) S2→S4
+  const evolProd = [], evolSal = [];
+  CUMPL_WEEKS.forEach(w=>{
+    let p=0,e=0,s=0;
+    CUMPL_PRODUCTOS.forEach(prod=>{ p+=w.pedido[prod]; e+=w.entregado[prod]; s+=w.salidas[prod]; });
+    evolProd.push(p ? 100*e/p : 0);
+    evolSal.push(p ? 100*s/p : 0);
+  });
+  new Chart(document.getElementById("chartCumplEvolucion").getContext("2d"), {
+    type:"line",
+    data:{
+      labels: CUMPL_WEEKS.map(w=>`${w.label} (${w.dateRange})`),
+      datasets:[
+        { label:"% Cumplimiento producción", data:evolProd, borderColor:"#1D4856", backgroundColor:"#1D485622", pointRadius:5, pointHoverRadius:7, fill:false, tension:0.3, borderWidth:2.5 },
+        { label:"% Cumplimiento salidas a franquicias", data:evolSal, borderColor:"#33A392", backgroundColor:"#33A39222", pointRadius:5, pointHoverRadius:7, fill:false, tension:0.3, borderWidth:2.5 }
+      ]
+    },
+    options:{ responsive:true, maintainAspectRatio:false, plugins:{ legend:{position:"bottom",labels:{usePointStyle:true,padding:14}}, tooltip:{callbacks:{label:ctx=>" "+ctx.dataset.label+": "+ctx.parsed.y.toFixed(1)+"%"}} }, scales:{ y:{beginAtZero:true,ticks:{callback:v=>v+"%"},grid:{color:"#edf2f7"}}, x:{grid:{display:false}} } }
   });
 }
 </script>
