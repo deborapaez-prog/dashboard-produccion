@@ -143,17 +143,17 @@ footer { text-align: center; color: #BBBBBB; font-size: 0.76rem; padding: 20px 0
 <main>
 
   <div class="alerta">
-    ⚠️ <strong>S29 en curso: 244,7 kg (1 día activo de 6, 13–18/07).</strong>
-    13/07 con 570 kg de entrada (38 cajas) y 42,9% de uso. 14/07 sin producción de trucha (se hizo langostino rebozado). 15/07 (hoy) aún sin datos cargados en el sheet.
+    ⚠️ <strong>S29 en curso: 392,4 kg (3 días activos de 6, 13–18/07).</strong>
+    13/07 con 570 kg de entrada (38 cajas) y 42,9% de uso. 14/07 con 165 kg de entrada (11 cajas) y 41,5% de uso. 15/07 con 195 kg de entrada (13 cajas) y 40,6% de uso. 16/07 (hoy) aún sin datos cargados en el sheet.
     S28 quedó cerrada en 503,2 kg (4 días activos, 06–11/07).
-    Acumulado S20–S29: 7.836,9 kg · 41,2% uso general. Objetivo semanal: 1.067,2 kg · por día: 213,4 kg.
+    Acumulado S20–S29: 7.984,6 kg · 41,2% uso general. Objetivo semanal: 1.067,2 kg · por día: 213,4 kg.
   </div>
 
   <div class="kpi-grid">
     <div class="kpi-card">
       <div class="lbl">Semana actual (S29)</div>
-      <div class="val">244,7 <span style="font-size:.85rem;color:#BBBBBB">kg</span></div>
-      <div class="sub">1 día activo (13/07)</div>
+      <div class="val">392,4 <span style="font-size:.85rem;color:#BBBBBB">kg</span></div>
+      <div class="sub">3 días activos (13–15/07)</div>
     </div>
     <div class="kpi-card">
       <div class="lbl">Semana anterior (S28)</div>
@@ -162,18 +162,18 @@ footer { text-align: center; color: #BBBBBB; font-size: 0.76rem; padding: 20px 0
     </div>
     <div class="kpi-card">
       <div class="lbl">kg/día S29 vs S28</div>
-      <div class="val" style="color:#33A392">244,7</div>
+      <div class="val" style="color:#33A392">130,8</div>
       <div class="sub">vs 125,8 kg/día S28</div>
     </div>
     <div class="kpi-card">
       <div class="lbl">Acumulado total</div>
-      <div class="val" style="color:#1D4856">7.836,9 <span style="font-size:.85rem;color:#BBBBBB">kg</span></div>
+      <div class="val" style="color:#1D4856">7.984,6 <span style="font-size:.85rem;color:#BBBBBB">kg</span></div>
       <div class="sub">S20–S29</div>
     </div>
     <div class="kpi-card">
       <div class="lbl">% uso S29</div>
-      <div class="val">42,9 <span style="font-size:.85rem;color:#BBBBBB">%</span></div>
-      <div class="sub">244,7 / 570 kg entrada (38 cajas)</div>
+      <div class="val">42,2 <span style="font-size:.85rem;color:#BBBBBB">%</span></div>
+      <div class="sub">392,4 / 930 kg entrada (62 cajas)</div>
     </div>
     <div class="kpi-card">
       <div class="lbl">% uso general</div>
@@ -231,7 +231,7 @@ footer { text-align: center; color: #BBBBBB; font-size: 0.76rem; padding: 20px 0
     <div style="display:flex;flex-direction:column;gap:10px;">
       <div style="display:flex;gap:12px;align-items:flex-start;padding:10px 12px;background:#fffbeb;border-radius:8px;">
         <span style="font-size:1rem;flex-shrink:0">📦</span>
-        <div><div style="font-size:0.85rem;font-weight:700;color:#221F1F;">¿A dónde va el ~58% de la trucha que entra?</div><div style="font-size:0.78rem;color:#999999;margin-top:2px;">El % de uso promedio es 41,1%. ¿Hay registro de merma (piel, espinas, grasa, recortes)? ¿Se pesa el descarte?</div></div>
+        <div><div style="font-size:0.85rem;font-weight:700;color:#221F1F;">¿A dónde va el ~58% de la trucha que entra?</div><div style="font-size:0.78rem;color:#999999;margin-top:2px;">El % de uso promedio es 41,2%. ¿Hay registro de merma (piel, espinas, grasa, recortes)? ¿Se pesa el descarte?</div></div>
       </div>
       <div style="display:flex;gap:12px;align-items:flex-start;padding:10px 12px;background:#fffbeb;border-radius:8px;">
         <span style="font-size:1rem;flex-shrink:0">📅</span>
@@ -1530,10 +1530,10 @@ const WEEKS = [
     daily:[32.875,120.93,168.24,0,181.165,0],
     dailyByProd:{ "Tiras":[8.575,17.15,29.4,0,33.075,0], "cortes":[4,16,22.5,0,16,0], "tiras unidas":[9.8,36.75,47.04,0,36.75,0], "cubos":[10.5,51.03,69.3,0,95.34,0], "sin embolsar":[0,0,0,0,0,0] },
     entradaBandejasDia:[8,20,30,0,30,0], activeDaysCount:4 },
-  { label:"S29", dateRange:"13–18 jul", isPartial:true, total:244.71,
-    daily:[244.71,0,0,0,0,0],
-    dailyByProd:{ "Tiras":[51.45,0,0,0,0,0], "cortes":[24,0,0,0,0,0], "tiras unidas":[70.56,0,0,0,0,0], "cubos":[98.7,0,0,0,0,0], "sin embolsar":[0,0,0,0,0,0] },
-    entradaBandejasDia:[38,0,0,0,0,0], activeDaysCount:1 }
+  { label:"S29", dateRange:"13–18 jul", isPartial:true, total:392.36,
+    daily:[244.71,68.45,79.2,0,0,0],
+    dailyByProd:{ "Tiras":[51.45,12.25,12.25,0,0,0], "cortes":[24,10,12,0,0,0], "tiras unidas":[70.56,14.7,17.15,0,0,0], "cubos":[98.7,31.5,37.8,0,0,0], "sin embolsar":[0,0,0,0,0,0] },
+    entradaBandejasDia:[38,11,13,0,0,0], activeDaysCount:3 }
 ];
 
 const PRODUCTOS = ["Tiras","cortes","tiras unidas","cubos","sin embolsar"];
