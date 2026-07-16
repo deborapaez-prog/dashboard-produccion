@@ -1458,6 +1458,26 @@ footer { text-align: center; color: #BBBBBB; font-size: 0.76rem; padding: 20px 0
       <div class="chart-wrap"><canvas id="chartCumplEvolucion"></canvas></div>
     </div>
 
+    <div class="section-title" style="margin-top:32px">📅 Vista mensual — Pedido vs Entregado del CP (Ene–Jul 2026)</div>
+
+    <div class="alerta">
+      ⚠️ <strong>Julio está en curso</strong> (datos hasta ~16/07) — su % de cumplimiento no es comparable 1 a 1
+      contra un mes cerrado. Fuente: "Producción CP - 2025.xlsx", pestañas mensuales ENE 26 a JULIO 26.
+    </div>
+
+    <div class="card">
+      <h2>📊 Pedido vs Entregado por mes — total 10 productos del CP</h2>
+      <div class="chart-wrap" style="height:300px"><canvas id="chartCumplMensual"></canvas></div>
+    </div>
+
+    <div class="card">
+      <h2>
+        🗂 Detalle mensual por producto
+        <select id="selCumplMensualProd"></select>
+      </h2>
+      <div class="chart-wrap" style="height:280px"><canvas id="chartCumplMensualProd"></canvas></div>
+    </div>
+
     <div class="card" style="border-left:4px solid #E3A127;background:white;">
       <h2 style="color:#E3A127;margin-bottom:16px;">❓ Preguntas de la semana — Cumplimiento</h2>
       <div style="display:flex;flex-direction:column;gap:10px;">
@@ -1796,6 +1816,23 @@ const CUMPL_STOCK = {
   "TIRA DE TRUCHA":54, "VINAGRETA":603
 };
 
+// Pedido/Entregado MENSUAL por producto, ene–jul 2026 (fuente: "Producción CP - 2025.xlsx",
+// una pestaña por mes, columna MENSUAL). Julio está en curso (datos hasta ~16/07), no cerrado.
+const CUMPL_MESES = ["ENE 26","FEB 26","MAR 26","ABR 26","MAY 26","JUN 26","JUL 26"];
+const CUMPL_MES_PARCIAL = [false,false,false,false,false,false,true];
+const CUMPL_MENSUAL = {
+  "CORTE DE TRUCHA":       { pedido:[105,100,228,305,275,237,228], entregado:[97,97,210,258,223,214,172] },
+  "CUBOS DE TRUCHA":       { pedido:[193,180,218,267,217,184,190], entregado:[161,115,139,216,172,133,139] },
+  "LANGOSTINOS REBOZADOS": { pedido:[1305,1010,907,562,232,428,470], entregado:[1283,1004,847,548,232,481,114] },
+  "PASTA DE HONEY":        { pedido:[90,50,200,215,133,96,212], entregado:[127,54,159,208,139,98,182] },
+  "POLLO TERIYAKI":        { pedido:[327,300,370,441,321,321,321], entregado:[338,323,365,448,339,304,197] },
+  "REDUCCIÓN DE TERIYAKI": { pedido:[750,700,590,750,730,655,600], entregado:[754,689,591,750,730,644,409] },
+  "SALSA NARANJA Y MIEL":  { pedido:[235,157,30,30,90,100,205], entregado:[230,184,30,30,90,128,189] },
+  "TAMAGO":                { pedido:[915,1080,750,950,300,204,759], entregado:[929,1132,774,969,300,178,585] },
+  "TIRA DE TRUCHA":        { pedido:[205,265,307,350,277,293,280], entregado:[99,227,248,308,251,246,185] },
+  "VINAGRETA":             { pedido:[522,544,534,440,411,574,458], entregado:[533,534,490,485,411,541,450] }
+};
+
 function initCumplimiento() {
   let chartCumplSemanal;
   function buildCumplSemanal(wi) {
@@ -1873,6 +1910,50 @@ function initCumplimiento() {
     },
     options:{ responsive:true, maintainAspectRatio:false, plugins:{ legend:{position:"bottom",labels:{usePointStyle:true,padding:14}}, tooltip:{callbacks:{label:ctx=>" "+ctx.dataset.label+": "+ctx.parsed.y.toFixed(1)+"%"}} }, scales:{ y:{beginAtZero:true,ticks:{callback:v=>v+"%"},grid:{color:"#edf2f7"}}, x:{grid:{display:false}} } }
   });
+
+  // Vista mensual (Ene–Jul 2026) — Pedido vs Entregado, total de los 10 productos del CP
+  const mensualTotales = CUMPL_MESES.map((_, mi) => {
+    let p = 0, e = 0;
+    CUMPL_PRODUCTOS.forEach(prod => { p += CUMPL_MENSUAL[prod].pedido[mi]; e += CUMPL_MENSUAL[prod].entregado[mi]; });
+    return { pedido: p, entregado: e };
+  });
+  new Chart(document.getElementById("chartCumplMensual").getContext("2d"), {
+    type:"bar",
+    data:{
+      labels: CUMPL_MESES.map((m,i)=> m + (CUMPL_MES_PARCIAL[i] ? " *" : "")),
+      datasets:[
+        { label:"Pedido a CP", data:mensualTotales.map(m=>m.pedido), backgroundColor:"#BBBBBB", borderRadius:4 },
+        { label:"Entregado (CP)", data:mensualTotales.map(m=>m.entregado), backgroundColor:"#1D4856", borderRadius:4 }
+      ]
+    },
+    options:{ responsive:true, maintainAspectRatio:false, plugins:{ legend:{position:"bottom",labels:{usePointStyle:true,padding:14,font:{size:11}}},
+      tooltip:{ callbacks:{ afterBody: ctx => { const i=ctx[0].dataIndex; const m=mensualTotales[i]; const pct = m.pedido ? 100*m.entregado/m.pedido : 0; return "% cumplimiento: "+pct.toFixed(1)+"%"+(CUMPL_MES_PARCIAL[i]?" (mes en curso)":""); } } } },
+      scales:{ x:{grid:{display:false}}, y:{beginAtZero:true,grid:{color:"#edf2f7"}} } }
+  });
+
+  // Detalle mensual por producto
+  const selMensualProd = document.getElementById("selCumplMensualProd");
+  selMensualProd.innerHTML = CUMPL_PRODUCTOS.map((p,i)=>`<option value="${p}" ${i===0?"selected":""}>${p}</option>`).join("");
+  let chartCumplMensualProd;
+  function buildMensualProd(prod) {
+    if (chartCumplMensualProd) chartCumplMensualProd.destroy();
+    const d = CUMPL_MENSUAL[prod];
+    chartCumplMensualProd = new Chart(document.getElementById("chartCumplMensualProd").getContext("2d"), {
+      type:"bar",
+      data:{
+        labels: CUMPL_MESES.map((m,i)=> m + (CUMPL_MES_PARCIAL[i] ? " *" : "")),
+        datasets:[
+          { label:"Pedido a CP", data:d.pedido, backgroundColor:"#BBBBBB", borderRadius:4 },
+          { label:"Entregado (CP)", data:d.entregado, backgroundColor:CUMPL_COLORES[prod], borderRadius:4 }
+        ]
+      },
+      options:{ responsive:true, maintainAspectRatio:false, plugins:{ legend:{position:"bottom",labels:{usePointStyle:true,padding:14,font:{size:11}}},
+        tooltip:{ callbacks:{ afterBody: ctx => { const i=ctx[0].dataIndex; const pct = d.pedido[i] ? 100*d.entregado[i]/d.pedido[i] : 0; return "% cumplimiento: "+pct.toFixed(1)+"%"+(CUMPL_MES_PARCIAL[i]?" (mes en curso)":""); } } } },
+        scales:{ x:{grid:{display:false}}, y:{beginAtZero:true,grid:{color:"#edf2f7"}} } }
+    });
+  }
+  selMensualProd.addEventListener("change", function(){ buildMensualProd(this.value); });
+  buildMensualProd(CUMPL_PRODUCTOS[0]);
 }
 </script>
 </body>
