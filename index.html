@@ -1409,6 +1409,8 @@ footer { text-align: center; color: #BBBBBB; font-size: 0.76rem; padding: 20px 0
       ⚠️ <strong>Compara lo pedido a Centro de Producción vs. lo entregado por CP vs. lo que realmente salió a franquicias.</strong>
       Fuentes: planilla "Producción CP" (Drive, pestaña JULIO 26) y salidas TOTVS (export 15/07/2026), filtrado solo a los 10 productos del CP.
       El cruce solo cubre S2–S4 (30/06 en adelante) porque el export de TOTVS empieza el 30/06. S4 (14–20/07) está en curso.
+      <br><strong>% Pedido / Salidas</strong> compara lo que se pidió a CP contra lo que realmente salió a franquicias (la demanda real), sin importar si el CP llegó a entregarlo. 100% = pedido calibrado. Por debajo de 70% se pidió de menos que la demanda real (riesgo de faltante, se tapa con stock de seguridad). Por encima de 130% se pidió de más que la demanda real (posible sobre-pedido).
+      <br><strong>Stock actual</strong>: foto del saldo en TOTVS al 16/07/2026 (Centro de Distribución + Centro de Producción), no varía según la semana seleccionada — es el stock disponible hoy, no un dato histórico.
     </div>
 
     <div class="kpi-grid" style="grid-template-columns:repeat(auto-fit,minmax(160px,1fr))">
@@ -1418,9 +1420,9 @@ footer { text-align: center; color: #BBBBBB; font-size: 0.76rem; padding: 20px 0
         <div class="sub">2.550 / 3.723 u pedidas</div>
       </div>
       <div class="kpi-card">
-        <div class="lbl">Cumplimiento salidas a franquicias</div>
-        <div class="val" style="color:#33A392">62,6 <span style="font-size:.85rem;color:#BBBBBB">%</span></div>
-        <div class="sub">1.891 / 3.023 u pedidas (S2–S4)</div>
+        <div class="lbl">Pedido vs. Salidas</div>
+        <div class="val" style="color:#E3A127">159,9 <span style="font-size:.85rem;color:#BBBBBB">%</span></div>
+        <div class="sub">3.023 pedidas / 1.891 salidas (S2–S4)</div>
       </div>
       <div class="kpi-card">
         <div class="lbl">Menor cumplimiento (mensual)</div>
@@ -1784,6 +1786,16 @@ const CUMPL_WEEKS = [
 ];
 const CUMPL_PRODUCTOS = Object.keys(CUMPL_WEEKS[0].pedido);
 
+// Stock actual (TOTVS, export "stock actualizado 160726.xml" — foto al 16/07/2026). Suma Saldo Actual
+// en depósitos CD (Centro de Distribución) + CP (Centro de Producción) para cada código del CP.
+// No incluye tránsito (dio 0 en los 10 productos en esta foto, pero si aparece en una carga futura
+// no está sumado acá).
+const CUMPL_STOCK = {
+  "CORTE DE TRUCHA":141, "CUBOS DE TRUCHA":98, "LANGOSTINOS REBOZADOS":297, "PASTA DE HONEY":21,
+  "POLLO TERIYAKI":105, "REDUCCIÓN DE TERIYAKI":255, "SALSA NARANJA Y MIEL":80, "TAMAGO":259,
+  "TIRA DE TRUCHA":54, "VINAGRETA":603
+};
+
 function initCumplimiento() {
   let chartCumplSemanal;
   function buildCumplSemanal(wi) {
@@ -1805,25 +1817,37 @@ function initCumplimiento() {
   document.getElementById("selCumplSemana").addEventListener("change", function(){ buildCumplSemanal(+this.value); });
   buildCumplSemanal(2);
 
+  // % Pedido/Salidas = pedido / salidas. Mide si lo que se pidió a CP estuvo bien calibrado contra
+  // la demanda real de franquicias (salidas), sin importar si el CP llegó a entregarlo o no.
+  // 100% = pedido y demanda coinciden. <70% = se pidió de menos vs. la demanda real (riesgo de faltante,
+  // se tapa con stock de seguridad). >130% = se pidió de más vs. la demanda real (posible sobre-pedido).
+  function pctPedidoSalidasBadge(pedido, salidas) {
+    if (salidas === 0) {
+      return pedido > 0
+        ? `<span class="pill pill-warn">⚠ sin salidas</span>`
+        : `<span class="pill pill-nd">—</span>`;
+    }
+    const pct = 100 * pedido / salidas;
+    const cls = (pct < 70 || pct > 130) ? "pill-warn" : "pill-ok";
+    return `<span class="pill ${cls}">${pct.toFixed(1)}%</span>`;
+  }
+
   function buildTablaCumpl(wi) {
     const w = CUMPL_WEEKS[wi];
     const t = document.getElementById("tablaCumpl");
-    let h = "<thead><tr><th>Producto</th><th>Pedido a CP</th><th>Entregado (CP)</th><th>% Cumpl. producción</th><th>Salidas a franquicias</th><th>% Cumpl. salidas</th></tr></thead><tbody>";
-    let totP=0, totE=0, totS=0;
+    let h = "<thead><tr><th>Producto</th><th>Pedido a CP</th><th>Entregado (CP)</th><th>% Cumpl. producción</th><th>Salidas a franquicias</th><th>% Pedido / Salidas</th><th>Stock actual</th></tr></thead><tbody>";
+    let totP=0, totE=0, totS=0, totStock=0;
     CUMPL_PRODUCTOS.forEach(p=>{
-      const pedido = w.pedido[p], entregado = w.entregado[p], salidas = w.salidas[p];
-      totP += pedido; totE += entregado; totS += salidas;
+      const pedido = w.pedido[p], entregado = w.entregado[p], salidas = w.salidas[p], stock = CUMPL_STOCK[p];
+      totP += pedido; totE += entregado; totS += salidas; totStock += stock;
       const pctE = pedido ? (100*entregado/pedido) : 0;
-      const pctS = pedido ? (100*salidas/pedido) : 0;
       const clsE = pctE < 50 ? "pill-warn" : pctE >= 90 ? "pill-ok" : "pill-nd";
-      const clsS = pctS < 50 ? "pill-warn" : pctS >= 90 ? "pill-ok" : "pill-nd";
       h += `<tr><td><span class="dot" style="background:${CUMPL_COLORES[p]}"></span>${p}</td>`;
       h += `<td>${pedido}</td><td>${entregado}</td><td><span class="pill ${clsE}">${pctE.toFixed(1)}%</span></td>`;
-      h += `<td>${salidas}</td><td><span class="pill ${clsS}">${pctS.toFixed(1)}%</span></td></tr>`;
+      h += `<td>${salidas}</td><td>${pctPedidoSalidasBadge(pedido, salidas)}</td><td>${stock} u</td></tr>`;
     });
     const totPctE = totP ? (100*totE/totP) : 0;
-    const totPctS = totP ? (100*totS/totP) : 0;
-    h += `<tr class="row-total"><td>TOTAL</td><td>${totP}</td><td>${totE}</td><td>${totPctE.toFixed(1)}%</td><td>${totS}</td><td>${totPctS.toFixed(1)}%</td></tr>`;
+    h += `<tr class="row-total"><td>TOTAL</td><td>${totP}</td><td>${totE}</td><td>${totPctE.toFixed(1)}%</td><td>${totS}</td><td>${pctPedidoSalidasBadge(totP, totS)}</td><td>${totStock} u</td></tr>`;
     h += "</tbody>";
     t.innerHTML = h;
   }
@@ -1836,7 +1860,7 @@ function initCumplimiento() {
     let p=0,e=0,s=0;
     CUMPL_PRODUCTOS.forEach(prod=>{ p+=w.pedido[prod]; e+=w.entregado[prod]; s+=w.salidas[prod]; });
     evolProd.push(p ? 100*e/p : 0);
-    evolSal.push(p ? 100*s/p : 0);
+    evolSal.push(s ? 100*p/s : 0); // pedido/salidas — mide si lo pedido estuvo calibrado contra la demanda real
   });
   new Chart(document.getElementById("chartCumplEvolucion").getContext("2d"), {
     type:"line",
@@ -1844,7 +1868,7 @@ function initCumplimiento() {
       labels: CUMPL_WEEKS.map(w=>`${w.label} (${w.dateRange})`),
       datasets:[
         { label:"% Cumplimiento producción", data:evolProd, borderColor:"#1D4856", backgroundColor:"#1D485622", pointRadius:5, pointHoverRadius:7, fill:false, tension:0.3, borderWidth:2.5 },
-        { label:"% Cumplimiento salidas a franquicias", data:evolSal, borderColor:"#33A392", backgroundColor:"#33A39222", pointRadius:5, pointHoverRadius:7, fill:false, tension:0.3, borderWidth:2.5 }
+        { label:"% Pedido / Salidas", data:evolSal, borderColor:"#33A392", backgroundColor:"#33A39222", pointRadius:5, pointHoverRadius:7, fill:false, tension:0.3, borderWidth:2.5 }
       ]
     },
     options:{ responsive:true, maintainAspectRatio:false, plugins:{ legend:{position:"bottom",labels:{usePointStyle:true,padding:14}}, tooltip:{callbacks:{label:ctx=>" "+ctx.dataset.label+": "+ctx.parsed.y.toFixed(1)+"%"}} }, scales:{ y:{beginAtZero:true,ticks:{callback:v=>v+"%"},grid:{color:"#edf2f7"}}, x:{grid:{display:false}} } }
