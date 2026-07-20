@@ -1418,8 +1418,8 @@ footer { text-align: center; color: #BBBBBB; font-size: 0.76rem; padding: 20px 0
     <div class="kpi-grid" style="grid-template-columns:repeat(auto-fit,minmax(160px,1fr))">
       <div class="kpi-card">
         <div class="lbl">Cumplimiento producción (mensual)</div>
-        <div class="val" style="color:#1D4856">73,3 <span style="font-size:.85rem;color:#BBBBBB">%</span></div>
-        <div class="sub">2.729 / 3.723 u pedidas</div>
+        <div class="val" style="color:#1D4856">83,3 <span style="font-size:.85rem;color:#BBBBBB">%</span></div>
+        <div class="sub">3.102 / 3.723 u pedidas</div>
       </div>
       <div class="kpi-card">
         <div class="lbl">Pedido vs. Salidas</div>
@@ -1429,12 +1429,12 @@ footer { text-align: center; color: #BBBBBB; font-size: 0.76rem; padding: 20px 0
       <div class="kpi-card">
         <div class="lbl">Menor cumplimiento (mensual)</div>
         <div class="val" style="color:#EF402F;font-size:1.1rem">LANGOSTINOS</div>
-        <div class="sub">24,3% — 114 / 470 u</div>
+        <div class="sub">53,4% — 251 / 470 u</div>
       </div>
       <div class="kpi-card">
         <div class="lbl">Mejor cumplimiento (mensual)</div>
-        <div class="val" style="color:#33A392;font-size:1.1rem">VINAGRETA</div>
-        <div class="sub">105,7% — 484 / 458 u</div>
+        <div class="val" style="color:#33A392;font-size:1.1rem">SALSA NARANJA</div>
+        <div class="sub">112,7% — 231 / 205 u</div>
       </div>
     </div>
 
@@ -1463,7 +1463,7 @@ footer { text-align: center; color: #BBBBBB; font-size: 0.76rem; padding: 20px 0
     <div class="section-title" style="margin-top:32px">📅 Vista mensual — Pedido vs Entregado del CP (Ene–Jul 2026)</div>
 
     <div class="alerta">
-      ⚠️ <strong>Julio está en curso</strong> (datos hasta ~16/07) — su % de cumplimiento no es comparable 1 a 1
+      ⚠️ <strong>Julio está en curso</strong> (datos hasta ~20/07) — su % de cumplimiento no es comparable 1 a 1
       contra un mes cerrado. Fuente: "Producción CP - 2025.xlsx", pestañas mensuales ENE 26 a JULIO 26.
     </div>
 
@@ -1485,11 +1485,11 @@ footer { text-align: center; color: #BBBBBB; font-size: 0.76rem; padding: 20px 0
       <div style="display:flex;flex-direction:column;gap:10px;">
         <div style="display:flex;gap:12px;align-items:flex-start;padding:10px 12px;background:#fffbeb;border-radius:8px;">
           <span style="font-size:1rem;flex-shrink:0">🦐</span>
-          <div><div style="font-size:0.85rem;font-weight:700;color:#221F1F;">Langostinos: salió mucho más de lo que CP entregó esa semana</div><div style="font-size:0.78rem;color:#999999;margin-top:2px;">S2: CP entregó 10 u pero salieron 127 a franquicias — se tiró de stock. S4: se pidieron 370 u y CP solo entregó 36. ¿Hay capacidad para sostener ese pedido?</div></div>
+          <div><div style="font-size:0.85rem;font-weight:700;color:#221F1F;">Langostinos: salió mucho más de lo que CP entregó esa semana</div><div style="font-size:0.78rem;color:#999999;margin-top:2px;">S2: CP entregó 10 u pero salieron 127 a franquicias — se tiró de stock. S4: se pidieron 370 u y CP entregó 173. ¿Hay capacidad para sostener ese pedido?</div></div>
         </div>
         <div style="display:flex;gap:12px;align-items:flex-start;padding:10px 12px;background:#fffbeb;border-radius:8px;">
           <span style="font-size:1rem;flex-shrink:0">📉</span>
-          <div><div style="font-size:0.85rem;font-weight:700;color:#221F1F;">S4 (en curso) tiene el cumplimiento más bajo de producción: 35,0%</div><div style="font-size:0.78rem;color:#999999;margin-top:2px;">Se pidieron 1.307 u y hasta el 16/07 CP entregó 458. ¿Es solo que la semana no cerró, o hay una caída real?</div></div>
+          <div><div style="font-size:0.85rem;font-weight:700;color:#221F1F;">S4 (en curso) tiene el cumplimiento más bajo de producción: 63,6%</div><div style="font-size:0.78rem;color:#999999;margin-top:2px;">Se pidieron 1.307 u y hasta el 20/07 CP entregó 831. ¿Es solo que la semana no cerró, o hay una caída real?</div></div>
         </div>
         <div style="display:flex;gap:12px;align-items:flex-start;padding:10px 12px;background:#fffbeb;border-radius:8px;">
           <span style="font-size:1rem;flex-shrink:0">🥗</span>
@@ -1806,7 +1806,7 @@ const CUMPL_WEEKS = [
     salidas:  { "CORTE DE TRUCHA":45, "CUBOS DE TRUCHA":38, "LANGOSTINOS REBOZADOS":157, "PASTA DE HONEY":49, "POLLO TERIYAKI":86, "REDUCCIÓN DE TERIYAKI":167, "SALSA NARANJA Y MIEL":49, "TAMAGO":187, "TIRA DE TRUCHA":68, "VINAGRETA":103 } },
   { label:"S4", dateRange:"14–20/07 (en curso)", isPartial:true,
     pedido:   { "CORTE DE TRUCHA":48, "CUBOS DE TRUCHA":40, "LANGOSTINOS REBOZADOS":370, "PASTA DE HONEY":72, "POLLO TERIYAKI":75, "REDUCCIÓN DE TERIYAKI":200, "SALSA NARANJA Y MIEL":50, "TAMAGO":280, "TIRA DE TRUCHA":70, "VINAGRETA":102 },
-    entregado:{ "CORTE DE TRUCHA":22, "CUBOS DE TRUCHA":27, "LANGOSTINOS REBOZADOS":36, "PASTA DE HONEY":35, "POLLO TERIYAKI":6, "REDUCCIÓN DE TERIYAKI":75, "SALSA NARANJA Y MIEL":18, "TAMAGO":138, "TIRA DE TRUCHA":16, "VINAGRETA":85 },
+    entregado:{ "CORTE DE TRUCHA":48, "CUBOS DE TRUCHA":41, "LANGOSTINOS REBOZADOS":173, "PASTA DE HONEY":52, "POLLO TERIYAKI":48, "REDUCCIÓN DE TERIYAKI":144, "SALSA NARANJA Y MIEL":54, "TAMAGO":138, "TIRA DE TRUCHA":48, "VINAGRETA":85 },
     salidas:  { "CORTE DE TRUCHA":34, "CUBOS DE TRUCHA":26, "LANGOSTINOS REBOZADOS":132, "PASTA DE HONEY":52, "POLLO TERIYAKI":59, "REDUCCIÓN DE TERIYAKI":133, "SALSA NARANJA Y MIEL":21, "TAMAGO":164, "TIRA DE TRUCHA":52, "VINAGRETA":83 } }
 ];
 const CUMPL_PRODUCTOS = Object.keys(CUMPL_WEEKS[0].pedido);
@@ -1826,15 +1826,15 @@ const CUMPL_STOCK = {
 const CUMPL_MESES = ["ENE 26","FEB 26","MAR 26","ABR 26","MAY 26","JUN 26","JUL 26"];
 const CUMPL_MES_PARCIAL = [false,false,false,false,false,false,true];
 const CUMPL_MENSUAL = {
-  "CORTE DE TRUCHA":       { pedido:[105,100,228,305,275,237,228], entregado:[97,97,210,258,223,214,172] },
-  "CUBOS DE TRUCHA":       { pedido:[193,180,218,267,217,184,190], entregado:[161,115,139,216,172,133,139] },
-  "LANGOSTINOS REBOZADOS": { pedido:[1305,1010,907,562,232,428,470], entregado:[1283,1004,847,548,232,481,114] },
-  "PASTA DE HONEY":        { pedido:[90,50,200,215,133,96,212], entregado:[127,54,159,208,139,98,182] },
-  "POLLO TERIYAKI":        { pedido:[327,300,370,441,321,321,321], entregado:[338,323,365,448,339,304,197] },
-  "REDUCCIÓN DE TERIYAKI": { pedido:[750,700,590,750,730,655,600], entregado:[754,689,591,750,730,644,460] },
-  "SALSA NARANJA Y MIEL":  { pedido:[235,157,30,30,90,100,205], entregado:[230,184,30,30,90,128,195] },
+  "CORTE DE TRUCHA":       { pedido:[105,100,228,305,275,237,228], entregado:[97,97,210,258,223,214,198] },
+  "CUBOS DE TRUCHA":       { pedido:[193,180,218,267,217,184,190], entregado:[161,115,139,216,172,133,153] },
+  "LANGOSTINOS REBOZADOS": { pedido:[1305,1010,907,562,232,428,470], entregado:[1283,1004,847,548,232,481,251] },
+  "PASTA DE HONEY":        { pedido:[90,50,200,215,133,96,212], entregado:[127,54,159,208,139,98,199] },
+  "POLLO TERIYAKI":        { pedido:[327,300,370,441,321,321,321], entregado:[338,323,365,448,339,304,239] },
+  "REDUCCIÓN DE TERIYAKI": { pedido:[750,700,590,750,730,655,600], entregado:[754,689,591,750,730,644,529] },
+  "SALSA NARANJA Y MIEL":  { pedido:[235,157,30,30,90,100,205], entregado:[230,184,30,30,90,128,231] },
   "TAMAGO":                { pedido:[915,1080,750,950,300,204,759], entregado:[929,1132,774,969,300,178,585] },
-  "TIRA DE TRUCHA":        { pedido:[205,265,307,350,277,293,280], entregado:[99,227,248,308,251,246,201] },
+  "TIRA DE TRUCHA":        { pedido:[205,265,307,350,277,293,280], entregado:[99,227,248,308,251,246,233] },
   "VINAGRETA":             { pedido:[522,544,534,440,411,574,458], entregado:[533,534,490,485,411,541,484] }
 };
 
