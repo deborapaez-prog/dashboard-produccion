@@ -125,7 +125,7 @@ footer { text-align: center; color: #BBBBBB; font-size: 0.76rem; padding: 20px 0
       <div style="font-size:0.7rem;font-weight:700;color:rgba(255,255,255,0.6);text-transform:uppercase;letter-spacing:0.12em;margin-top:2px;">Dashboard de Producción</div>
     </div>
   </div>
-  <span class="badge">📅 Actualizado: 20/07/2026</span>
+  <span class="badge">📅 Actualizado: 21/07/2026</span>
 </header>
 
 <div class="tab-nav">
@@ -1412,7 +1412,7 @@ footer { text-align: center; color: #BBBBBB; font-size: 0.76rem; padding: 20px 0
       Fuentes: planilla "Producción CP" (Drive, pestaña JULIO 26) y salidas TOTVS (export 20/07/2026), filtrado solo a los 10 productos del CP.
       El cruce solo cubre S2–S4 (30/06 en adelante) porque el export de TOTVS empieza el 30/06. S4 (14–20/07) está en curso.
       <br><strong>% Pedido / Salidas</strong> compara lo que se pidió a CP contra lo que realmente salió a franquicias (la demanda real), sin importar si el CP llegó a entregarlo. 100% = pedido calibrado. Por debajo de 70% se pidió de menos que la demanda real (riesgo de faltante, se tapa con stock de seguridad). Por encima de 130% se pidió de más que la demanda real (posible sobre-pedido).
-      <br><strong>Stock actual</strong>: foto del saldo en TOTVS al 20/07/2026 (Centro de Distribución + Centro de Producción), no varía según la semana seleccionada — es el stock disponible hoy, no un dato histórico.
+      <br><strong>Stock actual</strong>: foto del saldo en TOTVS al 21/07/2026 (Centro de Distribución + Centro de Producción), no varía según la semana seleccionada — es el stock disponible hoy, no un dato histórico.
     </div>
 
     <div class="kpi-grid" style="grid-template-columns:repeat(auto-fit,minmax(160px,1fr))">
@@ -1811,14 +1811,16 @@ const CUMPL_WEEKS = [
 ];
 const CUMPL_PRODUCTOS = Object.keys(CUMPL_WEEKS[0].pedido);
 
-// Stock actual (TOTVS, export "STOCK AL 200726.xml" — foto al 20/07/2026). Suma Saldo Actual
-// en depósitos CD (Centro de Distribución) + CP (Centro de Producción) para cada código del CP.
-// No incluye tránsito (dio 0 en los 10 productos en esta foto, pero si aparece en una carga futura
-// no está sumado acá).
+// Stock actual (TOTVS, export "stock al 180726.xml" — el nombre dice 18/07 pero el XML se generó
+// el 21/07/2026 11:28 UTC (DocumentProperties/Created), y Saldo Actual es la foto al momento de
+// generar el reporte, así que se tomó como foto al 21/07/2026. OJO: confirmar con Debo si el nombre
+// del archivo fue un error de tipeo. Suma Saldo Actual en depósitos CD (Centro de Distribución) + CP
+// (Centro de Producción) para cada código del CP. No incluye tránsito (dio 0 en los 10 productos en
+// esta foto, pero si aparece en una carga futura no está sumado acá).
 const CUMPL_STOCK = {
-  "CORTE DE TRUCHA":159, "CUBOS DE TRUCHA":104, "LANGOSTINOS REBOZADOS":411, "PASTA DE HONEY":18,
-  "POLLO TERIYAKI":126, "REDUCCIÓN DE TERIYAKI":282, "SALSA NARANJA Y MIEL":112, "TAMAGO":205,
-  "TIRA DE TRUCHA":69, "VINAGRETA":575
+  "CORTE DE TRUCHA":149, "CUBOS DE TRUCHA":96, "LANGOSTINOS REBOZADOS":443, "PASTA DE HONEY":10,
+  "POLLO TERIYAKI":120, "REDUCCIÓN DE TERIYAKI":244, "SALSA NARANJA Y MIEL":103, "TAMAGO":309,
+  "TIRA DE TRUCHA":62, "VINAGRETA":557
 };
 
 // Pedido/Entregado MENSUAL por producto, ene–jul 2026 (fuente: "Producción CP - 2025.xlsx",
