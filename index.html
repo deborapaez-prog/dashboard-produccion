@@ -1811,12 +1811,10 @@ const CUMPL_WEEKS = [
 ];
 const CUMPL_PRODUCTOS = Object.keys(CUMPL_WEEKS[0].pedido);
 
-// Stock actual (TOTVS, export "stock al 180726.xml" — el nombre dice 18/07 pero el XML se generó
-// el 21/07/2026 11:28 UTC (DocumentProperties/Created), y Saldo Actual es la foto al momento de
-// generar el reporte, así que se tomó como foto al 21/07/2026. OJO: confirmar con Debo si el nombre
-// del archivo fue un error de tipeo. Suma Saldo Actual en depósitos CD (Centro de Distribución) + CP
-// (Centro de Producción) para cada código del CP. No incluye tránsito (dio 0 en los 10 productos en
-// esta foto, pero si aparece en una carga futura no está sumado acá).
+// Stock actual (TOTVS, export "stock al 180726.xml" — nombre con error de tipeo, es la foto
+// al 21/07/2026 confirmada por Debo). Suma Saldo Actual en depósitos CD (Centro de Distribución) +
+// CP (Centro de Producción) para cada código del CP. No incluye tránsito (dio 0 en los 10 productos
+// en esta foto, pero si aparece en una carga futura no está sumado acá).
 const CUMPL_STOCK = {
   "CORTE DE TRUCHA":149, "CUBOS DE TRUCHA":96, "LANGOSTINOS REBOZADOS":443, "PASTA DE HONEY":10,
   "POLLO TERIYAKI":120, "REDUCCIÓN DE TERIYAKI":244, "SALSA NARANJA Y MIEL":103, "TAMAGO":309,
