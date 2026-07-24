@@ -1477,6 +1477,15 @@ footer { text-align: center; color: #BBBBBB; font-size: 0.76rem; padding: 20px 0
     </div>
 
     <div class="card">
+      <h2>
+        🏪 Salidas por franquicia
+        <select id="selCumplFranquicia"></select>
+      </h2>
+      <div style="font-size:0.75rem;color:#BBBBBB;margin-bottom:10px;">Total y promedio semanal de unidades despachadas a cada franquicia en las 3 semanas cerradas (S2–S4, 30/06–20/07 — no incluye los 2 días parciales de S5). Fuente: detalle transacción por transacción de TOTVS, tipo de movimiento "PA" (producto terminado), archivo "salidas desde mayo a julio.xml".</div>
+      <div class="table-wrap"><table id="tablaFranquicias"></table></div>
+    </div>
+
+    <div class="card">
       <h2>📈 Evolución del cumplimiento (todos los productos, S2–S4)</h2>
       <div class="chart-wrap"><canvas id="chartCumplEvolucion"></canvas></div>
     </div>
@@ -1854,6 +1863,23 @@ const CUMPL_WEEKS = [
 ];
 const CUMPL_PRODUCTOS = Object.keys(CUMPL_WEEKS[0].pedido);
 
+// Salidas a franquicias por sucursal, detalle transacción por transacción (tipo "PA" = producto
+// terminado) de "salidas desde mayo a julio.xml", restringido a las 3 semanas cerradas S2-S4
+// (30/06-20/07) para que sea comparable entre productos — no incluye los 2 días parciales de S5.
+const CUMPL_FRANQUICIAS = {
+  "CORTE DE TRUCHA": { "ROSARIO":8, "NEUQUEN":8, "MENDOZA":7, "NUEVA CORDOBA":7, "SAN RAFAEL":7, "CERRO":5, "ALTA CORDOBA":5, "GODOY CRUZ":5, "SANTA FE":5, "CARLOS PAZ":4, "ALTO ALBERDI":4, "VILLA ALLENDE":4, "SAN JUAN":4, "RIO IV":3, "LA RIOJA":3, "MANANTIALES":3, "JARDIN":3, "SALTA":3, "GENERAL PAZ":3, "VILLA MARIA":3, "SANTA LUCIA":3, "COLON":2, "MONSEÑOR":2, "TUCUMAN":2, "RESIDENCIAL AMERICA":2, "SABATTINI":2, "RECTA":2, "YERBA BUENA":2, "CALERA":1, "RAFAELA":1 },
+  "CUBOS DE TRUCHA": { "ROSARIO":7, "NUEVA CORDOBA":6, "NEUQUEN":6, "CERRO":5, "VILLA ALLENDE":5, "ALTO ALBERDI":4, "MENDOZA":4, "GODOY CRUZ":4, "SAN JUAN":4, "ALTA CORDOBA":4, "SANTA FE":4, "LA RIOJA":3, "CARLOS PAZ":3, "RECTA":3, "VILLA MARIA":3, "GENERAL PAZ":3, "SAN RAFAEL":3, "SALTA":3, "TUCUMAN":3, "COLON":2, "JARDIN":2, "RAFAELA":2, "RIO IV":2, "YERBA BUENA":2, "CALERA":1, "MONSEÑOR":1, "MANANTIALES":1, "SABATTINI":1 },
+  "LANGOSTINOS REBOZADOS": { "NUEVA CORDOBA":39, "CERRO":28, "ALTO ALBERDI":26, "SAN JUAN":26, "LA RIOJA":22, "VILLA ALLENDE":21, "GENERAL PAZ":21, "ALTA CORDOBA":19, "JARDIN":19, "RECTA":19, "MANANTIALES":18, "ROSARIO":17, "TUCUMAN":17, "COLON":16, "RIO IV":15, "RESIDENCIAL AMERICA":14, "NEUQUEN":14, "CARLOS PAZ":13, "VILLA MARIA":12, "SABATTINI":12, "SAN RAFAEL":11, "CALERA":10, "MONSEÑOR":8, "YERBA BUENA":8, "SANTA FE":7, "SANTA LUCIA":6, "RAFAELA":6, "MENDOZA":5, "GODOY CRUZ":5, "SALTA":4 },
+  "PASTA DE HONEY": { "SAN JUAN":10, "NUEVA CORDOBA":10, "ROSARIO":9, "JARDIN":7, "NEUQUEN":7, "SANTA LUCIA":7, "MENDOZA":6, "ALTO ALBERDI":6, "SAN RAFAEL":6, "CERRO":5, "MANANTIALES":5, "VILLA ALLENDE":5, "SANTA FE":5, "TUCUMAN":5, "COLON":4, "LA RIOJA":4, "CARLOS PAZ":4, "RECTA":4, "ALTA CORDOBA":4, "SABATTINI":4, "GENERAL PAZ":4, "YERBA BUENA":4, "CALERA":3, "VILLA MARIA":3, "RESIDENCIAL AMERICA":3, "GODOY CRUZ":3, "RIO IV":2, "MONSEÑOR":2, "SALTA":2, "RAFAELA":2 },
+  "POLLO TERIYAKI": { "ROSARIO":20, "NUEVA CORDOBA":14, "NEUQUEN":14, "TUCUMAN":12, "CERRO":10, "ALTO ALBERDI":10, "SANTA FE":10, "SAN JUAN":9, "ALTA CORDOBA":8, "LA RIOJA":8, "GENERAL PAZ":8, "RIO IV":7, "JARDIN":7, "CARLOS PAZ":7, "YERBA BUENA":7, "VILLA ALLENDE":6, "VILLA MARIA":6, "SAN RAFAEL":6, "COLON":5, "MENDOZA":5, "GODOY CRUZ":5, "RECTA":4, "MANANTIALES":4, "RESIDENCIAL AMERICA":4, "MONSEÑOR":4, "SANTA LUCIA":4, "CALERA":3, "SABATTINI":3, "SALTA":2 },
+  "REDUCCIÓN DE TERIYAKI": { "NUEVA CORDOBA":40, "ROSARIO":35, "NEUQUEN":25, "LA RIOJA":22, "ALTO ALBERDI":21, "GENERAL PAZ":19, "CERRO":17, "RESIDENCIAL AMERICA":17, "RIO IV":16, "SAN JUAN":16, "RECTA":16, "VILLA MARIA":14, "MANANTIALES":13, "VILLA ALLENDE":13, "ALTA CORDOBA":12, "SAN RAFAEL":12, "MONSEÑOR":12, "SANTA FE":12, "TUCUMAN":12, "CARLOS PAZ":11, "COLON":10, "RAFAELA":10, "SALTA":10, "MENDOZA":8, "GODOY CRUZ":8, "CALERA":8, "SANTA LUCIA":8, "JARDIN":8, "YERBA BUENA":8, "SABATTINI":4 },
+  "SALSA NARANJA Y MIEL": { "NEUQUEN":10, "LA RIOJA":7, "ROSARIO":7, "ALTA CORDOBA":6, "NUEVA CORDOBA":6, "SANTA FE":5, "TUCUMAN":5, "YERBA BUENA":5, "SAN JUAN":4, "CERRO":4, "VILLA MARIA":4, "SAN RAFAEL":4, "GODOY CRUZ":4, "JARDIN":3, "RIO IV":3, "RESIDENCIAL AMERICA":3, "GENERAL PAZ":3, "ALTO ALBERDI":3, "CALERA":2, "SANTA LUCIA":2, "CARLOS PAZ":2, "MANANTIALES":2, "COLON":2, "VILLA ALLENDE":2, "RAFAELA":2, "RECTA":1, "SABATTINI":1 },
+  "TAMAGO": { "SAN JUAN":36, "NEUQUEN":30, "ALTO ALBERDI":29, "NUEVA CORDOBA":25, "CERRO":24, "SANTA LUCIA":23, "JARDIN":22, "ROSARIO":21, "RESIDENCIAL AMERICA":20, "TUCUMAN":20, "SAN RAFAEL":20, "COLON":19, "VILLA ALLENDE":19, "GENERAL PAZ":19, "ALTA CORDOBA":18, "RIO IV":18, "MANANTIALES":18, "MENDOZA":17, "VILLA MARIA":17, "CARLOS PAZ":16, "LA RIOJA":14, "SANTA FE":14, "MONSEÑOR":13, "RAFAELA":12, "SABATTINI":11, "YERBA BUENA":11, "GODOY CRUZ":10, "RECTA":10, "CALERA":9, "SALTA":7 },
+  "TIRA DE TRUCHA": { "NUEVA CORDOBA":15, "ROSARIO":12, "NEUQUEN":10, "ALTO ALBERDI":9, "SAN JUAN":9, "SAN RAFAEL":9, "JARDIN":8, "RIO IV":7, "SANTA LUCIA":7, "CERRO":7, "VILLA ALLENDE":7, "ALTA CORDOBA":6, "MENDOZA":6, "GODOY CRUZ":6, "LA RIOJA":6, "VILLA MARIA":6, "SANTA FE":6, "COLON":5, "CARLOS PAZ":5, "GENERAL PAZ":5, "MONSEÑOR":4, "MANANTIALES":4, "RAFAELA":4, "TUCUMAN":4, "CALERA":3, "RECTA":3, "SALTA":3, "YERBA BUENA":3, "SABATTINI":3, "RESIDENCIAL AMERICA":2 },
+  "VINAGRETA": { "NUEVA CORDOBA":23, "SAN JUAN":16, "CERRO":15, "ALTO ALBERDI":15, "NEUQUEN":13, "LA RIOJA":11, "JARDIN":11, "ROSARIO":11, "SAN RAFAEL":11, "ALTA CORDOBA":10, "CARLOS PAZ":10, "RECTA":10, "SANTA FE":10, "COLON":9, "VILLA ALLENDE":9, "VILLA MARIA":9, "GENERAL PAZ":9, "MENDOZA":8, "RIO IV":8, "MANANTIALES":8, "RESIDENCIAL AMERICA":8, "TUCUMAN":8, "GODOY CRUZ":7, "SANTA LUCIA":7, "MONSEÑOR":7, "RAFAELA":6, "SABATTINI":5, "SALTA":5, "CALERA":4 },
+};
+const CUMPL_FRANQUICIA_SEMANAS = 3; // semanas cerradas cubiertas (S2, S3, S4)
+
 // Stock actual (TOTVS, foto al 24/07/2026). Suma Saldo Actual en depósitos CD (Centro de
 // Distribución) + CP (Centro de Producción) de "stock al 240726.xml", más el depósito MI (Mirizi,
 // sucursal 010102) de "stock externo 240726.xml" — stock físico de producto terminado del CP
@@ -1959,6 +1985,28 @@ function initCumplimiento() {
   }
   document.getElementById("selCumplSemana").addEventListener("change", function(){ buildTablaCumpl(+this.value); });
   buildTablaCumpl(3);
+
+  // Salidas por franquicia (S2-S4 cerradas)
+  const selFranquicia = document.getElementById("selCumplFranquicia");
+  selFranquicia.innerHTML = CUMPL_PRODUCTOS.map((p,i)=>`<option value="${p}" ${i===0?"selected":""}>${p}</option>`).join("");
+  function buildTablaFranquicias(prod) {
+    const data = CUMPL_FRANQUICIAS[prod] || {};
+    const entries = Object.entries(data).sort((a,b)=>b[1]-a[1]);
+    const total = entries.reduce((s,[,v])=>s+v,0);
+    const t = document.getElementById("tablaFranquicias");
+    let h = "<thead><tr><th>#</th><th>Franquicia</th><th>Total (3 sem.)</th><th>Prom. semanal</th><th>% del total</th></tr></thead><tbody>";
+    entries.forEach(([nombre, cant], i) => {
+      const prom = cant / CUMPL_FRANQUICIA_SEMANAS;
+      const pct = total ? 100*cant/total : 0;
+      h += `<tr><td style="color:#999">${i+1}</td><td>${nombre}</td><td>${cant} u</td><td>${prom.toFixed(1)} u</td>`;
+      h += `<td><div style="display:flex;align-items:center;gap:8px"><div style="background:${CUMPL_COLORES[prod]};height:8px;border-radius:4px;width:${Math.max(2,pct*1.6).toFixed(0)}px;flex-shrink:0"></div><span>${pct.toFixed(1)}%</span></div></td></tr>`;
+    });
+    h += `<tr class="row-total"><td></td><td>TOTAL (${entries.length} franquicias)</td><td>${total} u</td><td>${(total/CUMPL_FRANQUICIA_SEMANAS).toFixed(1)} u</td><td>100%</td></tr>`;
+    h += "</tbody>";
+    t.innerHTML = h;
+  }
+  selFranquicia.addEventListener("change", function(){ buildTablaFranquicias(this.value); });
+  buildTablaFranquicias(CUMPL_PRODUCTOS[0]);
 
   // Evolución del cumplimiento agregado (todos los productos) S2→S4
   const evolProd = [], evolSal = [];
