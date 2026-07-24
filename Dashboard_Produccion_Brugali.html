@@ -143,17 +143,17 @@ footer { text-align: center; color: #BBBBBB; font-size: 0.76rem; padding: 20px 0
 <main>
 
   <div class="alerta">
-    ⚠️ <strong>S30 en curso: 258,1 kg (1 día activo de 6 hasta ahora, 20–25/07).</strong>
-    20/07 con 660 kg de entrada (44 cajas) y 39,1% de uso. 21/07 sin producción de trucha (se hizo langostino rebozado). 22/07 y 23/07 (hoy) sin confirmar todavía — el sheet de Trucha no llegó a esas filas en la última lectura, revisar manualmente.
+    ⚠️ <strong>S30 en curso: 480,1 kg (2 días activos de 6 hasta ahora, 20–25/07).</strong>
+    20/07 con 660 kg de entrada (44 cajas) y 39,1% de uso. 21/07 sin producción de trucha (se hizo langostino rebozado). 22/07 con 525 kg de entrada (35 cajas) y 222,0 kg producidos (40,5% de uso). 23/07 (hoy) sin datos cargados todavía.
     S29 cerró en 735,05 kg (5 días activos, 13–18/07).
-    Acumulado S20–S30: 8.585,4 kg · 41,0% uso general (S30 aún en curso). Objetivo semanal: 1.067,2 kg · por día: 213,4 kg.
+    Acumulado S20–S30: 8.807,4 kg · 41,0% uso general (S30 aún en curso). Objetivo semanal: 1.067,2 kg · por día: 213,4 kg.
   </div>
 
   <div class="kpi-grid">
     <div class="kpi-card">
       <div class="lbl">Semana actual (S30)</div>
-      <div class="val">258,1 <span style="font-size:.85rem;color:#BBBBBB">kg</span></div>
-      <div class="sub">1 día activo (20/07) — en curso</div>
+      <div class="val">480,1 <span style="font-size:.85rem;color:#BBBBBB">kg</span></div>
+      <div class="sub">2 días activos (20/07, 22/07) — en curso</div>
     </div>
     <div class="kpi-card">
       <div class="lbl">Semana anterior (S29)</div>
@@ -162,18 +162,18 @@ footer { text-align: center; color: #BBBBBB; font-size: 0.76rem; padding: 20px 0
     </div>
     <div class="kpi-card">
       <div class="lbl">kg/día S30 vs S29</div>
-      <div class="val" style="color:#33A392">258,1</div>
+      <div class="val" style="color:#33A392">240,1</div>
       <div class="sub">vs 147,0 kg/día S29</div>
     </div>
     <div class="kpi-card">
       <div class="lbl">Acumulado total</div>
-      <div class="val" style="color:#1D4856">8.585,4 <span style="font-size:.85rem;color:#BBBBBB">kg</span></div>
+      <div class="val" style="color:#1D4856">8.807,4 <span style="font-size:.85rem;color:#BBBBBB">kg</span></div>
       <div class="sub">S20–S30 (S30 en curso)</div>
     </div>
     <div class="kpi-card">
       <div class="lbl">% uso S30</div>
-      <div class="val">39,1 <span style="font-size:.85rem;color:#BBBBBB">%</span></div>
-      <div class="sub">258,1 / 660 kg entrada (44 cajas)</div>
+      <div class="val">40,5 <span style="font-size:.85rem;color:#BBBBBB">%</span></div>
+      <div class="sub">480,1 / 1.185 kg entrada (79 cajas)</div>
     </div>
     <div class="kpi-card">
       <div class="lbl">% uso general</div>
@@ -1577,10 +1577,10 @@ const WEEKS = [
     daily:[244.71,68.45,79.2,180.73,161.96,0],
     dailyByProd:{ "Tiras":[51.45,12.25,12.25,29.4,26.95,0], "cortes":[24,10,12,24,20,0], "tiras unidas":[70.56,14.7,17.15,62.23,46.55,0], "cubos":[98.7,31.5,37.8,65.1,68.46,0], "sin embolsar":[0,0,0,0,0,0] },
     entradaBandejasDia:[38,11,13,30,30,0], activeDaysCount:5 },
-  { label:"S30", dateRange:"20–25 jul", isPartial:true, total:258.1,
-    daily:[258.1,0,0,0,0,0],
-    dailyByProd:{ "Tiras":[42.875,0,0,0,0,0], "cortes":[37.8,0,0,0,0,0], "tiras unidas":[80.85,0,0,0,0,0], "cubos":[96.6,0,0,0,0,0], "sin embolsar":[0,0,0,0,0,0] },
-    entradaBandejasDia:[44,0,0,0,0,0], activeDaysCount:1 }
+  { label:"S30", dateRange:"20–25 jul", isPartial:true, total:480.1,
+    daily:[258.1,0,222.0,0,0,0],
+    dailyByProd:{ "Tiras":[42.875,0,42.875,0,0,0], "cortes":[37.8,0,24,0,0,0], "tiras unidas":[80.85,0,80.36,0,0,0], "cubos":[96.6,0,74.76,0,0,0], "sin embolsar":[0,0,0,0,0,0] },
+    entradaBandejasDia:[44,0,35,0,0,0], activeDaysCount:2 }
 ];
 
 const PRODUCTOS = ["Tiras","cortes","tiras unidas","cubos","sin embolsar"];
