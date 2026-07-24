@@ -1428,8 +1428,8 @@ footer { text-align: center; color: #BBBBBB; font-size: 0.76rem; padding: 20px 0
 
     <div class="alerta">
       ⚠️ <strong>Compara lo pedido a Centro de Producción vs. lo entregado por CP vs. lo que realmente salió a franquicias.</strong>
-      Fuentes: planilla "Producción CP" (Drive, pestaña JULIO 26) y salidas TOTVS (export 22/07/2026), filtrado solo a los 10 productos del CP.
-      El cruce solo cubre S2–S4 (30/06–20/07) porque el export de TOTVS empieza el 30/06. Las 3 semanas ya cerraron.
+      Fuentes: planilla "Producción CP" (Drive, pestaña JULIO 26, leída 24/07) y salidas TOTVS (detalle por transacción, export "salidas desde mayo a julio.xml" — pese al nombre, el reporte solo trae datos desde el 30/06 al 22/07), filtrado solo a los 10 productos del CP.
+      El cruce cubre S2–S4 (30/06–20/07, cerradas) y S5 (21–27/07, <strong>en curso</strong>). En S5 el Pedido/Entregado de producción está actualizado al 24/07, pero las Salidas solo tienen 2 de los 7 días (21 y 22/07) — no lo compares 1 a 1 contra una semana cerrada, el número real de la semana va a ser mayor.
       <br><strong>% Pedido / Salidas</strong> compara lo que se pidió a CP contra lo que realmente salió a franquicias (la demanda real), sin importar si el CP llegó a entregarlo. 100% = pedido calibrado. Por debajo de 70% se pidió de menos que la demanda real (riesgo de faltante, se tapa con stock de seguridad). Por encima de 130% se pidió de más que la demanda real (posible sobre-pedido).
       <br><strong>Stock actual</strong>: foto del saldo en TOTVS al 24/07/2026 (Centro de Distribución + Centro de Producción + depósito externo Mirizi), no varía según la semana seleccionada — es el stock disponible hoy, no un dato histórico.
       <br><strong>Prom. salidas/sem</strong> y <strong>Semanas de stock</strong>: promedio de salidas a franquicias por semana (S2–S4) y cuántas semanas dura el stock actual a ese ritmo. Menos de 1 semana = riesgo de faltante próximo; más de 8 semanas = posible sobre-stock.
@@ -1464,7 +1464,8 @@ footer { text-align: center; color: #BBBBBB; font-size: 0.76rem; padding: 20px 0
         <select id="selCumplSemana">
           <option value="0">S2 — 30/06–06/07</option>
           <option value="1">S3 — 07–13/07</option>
-          <option value="2" selected>S4 — 14–20/07</option>
+          <option value="2">S4 — 14–20/07</option>
+          <option value="3" selected>S5 — 21–27/07 (en curso)</option>
         </select>
       </h2>
       <div class="chart-wrap" style="height:320px"><canvas id="chartCumplSemanal"></canvas></div>
@@ -1520,6 +1521,10 @@ footer { text-align: center; color: #BBBBBB; font-size: 0.76rem; padding: 20px 0
         <div style="display:flex;gap:12px;align-items:flex-start;padding:10px 12px;background:#fffbeb;border-radius:8px;">
           <span style="font-size:1rem;flex-shrink:0">🥗</span>
           <div><div style="font-size:0.85rem;font-weight:700;color:#221F1F;">Vinagreta y Salsa Naranja entregan por encima del pedido en varias semanas</div><div style="font-size:0.78rem;color:#999999;margin-top:2px;">Cumplimiento &gt;100% (ej. Vinagreta S2 117,7%). ¿Se está sobreproduciendo para generar stock, o el pedido está mal calculado?</div></div>
+        </div>
+        <div style="display:flex;gap:12px;align-items:flex-start;padding:10px 12px;background:#fffbeb;border-radius:8px;">
+          <span style="font-size:1rem;flex-shrink:0">⏳</span>
+          <div><div style="font-size:0.85rem;font-weight:700;color:#221F1F;">S5 (en curso) arranca floja en varios productos</div><div style="font-size:0.78rem;color:#999999;margin-top:2px;">Al 24/07: Tira de Trucha 26,2%, Tamago 32,9%, Langostinos 33,9% y Pollo Teriyaki 37,3% de cumplimiento. La semana recién va por la mitad, así que puede subir — pero si estos 4 productos siguen así al cierre, serían los más bajos desde que se mide.</div></div>
         </div>
       </div>
     </div>
@@ -1837,7 +1842,15 @@ const CUMPL_WEEKS = [
   { label:"S4", dateRange:"14–20/07", isPartial:false,
     pedido:   { "CORTE DE TRUCHA":48, "CUBOS DE TRUCHA":40, "LANGOSTINOS REBOZADOS":230, "PASTA DE HONEY":72, "POLLO TERIYAKI":75, "REDUCCIÓN DE TERIYAKI":200, "SALSA NARANJA Y MIEL":50, "TAMAGO":280, "TIRA DE TRUCHA":65, "VINAGRETA":102 },
     entregado:{ "CORTE DE TRUCHA":48, "CUBOS DE TRUCHA":41, "LANGOSTINOS REBOZADOS":256, "PASTA DE HONEY":43, "POLLO TERIYAKI":62, "REDUCCIÓN DE TERIYAKI":156, "SALSA NARANJA Y MIEL":54, "TAMAGO":280, "TIRA DE TRUCHA":52, "VINAGRETA":85 },
-    salidas:  { "CORTE DE TRUCHA":47, "CUBOS DE TRUCHA":35, "LANGOSTINOS REBOZADOS":174, "PASTA DE HONEY":62, "POLLO TERIYAKI":80, "REDUCCIÓN DE TERIYAKI":172, "SALSA NARANJA Y MIEL":32, "TAMAGO":220, "TIRA DE TRUCHA":70, "VINAGRETA":106 } }
+    salidas:  { "CORTE DE TRUCHA":47, "CUBOS DE TRUCHA":35, "LANGOSTINOS REBOZADOS":174, "PASTA DE HONEY":62, "POLLO TERIYAKI":80, "REDUCCIÓN DE TERIYAKI":172, "SALSA NARANJA Y MIEL":32, "TAMAGO":220, "TIRA DE TRUCHA":70, "VINAGRETA":106 } },
+  // S5 en curso (21–27/07, cierra el domingo). Pedido/Entregado: pestaña JULIO 26 de "Producción CP"
+  // leída el 24/07 — valores parciales, la semana sigue cargándose. Salidas: solo 2 de los 7 días
+  // (21 y 22/07, único rango cubierto por "salidas desde mayo a julio.xml") — NO comparable 1 a 1
+  // contra las salidas de una semana cerrada, subestima el total real de la semana.
+  { label:"S5", dateRange:"21–27/07", isPartial:true,
+    pedido:   { "CORTE DE TRUCHA":48, "CUBOS DE TRUCHA":40, "LANGOSTINOS REBOZADOS":180, "PASTA DE HONEY":72, "POLLO TERIYAKI":75, "REDUCCIÓN DE TERIYAKI":160, "SALSA NARANJA Y MIEL":30, "TAMAGO":280, "TIRA DE TRUCHA":65, "VINAGRETA":0 },
+    entregado:{ "CORTE DE TRUCHA":43, "CUBOS DE TRUCHA":40, "LANGOSTINOS REBOZADOS":61, "PASTA DE HONEY":31, "POLLO TERIYAKI":28, "REDUCCIÓN DE TERIYAKI":96, "SALSA NARANJA Y MIEL":13, "TAMAGO":92, "TIRA DE TRUCHA":17, "VINAGRETA":0 },
+    salidas:  { "CORTE DE TRUCHA":11, "CUBOS DE TRUCHA":12, "LANGOSTINOS REBOZADOS":51, "PASTA DE HONEY":12, "POLLO TERIYAKI":26, "REDUCCIÓN DE TERIYAKI":56, "SALSA NARANJA Y MIEL":10, "TAMAGO":54, "TIRA DE TRUCHA":16, "VINAGRETA":42 } }
 ];
 const CUMPL_PRODUCTOS = Object.keys(CUMPL_WEEKS[0].pedido);
 
@@ -1888,7 +1901,7 @@ function initCumplimiento() {
     });
   }
   document.getElementById("selCumplSemana").addEventListener("change", function(){ buildCumplSemanal(+this.value); });
-  buildCumplSemanal(2);
+  buildCumplSemanal(3);
 
   // % Pedido/Salidas = pedido / salidas. Mide si lo que se pidió a CP estuvo bien calibrado contra
   // la demanda real de franquicias (salidas), sin importar si el CP llegó a entregarlo o no.
@@ -1905,10 +1918,11 @@ function initCumplimiento() {
     return `<span class="pill ${cls}">${pct.toFixed(1)}%</span>`;
   }
 
-  // Promedio semanal de salidas a franquicias por producto (promedio de todas las semanas cargadas
-  // en CUMPL_WEEKS). Se usa para estimar cuántas semanas dura el stock actual al ritmo de salida real.
+  // Promedio semanal de salidas a franquicias por producto (promedio de las semanas CERRADAS en
+  // CUMPL_WEEKS — se excluyen las isPartial:true porque traen menos días cargados y arrastrarían
+  // el promedio para abajo). Se usa para estimar cuántas semanas dura el stock actual al ritmo real.
   function avgSalidas(p) {
-    const vals = CUMPL_WEEKS.map(w => w.salidas[p]);
+    const vals = CUMPL_WEEKS.filter(w => !w.isPartial).map(w => w.salidas[p]);
     return vals.reduce((a,b)=>a+b,0) / vals.length;
   }
   function semanasStockBadge(stock, avg) {
@@ -1944,7 +1958,7 @@ function initCumplimiento() {
     t.innerHTML = h;
   }
   document.getElementById("selCumplSemana").addEventListener("change", function(){ buildTablaCumpl(+this.value); });
-  buildTablaCumpl(2);
+  buildTablaCumpl(3);
 
   // Evolución del cumplimiento agregado (todos los productos) S2→S4
   const evolProd = [], evolSal = [];
