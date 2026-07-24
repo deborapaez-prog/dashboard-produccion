@@ -1478,10 +1478,10 @@ footer { text-align: center; color: #BBBBBB; font-size: 0.76rem; padding: 20px 0
 
     <div class="card">
       <h2>
-        🏪 Salidas por franquicia
+        🏪 Top 10 franquicias que más consumen
         <select id="selCumplFranquicia"></select>
       </h2>
-      <div style="font-size:0.75rem;color:#BBBBBB;margin-bottom:10px;">Total y promedio semanal de unidades despachadas a cada franquicia en las 3 semanas cerradas (S2–S4, 30/06–20/07 — no incluye los 2 días parciales de S5). Fuente: detalle transacción por transacción de TOTVS, tipo de movimiento "PA" (producto terminado), archivo "salidas desde mayo a julio.xml".</div>
+      <div style="font-size:0.75rem;color:#BBBBBB;margin-bottom:10px;">Total y promedio semanal de unidades despachadas en las 3 semanas cerradas (S2–S4, 30/06–20/07 — no incluye los 2 días parciales de S5). El % del total se calcula sobre las 30 franquicias, aunque la tabla solo muestre el top 10. Fuente: detalle transacción por transacción de TOTVS, tipo de movimiento "PA" (producto terminado), archivo "salidas desde mayo a julio.xml".</div>
       <div class="table-wrap"><table id="tablaFranquicias"></table></div>
     </div>
 
@@ -1993,15 +1993,18 @@ function initCumplimiento() {
     const data = CUMPL_FRANQUICIAS[prod] || {};
     const entries = Object.entries(data).sort((a,b)=>b[1]-a[1]);
     const total = entries.reduce((s,[,v])=>s+v,0);
+    const top10 = entries.slice(0, 10);
+    const topTotal = top10.reduce((s,[,v])=>s+v,0);
     const t = document.getElementById("tablaFranquicias");
     let h = "<thead><tr><th>#</th><th>Franquicia</th><th>Total (3 sem.)</th><th>Prom. semanal</th><th>% del total</th></tr></thead><tbody>";
-    entries.forEach(([nombre, cant], i) => {
+    top10.forEach(([nombre, cant], i) => {
       const prom = cant / CUMPL_FRANQUICIA_SEMANAS;
       const pct = total ? 100*cant/total : 0;
       h += `<tr><td style="color:#999">${i+1}</td><td>${nombre}</td><td>${cant} u</td><td>${prom.toFixed(1)} u</td>`;
       h += `<td><div style="display:flex;align-items:center;gap:8px"><div style="background:${CUMPL_COLORES[prod]};height:8px;border-radius:4px;width:${Math.max(2,pct*1.6).toFixed(0)}px;flex-shrink:0"></div><span>${pct.toFixed(1)}%</span></div></td></tr>`;
     });
-    h += `<tr class="row-total"><td></td><td>TOTAL (${entries.length} franquicias)</td><td>${total} u</td><td>${(total/CUMPL_FRANQUICIA_SEMANAS).toFixed(1)} u</td><td>100%</td></tr>`;
+    const pctTop = total ? 100*topTotal/total : 0;
+    h += `<tr class="row-total"><td></td><td>TOTAL top 10 (de ${entries.length} franquicias)</td><td>${topTotal} u</td><td>${(topTotal/CUMPL_FRANQUICIA_SEMANAS).toFixed(1)} u</td><td>${pctTop.toFixed(1)}%</td></tr>`;
     h += "</tbody>";
     t.innerHTML = h;
   }
