@@ -1497,6 +1497,12 @@ footer { text-align: center; color: #BBBBBB; font-size: 0.76rem; padding: 20px 0
         🗂 Detalle mensual por producto
         <select id="selCumplMensualProd"></select>
       </h2>
+      <div style="display:flex;gap:18px;flex-wrap:wrap;margin-bottom:14px;">
+        <label style="display:flex;align-items:center;gap:6px;font-size:0.83rem;color:#221F1F;cursor:pointer;"><input type="checkbox" id="chkMensualPedido" checked> Pedido a CP</label>
+        <label style="display:flex;align-items:center;gap:6px;font-size:0.83rem;color:#221F1F;cursor:pointer;"><input type="checkbox" id="chkMensualEntregado" checked> Entregado (CP)</label>
+        <label style="display:flex;align-items:center;gap:6px;font-size:0.83rem;color:#221F1F;cursor:pointer;"><input type="checkbox" id="chkMensualSalidas" checked> Salidas a franquicias</label>
+      </div>
+      <div style="font-size:0.75rem;color:#BBBBBB;margin-bottom:6px;">Salidas a franquicias solo tiene dato en Jul 26 (semanas S2–S4, export TOTVS desde el 30/06) — meses anteriores no tienen esa fuente todavía.</div>
       <div class="chart-wrap" style="height:280px"><canvas id="chartCumplMensualProd"></canvas></div>
     </div>
 
@@ -1983,24 +1989,53 @@ function initCumplimiento() {
   // Detalle mensual por producto
   const selMensualProd = document.getElementById("selCumplMensualProd");
   selMensualProd.innerHTML = CUMPL_PRODUCTOS.map((p,i)=>`<option value="${p}" ${i===0?"selected":""}>${p}</option>`).join("");
+  // Salidas mensuales a franquicias por producto — solo hay dato real de semanas cargadas en
+  // CUMPL_WEEKS (por ahora S2–S4, todas dentro de Jul 26). Se asigna al mes "JUL 26" y el resto
+  // de los meses queda en null (Chart.js no dibuja barra) en vez de inventar un 0.
+  function monthlySalidas(prod) {
+    const arr = new Array(CUMPL_MESES.length).fill(null);
+    const julIdx = CUMPL_MESES.indexOf("JUL 26");
+    if (julIdx >= 0) arr[julIdx] = CUMPL_WEEKS.reduce((sum,w) => sum + w.salidas[prod], 0);
+    return arr;
+  }
+
+  const chkMensualPedido = document.getElementById("chkMensualPedido");
+  const chkMensualEntregado = document.getElementById("chkMensualEntregado");
+  const chkMensualSalidas = document.getElementById("chkMensualSalidas");
+
   let chartCumplMensualProd;
   function buildMensualProd(prod) {
     if (chartCumplMensualProd) chartCumplMensualProd.destroy();
     const d = CUMPL_MENSUAL[prod];
+    const salidas = monthlySalidas(prod);
     chartCumplMensualProd = new Chart(document.getElementById("chartCumplMensualProd").getContext("2d"), {
       type:"bar",
       data:{
         labels: CUMPL_MESES.map((m,i)=> m + (CUMPL_MES_PARCIAL[i] ? " *" : "")),
         datasets:[
-          { label:"Pedido a CP", data:d.pedido, backgroundColor:"#BBBBBB", borderRadius:4 },
-          { label:"Entregado (CP)", data:d.entregado, backgroundColor:CUMPL_COLORES[prod], borderRadius:4 }
+          { label:"Pedido a CP", data:d.pedido, backgroundColor:"#BBBBBB", borderRadius:4, hidden:!chkMensualPedido.checked },
+          { label:"Entregado (CP)", data:d.entregado, backgroundColor:CUMPL_COLORES[prod], borderRadius:4, hidden:!chkMensualEntregado.checked },
+          { label:"Salidas a franquicias", data:salidas, backgroundColor:"#33A392", borderRadius:4, hidden:!chkMensualSalidas.checked }
         ]
       },
       options:{ responsive:true, maintainAspectRatio:false, plugins:{ legend:{position:"bottom",labels:{usePointStyle:true,padding:14,font:{size:11}}},
-        tooltip:{ callbacks:{ afterBody: ctx => { const i=ctx[0].dataIndex; const pct = d.pedido[i] ? 100*d.entregado[i]/d.pedido[i] : 0; return "% cumplimiento: "+pct.toFixed(1)+"%"+(CUMPL_MES_PARCIAL[i]?" (mes en curso)":""); } } } },
+        tooltip:{ callbacks:{ afterBody: ctx => {
+          const i=ctx[0].dataIndex;
+          const pct = d.pedido[i] ? 100*d.entregado[i]/d.pedido[i] : 0;
+          const lines = ["% cumplimiento: "+pct.toFixed(1)+"%"+(CUMPL_MES_PARCIAL[i]?" (mes en curso)":"")];
+          if (salidas[i] != null) lines.push("Salidas: "+salidas[i]+" u (según semanas cargadas, no todo el mes)");
+          return lines;
+        } } } },
         scales:{ x:{grid:{display:false}}, y:{beginAtZero:true,grid:{color:"#edf2f7"}} } }
     });
   }
+  [ [chkMensualPedido,0], [chkMensualEntregado,1], [chkMensualSalidas,2] ].forEach(([chk,idx]) => {
+    chk.addEventListener("change", function(){
+      if (!chartCumplMensualProd) return;
+      chartCumplMensualProd.data.datasets[idx].hidden = !this.checked;
+      chartCumplMensualProd.update();
+    });
+  });
   selMensualProd.addEventListener("change", function(){ buildMensualProd(this.value); });
   buildMensualProd(CUMPL_PRODUCTOS[0]);
 }
