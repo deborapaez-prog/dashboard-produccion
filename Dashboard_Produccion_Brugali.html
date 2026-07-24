@@ -1431,7 +1431,8 @@ footer { text-align: center; color: #BBBBBB; font-size: 0.76rem; padding: 20px 0
       Fuentes: planilla "Producción CP" (Drive, pestaña JULIO 26) y salidas TOTVS (export 22/07/2026), filtrado solo a los 10 productos del CP.
       El cruce solo cubre S2–S4 (30/06–20/07) porque el export de TOTVS empieza el 30/06. Las 3 semanas ya cerraron.
       <br><strong>% Pedido / Salidas</strong> compara lo que se pidió a CP contra lo que realmente salió a franquicias (la demanda real), sin importar si el CP llegó a entregarlo. 100% = pedido calibrado. Por debajo de 70% se pidió de menos que la demanda real (riesgo de faltante, se tapa con stock de seguridad). Por encima de 130% se pidió de más que la demanda real (posible sobre-pedido).
-      <br><strong>Stock actual</strong>: foto del saldo en TOTVS al 24/07/2026 (Centro de Distribución + Centro de Producción), no varía según la semana seleccionada — es el stock disponible hoy, no un dato histórico.
+      <br><strong>Stock actual</strong>: foto del saldo en TOTVS al 24/07/2026 (Centro de Distribución + Centro de Producción + depósito externo Mirizi), no varía según la semana seleccionada — es el stock disponible hoy, no un dato histórico.
+      <br><strong>Prom. salidas/sem</strong> y <strong>Semanas de stock</strong>: promedio de salidas a franquicias por semana (S2–S4) y cuántas semanas dura el stock actual a ese ritmo. Menos de 1 semana = riesgo de faltante próximo; más de 8 semanas = posible sobre-stock.
     </div>
 
     <div class="kpi-grid" style="grid-template-columns:repeat(auto-fit,minmax(160px,1fr))">
@@ -1834,13 +1835,14 @@ const CUMPL_WEEKS = [
 ];
 const CUMPL_PRODUCTOS = Object.keys(CUMPL_WEEKS[0].pedido);
 
-// Stock actual (TOTVS, export "stock al 240726.xml", foto al 24/07/2026). Suma Saldo Actual en
-// depósitos CD (Centro de Distribución) + CP (Centro de Producción) para cada código del CP. No
-// incluye tránsito (dio 0 en los 10 productos en esta foto, pero si aparece en una carga futura no
-// está sumado acá).
+// Stock actual (TOTVS, foto al 24/07/2026). Suma Saldo Actual en depósitos CD (Centro de
+// Distribución) + CP (Centro de Producción) de "stock al 240726.xml", más el depósito MI (Mirizi,
+// sucursal 010102) de "stock externo 240726.xml" — stock físico de producto terminado del CP
+// guardado en esa sucursal externa, no incluido en el export CD/CP. No incluye tránsito (dio 0 en
+// los 10 productos en ambas fotos, pero si aparece en una carga futura no está sumado acá).
 const CUMPL_STOCK = {
-  "CORTE DE TRUCHA":92, "CUBOS DE TRUCHA":71, "LANGOSTINOS REBOZADOS":266, "PASTA DE HONEY":16,
-  "POLLO TERIYAKI":109, "REDUCCIÓN DE TERIYAKI":202, "SALSA NARANJA Y MIEL":98, "TAMAGO":76,
+  "CORTE DE TRUCHA":225, "CUBOS DE TRUCHA":152, "LANGOSTINOS REBOZADOS":339, "PASTA DE HONEY":16,
+  "POLLO TERIYAKI":282, "REDUCCIÓN DE TERIYAKI":202, "SALSA NARANJA Y MIEL":98, "TAMAGO":290,
   "TIRA DE TRUCHA":41, "VINAGRETA":480
 };
 
@@ -1897,22 +1899,41 @@ function initCumplimiento() {
     return `<span class="pill ${cls}">${pct.toFixed(1)}%</span>`;
   }
 
+  // Promedio semanal de salidas a franquicias por producto (promedio de todas las semanas cargadas
+  // en CUMPL_WEEKS). Se usa para estimar cuántas semanas dura el stock actual al ritmo de salida real.
+  function avgSalidas(p) {
+    const vals = CUMPL_WEEKS.map(w => w.salidas[p]);
+    return vals.reduce((a,b)=>a+b,0) / vals.length;
+  }
+  function semanasStockBadge(stock, avg) {
+    if (avg === 0) {
+      return stock > 0
+        ? `<span class="pill pill-nd">sin salidas</span>`
+        : `<span class="pill pill-nd">—</span>`;
+    }
+    const semanas = stock / avg;
+    const cls = semanas < 1 ? "pill-warn" : semanas > 8 ? "pill-warn" : "pill-ok";
+    return `<span class="pill ${cls}">${semanas.toFixed(1)} sem.</span>`;
+  }
+
   function buildTablaCumpl(wi) {
     const w = CUMPL_WEEKS[wi];
     const t = document.getElementById("tablaCumpl");
-    let h = "<thead><tr><th>Producto</th><th>Pedido a CP</th><th>Entregado (CP)</th><th>% Cumpl. producción</th><th>Salidas a franquicias</th><th>% Pedido / Salidas</th><th>Stock actual</th></tr></thead><tbody>";
-    let totP=0, totE=0, totS=0, totStock=0;
+    let h = "<thead><tr><th>Producto</th><th>Pedido a CP</th><th>Entregado (CP)</th><th>% Cumpl. producción</th><th>Salidas a franquicias</th><th>% Pedido / Salidas</th><th>Stock actual</th><th>Prom. salidas/sem</th><th>Semanas de stock</th></tr></thead><tbody>";
+    let totP=0, totE=0, totS=0, totStock=0, totAvg=0;
     CUMPL_PRODUCTOS.forEach(p=>{
       const pedido = w.pedido[p], entregado = w.entregado[p], salidas = w.salidas[p], stock = CUMPL_STOCK[p];
-      totP += pedido; totE += entregado; totS += salidas; totStock += stock;
+      const avg = avgSalidas(p);
+      totP += pedido; totE += entregado; totS += salidas; totStock += stock; totAvg += avg;
       const pctE = pedido ? (100*entregado/pedido) : 0;
       const clsE = pctE < 50 ? "pill-warn" : pctE >= 90 ? "pill-ok" : "pill-nd";
       h += `<tr><td><span class="dot" style="background:${CUMPL_COLORES[p]}"></span>${p}</td>`;
       h += `<td>${pedido}</td><td>${entregado}</td><td><span class="pill ${clsE}">${pctE.toFixed(1)}%</span></td>`;
-      h += `<td>${salidas}</td><td>${pctPedidoSalidasBadge(pedido, salidas)}</td><td>${stock} u</td></tr>`;
+      h += `<td>${salidas}</td><td>${pctPedidoSalidasBadge(pedido, salidas)}</td><td>${stock} u</td>`;
+      h += `<td>${avg.toFixed(1)} u</td><td>${semanasStockBadge(stock, avg)}</td></tr>`;
     });
     const totPctE = totP ? (100*totE/totP) : 0;
-    h += `<tr class="row-total"><td>TOTAL</td><td>${totP}</td><td>${totE}</td><td>${totPctE.toFixed(1)}%</td><td>${totS}</td><td>${pctPedidoSalidasBadge(totP, totS)}</td><td>${totStock} u</td></tr>`;
+    h += `<tr class="row-total"><td>TOTAL</td><td>${totP}</td><td>${totE}</td><td>${totPctE.toFixed(1)}%</td><td>${totS}</td><td>${pctPedidoSalidasBadge(totP, totS)}</td><td>${totStock} u</td><td>${totAvg.toFixed(1)} u</td><td>${semanasStockBadge(totStock, totAvg)}</td></tr>`;
     h += "</tbody>";
     t.innerHTML = h;
   }
