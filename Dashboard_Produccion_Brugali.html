@@ -1883,10 +1883,10 @@ const SEMANAS_POR_MES = 4; // misma convención que "objetivo mensual" de la pes
 
 // Stock actual (TOTVS, foto al 27/07/2026). Suma Saldo Actual en depósitos CD (Centro de
 // Distribución) + CP (Centro de Producción) de "stock al 270726.xml", más el depósito MI (Mirizi,
-// sucursal 010102) de "stock externo 240726.xml" (sin versión más nueva esta corrida, se mantiene
-// el dato del 24/07) — stock físico de producto terminado del CP guardado en esa sucursal externa,
-// no incluido en el export CD/CP. No incluye tránsito (dio 0 en los 10 productos en ambas fotos,
-// pero si aparece en una carga futura no está sumado acá).
+// sucursal 010102) de "stock externo 270726.xml" — stock físico de producto terminado del CP
+// guardado en esa sucursal externa, no incluido en el export CD/CP. El MI no varió respecto a la
+// foto del 24/07. No incluye tránsito (dio 0 en los 10 productos en ambas fotos, pero si aparece en
+// una carga futura no está sumado acá).
 const CUMPL_STOCK = {
   "CORTE DE TRUCHA":232, "CUBOS DE TRUCHA":166, "LANGOSTINOS REBOZADOS":371, "PASTA DE HONEY":5,
   "POLLO TERIYAKI":266, "REDUCCIÓN DE TERIYAKI":263, "SALSA NARANJA Y MIEL":87, "TAMAGO":407,
