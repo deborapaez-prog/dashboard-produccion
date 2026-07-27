@@ -1481,7 +1481,7 @@ footer { text-align: center; color: #BBBBBB; font-size: 0.76rem; padding: 20px 0
         🏪 Top 10 franquicias que más consumen
         <select id="selCumplFranquicia"></select>
       </h2>
-      <div style="font-size:0.75rem;color:#BBBBBB;margin-bottom:10px;">Total y promedio semanal de unidades despachadas en las 3 semanas cerradas (S2–S4, 30/06–20/07 — no incluye los 2 días parciales de S5). El % del total se calcula sobre las 30 franquicias, aunque la tabla solo muestre el top 10. Fuente: detalle transacción por transacción de TOTVS, tipo de movimiento "PA" (producto terminado), archivo "salidas desde mayo a julio.xml".</div>
+      <div style="font-size:0.75rem;color:#BBBBBB;margin-bottom:10px;">Total real despachado en las 3 semanas cerradas (S2–S4, 30/06–20/07 — no incluye los 2 días parciales de S5) y su equivalente mensual proyectado (promedio semanal × 4, misma convención que el objetivo mensual de la pestaña Trucha). El % del total se calcula sobre las 30 franquicias, aunque la tabla solo muestre el top 10. Fuente: detalle transacción por transacción de TOTVS, tipo de movimiento "PA" (producto terminado), archivo "salidas desde mayo a julio.xml".</div>
       <div class="table-wrap"><table id="tablaFranquicias"></table></div>
     </div>
 
@@ -1879,6 +1879,7 @@ const CUMPL_FRANQUICIAS = {
   "VINAGRETA": { "NUEVA CORDOBA":23, "SAN JUAN":16, "CERRO":15, "ALTO ALBERDI":15, "NEUQUEN":13, "LA RIOJA":11, "JARDIN":11, "ROSARIO":11, "SAN RAFAEL":11, "ALTA CORDOBA":10, "CARLOS PAZ":10, "RECTA":10, "SANTA FE":10, "COLON":9, "VILLA ALLENDE":9, "VILLA MARIA":9, "GENERAL PAZ":9, "MENDOZA":8, "RIO IV":8, "MANANTIALES":8, "RESIDENCIAL AMERICA":8, "TUCUMAN":8, "GODOY CRUZ":7, "SANTA LUCIA":7, "MONSEÑOR":7, "RAFAELA":6, "SABATTINI":5, "SALTA":5, "CALERA":4 },
 };
 const CUMPL_FRANQUICIA_SEMANAS = 3; // semanas cerradas cubiertas (S2, S3, S4)
+const SEMANAS_POR_MES = 4; // misma convención que "objetivo mensual" de la pestaña Trucha (4 semanas/mes)
 
 // Stock actual (TOTVS, foto al 24/07/2026). Suma Saldo Actual en depósitos CD (Centro de
 // Distribución) + CP (Centro de Producción) de "stock al 240726.xml", más el depósito MI (Mirizi,
@@ -1996,15 +1997,15 @@ function initCumplimiento() {
     const top10 = entries.slice(0, 10);
     const topTotal = top10.reduce((s,[,v])=>s+v,0);
     const t = document.getElementById("tablaFranquicias");
-    let h = "<thead><tr><th>#</th><th>Franquicia</th><th>Total (3 sem.)</th><th>Prom. semanal</th><th>% del total</th></tr></thead><tbody>";
+    let h = "<thead><tr><th>#</th><th>Franquicia</th><th>Total (3 sem.)</th><th>Prom. mensual (proyectado)</th><th>% del total</th></tr></thead><tbody>";
     top10.forEach(([nombre, cant], i) => {
-      const prom = cant / CUMPL_FRANQUICIA_SEMANAS;
+      const prom = (cant / CUMPL_FRANQUICIA_SEMANAS) * SEMANAS_POR_MES;
       const pct = total ? 100*cant/total : 0;
       h += `<tr><td style="color:#999">${i+1}</td><td>${nombre}</td><td>${cant} u</td><td>${prom.toFixed(1)} u</td>`;
       h += `<td><div style="display:flex;align-items:center;gap:8px"><div style="background:${CUMPL_COLORES[prod]};height:8px;border-radius:4px;width:${Math.max(2,pct*1.6).toFixed(0)}px;flex-shrink:0"></div><span>${pct.toFixed(1)}%</span></div></td></tr>`;
     });
     const pctTop = total ? 100*topTotal/total : 0;
-    h += `<tr class="row-total"><td></td><td>TOTAL top 10 (de ${entries.length} franquicias)</td><td>${topTotal} u</td><td>${(topTotal/CUMPL_FRANQUICIA_SEMANAS).toFixed(1)} u</td><td>${pctTop.toFixed(1)}%</td></tr>`;
+    h += `<tr class="row-total"><td></td><td>TOTAL top 10 (de ${entries.length} franquicias)</td><td>${topTotal} u</td><td>${((topTotal/CUMPL_FRANQUICIA_SEMANAS)*SEMANAS_POR_MES).toFixed(1)} u</td><td>${pctTop.toFixed(1)}%</td></tr>`;
     h += "</tbody>";
     t.innerHTML = h;
   }
