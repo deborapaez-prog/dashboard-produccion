@@ -1425,18 +1425,18 @@ footer { text-align: center; color: #BBBBBB; font-size: 0.76rem; padding: 20px 0
 
     <div class="alerta">
       ⚠️ <strong>Compara lo pedido a Centro de Producción vs. lo entregado por CP vs. lo que realmente salió a franquicias.</strong>
-      Fuentes: planilla "Producción CP" (Drive, pestaña JULIO 26, leída 24/07) y salidas TOTVS (detalle por transacción, export "salidas al 280726.xml", cubre 29/05 al 28/07), filtrado solo a los 10 productos del CP.
-      El cruce cubre S2–S4 (30/06–20/07, cerradas) y S5 (21–27/07, <strong>cerrada</strong>). En S5 el Pedido/Entregado de producción sigue actualizado al 24/07 (todavía no llegó una versión más nueva de esa planilla), pero las Salidas ya están completas: cubre los 7 días (21,22,23,24 y 27/07 con movimientos — 25 y 26/07 sin movimientos, patrón habitual de fin de semana), sin novedades el 28/07 todavía.
+      Fuentes: planilla "Producción CP" (Drive, pestaña JULIO 26, leída completa el 28/07) y salidas TOTVS (detalle por transacción, export "salidas al 280726.xml", cubre 29/05 al 28/07), filtrado solo a los 10 productos del CP.
+      El cruce cubre S2–S5 (30/06–27/07), <strong>las 4 semanas ya cerradas</strong>. La lectura del 28/07 trajo la versión completa de "Producción CP" — la del 24/07 se había quedado corta por una limitación del MCP de Drive en archivos grandes (solo devolvía la primera pestaña), así que el Entregado de S5 subió en los 10 productos y el Pedido de Pollo Teriyaki para esa semana se corrigió de 75 a 40 u.
       <br><strong>% Pedido / Salidas</strong> compara lo que se pidió a CP contra lo que realmente salió a franquicias (la demanda real), sin importar si el CP llegó a entregarlo. 100% = pedido calibrado. Por debajo de 70% se pidió de menos que la demanda real (riesgo de faltante, se tapa con stock de seguridad). Por encima de 130% se pidió de más que la demanda real (posible sobre-pedido).
       <br><strong>Stock actual</strong>: foto del saldo en TOTVS al 28/07/2026 (Centro de Distribución + Centro de Producción + depósito externo Mirizi), no varía según la semana seleccionada — es el stock disponible hoy, no un dato histórico.
-      <br><strong>Prom. salidas/sem</strong> y <strong>Semanas de stock</strong>: promedio de salidas a franquicias por semana (S2–S4) y cuántas semanas dura el stock actual a ese ritmo. Menos de 1 semana = riesgo de faltante próximo; más de 8 semanas = posible sobre-stock.
+      <br><strong>Prom. salidas/sem</strong> y <strong>Semanas de stock</strong>: promedio de salidas a franquicias por semana (S2–S5, las 4 semanas cerradas) y cuántas semanas dura el stock actual a ese ritmo. Menos de 1 semana = riesgo de faltante próximo; más de 8 semanas = posible sobre-stock.
     </div>
 
     <div class="kpi-grid" style="grid-template-columns:repeat(auto-fit,minmax(160px,1fr))">
       <div class="kpi-card">
         <div class="lbl">Cumplimiento producción (mensual)</div>
-        <div class="val" style="color:#1D4856">93,6 <span style="font-size:.85rem;color:#BBBBBB">%</span></div>
-        <div class="sub">3.348 / 3.578 u pedidas</div>
+        <div class="val" style="color:#1D4856">97,4 <span style="font-size:.85rem;color:#BBBBBB">%</span></div>
+        <div class="sub">4.376 / 4.493 u pedidas</div>
       </div>
       <div class="kpi-card">
         <div class="lbl">Pedido vs. Salidas</div>
@@ -1446,12 +1446,12 @@ footer { text-align: center; color: #BBBBBB; font-size: 0.76rem; padding: 20px 0
       <div class="kpi-card">
         <div class="lbl">Menor cumplimiento (mensual)</div>
         <div class="val" style="color:#EF402F;font-size:1.1rem">POLLO TERIYAKI</div>
-        <div class="sub">78,8% — 253 / 321 u</div>
+        <div class="sub">79,8% — 288 / 361 u</div>
       </div>
       <div class="kpi-card">
         <div class="lbl">Mejor cumplimiento (mensual)</div>
         <div class="val" style="color:#33A392;font-size:1.1rem">SALSA NARANJA</div>
-        <div class="sub">112,7% — 231 / 205 u</div>
+        <div class="sub">111,1% — 261 / 235 u</div>
       </div>
     </div>
 
@@ -1490,8 +1490,8 @@ footer { text-align: center; color: #BBBBBB; font-size: 0.76rem; padding: 20px 0
     <div class="section-title" style="margin-top:32px">📅 Vista mensual — Pedido vs Entregado del CP (Ene–Jul 2026)</div>
 
     <div class="alerta">
-      ⚠️ <strong>Julio está en curso</strong> (datos hasta ~20/07) — su % de cumplimiento no es comparable 1 a 1
-      contra un mes cerrado. Fuente: "Producción CP - 2025.xlsx", pestañas mensuales ENE 26 a JULIO 26.
+      ⚠️ <strong>Julio está en curso</strong> (datos hasta ~27/07) — su % de cumplimiento no es comparable 1 a 1
+      contra un mes cerrado. Fuente: "Producción CP" (Drive), pestañas mensuales ENE 26 a JULIO 26.
     </div>
 
     <div class="card">
@@ -1522,7 +1522,7 @@ footer { text-align: center; color: #BBBBBB; font-size: 0.76rem; padding: 20px 0
         </div>
         <div style="display:flex;gap:12px;align-items:flex-start;padding:10px 12px;background:#fffbeb;border-radius:8px;">
           <span style="font-size:1rem;flex-shrink:0">📉</span>
-          <div><div style="font-size:0.85rem;font-weight:700;color:#221F1F;">S3 (07–13/07) cerró con el cumplimiento más bajo de producción: 88,0%</div><div style="font-size:0.78rem;color:#999999;margin-top:2px;">Se pidieron 872 u y CP entregó 767 — el más bajo de las 3 semanas cerradas (S2 94,7%, S4 92,7%).</div></div>
+          <div><div style="font-size:0.85rem;font-weight:700;color:#221F1F;">S3 (07–13/07) tiene el cumplimiento más bajo de producción: 88,0%</div><div style="font-size:0.78rem;color:#999999;margin-top:2px;">Se pidieron 872 u y CP entregó 767 — el más bajo de las 4 semanas cerradas (S2 94,7%, S4 92,7%, S5 112,4%).</div></div>
         </div>
         <div style="display:flex;gap:12px;align-items:flex-start;padding:10px 12px;background:#fffbeb;border-radius:8px;">
           <span style="font-size:1rem;flex-shrink:0">🥗</span>
@@ -1530,7 +1530,7 @@ footer { text-align: center; color: #BBBBBB; font-size: 0.76rem; padding: 20px 0
         </div>
         <div style="display:flex;gap:12px;align-items:flex-start;padding:10px 12px;background:#fffbeb;border-radius:8px;">
           <span style="font-size:1rem;flex-shrink:0">⏳</span>
-          <div><div style="font-size:0.85rem;font-weight:700;color:#221F1F;">S5 (cerrada 27/07) arrancó floja en varios productos</div><div style="font-size:0.78rem;color:#999999;margin-top:2px;">Al 24/07 (última foto de producción disponible): Tira de Trucha 26,2%, Tamago 32,9%, Langostinos 33,9% y Pollo Teriyaki 37,3% de cumplimiento. Todavía no llegó una versión más nueva de "Producción CP" para confirmar si estos 4 productos mejoraron o cerraron como los más bajos desde que se mide.</div></div>
+          <div><div style="font-size:0.85rem;font-weight:700;color:#221F1F;">S5 (21–27/07) cerró fuerte: 112,4% pedido vs. entregado</div><div style="font-size:0.78rem;color:#999999;margin-top:2px;">1.028 u entregadas contra 915 pedidas. Todos los productos por encima del pedido salvo Pollo Teriyaki (87,5%, el único bajo 100%) y Tira de Trucha (93,8%) — igual el pedido de Pollo Teriyaki para esa semana se corrigió de 75 a 40 u, así que el 87,5% ya es contra el número revisado.</div></div>
         </div>
       </div>
     </div>
@@ -1856,16 +1856,16 @@ const CUMPL_WEEKS = [
     pedido:   { "CORTE DE TRUCHA":48, "CUBOS DE TRUCHA":40, "LANGOSTINOS REBOZADOS":230, "PASTA DE HONEY":72, "POLLO TERIYAKI":75, "REDUCCIÓN DE TERIYAKI":200, "SALSA NARANJA Y MIEL":50, "TAMAGO":280, "TIRA DE TRUCHA":65, "VINAGRETA":102 },
     entregado:{ "CORTE DE TRUCHA":48, "CUBOS DE TRUCHA":41, "LANGOSTINOS REBOZADOS":256, "PASTA DE HONEY":43, "POLLO TERIYAKI":62, "REDUCCIÓN DE TERIYAKI":156, "SALSA NARANJA Y MIEL":54, "TAMAGO":280, "TIRA DE TRUCHA":52, "VINAGRETA":85 },
     salidas:  { "CORTE DE TRUCHA":47, "CUBOS DE TRUCHA":35, "LANGOSTINOS REBOZADOS":174, "PASTA DE HONEY":62, "POLLO TERIYAKI":80, "REDUCCIÓN DE TERIYAKI":172, "SALSA NARANJA Y MIEL":32, "TAMAGO":220, "TIRA DE TRUCHA":70, "VINAGRETA":106 } },
-  // S5 cerró el lunes 27/07 (21–27/07). Pedido/Entregado: pestaña JULIO 26 de "Producción CP"
-  // leída el 24/07 — todavía valores parciales, no se recibió una versión más nueva de esa planilla.
-  // Salidas: actualizado con "salidas al 280726.xml" (export 29/05–28/07, sin movimientos nuevos el
-  // 28/07) — ya cubre completos los 7 días de S5 (21,22,23,24 y 27/07 con movimientos; 25 y 26/07 sin
-  // movimientos, patrón habitual de fin de semana). Sube levemente Langostinos, Pollo Teriyaki,
-  // Tamago, Tira de Trucha y Vinagreta respecto a la carga anterior (correcciones/altas tardías en
-  // TOTVS para días ya cerrados de la semana).
-  { label:"S5", dateRange:"21–27/07", isPartial:true,
-    pedido:   { "CORTE DE TRUCHA":48, "CUBOS DE TRUCHA":40, "LANGOSTINOS REBOZADOS":180, "PASTA DE HONEY":72, "POLLO TERIYAKI":75, "REDUCCIÓN DE TERIYAKI":160, "SALSA NARANJA Y MIEL":30, "TAMAGO":280, "TIRA DE TRUCHA":65, "VINAGRETA":0 },
-    entregado:{ "CORTE DE TRUCHA":43, "CUBOS DE TRUCHA":40, "LANGOSTINOS REBOZADOS":61, "PASTA DE HONEY":31, "POLLO TERIYAKI":28, "REDUCCIÓN DE TERIYAKI":96, "SALSA NARANJA Y MIEL":13, "TAMAGO":92, "TIRA DE TRUCHA":17, "VINAGRETA":0 },
+  // S5 cerró el lunes 27/07 (21–27/07) y ya llegó la versión completa. Pedido/Entregado: pestaña
+  // JULIO 26 de "Producción CP" (Drive, leída directa y completa el 28/07 — la lectura anterior del
+  // 24/07 había quedado truncada a la primera pestaña por una limitación del MCP de Drive en
+  // archivos grandes). Sube Entregado en los 10 productos respecto a esa carga parcial; además el
+  // Pedido de Pollo Teriyaki se corrigió de 75 a 40 u (revisión del plan en la planilla, no un error
+  // de carga). Salidas: sin cambios respecto a la actualización anterior ("salidas al 280726.xml",
+  // ya cubría completos los 7 días de S5).
+  { label:"S5", dateRange:"21–27/07", isPartial:false,
+    pedido:   { "CORTE DE TRUCHA":48, "CUBOS DE TRUCHA":40, "LANGOSTINOS REBOZADOS":180, "PASTA DE HONEY":72, "POLLO TERIYAKI":40, "REDUCCIÓN DE TERIYAKI":160, "SALSA NARANJA Y MIEL":30, "TAMAGO":280, "TIRA DE TRUCHA":65, "VINAGRETA":0 },
+    entregado:{ "CORTE DE TRUCHA":58, "CUBOS DE TRUCHA":59, "LANGOSTINOS REBOZADOS":214, "PASTA DE HONEY":75, "POLLO TERIYAKI":35, "REDUCCIÓN DE TERIYAKI":200, "SALSA NARANJA Y MIEL":30, "TAMAGO":296, "TIRA DE TRUCHA":61, "VINAGRETA":0 },
     salidas:  { "CORTE DE TRUCHA":36, "CUBOS DE TRUCHA":28, "LANGOSTINOS REBOZADOS":139, "PASTA DE HONEY":37, "POLLO TERIYAKI":68, "REDUCCIÓN DE TERIYAKI":152, "SALSA NARANJA Y MIEL":25, "TAMAGO":157, "TIRA DE TRUCHA":53, "VINAGRETA":108 } }
 ];
 const CUMPL_PRODUCTOS = Object.keys(CUMPL_WEEKS[0].pedido);
@@ -1902,20 +1902,21 @@ const CUMPL_STOCK = {
   "TIRA DE TRUCHA":44, "VINAGRETA":427
 };
 
-// Pedido/Entregado MENSUAL por producto, ene–jul 2026 (fuente: "Producción CP - 2025.xlsx",
-// una pestaña por mes, columna MENSUAL). Julio está en curso (datos hasta ~16/07), no cerrado.
+// Pedido/Entregado MENSUAL por producto, ene–jul 2026 (fuente: "Producción CP" en Drive, pestaña
+// JULIO 26, columna MENSUAL, leída completa el 28/07). Julio está en curso (datos hasta ~27/07), no
+// cerrado.
 const CUMPL_MESES = ["ENE 26","FEB 26","MAR 26","ABR 26","MAY 26","JUN 26","JUL 26"];
 const CUMPL_MES_PARCIAL = [false,false,false,false,false,false,true];
 const CUMPL_MENSUAL = {
-  "CORTE DE TRUCHA":       { pedido:[105,100,228,305,275,237,228], entregado:[97,97,210,258,223,214,198] },
-  "CUBOS DE TRUCHA":       { pedido:[193,180,218,267,217,184,190], entregado:[161,115,139,216,172,133,153] },
-  "LANGOSTINOS REBOZADOS": { pedido:[1305,1010,907,562,232,428,330], entregado:[1283,1004,847,548,232,481,334] },
-  "PASTA DE HONEY":        { pedido:[90,50,200,215,133,96,212], entregado:[127,54,159,208,139,98,190] },
-  "POLLO TERIYAKI":        { pedido:[327,300,370,441,321,321,321], entregado:[338,323,365,448,339,304,253] },
-  "REDUCCIÓN DE TERIYAKI": { pedido:[750,700,590,750,730,655,600], entregado:[754,689,591,750,730,644,541] },
-  "SALSA NARANJA Y MIEL":  { pedido:[235,157,30,30,90,100,205], entregado:[230,184,30,30,90,128,231] },
-  "TAMAGO":                { pedido:[915,1080,750,950,300,204,759], entregado:[929,1132,774,969,300,178,727] },
-  "TIRA DE TRUCHA":        { pedido:[205,265,307,350,277,293,275], entregado:[99,227,248,308,251,246,237] },
+  "CORTE DE TRUCHA":       { pedido:[105,100,228,305,275,237,276], entregado:[97,97,210,258,223,214,256] },
+  "CUBOS DE TRUCHA":       { pedido:[193,180,218,267,217,184,230], entregado:[161,115,139,216,172,133,212] },
+  "LANGOSTINOS REBOZADOS": { pedido:[1305,1010,907,562,232,428,510], entregado:[1283,1004,847,548,232,481,548] },
+  "PASTA DE HONEY":        { pedido:[90,50,200,215,133,96,284], entregado:[127,54,159,208,139,98,265] },
+  "POLLO TERIYAKI":        { pedido:[327,300,370,441,321,321,361], entregado:[338,323,365,448,339,304,288] },
+  "REDUCCIÓN DE TERIYAKI": { pedido:[750,700,590,750,730,655,760], entregado:[754,689,591,750,730,644,741] },
+  "SALSA NARANJA Y MIEL":  { pedido:[235,157,30,30,90,100,235], entregado:[230,184,30,30,90,128,261] },
+  "TAMAGO":                { pedido:[915,1080,750,950,300,204,1039], entregado:[929,1132,774,969,300,178,1023] },
+  "TIRA DE TRUCHA":        { pedido:[205,265,307,350,277,293,340], entregado:[99,227,248,308,251,246,298] },
   "VINAGRETA":             { pedido:[522,544,534,440,411,574,458], entregado:[533,534,490,485,411,541,484] }
 };
 
