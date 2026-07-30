@@ -1429,7 +1429,7 @@ footer { text-align: center; color: #BBBBBB; font-size: 0.76rem; padding: 20px 0
       Fuentes: planilla "Producción CP" (Drive, pestaña JULIO 26, leída completa el 28/07) y salidas TOTVS (detalle por transacción, export "salidas al 280726.xml", cubre 29/05 al 28/07), filtrado solo a los 10 productos del CP.
       El cruce cubre S2–S5 (30/06–27/07), <strong>las 4 semanas ya cerradas</strong>. La lectura del 28/07 trajo la versión completa de "Producción CP" — la del 24/07 se había quedado corta por una limitación del MCP de Drive en archivos grandes (solo devolvía la primera pestaña), así que el Entregado de S5 subió en los 10 productos y el Pedido de Pollo Teriyaki para esa semana se corrigió de 75 a 40 u.
       <br><strong>% Pedido / Salidas</strong> compara lo que se pidió a CP contra lo que realmente salió a franquicias (la demanda real), sin importar si el CP llegó a entregarlo. 100% = pedido calibrado. Por debajo de 70% se pidió de menos que la demanda real (riesgo de faltante, se tapa con stock de seguridad). Por encima de 130% se pidió de más que la demanda real (posible sobre-pedido).
-      <br><strong>Stock actual</strong>: foto del saldo en TOTVS al 29/07/2026 (Centro de Distribución + Centro de Producción + depósito externo Mirizi), no varía según la semana seleccionada — es el stock disponible hoy, no un dato histórico.
+      <br><strong>Stock actual</strong>: foto del saldo en TOTVS al 30/07/2026 (Centro de Distribución + Centro de Producción + depósito externo Mirizi), no varía según la semana seleccionada — es el stock disponible hoy, no un dato histórico.
       <br><strong>Prom. salidas/sem</strong> y <strong>Semanas de stock</strong>: promedio de salidas a franquicias por semana (S2–S5, las 4 semanas cerradas) y cuántas semanas dura el stock actual a ese ritmo. Menos de 1 semana = riesgo de faltante próximo; más de 8 semanas = posible sobre-stock.
     </div>
 
@@ -1872,7 +1872,10 @@ const CUMPL_WEEKS = [
 const CUMPL_PRODUCTOS = Object.keys(CUMPL_WEEKS[0].pedido);
 
 // Salidas a franquicias por sucursal, detalle transacción por transacción (tipo "PA" = producto
-// terminado) de "salidas al 280726.xml" (export TOTVS 29/05–28/07, sin movimientos nuevos el 28/07),
+// terminado) de "salidas al 280726.xml" (export TOTVS 29/05–28/07, sin movimientos nuevos el 28/07).
+// Verificado el 30/07 contra "salidas 300726.xml" (export TOTVS 29/05–30/07): S2-S5 no cambiaron,
+// solo se sumaron movimientos del 28 al 30/07 que caen en la semana S6 (28/7-3/8), aún abierta y sin
+// Pedido/Entregado en "Producción CP" — no se incorporan todavía.
 // agregado sobre S2-S5 (30/06-27/07, incluye ya los movimientos del 27/07) para que sea comparable
 // entre productos.
 const CUMPL_FRANQUICIAS = {
@@ -1890,17 +1893,17 @@ const CUMPL_FRANQUICIAS = {
 const CUMPL_FRANQUICIA_SEMANAS = 4; // semanas cubiertas (S2, S3, S4, S5)
 const SEMANAS_POR_MES = 4; // misma convención que "objetivo mensual" de la pestaña Trucha (4 semanas/mes)
 
-// Stock actual (TOTVS, foto al 29/07/2026). Suma Saldo Actual en depósitos CD (Centro de
-// Distribución) + CP (Centro de Producción) de "stock al 290726.xml", más el depósito MI (Mirizi,
-// sucursal 010102) de "stock externo 270726.xml" — stock físico de producto terminado del CP
+// Stock actual (TOTVS, foto al 30/07/2026). Suma Saldo Actual en depósitos CD (Centro de
+// Distribución) + CP (Centro de Producción) de "stock al 300726.xml", más el depósito MI (Mirizi,
+// sucursal 010102) de "stock externo al 290726.xml" — stock físico de producto terminado del CP
 // guardado en esa sucursal externa, no incluido en el export CD/CP. No se recibió una foto de MI más
-// nueva, así que se reutiliza la del 27/07 (no varió tampoco respecto a la del 24/07). No incluye
+// nueva, así que se reutiliza la del 29/07 (no varió tampoco respecto a la del 27/07). No incluye
 // tránsito (dio 0 en los 10 productos en las fotos disponibles, pero si aparece en una carga futura
 // no está sumado acá).
 const CUMPL_STOCK = {
-  "CORTE DE TRUCHA":219, "CUBOS DE TRUCHA":148, "LANGOSTINOS REBOZADOS":465, "PASTA DE HONEY":27,
-  "POLLO TERIYAKI":232, "REDUCCIÓN DE TERIYAKI":246, "SALSA NARANJA Y MIEL":89, "TAMAGO":371,
-  "TIRA DE TRUCHA":32, "VINAGRETA":409
+  "CORTE DE TRUCHA":236, "CUBOS DE TRUCHA":168, "LANGOSTINOS REBOZADOS":439, "PASTA DE HONEY":37,
+  "POLLO TERIYAKI":223, "REDUCCIÓN DE TERIYAKI":298, "SALSA NARANJA Y MIEL":87, "TAMAGO":395,
+  "TIRA DE TRUCHA":39, "VINAGRETA":386
 };
 
 // Pedido/Entregado MENSUAL por producto, ene–jul 2026 (fuente: "Producción CP" en Drive, pestaña
