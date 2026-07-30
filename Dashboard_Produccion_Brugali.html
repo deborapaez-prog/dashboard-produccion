@@ -125,7 +125,7 @@ footer { text-align: center; color: #BBBBBB; font-size: 0.76rem; padding: 20px 0
       <div style="font-size:0.7rem;font-weight:700;color:rgba(255,255,255,0.6);text-transform:uppercase;letter-spacing:0.12em;margin-top:2px;">Dashboard de Producción</div>
     </div>
   </div>
-  <span class="badge">📅 Actualizado: 29/07/2026</span>
+  <span class="badge">📅 Actualizado: 30/07/2026</span>
 </header>
 
 <div class="tab-nav">
@@ -145,15 +145,16 @@ footer { text-align: center; color: #BBBBBB; font-size: 0.76rem; padding: 20px 0
   <div class="alerta">
     ⚠️ <strong>S31 en curso: 27/07 con 375 kg de entrada (25 cajas) y 153,9 kg producidos (41,0% de uso).</strong>
     28/07 con 510 kg de entrada (34 cajas) y 219,1 kg producidos (43,0% de uso).
+    29/07 con 480 kg de entrada (32 cajas) y 199,6 kg producidos (41,6% de uso).
     S30 cerró en 889,7 kg (4 días activos de 6, 20–25/07).
-    Acumulado S20–S31: 9.590,0 kg · 41,1% uso general. Objetivo semanal: 1.067,2 kg · por día: 213,4 kg.
+    Acumulado S20–S31: 9.789,6 kg · 41,1% uso general. Objetivo semanal: 1.067,2 kg · por día: 213,4 kg.
   </div>
 
   <div class="kpi-grid">
     <div class="kpi-card">
       <div class="lbl">Semana actual (S31)</div>
-      <div class="val">373,0 <span style="font-size:.85rem;color:#BBBBBB">kg</span></div>
-      <div class="sub">2 días activos (27–28/07) — en curso</div>
+      <div class="val">572,6 <span style="font-size:.85rem;color:#BBBBBB">kg</span></div>
+      <div class="sub">3 días activos (27–29/07) — en curso</div>
     </div>
     <div class="kpi-card">
       <div class="lbl">Semana anterior (S30)</div>
@@ -162,18 +163,18 @@ footer { text-align: center; color: #BBBBBB; font-size: 0.76rem; padding: 20px 0
     </div>
     <div class="kpi-card">
       <div class="lbl">kg/día S31 vs S30</div>
-      <div class="val" style="color:#E3A127">186,5</div>
+      <div class="val" style="color:#E3A127">190,9</div>
       <div class="sub">vs 222,4 kg/día S30</div>
     </div>
     <div class="kpi-card">
       <div class="lbl">Acumulado total</div>
-      <div class="val" style="color:#1D4856">9.590,0 <span style="font-size:.85rem;color:#BBBBBB">kg</span></div>
+      <div class="val" style="color:#1D4856">9.789,6 <span style="font-size:.85rem;color:#BBBBBB">kg</span></div>
       <div class="sub">S20–S31</div>
     </div>
     <div class="kpi-card">
       <div class="lbl">% uso S31</div>
-      <div class="val">42,1 <span style="font-size:.85rem;color:#BBBBBB">%</span></div>
-      <div class="sub">373,0 / 885 kg entrada (59 cajas)</div>
+      <div class="val">41,9 <span style="font-size:.85rem;color:#BBBBBB">%</span></div>
+      <div class="sub">572,6 / 1.365 kg entrada (91 cajas)</div>
     </div>
     <div class="kpi-card">
       <div class="lbl">% uso general</div>
@@ -1599,10 +1600,10 @@ const WEEKS = [
     daily:[258.125,0,221.995,207.41,202.125,0],
     dailyByProd:{ "Tiras":[42.875,0,42.875,39.2,35.525,0], "cortes":[37.8,0,24,0,0,0], "tiras unidas":[80.85,0,80.36,89.67,51.94,0], "cubos":[96.6,0,74.76,78.54,114.66,0], "sin embolsar":[0,0,0,0,0,0] },
     entradaBandejasDia:[44,0,35,32,32,0], activeDaysCount:4 },
-  { label:"S31", dateRange:"27 jul – 01 ago", isPartial:true, total:373.0,
-    daily:[153.9,219.1,0,0,0,0],
-    dailyByProd:{ "Tiras":[19.6,40.425,0,0,0,0], "cortes":[15,0,0,0,0,0], "tiras unidas":[56.35,111.475,0,0,0,0], "cubos":[62.958,67.2,0,0,0,0], "sin embolsar":[0,0,0,0,0,0] },
-    entradaBandejasDia:[25,34,0,0,0,0], activeDaysCount:2 }
+  { label:"S31", dateRange:"27 jul – 01 ago", isPartial:true, total:572.6,
+    daily:[153.9,219.1,199.6,0,0,0],
+    dailyByProd:{ "Tiras":[19.6,40.425,37.975,0,0,0], "cortes":[15,0,16,0,0,0], "tiras unidas":[56.35,111.475,78.4,0,0,0], "cubos":[62.958,67.2,67.2,0,0,0], "sin embolsar":[0,0,0,0,0,0] },
+    entradaBandejasDia:[25,34,32,0,0,0], activeDaysCount:3 }
 ];
 
 const PRODUCTOS = ["Tiras","cortes","tiras unidas","cubos","sin embolsar"];
