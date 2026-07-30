@@ -192,7 +192,7 @@ footer { text-align: center; color: #BBBBBB; font-size: 0.76rem; padding: 20px 0
   <div class="card">
     <h2>📆 Evolución mensual — kg producidos totales</h2>
     <div class="chart-wrap"><canvas id="chartMensual"></canvas></div>
-    <div style="font-size:0.75rem;color:#BBBBBB;margin-top:10px;">Fuente: pestaña "análisis mensual" de la planilla Trucha (suma de Tiras + cortes + tiras unidas + cubos por mes; no incluye "sin embolsar"). Julio está en curso (S31 todavía sin cerrar).</div>
+    <div style="font-size:0.75rem;color:#BBBBBB;margin-top:10px;">Fuente: pestaña "análisis mensual" de la planilla Trucha (suma de Tiras + cortes + tiras unidas + cubos por mes; no incluye "sin embolsar"). Las semanas van de lunes a sábado y no calzan justo con el calendario, así que cada mes agrupa una cantidad distinta: Mayo 3 semanas (S20–S22), Junio 4 (S23–S26), Julio 5 (S27–S31) — esta última todavía en curso (S31 sin cerrar).</div>
   </div>
 
   <div class="card">
@@ -1624,22 +1624,24 @@ new Chart(document.getElementById("chartSemanal").getContext("2d"), {
 });
 
 // Evolución mensual — pestaña "análisis mensual" de la planilla Trucha (Tiras+cortes+tiras
-// unidas+cubos por mes; no incluye "sin embolsar", igual que esa pestaña). Julio en curso (S31 sin
-// cerrar), se marca isPartial:true.
+// unidas+cubos por mes; no incluye "sin embolsar", igual que esa pestaña). Las semanas no calzan
+// parejo con el calendario (van de lunes a sábado y a veces un mes arranca o cierra a mitad de
+// semana), por eso cada mes no tiene la misma cantidad: Mayo = S20-S22 (3 sem.), Junio = S23-S26
+// (4 sem.), Julio = S27-S31 (5 sem., la última — S31 — todavía en curso).
 const MESES_TRUCHA = [
-  { label:"Mayo", total:2195.8, isPartial:false },
-  { label:"Junio", total:3368.8, isPartial:false },
-  { label:"Julio", total:3807.2, isPartial:true }
+  { label:"Mayo", total:2195.8, semanas:"S20–S22", cantSemanas:3, isPartial:false },
+  { label:"Junio", total:3368.8, semanas:"S23–S26", cantSemanas:4, isPartial:false },
+  { label:"Julio", total:3807.2, semanas:"S27–S31", cantSemanas:5, isPartial:true }
 ];
 new Chart(document.getElementById("chartMensual").getContext("2d"), {
   type:"bar",
   data:{
-    labels: MESES_TRUCHA.map(m=>m.label + (m.isPartial ? " *" : "")),
+    labels: MESES_TRUCHA.map(m=>m.label + (m.isPartial ? " *" : "") + ` (${m.cantSemanas} sem.)`),
     datasets:[{ label:"kg producidos", data:MESES_TRUCHA.map(m=>m.total), backgroundColor:MESES_TRUCHA.map(m=>m.isPartial?"#E3A127":"#1D4856"), borderRadius:7, borderSkipped:false }]
   },
   options:{ responsive:true, maintainAspectRatio:false, plugins:{ legend:{display:false}, tooltip:{ callbacks:{
     label:ctx=>" "+ctx.parsed.y.toFixed(1)+" kg",
-    afterLabel:ctx=>MESES_TRUCHA[ctx.dataIndex].isPartial ? "(mes en curso)" : ""
+    afterLabel:ctx=>{ const m=MESES_TRUCHA[ctx.dataIndex]; return `${m.cantSemanas} semanas (${m.semanas})` + (m.isPartial ? " — mes en curso" : ""); }
   } } }, scales:{ y:{ beginAtZero:true, grid:{color:"#edf2f7"}, ticks:{callback:v=>v+" kg"} }, x:{grid:{display:false}} } }
 });
 
