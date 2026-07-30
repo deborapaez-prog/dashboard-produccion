@@ -189,6 +189,12 @@ footer { text-align: center; color: #BBBBBB; font-size: 0.76rem; padding: 20px 0
   </div>
 
   <div class="card">
+    <h2>📆 Evolución mensual — kg producidos totales</h2>
+    <div class="chart-wrap"><canvas id="chartMensual"></canvas></div>
+    <div style="font-size:0.75rem;color:#BBBBBB;margin-top:10px;">Fuente: pestaña "análisis mensual" de la planilla Trucha (suma de Tiras + cortes + tiras unidas + cubos por mes; no incluye "sin embolsar"). Julio está en curso (S31 todavía sin cerrar).</div>
+  </div>
+
+  <div class="card">
     <h2>
       📅 Producción diaria por producto
       <select id="selDiario">
@@ -1614,6 +1620,26 @@ new Chart(document.getElementById("chartSemanal").getContext("2d"), {
   type:"bar",
   data:{ labels:WEEKS.map(w=>w.label), datasets:[{ label:"kg producidos", data:WEEKS.map(w=>w.total), backgroundColor:"#1D4856", borderRadius:7, borderSkipped:false }] },
   options:{ responsive:true, maintainAspectRatio:false, plugins:{ legend:{display:false}, tooltip:{ callbacks:{ label:ctx=>" "+ctx.parsed.y.toFixed(1)+" kg" } } }, scales:{ y:{ beginAtZero:true, grid:{color:"#edf2f7"}, ticks:{callback:v=>v+" kg"} }, x:{grid:{display:false}} } }
+});
+
+// Evolución mensual — pestaña "análisis mensual" de la planilla Trucha (Tiras+cortes+tiras
+// unidas+cubos por mes; no incluye "sin embolsar", igual que esa pestaña). Julio en curso (S31 sin
+// cerrar), se marca isPartial:true.
+const MESES_TRUCHA = [
+  { label:"Mayo", total:2195.8, isPartial:false },
+  { label:"Junio", total:3368.8, isPartial:false },
+  { label:"Julio", total:3807.2, isPartial:true }
+];
+new Chart(document.getElementById("chartMensual").getContext("2d"), {
+  type:"bar",
+  data:{
+    labels: MESES_TRUCHA.map(m=>m.label + (m.isPartial ? " *" : "")),
+    datasets:[{ label:"kg producidos", data:MESES_TRUCHA.map(m=>m.total), backgroundColor:MESES_TRUCHA.map(m=>m.isPartial?"#E3A127":"#1D4856"), borderRadius:7, borderSkipped:false }]
+  },
+  options:{ responsive:true, maintainAspectRatio:false, plugins:{ legend:{display:false}, tooltip:{ callbacks:{
+    label:ctx=>" "+ctx.parsed.y.toFixed(1)+" kg",
+    afterLabel:ctx=>MESES_TRUCHA[ctx.dataIndex].isPartial ? "(mes en curso)" : ""
+  } } }, scales:{ y:{ beginAtZero:true, grid:{color:"#edf2f7"}, ticks:{callback:v=>v+" kg"} }, x:{grid:{display:false}} } }
 });
 
 let chartDiario;
