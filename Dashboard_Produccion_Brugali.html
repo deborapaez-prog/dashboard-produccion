@@ -1619,13 +1619,39 @@ const DIAS = ["L","M","M","J","V","S"];
 const KG_POR_CAJA_ENTRADA = 15;
 function entradaKg(w) { return w.entradaBandejasDia.reduce((a,b)=>a+b,0) * KG_POR_CAJA_ENTRADA; }
 
+// Etiqueta el % producido/entrada arriba de la barra "kg producidos" (dataset índice 1),
+// usando el dataset "kg de entrada" (índice 0) del mismo gráfico como base del %.
+const pctProducidoEntradaPlugin = {
+  id:"pctProducidoEntrada",
+  afterDatasetsDraw(chart) {
+    const entradaData = chart.data.datasets[0].data;
+    const producidoData = chart.data.datasets[1].data;
+    const meta = chart.getDatasetMeta(1);
+    const ctx = chart.ctx;
+    ctx.save();
+    ctx.fillStyle = "#1D4856";
+    ctx.font = "600 11px sans-serif";
+    ctx.textAlign = "center";
+    meta.data.forEach((bar, i) => {
+      const entrada = entradaData[i];
+      if (!entrada) return;
+      const pct = (producidoData[i] / entrada) * 100;
+      ctx.fillText(pct.toFixed(0)+"%", bar.x, bar.y - 6);
+    });
+    ctx.restore();
+  }
+};
 new Chart(document.getElementById("chartSemanal").getContext("2d"), {
   type:"bar",
   data:{ labels:WEEKS.map(w=>w.label), datasets:[
     { label:"kg de entrada", data:WEEKS.map(entradaKg), backgroundColor:"#BBBBBB", borderRadius:7, borderSkipped:false },
     { label:"kg producidos", data:WEEKS.map(w=>w.total), backgroundColor:"#1D4856", borderRadius:7, borderSkipped:false }
   ] },
-  options:{ responsive:true, maintainAspectRatio:false, plugins:{ legend:{position:"bottom",labels:{usePointStyle:true,padding:14,font:{size:11}}}, tooltip:{ callbacks:{ label:ctx=>" "+ctx.dataset.label+": "+ctx.parsed.y.toFixed(1)+" kg" } } }, scales:{ y:{ beginAtZero:true, grid:{color:"#edf2f7"}, ticks:{callback:v=>v+" kg"} }, x:{grid:{display:false}} } }
+  plugins:[pctProducidoEntradaPlugin],
+  options:{ responsive:true, maintainAspectRatio:false, layout:{padding:{top:18}}, plugins:{ legend:{position:"bottom",labels:{usePointStyle:true,padding:14,font:{size:11}}}, tooltip:{ callbacks:{
+    label:ctx=>" "+ctx.dataset.label+": "+ctx.parsed.y.toFixed(1)+" kg",
+    afterBody:ctx=>{ const w=WEEKS[ctx[0].dataIndex]; const e=entradaKg(w); return e ? `% producido/entrada: ${(w.total/e*100).toFixed(1)}%` : ""; }
+  } } }, scales:{ y:{ beginAtZero:true, grid:{color:"#edf2f7"}, ticks:{callback:v=>v+" kg"} }, x:{grid:{display:false}} } }
 });
 
 // Evolución mensual — pestaña "análisis mensual" de la planilla Trucha (Tiras+cortes+tiras
@@ -1648,9 +1674,11 @@ new Chart(document.getElementById("chartMensual").getContext("2d"), {
       { label:"kg producidos", data:MESES_TRUCHA.map(m=>m.total), backgroundColor:MESES_TRUCHA.map(m=>m.isPartial?"#E3A127":"#1D4856"), borderRadius:7, borderSkipped:false }
     ]
   },
-  options:{ responsive:true, maintainAspectRatio:false, plugins:{ legend:{position:"bottom",labels:{usePointStyle:true,padding:14,font:{size:11}}}, tooltip:{ callbacks:{
+  plugins:[pctProducidoEntradaPlugin],
+  options:{ responsive:true, maintainAspectRatio:false, layout:{padding:{top:18}}, plugins:{ legend:{position:"bottom",labels:{usePointStyle:true,padding:14,font:{size:11}}}, tooltip:{ callbacks:{
     label:ctx=>" "+ctx.dataset.label+": "+ctx.parsed.y.toFixed(1)+" kg",
-    afterLabel:ctx=>{ const m=MESES_TRUCHA[ctx.dataIndex]; return `${m.cantSemanas} semanas (${m.semanas})` + (m.isPartial ? " — mes en curso" : ""); }
+    afterLabel:ctx=>{ const m=MESES_TRUCHA[ctx.dataIndex]; return `${m.cantSemanas} semanas (${m.semanas})` + (m.isPartial ? " — mes en curso" : ""); },
+    afterBody:ctx=>{ const m=MESES_TRUCHA[ctx[0].dataIndex]; return m.entrada ? `% producido/entrada: ${(m.total/m.entrada*100).toFixed(1)}%` : ""; }
   } } }, scales:{ y:{ beginAtZero:true, grid:{color:"#edf2f7"}, ticks:{callback:v=>v+" kg"} }, x:{grid:{display:false}} } }
 });
 
