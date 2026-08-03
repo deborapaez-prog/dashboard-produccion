@@ -1162,16 +1162,16 @@ footer { text-align: center; color: #BBBBBB; font-size: 0.76rem; padding: 20px 0
     <main>
 
     <div class="alerta" style="background:#fff5f5;border-color:#EF402F;border-left-color:#EF402F;color:#7b1a1a;">
-      ⚠️ Datos de reclamos de franquicias desde oct 2025 hasta jul 2026 (fuente: HubSpot CRM, export 27/07/2026 — reconstruido ticket por ticket desde ese export, reemplaza cálculos previos). Solo se muestran productos elaborados en el centro de producción. Nota: el export no incluye al menos 1 ticket viejo ya conocido (Reducción de Teriyaki, may/2026, cerrado) — puede haber un leve subconteo si hay otros casos similares fuera de este export.
+      ⚠️ Datos de reclamos de franquicias desde oct 2025 hasta ago 2026 (fuente: HubSpot CRM, export 03/08/2026 — actualizado comparando ticket por ticket contra el export anterior del 27/07). Solo se muestran productos elaborados en el centro de producción. Corrección: el ticket de Reducción de Teriyaki de may/2026 (sabor quemado y salado) que antes se marcaba "fuera del export" en realidad sí está en el export (ID 45448160368) — no se había detectado antes porque no usa el campo estructurado de producto, sino texto libre. Ya está sumado al total; no se reauditaron los otros ~360 tickets del export buscando casos similares, así que podría haber algún otro caso sin detectar.
     </div>
 
     <!-- KPIs -->
     <div class="kpi-grid" style="grid-template-columns:repeat(auto-fit,minmax(140px,1fr))">
-      <div class="kpi-card"><div class="lbl">Total reclamos CP</div><div class="val" style="color:#EF402F">128</div><div class="sub">productos propios</div></div>
+      <div class="kpi-card"><div class="lbl">Total reclamos CP</div><div class="val" style="color:#EF402F">131</div><div class="sub">productos propios</div></div>
       <div class="kpi-card"><div class="lbl">Producto top</div><div class="val" style="color:#EF402F;font-size:1.1rem">TAMAGO</div><div class="sub">62 reclamos</div></div>
       <div class="kpi-card"><div class="lbl">Mes pico</div><div class="val" style="color:#E3A127;font-size:1.1rem">Nov-25 / Ene-26</div><div class="sub">empatados, 20 c/u</div></div>
-      <div class="kpi-card"><div class="lbl">Reclamos abiertos</div><div class="val" style="color:#F58232">7</div><div class="sub">en gestión</div></div>
-      <div class="kpi-card"><div class="lbl">Tasa cierre</div><div class="val" style="color:#33A392">90,6%</div><div class="sub">de tickets CP</div></div>
+      <div class="kpi-card"><div class="lbl">Reclamos abiertos</div><div class="val" style="color:#F58232">4</div><div class="sub">en gestión</div></div>
+      <div class="kpi-card"><div class="lbl">Tasa cierre</div><div class="val" style="color:#33A392">92,4%</div><div class="sub">de tickets CP</div></div>
     </div>
 
     <!-- Reclamos por producto -->
@@ -1216,7 +1216,7 @@ footer { text-align: center; color: #BBBBBB; font-size: 0.76rem; padding: 20px 0
           <div style="font-weight:700;font-size:0.95rem;color:#2f855a;margin-bottom:8px;">🍗 POLLO TERIYAKI <span style="font-weight:400;color:#999;font-size:0.8rem">(13 reclamos)</span></div>
           <ul style="font-size:0.83rem;color:#444;line-height:1.9;list-style:none;padding:0;">
             <li>🔴 Muy seco, sin sabor, color pálido — recurrente</li>
-            <li>🟠 Mal olor / sabor fermentado (reclamo abierto, 02/07)</li>
+            <li>🟠 Mal olor / sabor fermentado (02/07, Alta Córdoba — cerrado 29/07, se emitió NC)</li>
             <li>🟠 Pequeños huesos entre las porciones</li>
             <li>🟡 Producto mezclado con langostinos</li>
             <li>🟡 Pelos y pedazo de virulana (21/07, Neuquén — cerrado 23/07, solo aviso, sin pedido de NC; se corrigió el uso de virulana en el local)</li>
@@ -1228,17 +1228,18 @@ footer { text-align: center; color: #BBBBBB; font-size: 0.76rem; padding: 20px 0
           <ul style="font-size:0.83rem;color:#444;line-height:1.9;list-style:none;padding:0;">
             <li>🔴 Producto vencido / mal color y olor</li>
             <li>🟠 Cinta amarilla / mal aspecto</li>
-            <li>🟡 Espinas (reclamo abierto, 07/07)</li>
-            <li>🟡 Color más oscuro de lo habitual (21/07, Recoleta — en progreso)</li>
+            <li>🟡 Espinas (07/07, Recoleta — cerrado 29/07, se emitió NC)</li>
+            <li>🟡 Color más oscuro de lo habitual (21/07, Recoleta — cerrado 27/07, solo diferencia de color, sin otra observación)</li>
           </ul>
         </div>
 
         <div style="border:1px solid #bee3f8;border-radius:10px;padding:14px;background:#ebf8ff;">
-          <div style="font-weight:700;font-size:0.95rem;color:#1D4856;margin-bottom:8px;">🐟 CORTE DE TRUCHA <span style="font-weight:400;color:#999;font-size:0.8rem">(7 reclamos)</span></div>
+          <div style="font-weight:700;font-size:0.95rem;color:#1D4856;margin-bottom:8px;">🐟 CORTE DE TRUCHA <span style="font-weight:400;color:#999;font-size:0.8rem">(8 reclamos)</span></div>
           <ul style="font-size:0.83rem;color:#444;line-height:1.9;list-style:none;padding:0;">
             <li>🔴 Exceso de grasa al descongelar</li>
             <li>🔴 Gramaje excedido (10–12g vs 8g estándar)</li>
             <li>🟡 Mal olor / textura babosa</li>
+            <li>🟡 Color pálido y bordes con grasa sin recortar (02/08, Santa Fe — en progreso)</li>
           </ul>
         </div>
 
@@ -1247,7 +1248,7 @@ footer { text-align: center; color: #BBBBBB; font-size: 0.76rem; padding: 20px 0
           <ul style="font-size:0.83rem;color:#444;line-height:1.9;list-style:none;padding:0;">
             <li>🔴 Sello de lote ilegible</li>
             <li>🟠 Gramaje incorrecto / tiras fragmentadas ("retazos") — 13/07, Nueva Córdoba (cerrado)</li>
-            <li>🟠 Tiras cortadas de forma dispareja, dificulta pesarlas — 2 tickets duplicados, 26/07, Alberdi, lote TT1607261 (abierto)</li>
+            <li>🟠 Tiras cortadas de forma dispareja, dificulta pesarlas — 26/07, Alberdi, lote TT1607261 (2 tickets duplicados: uno sigue abierto, el otro se marcó "no corresponde" el 29/07)</li>
             <li>🟡 Espina encontrada en el producto final</li>
           </ul>
         </div>
@@ -1257,7 +1258,7 @@ footer { text-align: center; color: #BBBBBB; font-size: 0.76rem; padding: 20px 0
           <ul style="font-size:0.83rem;color:#444;line-height:1.9;list-style:none;padding:0;">
             <li>🔴 Espinas encontradas (2 tickets)</li>
             <li>🟠 Mal olor al descongelar</li>
-            <li>🟡 Cuerpo extraño: virulana (reclamo abierto, 11/07)</li>
+            <li>🟡 Cuerpo extraño: virulana (11/07, Recoleta — cerrado 29/07, se emitió NC)</li>
           </ul>
         </div>
 
@@ -1270,16 +1271,17 @@ footer { text-align: center; color: #BBBBBB; font-size: 0.76rem; padding: 20px 0
         </div>
 
         <div style="border:1px solid #c6f6d5;border-radius:10px;padding:14px;background:#f0fff4;">
-          <div style="font-weight:700;font-size:0.95rem;color:#2f855a;margin-bottom:8px;">🍶 REDUCCIÓN DE TERIYAKI <span style="font-weight:400;color:#999;font-size:0.8rem">(1 reclamo histórico — no está en el export HubSpot actual)</span></div>
+          <div style="font-weight:700;font-size:0.95rem;color:#2f855a;margin-bottom:8px;">🍶 REDUCCIÓN DE TERIYAKI <span style="font-weight:400;color:#999;font-size:0.8rem">(1 reclamo)</span></div>
           <ul style="font-size:0.83rem;color:#444;line-height:1.9;list-style:none;padding:0;">
-            <li>🔴 Sabor quemado y salado (may 2026, cerrado)</li>
+            <li>🔴 Sabor quemado y salado, "clpa nuestra no es ya que viene toda la pieza hecha por ustedes" — varios reclamos de un mismo local por lo mismo (20/05, Alta Córdoba — cerrado 01/08, "se está trabajando en nueva receta")</li>
           </ul>
         </div>
 
         <div style="border:1px solid #c6f6d5;border-radius:10px;padding:14px;background:#f0fff4;">
-          <div style="font-weight:700;font-size:0.95rem;color:#2f855a;margin-bottom:8px;">🥗 VINAGRETA <span style="font-weight:400;color:#999;font-size:0.8rem">(1 reclamo)</span></div>
+          <div style="font-weight:700;font-size:0.95rem;color:#2f855a;margin-bottom:8px;">🥗 VINAGRETA <span style="font-weight:400;color:#999;font-size:0.8rem">(2 reclamos)</span></div>
           <ul style="font-size:0.83rem;color:#444;line-height:1.9;list-style:none;padding:0;">
             <li>🟠 Color oscura, amarillea el arroz muy rápido</li>
+            <li>🟡 Bicho dentro del bidón (30/07, Godoy Cruz Mdza 2 — abierto)</li>
           </ul>
         </div>
 
@@ -1303,6 +1305,14 @@ footer { text-align: center; color: #BBBBBB; font-size: 0.76rem; padding: 20px 0
           </thead>
           <tbody>
             <tr style="background:#fff5f5;border-bottom:1px solid #fed7d7;">
+              <td style="padding:8px 12px;font-family:monospace;font-size:0.75rem;color:#999">47321734805</td>
+              <td style="padding:8px 12px;font-weight:600">Godoy Cruz (Mdza 2)</td>
+              <td style="padding:8px 12px">VINAGRETA</td>
+              <td style="padding:8px 12px">Encontraron un bicho dentro de la vinagreta — 5 litros</td>
+              <td style="padding:8px 12px">30-jul-26</td>
+              <td style="padding:8px 12px;font-family:monospace;font-size:0.8rem">VI2606261</td>
+            </tr>
+            <tr style="background:#fff;border-bottom:1px solid #e2e8f0;">
               <td style="padding:8px 12px;font-family:monospace;font-size:0.75rem;color:#999">47193876278</td>
               <td style="padding:8px 12px;font-weight:600">Alberdi</td>
               <td style="padding:8px 12px">TIRA DE TRUCHA</td>
@@ -1310,39 +1320,7 @@ footer { text-align: center; color: #BBBBBB; font-size: 0.76rem; padding: 20px 0
               <td style="padding:8px 12px">26-jul-26</td>
               <td style="padding:8px 12px;font-family:monospace;font-size:0.8rem">TT1607261</td>
             </tr>
-            <tr style="background:#fff;border-bottom:1px solid #e2e8f0;">
-              <td style="padding:8px 12px;font-family:monospace;font-size:0.75rem;color:#999">47203479183</td>
-              <td style="padding:8px 12px;font-weight:600">Alberdi</td>
-              <td style="padding:8px 12px">TIRA DE TRUCHA</td>
-              <td style="padding:8px 12px">Mismo reclamo que el ticket anterior, cargado por duplicado — 7kg</td>
-              <td style="padding:8px 12px">26-jul-26</td>
-              <td style="padding:8px 12px;font-family:monospace;font-size:0.8rem">TT1607261</td>
-            </tr>
             <tr style="background:#fff5f5;border-bottom:1px solid #fed7d7;">
-              <td style="padding:8px 12px;font-family:monospace;font-size:0.75rem;color:#999">46723905629</td>
-              <td style="padding:8px 12px;font-weight:600">Recoleta</td>
-              <td style="padding:8px 12px">PASTA DE HONEY</td>
-              <td style="padding:8px 12px">Llegó con pedazos de virulana — 2 cajas x 6kg</td>
-              <td style="padding:8px 12px">11-jul-26</td>
-              <td style="padding:8px 12px;font-family:monospace;font-size:0.8rem">HO2506261</td>
-            </tr>
-            <tr style="background:#fff;border-bottom:1px solid #e2e8f0;">
-              <td style="padding:8px 12px;font-family:monospace;font-size:0.75rem;color:#999">46673662276</td>
-              <td style="padding:8px 12px;font-weight:600">Recoleta</td>
-              <td style="padding:8px 12px">CUBOS DE TRUCHA</td>
-              <td style="padding:8px 12px">Cubo de trucha con espinas — 7kg</td>
-              <td style="padding:8px 12px">07-jul-26</td>
-              <td style="padding:8px 12px;font-family:monospace;font-size:0.8rem">1105261</td>
-            </tr>
-            <tr style="background:#fff5f5;border-bottom:1px solid #fed7d7;">
-              <td style="padding:8px 12px;font-family:monospace;font-size:0.75rem;color:#999">46673431458</td>
-              <td style="padding:8px 12px;font-weight:600">Alta Córdoba</td>
-              <td style="padding:8px 12px">POLLO TERIYAKI</td>
-              <td style="padding:8px 12px">Mal olor y sabor, fermentado — 1 caja x 6kg (reincidente)</td>
-              <td style="padding:8px 12px">02-jul-26</td>
-              <td style="padding:8px 12px;font-family:monospace;font-size:0.8rem">—</td>
-            </tr>
-            <tr style="background:#fff;border-bottom:1px solid #e2e8f0;">
               <td style="padding:8px 12px;font-family:monospace;font-size:0.75rem;color:#999">45694080547</td>
               <td style="padding:8px 12px;font-weight:600">Alberdi</td>
               <td style="padding:8px 12px">TAMAGO</td>
@@ -1350,7 +1328,7 @@ footer { text-align: center; color: #BBBBBB; font-size: 0.76rem; padding: 20px 0
               <td style="padding:8px 12px">03-jun-26</td>
               <td style="padding:8px 12px;font-family:monospace;font-size:0.8rem">24/7</td>
             </tr>
-            <tr style="background:#fff5f5;border-bottom:1px solid #fed7d7;">
+            <tr style="background:#fff;border-bottom:1px solid #e2e8f0;">
               <td style="padding:8px 12px;font-family:monospace;font-size:0.75rem;color:#999">45694501543</td>
               <td style="padding:8px 12px;font-weight:600">Villa Allende</td>
               <td style="padding:8px 12px">TAMAGO</td>
@@ -1404,7 +1382,7 @@ footer { text-align: center; color: #BBBBBB; font-size: 0.76rem; padding: 20px 0
         </div>
         <div style="background:rgba(255,255,255,0.1);border-radius:10px;padding:14px;">
           <div style="font-weight:700;margin-bottom:6px;">🦐🍯 3 cuerpos extraños críticos (plástico, alambre, virulana)</div>
-          <div style="font-size:0.82rem;opacity:0.85">2 en Langostinos Rebozados (plástico + alambre) y uno reciente en Pasta de Honey (virulana, 11/07, aún abierto). ¿Hay detector de metales en la línea? ¿Se revisó la MP de origen?</div>
+          <div style="font-size:0.82rem;opacity:0.85">2 en Langostinos Rebozados (plástico + alambre) y uno en Pasta de Honey (virulana, 11/07, cerrado 29/07 con NC). ¿Hay detector de metales en la línea? ¿Se revisó la MP de origen?</div>
         </div>
         <div style="background:rgba(255,255,255,0.1);border-radius:10px;padding:14px;">
           <div style="font-weight:700;margin-bottom:6px;">🐟 Trucha: gramaje incorrecto y etiqueta ilegible</div>
@@ -1868,7 +1846,7 @@ function initCalidad() {
       labels: ['TAMAGO','LANGOSTINO\nREBOZADO','TIRA\nTRUCHA','CORTE\nTRUCHA','CUBOS\nTRUCHA','POLLO\nTERIYAKI','PASTA\nHONEY','SALSA\nNARANJA','REDUCCIÓN\nTERIYAKI','VINAGRETA'],
       datasets: [{
         label: 'Reclamos',
-        data: [62, 13, 11, 7, 10, 13, 6, 5, 0, 1],
+        data: [62, 13, 11, 8, 10, 13, 6, 5, 1, 2],
         backgroundColor: ['#EF402F','#1D4856','#33A392','#33A392','#33A392','#E3A127','#F58232','#F58232','#E3A127','#33A392'],
         borderRadius: 6
       }]
@@ -1887,10 +1865,10 @@ function initCalidad() {
   new Chart(document.getElementById('chartCalidadMes'), {
     type: 'line',
     data: {
-      labels: ['Oct-25','Nov-25','Dic-25','Ene-26','Feb-26','Mar-26','Abr-26','May-26','Jun-26','Jul-26'],
+      labels: ['Oct-25','Nov-25','Dic-25','Ene-26','Feb-26','Mar-26','Abr-26','May-26','Jun-26','Jul-26','Ago-26'],
       datasets: [{
         label: 'Reclamos CP',
-        data: [1, 20, 19, 20, 16, 17, 11, 8, 8, 8],
+        data: [1, 20, 19, 20, 16, 17, 11, 9, 8, 9, 1],
         borderColor: '#EF402F',
         backgroundColor: 'rgba(239,64,47,0.12)',
         borderWidth: 2.5,
