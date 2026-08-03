@@ -616,6 +616,24 @@ footer { text-align: center; color: #BBBBBB; font-size: 0.76rem; padding: 20px 0
     ✅ <strong>Fichas técnicas — fuente: TOTVS.</strong> Ingredientes y cantidades por unidad de producción según última revisión vigente.
   </div>
 
+  <!-- CALCULADORA DE INSUMOS -->
+  <div class="card" style="margin-bottom:28px">
+    <h2 style="margin-bottom:4px">🧮 Calculadora de insumos</h2>
+    <div style="font-size:0.78rem;color:#999999;margin-bottom:16px;">Elegí un producto y cuánto querés producir — calcula los insumos a pedir según la receta vigente en TOTVS.</div>
+    <div style="display:flex;gap:16px;flex-wrap:wrap;align-items:flex-end;margin-bottom:18px;">
+      <div>
+        <label style="display:block;font-size:0.78rem;color:#999999;margin-bottom:4px;">Producto</label>
+        <select id="calcProducto" style="min-width:230px;padding:7px 10px;border:1px solid #e2e8f0;border-radius:7px;background:#f7fafc;font-size:0.85rem;"></select>
+      </div>
+      <div>
+        <label id="calcCantidadLabel" style="display:block;font-size:0.78rem;color:#999999;margin-bottom:4px;">Cantidad de cajas</label>
+        <input id="calcCantidad" type="number" min="0" step="1" value="10" style="width:110px;padding:6px 10px;border:1px solid #e2e8f0;border-radius:7px;font-size:0.9rem;">
+      </div>
+    </div>
+    <div class="table-wrap"><table id="tablaCalc"></table></div>
+    <div id="calcNota" style="font-size:0.78rem;color:#1D4856;margin-top:12px;font-weight:600;"></div>
+  </div>
+
   <div class="recipe-grid">
 
     <!-- REDUCCIÓN TERIYAKI -->
@@ -1695,6 +1713,7 @@ function switchTab(name) {
   document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
   document.getElementById('tab-' + name).classList.add('active');
   event.target.classList.add('active');
+  if (name === 'recetas'    && !window._recetasInit) { initCalculadora(); window._recetasInit = true; }
   if (name === 'langostino' && !window._langInit) { initLangostino(); window._langInit = true; }
   if (name === 'cocina'     && !window._cocinaInit) { initCocina(); window._cocinaInit = true; }
   if (name === 'calidad'    && !window._calidadInit) { initCalidad(); window._calidadInit = true; }
@@ -1865,6 +1884,152 @@ document.getElementById("selTabla").addEventListener("change", function(){ build
 buildTabla(11);
 
 // ═══════════════════════════ LANGOSTINO ══════════════════════════════
+// ═══════════════════════ CALCULADORA DE INSUMOS (RECETAS) ═══════════════════════
+// Mismos datos que las fichas técnicas de la pestaña Recetas (fuente TOTVS, revisión vigente).
+const RECETAS = {
+  "Reducción de Teriyaki": { unidadEnvase:"botella",
+    packaging:[ {nombre:"Botella de plástico × 500cc", cantidad:1, unidad:"un"} ],
+    intermedioNombre:"Reducción de Teriyaki × litro", intermedioPorUnidad:0.5,
+    intermedio:[
+      {nombre:"Vino blanco × lt", cantidad:1.00, unidad:"lt"},
+      {nombre:"Salsa de soja bidón × 5L", cantidad:0.65, unidad:"lt"},
+      {nombre:"Miel bidón × 10 kg", cantidad:0.50, unidad:"kg"},
+      {nombre:"Azúcar pack × 10 kg", cantidad:0.46, unidad:"kg"}
+    ] },
+  "Salsa Naranja y Miel": { unidadEnvase:"botella",
+    packaging:[ {nombre:"Botella de plástico × 500cc", cantidad:1, unidad:"un"} ],
+    intermedioNombre:"Salsa Naranja y Miel Cocin × litro", intermedioPorUnidad:0.5,
+    intermedio:[
+      {nombre:"Jugo de naranja cítrico × lt", cantidad:1.66, unidad:"lt"},
+      {nombre:"Miel bidón × 10 kg", cantidad:1.00, unidad:"kg"}
+    ] },
+  "Vinagreta": { unidadEnvase:"caja",
+    ingredientes:[
+      {nombre:"Vinagre de alcohol × 20 lt", cantidad:11.76, unidad:"lt"},
+      {nombre:"Azúcar pack × 10 kg", cantidad:11.75, unidad:"kg"},
+      {nombre:"Sal fina paquete × 500 gr", cantidad:0.118, unidad:"kg"},
+      {nombre:"Ajinomoto pack × 1 kg", cantidad:0.058, unidad:"kg"},
+      {nombre:"Bidón × 5L", cantidad:4, unidad:"un"},
+      {nombre:"Caja mediana", cantidad:1, unidad:"un"}
+    ] },
+  "Pollo Teriyaki": { unidadEnvase:"caja",
+    packaging:[
+      {nombre:"Cajas grandes 40×30×15", cantidad:1, unidad:"un"},
+      {nombre:"Bolsa de corte 60×90 1,5kg", cantidad:0.0167, unidad:"un"}
+    ],
+    intermedioNombre:"Pollo Teriyaki × kg", intermedioPorUnidad:6,
+    intermedio:[
+      {nombre:"Pechuga de pollo caja × 15 kg", cantidad:1.65, unidad:"kg"},
+      {nombre:"Vino blanco × lt", cantidad:0.1741, unidad:"lt"},
+      {nombre:"Salsa de soja bidón × 5L", cantidad:0.116, unidad:"lt"},
+      {nombre:"Azúcar pack × 10 kg", cantidad:0.20, unidad:"kg"},
+      {nombre:"Miel bidón × 10 kg", cantidad:0.20, unidad:"kg"}
+    ] },
+  "Pasta de Honey": { unidadEnvase:"caja",
+    packaging:[
+      {nombre:"Cajas grandes 40×30×15", cantidad:1, unidad:"un"},
+      {nombre:"Bolsa de corte 20×30", cantidad:0.01, unidad:"un"}
+    ],
+    intermedioNombre:"Pasta de Honey × kg", intermedioPorUnidad:6,
+    intermedio:[
+      {nombre:"Pasta de trucha × kg (no está en TOTVS)", cantidad:6.52, unidad:"kg"},
+      {nombre:"Azúcar pack × 10 kg", cantidad:0.42, unidad:"kg"},
+      {nombre:"Miel bidón × 10 kg", cantidad:0.17, unidad:"kg"},
+      {nombre:"Salsa de soja bidón × 5L", cantidad:0.085, unidad:"lt"},
+      {nombre:"Vino blanco × lt", cantidad:0.017, unidad:"lt"}
+    ] },
+  "Langostino Rebozado": { unidadEnvase:"caja",
+    packaging:[
+      {nombre:"Cajas grandes 40×30×15", cantidad:1, unidad:"un"},
+      {nombre:"Bolsa de corte 60×90 1,5kg", cantidad:0.01, unidad:"un"}
+    ],
+    intermedioNombre:"Langostino Rebozado × kg", intermedioPorUnidad:6,
+    intermedio:[
+      {nombre:"Langostino devenado roto × kg", cantidad:0.800, unidad:"kg"},
+      {nombre:"Pan rallado × 10 kg", cantidad:0.210, unidad:"kg"},
+      {nombre:"Harina 000 × kg", cantidad:0.0794, unidad:"kg"},
+      {nombre:"Mostaza × 3 kg", cantidad:0.0396, unidad:"kg"},
+      {nombre:"Sal fina paquete × 500 gr", cantidad:0.002, unidad:"kg"},
+      {nombre:"Batter SS × 5 kg", cantidad:0.0025, unidad:"kg"},
+      {nombre:"Pimienta blanca × 250 gr", cantidad:0.0015, unidad:"kg"},
+      {nombre:"Ajinomoto pack × 1 kg", cantidad:0.000794, unidad:"kg"}
+    ] },
+  "Tira de Trucha": { unidadEnvase:"caja",
+    packaging:[
+      {nombre:"Cajas grandes 40×30×15", cantidad:1, unidad:"un"},
+      {nombre:"Bolsa de corte 60×90 1,5kg", cantidad:0.01, unidad:"un"},
+      {nombre:"Folex grande pack × 1kg", cantidad:0.001, unidad:"kg"}
+    ],
+    intermedioNombre:"Tiras × kg", intermedioPorUnidad:7,
+    intermedio:[ {nombre:"Trucha filet trim A PBI fresco × kg", cantidad:2, unidad:"kg"} ] },
+  "Corte de Trucha": { unidadEnvase:"caja",
+    packaging:[
+      {nombre:"Cajas chicas 30×20×15", cantidad:1, unidad:"un"},
+      {nombre:"Bolsa de corte 40×50", cantidad:0.016, unidad:"un"}
+    ],
+    intermedioNombre:"Corte × kg", intermedioPorUnidad:1.92,
+    intermedio:[ {nombre:"Trucha filet trim A PBI fresco × kg", cantidad:2, unidad:"kg"} ] },
+  "Cubos de Trucha": { unidadEnvase:"caja",
+    packaging:[
+      {nombre:"Cajas grandes 40×30×15", cantidad:1, unidad:"un"},
+      {nombre:"Bolsa de corte 20×30", cantidad:0.2, unidad:"un"}
+    ],
+    intermedioNombre:"Cubos × kg", intermedioPorUnidad:7,
+    intermedio:[ {nombre:"Trucha filet trim A PBI fresco × kg", cantidad:2, unidad:"kg"} ] },
+  "Tamago": { unidadEnvase:"caja",
+    ingredientes:[
+      {nombre:"Tamago × un (comprado)", cantidad:60, unidad:"un"},
+      {nombre:"Cajas chicas 30×30×12 (Tamagos)", cantidad:1, unidad:"un"}
+    ] }
+};
+
+function formatInsumo(v) {
+  return v.toLocaleString("es-AR", { maximumFractionDigits: 3 });
+}
+
+function initCalculadora() {
+  const sel = document.getElementById("calcProducto");
+  const input = document.getElementById("calcCantidad");
+  const label = document.getElementById("calcCantidadLabel");
+  sel.innerHTML = Object.keys(RECETAS).map((k,i)=>`<option value="${k}" ${i===0?"selected":""}>${k}</option>`).join("");
+
+  function calcular() {
+    const prod = sel.value;
+    const r = RECETAS[prod];
+    const n = parseFloat(input.value) || 0;
+    label.textContent = r.unidadEnvase === "botella" ? "Cantidad de botellas" : "Cantidad de cajas";
+
+    const totales = [];
+    const idx = {};
+    function add(nombre, cantidad, unidad) {
+      if (idx[nombre] === undefined) { idx[nombre] = totales.length; totales.push({nombre, cantidad:0, unidad}); }
+      totales[idx[nombre]].cantidad += cantidad;
+    }
+    (r.packaging || r.ingredientes || []).forEach(ing => add(ing.nombre, ing.cantidad * n, ing.unidad));
+    let cantidadIntermedio = 0;
+    if (r.intermedio) {
+      cantidadIntermedio = r.intermedioPorUnidad * n;
+      r.intermedio.forEach(ing => add(ing.nombre, ing.cantidad * cantidadIntermedio, ing.unidad));
+    }
+
+    const t = document.getElementById("tablaCalc");
+    let h = "<thead><tr><th>Insumo</th><th>Cantidad total</th></tr></thead><tbody>";
+    totales.forEach(d => {
+      h += `<tr><td>${d.nombre}</td><td>${formatInsumo(d.cantidad)} ${d.unidad}</td></tr>`;
+    });
+    h += "</tbody>";
+    t.innerHTML = h;
+
+    document.getElementById("calcNota").textContent = r.intermedio
+      ? `Para ${n} ${r.unidadEnvase === "botella" ? "botellas" : "cajas"} hacen falta ${formatInsumo(cantidadIntermedio)} ${r.intermedio[0].unidad === "un" ? "un" : (r.unidadEnvase==="botella"?"lt":"kg")} de "${r.intermedioNombre}" (producto intermedio).`
+      : "";
+  }
+
+  sel.addEventListener("change", calcular);
+  input.addEventListener("input", calcular);
+  calcular();
+}
+
 function initLangostino() {
   new Chart(document.getElementById("chartLangostino").getContext("2d"), {
     type:"doughnut",
