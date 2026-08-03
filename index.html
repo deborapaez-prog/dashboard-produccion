@@ -125,7 +125,7 @@ footer { text-align: center; color: #BBBBBB; font-size: 0.76rem; padding: 20px 0
       <div style="font-size:0.7rem;font-weight:700;color:rgba(255,255,255,0.6);text-transform:uppercase;letter-spacing:0.12em;margin-top:2px;">Dashboard de Producción</div>
     </div>
   </div>
-  <span class="badge">📅 Actualizado: 31/07/2026</span>
+  <span class="badge">📅 Actualizado: 03/08/2026</span>
 </header>
 
 <div class="tab-nav">
@@ -142,20 +142,17 @@ footer { text-align: center; color: #BBBBBB; font-size: 0.76rem; padding: 20px 0
 <div id="tab-trucha" class="tab-panel active">
 <main>
 
-  <div class="alerta">
-    ⚠️ <strong>S31 en curso: 27/07 con 375 kg de entrada (25 cajas) y 153,9 kg producidos (41,0% de uso).</strong>
-    28/07 con 510 kg de entrada (34 cajas) y 219,1 kg producidos (43,0% de uso).
-    29/07 con 480 kg de entrada (32 cajas) y 199,6 kg producidos (41,6% de uso).
-    30/07 con 420 kg de entrada (28 cajas) y 22,05 kg producidos (5,2% de uso — día en curso, por ahora solo Tiras cargado).
-    S30 cerró en 889,7 kg (4 días activos de 6, 20–25/07).
-    Acumulado S20–S31: 9.931,8 kg · 40,5% uso general. Objetivo semanal: 1.067,2 kg · por día: 213,4 kg.
+  <div class="alerta-ok">
+    ✅ <strong>S31 cerró en 990,4 kg (6 días activos de 6, 27/07–01/08).</strong>
+    S30 cerró en 889,7 kg (4 días activos de 6, 20–25/07). Todavía no hay datos cargados para S32 (03–08/08, semana en curso).
+    Acumulado S20–S31: 10.327,6 kg · 41,2% uso general. Objetivo semanal: 1.067,2 kg · por día: 213,4 kg.
   </div>
 
   <div class="kpi-grid">
     <div class="kpi-card">
       <div class="lbl">Semana actual (S31)</div>
-      <div class="val">594,7 <span style="font-size:.85rem;color:#BBBBBB">kg</span></div>
-      <div class="sub">4 días activos (27–30/07) — en curso</div>
+      <div class="val">990,4 <span style="font-size:.85rem;color:#BBBBBB">kg</span></div>
+      <div class="sub">6 días activos (27/07–01/08) — cerrada</div>
     </div>
     <div class="kpi-card">
       <div class="lbl">Semana anterior (S30)</div>
@@ -164,22 +161,22 @@ footer { text-align: center; color: #BBBBBB; font-size: 0.76rem; padding: 20px 0
     </div>
     <div class="kpi-card">
       <div class="lbl">kg/día S31 vs S30</div>
-      <div class="val" style="color:#E3A127">148,7</div>
+      <div class="val" style="color:#33A392">165,1</div>
       <div class="sub">vs 222,4 kg/día S30</div>
     </div>
     <div class="kpi-card">
       <div class="lbl">Acumulado total</div>
-      <div class="val" style="color:#1D4856">9.931,8 <span style="font-size:.85rem;color:#BBBBBB">kg</span></div>
+      <div class="val" style="color:#1D4856">10.327,6 <span style="font-size:.85rem;color:#BBBBBB">kg</span></div>
       <div class="sub">S20–S31</div>
     </div>
     <div class="kpi-card">
       <div class="lbl">% uso S31</div>
-      <div class="val">33,3 <span style="font-size:.85rem;color:#BBBBBB">%</span></div>
-      <div class="sub">594,7 / 1.785 kg entrada (119 cajas)</div>
+      <div class="val">42,9 <span style="font-size:.85rem;color:#BBBBBB">%</span></div>
+      <div class="sub">990,4 / 2.310 kg entrada (154 cajas)</div>
     </div>
     <div class="kpi-card">
       <div class="lbl">% uso general</div>
-      <div class="val">40,5 <span style="font-size:.85rem;color:#BBBBBB">%</span></div>
+      <div class="val">41,2 <span style="font-size:.85rem;color:#BBBBBB">%</span></div>
       <div class="sub">promedio S20–S31</div>
     </div>
   </div>
@@ -192,7 +189,7 @@ footer { text-align: center; color: #BBBBBB; font-size: 0.76rem; padding: 20px 0
   <div class="card">
     <h2>📆 Evolución mensual — kg producidos totales</h2>
     <div class="chart-wrap"><canvas id="chartMensual"></canvas></div>
-    <div style="font-size:0.75rem;color:#BBBBBB;margin-top:10px;">Fuente: pestaña "análisis mensual" de la planilla Trucha (suma de Tiras + cortes + tiras unidas + cubos por mes; no incluye "sin embolsar"). Las semanas van de lunes a sábado y no calzan justo con el calendario, así que cada mes agrupa una cantidad distinta: Mayo 3 semanas (S20–S22), Junio 4 (S23–S26), Julio 5 (S27–S31) — esta última todavía en curso (S31 sin cerrar).</div>
+    <div style="font-size:0.75rem;color:#BBBBBB;margin-top:10px;">Fuente: pestaña "análisis mensual" de la planilla Trucha (suma de Tiras + cortes + tiras unidas + cubos por mes; no incluye "sin embolsar"). Las semanas van de lunes a sábado y no calzan justo con el calendario, así que cada mes agrupa una cantidad distinta: Mayo 3 semanas (S20–S22), Junio 4 (S23–S26), Julio 5 (S27–S31) — S31 cerró el 01/08, así que Julio ya está completo.</div>
   </div>
 
   <div class="card">
@@ -243,7 +240,7 @@ footer { text-align: center; color: #BBBBBB; font-size: 0.76rem; padding: 20px 0
     <div style="display:flex;flex-direction:column;gap:10px;">
       <div style="display:flex;gap:12px;align-items:flex-start;padding:10px 12px;background:#fffbeb;border-radius:8px;">
         <span style="font-size:1rem;flex-shrink:0">📦</span>
-        <div><div style="font-size:0.85rem;font-weight:700;color:#221F1F;">¿A dónde va el ~60% de la trucha que entra?</div><div style="font-size:0.78rem;color:#999999;margin-top:2px;">El % de uso promedio es 40,5%. ¿Hay registro de merma (piel, espinas, grasa, recortes)? ¿Se pesa el descarte?</div></div>
+        <div><div style="font-size:0.85rem;font-weight:700;color:#221F1F;">¿A dónde va el ~59% de la trucha que entra?</div><div style="font-size:0.78rem;color:#999999;margin-top:2px;">El % de uso promedio es 41,2%. ¿Hay registro de merma (piel, espinas, grasa, recortes)? ¿Se pesa el descarte?</div></div>
       </div>
       <div style="display:flex;gap:12px;align-items:flex-start;padding:10px 12px;background:#fffbeb;border-radius:8px;">
         <span style="font-size:1rem;flex-shrink:0">📅</span>
@@ -1436,7 +1433,7 @@ footer { text-align: center; color: #BBBBBB; font-size: 0.76rem; padding: 20px 0
       Fuentes: planilla "Producción CP" (Drive, pestaña JULIO 26, leída completa el 28/07) y salidas TOTVS (detalle por transacción, export "salidas actualizado al 300726.xml", cubre 29/05 al 30/07, incluye franquicias de Bs. As. — Recoleta y Palermo — que un filtro de provincia excluía en exports anteriores), filtrado solo a los 10 productos del CP.
       El cruce cubre S2–S5 (30/06–27/07), <strong>las 4 semanas ya cerradas</strong>. La lectura del 28/07 trajo la versión completa de "Producción CP" — la del 24/07 se había quedado corta por una limitación del MCP de Drive en archivos grandes (solo devolvía la primera pestaña), así que el Entregado de S5 subió en los 10 productos y el Pedido de Pollo Teriyaki para esa semana se corrigió de 75 a 40 u.
       <br><strong>% Pedido / Salidas</strong> compara lo que se pidió a CP contra lo que realmente salió a franquicias (la demanda real), sin importar si el CP llegó a entregarlo. 100% = pedido calibrado. Por debajo de 70% se pidió de menos que la demanda real (riesgo de faltante, se tapa con stock de seguridad). Por encima de 130% se pidió de más que la demanda real (posible sobre-pedido).
-      <br><strong>Stock actual</strong>: foto del saldo en TOTVS al 31/07/2026 (Centro de Distribución + Centro de Producción + depósito externo Mirizi), no varía según la semana seleccionada — es el stock disponible hoy, no un dato histórico.
+      <br><strong>Stock actual</strong>: foto del saldo en TOTVS al 03/08/2026 (Centro de Distribución + Centro de Producción + depósito externo Mirizi), no varía según la semana seleccionada — es el stock disponible hoy, no un dato histórico.
       <br><strong>Prom. salidas/sem</strong> y <strong>Semanas de stock</strong>: promedio de salidas a franquicias por semana (S2–S5, las 4 semanas cerradas) y cuántas semanas dura el stock actual a ese ritmo. Menos de 1 semana = riesgo de faltante próximo; más de 8 semanas = posible sobre-stock.
     </div>
 
@@ -1607,10 +1604,10 @@ const WEEKS = [
     daily:[258.125,0,221.995,207.41,202.125,0],
     dailyByProd:{ "Tiras":[42.875,0,42.875,39.2,35.525,0], "cortes":[37.8,0,24,0,0,0], "tiras unidas":[80.85,0,80.36,89.67,51.94,0], "cubos":[96.6,0,74.76,78.54,114.66,0], "sin embolsar":[0,0,0,0,0,0] },
     entradaBandejasDia:[44,0,35,32,32,0], activeDaysCount:4 },
-  { label:"S31", dateRange:"27 jul – 01 ago", isPartial:true, total:594.65,
-    daily:[153.9,219.1,199.6,22.05,0,0],
-    dailyByProd:{ "Tiras":[19.6,40.425,37.975,22.05,0,0], "cortes":[15,0,16,0,0,0], "tiras unidas":[56.35,111.475,78.4,0,0,0], "cubos":[62.958,67.2,67.2,0,0,0], "sin embolsar":[0,0,0,0,0,0] },
-    entradaBandejasDia:[25,34,32,28,0,0], activeDaysCount:4 }
+  { label:"S31", dateRange:"27 jul – 01 ago", isPartial:false, total:990.425,
+    daily:[153.9,219.1,199.6,181.3,145.2,91.325],
+    dailyByProd:{ "Tiras":[19.6,40.425,37.975,31.85,29.4,17.15], "cortes":[15,0,16,21,14,8.2], "tiras unidas":[56.35,111.475,78.4,75.95,51.45,28.175], "cubos":[62.958,67.2,67.2,52.5,50.358,37.8], "sin embolsar":[0,0,0,0,0,0] },
+    entradaBandejasDia:[25,34,32,28,20,15], activeDaysCount:6 }
 ];
 
 const PRODUCTOS = ["Tiras","cortes","tiras unidas","cubos","sin embolsar"];
@@ -1658,12 +1655,12 @@ new Chart(document.getElementById("chartSemanal").getContext("2d"), {
 // unidas+cubos por mes; no incluye "sin embolsar", igual que esa pestaña). Las semanas no calzan
 // parejo con el calendario (van de lunes a sábado y a veces un mes arranca o cierra a mitad de
 // semana), por eso cada mes no tiene la misma cantidad: Mayo = S20-S22 (3 sem.), Junio = S23-S26
-// (4 sem.), Julio = S27-S31 (5 sem., la última — S31 — todavía en curso).
+// (4 sem.), Julio = S27-S31 (5 sem., cerrado — S31 terminó el 01/08).
 // entrada = suma de entradaBandejasDia (cajas) de las semanas de cada mes, x 15 kg/caja
 const MESES_TRUCHA = [
   { label:"Mayo", total:2195.8, entrada:5985, semanas:"S20–S22", cantSemanas:3, isPartial:false },
   { label:"Junio", total:3368.8, entrada:8880, semanas:"S23–S26", cantSemanas:4, isPartial:false },
-  { label:"Julio", total:3807.2, entrada:9660, semanas:"S27–S31", cantSemanas:5, isPartial:true }
+  { label:"Julio", total:4203.0, entrada:10185, semanas:"S27–S31", cantSemanas:5, isPartial:false }
 ];
 new Chart(document.getElementById("chartMensual").getContext("2d"), {
   type:"bar",
@@ -1962,18 +1959,18 @@ const CUMPL_FRANQUICIAS = {
 const CUMPL_FRANQUICIA_SEMANAS = 4; // semanas cubiertas (S2, S3, S4, S5)
 const SEMANAS_POR_MES = 4; // misma convención que "objetivo mensual" de la pestaña Trucha (4 semanas/mes)
 
-// Stock actual (TOTVS, foto al 31/07/2026). Suma Saldo Actual en depósitos CD (Centro de
-// Distribución) + CP (Centro de Producción) de "stock al 310726.xml", más el depósito MI (Mirizi,
-// sucursal 010102) de "stock externo al 290726.xml" — stock físico de producto terminado del CP
-// guardado en esa sucursal externa, no incluido en el export CD/CP. No se recibió una foto de MI más
-// nueva, así que se reutiliza la del 29/07 (no varió tampoco respecto a la del 27/07). No incluye
-// tránsito (dio 0 en los 10 productos en las fotos disponibles, pero si aparece en una carga futura
-// no está sumado acá). Caída fuerte de CD+CP en varios productos (Tamago, Corte de Trucha, Pollo
-// Teriyaki) respecto al 30/07 — consistente con salidas a franquicias, no revisado línea por línea.
+// Stock actual (TOTVS, foto al 03/08/2026). Suma Saldo Actual en depósitos CD (Centro de
+// Distribución) + CP (Centro de Producción) de "stock al 030826.xml", más el depósito MI (Mirizi,
+// sucursal 010102) — stock físico de producto terminado del CP guardado en esa sucursal externa, no
+// incluido en el export CD/CP. No se recibió una foto de MI más nueva desde el 29/07, así que ese
+// componente se mantiene igual (se estimó restando el CD+CP del 31/07 al total cargado esa fecha, y
+// sumando esa diferencia al nuevo CD+CP del 03/08 — afecta sobre todo a Tamago, Corte de Trucha,
+// Langostinos Rebozados y Pollo Teriyaki, que son los que tienen stock en MI). No incluye tránsito
+// (dio 0 en los 10 productos en las fotos disponibles).
 const CUMPL_STOCK = {
-  "CORTE DE TRUCHA":228, "CUBOS DE TRUCHA":148, "LANGOSTINOS REBOZADOS":458, "PASTA DE HONEY":57,
-  "POLLO TERIYAKI":253, "REDUCCIÓN DE TERIYAKI":332, "SALSA NARANJA Y MIEL":83, "TAMAGO":258,
-  "TIRA DE TRUCHA":24, "VINAGRETA":358
+  "CORTE DE TRUCHA":227, "CUBOS DE TRUCHA":150, "LANGOSTINOS REBOZADOS":393, "PASTA DE HONEY":36,
+  "POLLO TERIYAKI":225, "REDUCCIÓN DE TERIYAKI":332, "SALSA NARANJA Y MIEL":83, "TAMAGO":258,
+  "TIRA DE TRUCHA":23, "VINAGRETA":357
 };
 
 // Pedido/Entregado MENSUAL por producto, ene–jul 2026 (fuente: "Producción CP" en Drive, pestaña
