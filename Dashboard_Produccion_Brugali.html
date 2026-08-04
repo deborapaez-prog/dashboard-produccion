@@ -1892,23 +1892,23 @@ const RECETAS = {
     intermedioNombre:"Reducción de Teriyaki × litro", intermedioPorUnidad:0.5,
     intermedio:[
       {nombre:"Vino blanco × lt", cantidad:1.00, unidad:"lt"},
-      {nombre:"Salsa de soja bidón × 5L", cantidad:0.65, unidad:"lt"},
-      {nombre:"Miel bidón × 10 kg", cantidad:0.50, unidad:"kg"},
-      {nombre:"Azúcar pack × 10 kg", cantidad:0.46, unidad:"kg"}
+      {nombre:"Salsa de soja bidón × 5L", cantidad:0.65, unidad:"lt", pack:{size:5, tipo:"bidón"}},
+      {nombre:"Miel bidón × 10 kg", cantidad:0.50, unidad:"kg", pack:{size:10, tipo:"bidón"}},
+      {nombre:"Azúcar pack × 10 kg", cantidad:0.46, unidad:"kg", pack:{size:10, tipo:"pack"}}
     ] },
   "Salsa Naranja y Miel": { unidadEnvase:"botella",
     packaging:[ {nombre:"Botella de plástico × 500cc", cantidad:1, unidad:"un"} ],
     intermedioNombre:"Salsa Naranja y Miel Cocin × litro", intermedioPorUnidad:0.5,
     intermedio:[
       {nombre:"Jugo de naranja cítrico × lt", cantidad:1.66, unidad:"lt"},
-      {nombre:"Miel bidón × 10 kg", cantidad:1.00, unidad:"kg"}
+      {nombre:"Miel bidón × 10 kg", cantidad:1.00, unidad:"kg", pack:{size:10, tipo:"bidón"}}
     ] },
   "Vinagreta": { unidadEnvase:"caja",
     ingredientes:[
-      {nombre:"Vinagre de alcohol × 20 lt", cantidad:11.76, unidad:"lt"},
-      {nombre:"Azúcar pack × 10 kg", cantidad:11.75, unidad:"kg"},
-      {nombre:"Sal fina paquete × 500 gr", cantidad:0.118, unidad:"kg"},
-      {nombre:"Ajinomoto pack × 1 kg", cantidad:0.058, unidad:"kg"},
+      {nombre:"Vinagre de alcohol × 20 lt", cantidad:11.76, unidad:"lt", pack:{size:20, tipo:"bidón"}},
+      {nombre:"Azúcar pack × 10 kg", cantidad:11.75, unidad:"kg", pack:{size:10, tipo:"pack"}},
+      {nombre:"Sal fina paquete × 500 gr", cantidad:0.118, unidad:"kg", pack:{size:0.5, tipo:"paquete"}},
+      {nombre:"Ajinomoto pack × 1 kg", cantidad:0.058, unidad:"kg", pack:{size:1, tipo:"pack"}},
       {nombre:"Bidón × 5L", cantidad:4, unidad:"un"},
       {nombre:"Caja mediana", cantidad:1, unidad:"un"}
     ] },
@@ -1919,11 +1919,11 @@ const RECETAS = {
     ],
     intermedioNombre:"Pollo Teriyaki × kg", intermedioPorUnidad:6,
     intermedio:[
-      {nombre:"Pechuga de pollo caja × 15 kg", cantidad:1.65, unidad:"kg"},
+      {nombre:"Pechuga de pollo caja × 15 kg", cantidad:1.65, unidad:"kg", pack:{size:15, tipo:"caja"}},
       {nombre:"Vino blanco × lt", cantidad:0.1741, unidad:"lt"},
-      {nombre:"Salsa de soja bidón × 5L", cantidad:0.116, unidad:"lt"},
-      {nombre:"Azúcar pack × 10 kg", cantidad:0.20, unidad:"kg"},
-      {nombre:"Miel bidón × 10 kg", cantidad:0.20, unidad:"kg"}
+      {nombre:"Salsa de soja bidón × 5L", cantidad:0.116, unidad:"lt", pack:{size:5, tipo:"bidón"}},
+      {nombre:"Azúcar pack × 10 kg", cantidad:0.20, unidad:"kg", pack:{size:10, tipo:"pack"}},
+      {nombre:"Miel bidón × 10 kg", cantidad:0.20, unidad:"kg", pack:{size:10, tipo:"bidón"}}
     ] },
   "Pasta de Honey": { unidadEnvase:"caja",
     packaging:[
@@ -1933,9 +1933,9 @@ const RECETAS = {
     intermedioNombre:"Pasta de Honey × kg", intermedioPorUnidad:6,
     intermedio:[
       {nombre:"Pasta de trucha × kg (no está en TOTVS)", cantidad:6.52, unidad:"kg"},
-      {nombre:"Azúcar pack × 10 kg", cantidad:0.42, unidad:"kg"},
-      {nombre:"Miel bidón × 10 kg", cantidad:0.17, unidad:"kg"},
-      {nombre:"Salsa de soja bidón × 5L", cantidad:0.085, unidad:"lt"},
+      {nombre:"Azúcar pack × 10 kg", cantidad:0.42, unidad:"kg", pack:{size:10, tipo:"pack"}},
+      {nombre:"Miel bidón × 10 kg", cantidad:0.17, unidad:"kg", pack:{size:10, tipo:"bidón"}},
+      {nombre:"Salsa de soja bidón × 5L", cantidad:0.085, unidad:"lt", pack:{size:5, tipo:"bidón"}},
       {nombre:"Vino blanco × lt", cantidad:0.017, unidad:"lt"}
     ] },
   "Langostino Rebozado": { unidadEnvase:"caja",
@@ -1946,19 +1946,19 @@ const RECETAS = {
     intermedioNombre:"Langostino Rebozado × kg", intermedioPorUnidad:6,
     intermedio:[
       {nombre:"Langostino devenado roto × kg", cantidad:0.800, unidad:"kg"},
-      {nombre:"Pan rallado × 10 kg", cantidad:0.210, unidad:"kg"},
+      {nombre:"Pan rallado × 10 kg", cantidad:0.210, unidad:"kg", pack:{size:10, tipo:"pack"}},
       {nombre:"Harina 000 × kg", cantidad:0.0794, unidad:"kg"},
-      {nombre:"Mostaza × 3 kg", cantidad:0.0396, unidad:"kg"},
-      {nombre:"Sal fina paquete × 500 gr", cantidad:0.002, unidad:"kg"},
-      {nombre:"Batter SS × 5 kg", cantidad:0.0025, unidad:"kg"},
-      {nombre:"Pimienta blanca × 250 gr", cantidad:0.0015, unidad:"kg"},
-      {nombre:"Ajinomoto pack × 1 kg", cantidad:0.000794, unidad:"kg"}
+      {nombre:"Mostaza × 3 kg", cantidad:0.0396, unidad:"kg", pack:{size:3, tipo:"pack"}},
+      {nombre:"Sal fina paquete × 500 gr", cantidad:0.002, unidad:"kg", pack:{size:0.5, tipo:"paquete"}},
+      {nombre:"Batter SS × 5 kg", cantidad:0.0025, unidad:"kg", pack:{size:5, tipo:"pack"}},
+      {nombre:"Pimienta blanca × 250 gr", cantidad:0.0015, unidad:"kg", pack:{size:0.25, tipo:"pack"}},
+      {nombre:"Ajinomoto pack × 1 kg", cantidad:0.000794, unidad:"kg", pack:{size:1, tipo:"pack"}}
     ] },
   "Tira de Trucha": { unidadEnvase:"caja",
     packaging:[
       {nombre:"Cajas grandes 40×30×15", cantidad:1, unidad:"un"},
       {nombre:"Bolsa de corte 60×90 1,5kg", cantidad:0.01, unidad:"un"},
-      {nombre:"Folex grande pack × 1kg", cantidad:0.001, unidad:"kg"}
+      {nombre:"Folex grande pack × 1kg", cantidad:0.001, unidad:"kg", pack:{size:1, tipo:"pack"}}
     ],
     intermedioNombre:"Tiras × kg", intermedioPorUnidad:7,
     intermedio:[ {nombre:"Trucha filet trim A PBI fresco × kg", cantidad:2, unidad:"kg"} ] },
@@ -2001,21 +2001,22 @@ function initCalculadora() {
 
     const totales = [];
     const idx = {};
-    function add(nombre, cantidad, unidad) {
-      if (idx[nombre] === undefined) { idx[nombre] = totales.length; totales.push({nombre, cantidad:0, unidad}); }
+    function add(nombre, cantidad, unidad, pack) {
+      if (idx[nombre] === undefined) { idx[nombre] = totales.length; totales.push({nombre, cantidad:0, unidad, pack}); }
       totales[idx[nombre]].cantidad += cantidad;
     }
-    (r.packaging || r.ingredientes || []).forEach(ing => add(ing.nombre, ing.cantidad * n, ing.unidad));
+    (r.packaging || r.ingredientes || []).forEach(ing => add(ing.nombre, ing.cantidad * n, ing.unidad, ing.pack));
     let cantidadIntermedio = 0;
     if (r.intermedio) {
       cantidadIntermedio = r.intermedioPorUnidad * n;
-      r.intermedio.forEach(ing => add(ing.nombre, ing.cantidad * cantidadIntermedio, ing.unidad));
+      r.intermedio.forEach(ing => add(ing.nombre, ing.cantidad * cantidadIntermedio, ing.unidad, ing.pack));
     }
 
     const t = document.getElementById("tablaCalc");
-    let h = "<thead><tr><th>Insumo</th><th>Cantidad total</th></tr></thead><tbody>";
+    let h = "<thead><tr><th>Insumo</th><th>Cantidad total</th><th>Equivalente packaging</th></tr></thead><tbody>";
     totales.forEach(d => {
-      h += `<tr><td>${d.nombre}</td><td>${formatInsumo(d.cantidad)} ${d.unidad}</td></tr>`;
+      const equiv = d.pack ? `${formatInsumo(d.cantidad / d.pack.size)} ${d.pack.tipo} (de ${formatInsumo(d.pack.size)} ${d.unidad} c/u)` : "—";
+      h += `<tr><td>${d.nombre}</td><td>${formatInsumo(d.cantidad)} ${d.unidad}</td><td>${equiv}</td></tr>`;
     });
     h += "</tbody>";
     t.innerHTML = h;
