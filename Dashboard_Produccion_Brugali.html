@@ -125,7 +125,7 @@ footer { text-align: center; color: #BBBBBB; font-size: 0.76rem; padding: 20px 0
       <div style="font-size:0.7rem;font-weight:700;color:rgba(255,255,255,0.6);text-transform:uppercase;letter-spacing:0.12em;margin-top:2px;">Dashboard de Producción</div>
     </div>
   </div>
-  <span class="badge">📅 Actualizado: 03/08/2026</span>
+  <span class="badge">📅 Actualizado: 04/08/2026</span>
 </header>
 
 <div class="tab-nav">
@@ -1588,7 +1588,7 @@ footer { text-align: center; color: #BBBBBB; font-size: 0.76rem; padding: 20px 0
       Fuentes: planilla "Producción CP" (pestañas JULIO 26 y AGOSTO 26, leídas directo en el navegador el 03/08 — el MCP de Drive devolvía otra pestaña por la limitación conocida de truncamiento en archivos grandes) y salidas TOTVS (detalle por transacción, export "salidas al 030826.xml", cubre 29/05 al 03/08, incluye franquicias de Bs. As. — Recoleta y Palermo), filtrado solo a los 10 productos del CP.
       El cruce cubre S2–S6 (30/06–03/08): <strong>S2 a S5 ya cerradas</strong>, <strong>S6 (28/07–03/08) todavía en curso</strong> (hoy es 03/08, último día del rango).
       <br><strong>% Pedido / Salidas</strong> compara lo que se pidió a CP contra lo que realmente salió a franquicias (la demanda real), sin importar si el CP llegó a entregarlo. 100% = pedido calibrado. Por debajo de 70% se pidió de menos que la demanda real (riesgo de faltante, se tapa con stock de seguridad). Por encima de 130% se pidió de más que la demanda real (posible sobre-pedido).
-      <br><strong>Stock actual</strong>: foto del saldo en TOTVS al 03/08/2026 (Centro de Distribución + Centro de Producción + depósito externo Mirizi), no varía según la semana seleccionada — es el stock disponible hoy, no un dato histórico.
+      <br><strong>Stock actual</strong>: foto del saldo en TOTVS al 04/08/2026 (Centro de Distribución + Centro de Producción + depósito externo Mirizi), no varía según la semana seleccionada — es el stock disponible hoy, no un dato histórico.
       <br><strong>Prom. salidas/sem</strong> y <strong>Semanas de stock</strong>: promedio de salidas a franquicias por semana (S2–S5, las 4 semanas cerradas — S6 se excluye del promedio por estar en curso) y cuántas semanas dura el stock actual a ese ritmo. Menos de 1 semana = riesgo de faltante próximo; más de 8 semanas = posible sobre-stock.
     </div>
 
@@ -2276,18 +2276,18 @@ const CUMPL_FRANQUICIAS = {
 const CUMPL_FRANQUICIA_SEMANAS = 5; // semanas cubiertas (S2, S3, S4, S5, S6 parcial)
 const SEMANAS_POR_MES = 4; // misma convención que "objetivo mensual" de la pestaña Trucha (4 semanas/mes)
 
-// Stock actual (TOTVS, foto al 03/08/2026). Suma Saldo Actual en depósitos CD (Centro de
-// Distribución) + CP (Centro de Producción) de "stock al 030826.xml", más el depósito MI (Mirizi,
+// Stock actual (TOTVS, foto al 04/08/2026). Suma Saldo Actual en depósitos CD (Centro de
+// Distribución) + CP (Centro de Producción) de "stock al 040826.xml", más el depósito MI (Mirizi,
 // sucursal 010102) — stock físico de producto terminado del CP guardado en esa sucursal externa, no
 // incluido en el export CD/CP. No se recibió una foto de MI más nueva desde el 29/07, así que ese
-// componente se mantiene igual (se estimó restando el CD+CP del 31/07 al total cargado esa fecha, y
-// sumando esa diferencia al nuevo CD+CP del 03/08 — afecta sobre todo a Tamago, Corte de Trucha,
+// componente se mantiene igual (se estimó restando el CD+CP del 03/08 al total cargado esa fecha, y
+// sumando esa diferencia al nuevo CD+CP del 04/08 — afecta sobre todo a Tamago, Corte de Trucha,
 // Langostinos Rebozados y Pollo Teriyaki, que son los que tienen stock en MI). No incluye tránsito
 // (dio 0 en los 10 productos en las fotos disponibles).
 const CUMPL_STOCK = {
-  "CORTE DE TRUCHA":227, "CUBOS DE TRUCHA":150, "LANGOSTINOS REBOZADOS":393, "PASTA DE HONEY":36,
-  "POLLO TERIYAKI":225, "REDUCCIÓN DE TERIYAKI":332, "SALSA NARANJA Y MIEL":83, "TAMAGO":258,
-  "TIRA DE TRUCHA":23, "VINAGRETA":357
+  "CORTE DE TRUCHA":243, "CUBOS DE TRUCHA":135, "LANGOSTINOS REBOZADOS":154, "PASTA DE HONEY":59,
+  "POLLO TERIYAKI":209, "REDUCCIÓN DE TERIYAKI":343, "SALSA NARANJA Y MIEL":108, "TAMAGO":348,
+  "TIRA DE TRUCHA":49, "VINAGRETA":404
 };
 
 // Pedido/Entregado MENSUAL por producto, ene–ago 2026 (fuente: "Producción CP", pestañas JULIO 26 y
