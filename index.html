@@ -125,7 +125,7 @@ footer { text-align: center; color: #BBBBBB; font-size: 0.76rem; padding: 20px 0
       <div style="font-size:0.7rem;font-weight:700;color:rgba(255,255,255,0.6);text-transform:uppercase;letter-spacing:0.12em;margin-top:2px;">Dashboard de Producción</div>
     </div>
   </div>
-  <span class="badge">📅 Actualizado: 04/08/2026</span>
+  <span class="badge">📅 Actualizado: 05/08/2026</span>
 </header>
 
 <div class="tab-nav">
@@ -143,41 +143,41 @@ footer { text-align: center; color: #BBBBBB; font-size: 0.76rem; padding: 20px 0
 <main>
 
   <div class="alerta-ok">
-    ✅ <strong>S31 cerró en 990,4 kg (6 días activos de 6, 27/07–01/08).</strong>
-    S30 cerró en 889,7 kg (4 días activos de 6, 20–25/07). Todavía no hay datos cargados para S32 (03–08/08, semana en curso).
-    Acumulado S20–S31: 10.327,6 kg · 41,2% uso general. Objetivo semanal: 1.067,2 kg · por día: 213,4 kg.
+    ✅ <strong>S32 en curso: 302,7 kg (2 días activos de 6, 03–04/08).</strong>
+    S31 cerró en 990,4 kg (6 días activos de 6, 27/07–01/08).
+    Acumulado S20–S32: 10.630,3 kg · 41,3% uso general. Objetivo semanal: 1.067,2 kg · por día: 213,4 kg.
   </div>
 
   <div class="kpi-grid">
     <div class="kpi-card">
-      <div class="lbl">Semana actual (S31)</div>
-      <div class="val">990,4 <span style="font-size:.85rem;color:#BBBBBB">kg</span></div>
-      <div class="sub">6 días activos (27/07–01/08) — cerrada</div>
+      <div class="lbl">Semana actual (S32)</div>
+      <div class="val">302,7 <span style="font-size:.85rem;color:#BBBBBB">kg</span></div>
+      <div class="sub">2 días activos (03–04/08) — en curso</div>
     </div>
     <div class="kpi-card">
-      <div class="lbl">Semana anterior (S30)</div>
-      <div class="val" style="color:#221F1F">889,7 <span style="font-size:.85rem;color:#BBBBBB">kg</span></div>
-      <div class="sub">4 días activos (20–25/07)</div>
+      <div class="lbl">Semana anterior (S31)</div>
+      <div class="val" style="color:#221F1F">990,4 <span style="font-size:.85rem;color:#BBBBBB">kg</span></div>
+      <div class="sub">6 días activos (27/07–01/08)</div>
     </div>
     <div class="kpi-card">
-      <div class="lbl">kg/día S31 vs S30</div>
-      <div class="val" style="color:#33A392">165,1</div>
-      <div class="sub">vs 222,4 kg/día S30</div>
+      <div class="lbl">kg/día S32 vs S31</div>
+      <div class="val" style="color:#EF402F">151,3</div>
+      <div class="sub">vs 165,1 kg/día S31</div>
     </div>
     <div class="kpi-card">
       <div class="lbl">Acumulado total</div>
-      <div class="val" style="color:#1D4856">10.327,6 <span style="font-size:.85rem;color:#BBBBBB">kg</span></div>
-      <div class="sub">S20–S31</div>
+      <div class="val" style="color:#1D4856">10.630,3 <span style="font-size:.85rem;color:#BBBBBB">kg</span></div>
+      <div class="sub">S20–S32</div>
     </div>
     <div class="kpi-card">
-      <div class="lbl">% uso S31</div>
+      <div class="lbl">% uso S32</div>
       <div class="val">42,9 <span style="font-size:.85rem;color:#BBBBBB">%</span></div>
-      <div class="sub">990,4 / 2.310 kg entrada (154 cajas)</div>
+      <div class="sub">302,7 / 705 kg entrada (47 cajas) — semana en curso</div>
     </div>
     <div class="kpi-card">
       <div class="lbl">% uso general</div>
-      <div class="val">41,2 <span style="font-size:.85rem;color:#BBBBBB">%</span></div>
-      <div class="sub">promedio S20–S31</div>
+      <div class="val">41,3 <span style="font-size:.85rem;color:#BBBBBB">%</span></div>
+      <div class="sub">promedio S20–S32</div>
     </div>
   </div>
 
@@ -207,7 +207,8 @@ footer { text-align: center; color: #BBBBBB; font-size: 0.76rem; padding: 20px 0
         <option value="8">S28 — 06–11/07</option>
         <option value="9">S29 — 13–18/07</option>
         <option value="10">S30 — 20–25/07</option>
-        <option value="11" selected>S31 — 27/07–01/08</option>
+        <option value="11">S31 — 27/07–01/08</option>
+        <option value="12" selected>S32 — 03–08/08</option>
       </select>
     </h2>
     <div class="chart-wrap"><canvas id="chartDiario"></canvas></div>
@@ -229,7 +230,8 @@ footer { text-align: center; color: #BBBBBB; font-size: 0.76rem; padding: 20px 0
         <option value="8">S28 — 06–11/07</option>
         <option value="9">S29 — 13–18/07</option>
         <option value="10">S30 — 20–25/07</option>
-        <option value="11" selected>S31 — 27/07–01/08</option>
+        <option value="11">S31 — 27/07–01/08</option>
+        <option value="12" selected>S32 — 03–08/08</option>
       </select>
     </h2>
     <div class="table-wrap"><table id="tablaDetalle"></table></div>
@@ -240,7 +242,7 @@ footer { text-align: center; color: #BBBBBB; font-size: 0.76rem; padding: 20px 0
     <div style="display:flex;flex-direction:column;gap:10px;">
       <div style="display:flex;gap:12px;align-items:flex-start;padding:10px 12px;background:#fffbeb;border-radius:8px;">
         <span style="font-size:1rem;flex-shrink:0">📦</span>
-        <div><div style="font-size:0.85rem;font-weight:700;color:#221F1F;">¿A dónde va el ~59% de la trucha que entra?</div><div style="font-size:0.78rem;color:#999999;margin-top:2px;">El % de uso promedio es 41,2%. ¿Hay registro de merma (piel, espinas, grasa, recortes)? ¿Se pesa el descarte?</div></div>
+        <div><div style="font-size:0.85rem;font-weight:700;color:#221F1F;">¿A dónde va el ~59% de la trucha que entra?</div><div style="font-size:0.78rem;color:#999999;margin-top:2px;">El % de uso promedio es 41,3%. ¿Hay registro de merma (piel, espinas, grasa, recortes)? ¿Se pesa el descarte?</div></div>
       </div>
       <div style="display:flex;gap:12px;align-items:flex-start;padding:10px 12px;background:#fffbeb;border-radius:8px;">
         <span style="font-size:1rem;flex-shrink:0">📅</span>
@@ -1585,8 +1587,8 @@ footer { text-align: center; color: #BBBBBB; font-size: 0.76rem; padding: 20px 0
 
     <div class="alerta">
       ⚠️ <strong>Compara lo pedido a Centro de Producción vs. lo entregado por CP vs. lo que realmente salió a franquicias.</strong>
-      Fuentes: planilla "Producción CP" (pestañas JULIO 26 y AGOSTO 26, leídas directo en el navegador el 03/08 — el MCP de Drive devolvía otra pestaña por la limitación conocida de truncamiento en archivos grandes) y salidas TOTVS (detalle por transacción, export "salidas al 030826.xml", cubre 29/05 al 03/08, incluye franquicias de Bs. As. — Recoleta y Palermo), filtrado solo a los 10 productos del CP.
-      El cruce cubre S2–S6 (30/06–03/08): <strong>S2 a S5 ya cerradas</strong>, <strong>S6 (28/07–03/08) todavía en curso</strong> (hoy es 03/08, último día del rango).
+      Fuentes: planilla "Producción CP" (pestañas JULIO 26 y AGOSTO 26) y salidas TOTVS (detalle por transacción, export "salidas al 030826.xml" para S2–S5 y "salidas al 040826.xml" para S6, actualizada con carga retroactiva; incluye franquicias de Bs. As. — Recoleta y Palermo), filtrado solo a los 10 productos del CP.
+      El cruce cubre S2–S6 (30/06–03/08): <strong>S2 a S6 ya cerradas</strong>. La semana S7 (04–10/08) ya tiene pedido cargado en "Producción CP" pero todavía no tiene entregado ni salidas — se agrega cuando haya datos.
       <br><strong>% Pedido / Salidas</strong> compara lo que se pidió a CP contra lo que realmente salió a franquicias (la demanda real), sin importar si el CP llegó a entregarlo. 100% = pedido calibrado. Por debajo de 70% se pidió de menos que la demanda real (riesgo de faltante, se tapa con stock de seguridad). Por encima de 130% se pidió de más que la demanda real (posible sobre-pedido).
       <br><strong>Stock actual</strong>: foto del saldo en TOTVS al 04/08/2026 (Centro de Distribución + Centro de Producción + depósito externo Mirizi), no varía según la semana seleccionada — es el stock disponible hoy, no un dato histórico.
       <br><strong>Prom. salidas/sem</strong> y <strong>Semanas de stock</strong>: promedio de salidas a franquicias por semana (S2–S5, las 4 semanas cerradas — S6 se excluye del promedio por estar en curso) y cuántas semanas dura el stock actual a ese ritmo. Menos de 1 semana = riesgo de faltante próximo; más de 8 semanas = posible sobre-stock.
@@ -1595,18 +1597,18 @@ footer { text-align: center; color: #BBBBBB; font-size: 0.76rem; padding: 20px 0
     <div class="kpi-grid" style="grid-template-columns:repeat(auto-fit,minmax(160px,1fr))">
       <div class="kpi-card">
         <div class="lbl">Cumplimiento producción (mensual)</div>
-        <div class="val" style="color:#E3A127">82,5 <span style="font-size:.85rem;color:#BBBBBB">%</span></div>
-        <div class="sub">739 / 896 u pedidas — AGO 26, muy parcial (solo S6)</div>
+        <div class="val" style="color:#33A392">107,0 <span style="font-size:.85rem;color:#BBBBBB">%</span></div>
+        <div class="sub">959 / 896 u pedidas — AGO 26 (solo S6, ya cerrada)</div>
       </div>
       <div class="kpi-card">
         <div class="lbl">Pedido vs. Salidas</div>
-        <div class="val" style="color:#E3A127">111,2 <span style="font-size:.85rem;color:#BBBBBB">%</span></div>
-        <div class="sub">4.689 pedidas / 4.217 salidas (S2–S6, S6 parcial)</div>
+        <div class="val" style="color:#E3A127">105,7 <span style="font-size:.85rem;color:#BBBBBB">%</span></div>
+        <div class="sub">4.689 pedidas / 4.438 salidas (S2–S6, ya cerradas)</div>
       </div>
       <div class="kpi-card">
         <div class="lbl">Menor cumplimiento (mensual)</div>
         <div class="val" style="color:#EF402F;font-size:1.1rem">TAMAGO</div>
-        <div class="sub">53,5% — 123 / 230 u (AGO 26, parcial)</div>
+        <div class="sub">80,0% — 184 / 230 u (AGO 26, solo S6)</div>
       </div>
       <div class="kpi-card">
         <div class="lbl">Mejor cumplimiento (mensual)</div>
@@ -1684,7 +1686,7 @@ footer { text-align: center; color: #BBBBBB; font-size: 0.76rem; padding: 20px 0
         </div>
         <div style="display:flex;gap:12px;align-items:flex-start;padding:10px 12px;background:#fffbeb;border-radius:8px;">
           <span style="font-size:1rem;flex-shrink:0">📉</span>
-          <div><div style="font-size:0.85rem;font-weight:700;color:#221F1F;">S3 (07–13/07) tiene el cumplimiento más bajo de producción: 88,0%</div><div style="font-size:0.78rem;color:#999999;margin-top:2px;">Se pidieron 872 u y CP entregó 767 — el más bajo de las 4 semanas cerradas (S2 94,7%, S4 92,7%, S5 112,4%).</div></div>
+          <div><div style="font-size:0.85rem;font-weight:700;color:#221F1F;">S3 (07–13/07) tiene el cumplimiento más bajo de producción: 88,0%</div><div style="font-size:0.78rem;color:#999999;margin-top:2px;">Se pidieron 872 u y CP entregó 767 — el más bajo de las 5 semanas cerradas (S2 94,7%, S4 92,7%, S5 112,4%, S6 107,0%).</div></div>
         </div>
         <div style="display:flex;gap:12px;align-items:flex-start;padding:10px 12px;background:#fffbeb;border-radius:8px;">
           <span style="font-size:1rem;flex-shrink:0">🥗</span>
@@ -1696,7 +1698,7 @@ footer { text-align: center; color: #BBBBBB; font-size: 0.76rem; padding: 20px 0
         </div>
         <div style="display:flex;gap:12px;align-items:flex-start;padding:10px 12px;background:#fffbeb;border-radius:8px;">
           <span style="font-size:1rem;flex-shrink:0">🍣</span>
-          <div><div style="font-size:0.85rem;font-weight:700;color:#221F1F;">S6 (28/07–03/08, en curso) arranca floja para Tamago: 53,5%</div><div style="font-size:0.78rem;color:#999999;margin-top:2px;">Se pidieron 230 u y CP entregó 123 — muy por debajo del ritmo de julio. En contraste, Pollo Teriyaki entregó casi el doble de lo pedido (49 / 25 u, 196%). Como la semana todavía no cerró, conviene revisar de nuevo estos dos números cuando termine.</div></div>
+          <div><div style="font-size:0.85rem;font-weight:700;color:#221F1F;">S6 (28/07–03/08, ya cerrada) terminó floja para Tamago: 80,0%</div><div style="font-size:0.78rem;color:#999999;margin-top:2px;">Se pidieron 230 u y CP entregó 184 — mejoró bastante contra el parcial que se había visto a mitad de semana (53,5%), pero sigue por debajo del pedido. En contraste, Pollo Teriyaki entregó casi el doble de lo pedido (49 / 25 u, 196%).</div></div>
         </div>
       </div>
     </div>
@@ -1769,7 +1771,11 @@ const WEEKS = [
   { label:"S31", dateRange:"27 jul – 01 ago", isPartial:false, total:990.425,
     daily:[153.9,219.1,199.6,181.3,145.2,91.325],
     dailyByProd:{ "Tiras":[19.6,40.425,37.975,31.85,29.4,17.15], "cortes":[15,0,16,21,14,8.2], "tiras unidas":[56.35,111.475,78.4,75.95,51.45,28.175], "cubos":[62.958,67.2,67.2,52.5,50.358,37.8], "sin embolsar":[0,0,0,0,0,0] },
-    entradaBandejasDia:[25,34,32,28,20,15], activeDaysCount:6 }
+    entradaBandejasDia:[25,34,32,28,20,15], activeDaysCount:6 },
+  { label:"S32", dateRange:"03–08 ago", isPartial:true, total:302.675,
+    daily:[93.09,209.585,0,0,0,0],
+    dailyByProd:{ "Tiras":[17.15,39.2,0,0,0,0], "cortes":[10,6.2,0,0,0,0], "tiras unidas":[35.28,101.185,0,0,0,0], "cubos":[30.66,63,0,0,0,0], "sin embolsar":[0,0,0,0,0,0] },
+    entradaBandejasDia:[15,32,0,0,0,0], activeDaysCount:2 }
 ];
 
 const PRODUCTOS = ["Tiras","cortes","tiras unidas","cubos","sin embolsar"];
@@ -1853,7 +1859,7 @@ function initDiario(wi) {
   });
 }
 document.getElementById("selDiario").addEventListener("change", function(){ initDiario(+this.value); });
-initDiario(11);
+initDiario(12);
 
 function buildTabla(wi) {
   const w = WEEKS[wi];
@@ -1881,7 +1887,7 @@ function buildTabla(wi) {
   t.innerHTML = h;
 }
 document.getElementById("selTabla").addEventListener("change", function(){ buildTabla(+this.value); });
-buildTabla(11);
+buildTabla(12);
 
 // ═══════════════════════════ LANGOSTINO ══════════════════════════════
 // ═══════════════════════ CALCULADORA DE INSUMOS (RECETAS) ═══════════════════════
@@ -2245,14 +2251,15 @@ const CUMPL_WEEKS = [
     pedido:   { "CORTE DE TRUCHA":48, "CUBOS DE TRUCHA":40, "LANGOSTINOS REBOZADOS":180, "PASTA DE HONEY":72, "POLLO TERIYAKI":40, "REDUCCIÓN DE TERIYAKI":160, "SALSA NARANJA Y MIEL":30, "TAMAGO":280, "TIRA DE TRUCHA":65, "VINAGRETA":0 },
     entregado:{ "CORTE DE TRUCHA":58, "CUBOS DE TRUCHA":59, "LANGOSTINOS REBOZADOS":214, "PASTA DE HONEY":75, "POLLO TERIYAKI":35, "REDUCCIÓN DE TERIYAKI":200, "SALSA NARANJA Y MIEL":30, "TAMAGO":296, "TIRA DE TRUCHA":61, "VINAGRETA":0 },
     salidas:  { "CORTE DE TRUCHA":36, "CUBOS DE TRUCHA":28, "LANGOSTINOS REBOZADOS":139, "PASTA DE HONEY":37, "POLLO TERIYAKI":68, "REDUCCIÓN DE TERIYAKI":152, "SALSA NARANJA Y MIEL":25, "TAMAGO":157, "TIRA DE TRUCHA":53, "VINAGRETA":108 } },
-  // S6 (28/7-3/8) todavía en curso (hoy es 03/08, último día del rango). Pedido/Entregado: pestaña
-  // AGOSTO 26 de "Producción CP" (leída directo del sheet en el navegador — el MCP de Drive devolvía
-  // otra pestaña por la limitación conocida de truncamiento). Salidas: "salidas al 030826.xml"
-  // (export TOTVS 29/05-03/08), tipo "PA", filtrado a estos 10 códigos.
-  { label:"S6", dateRange:"28/07–03/08", isPartial:true,
+  // S6 (28/7-3/8) cerró (hoy es 05/08). Pedido/Entregado: pestaña AGOSTO 26 de "Producción CP" —
+  // ENTREGADO final subió respecto al parcial cargado el 04/08 en todos los productos salvo Corte y
+  // Pollo Teriyaki (que ya estaban completos). Salidas: "salidas al 040826.xml" (reemplaza a
+  // "salidas al 030826.xml") — subieron en los 10 productos por carga retroactiva de movimientos de
+  // la semana ya cerrada.
+  { label:"S6", dateRange:"28/07–03/08", isPartial:false,
     pedido:   { "CORTE DE TRUCHA":30, "CUBOS DE TRUCHA":30, "LANGOSTINOS REBOZADOS":190, "PASTA DE HONEY":75, "POLLO TERIYAKI":25, "REDUCCIÓN DE TERIYAKI":160, "SALSA NARANJA Y MIEL":30, "TAMAGO":230, "TIRA DE TRUCHA":75, "VINAGRETA":51 },
-    entregado:{ "CORTE DE TRUCHA":32, "CUBOS DE TRUCHA":28, "LANGOSTINOS REBOZADOS":208, "PASTA DE HONEY":41, "POLLO TERIYAKI":49, "REDUCCIÓN DE TERIYAKI":142, "SALSA NARANJA Y MIEL":30, "TAMAGO":123, "TIRA DE TRUCHA":53, "VINAGRETA":33 },
-    salidas:  { "CORTE DE TRUCHA":27, "CUBOS DE TRUCHA":27, "LANGOSTINOS REBOZADOS":119, "PASTA DE HONEY":32, "POLLO TERIYAKI":65, "REDUCCIÓN DE TERIYAKI":108, "SALSA NARANJA Y MIEL":24, "TAMAGO":151, "TIRA DE TRUCHA":56, "VINAGRETA":88 } }
+    entregado:{ "CORTE DE TRUCHA":32, "CUBOS DE TRUCHA":29, "LANGOSTINOS REBOZADOS":237, "PASTA DE HONEY":75, "POLLO TERIYAKI":49, "REDUCCIÓN DE TERIYAKI":166, "SALSA NARANJA Y MIEL":45, "TAMAGO":184, "TIRA DE TRUCHA":75, "VINAGRETA":67 },
+    salidas:  { "CORTE DE TRUCHA":33, "CUBOS DE TRUCHA":38, "LANGOSTINOS REBOZADOS":161, "PASTA DE HONEY":44, "POLLO TERIYAKI":79, "REDUCCIÓN DE TERIYAKI":139, "SALSA NARANJA Y MIEL":37, "TAMAGO":198, "TIRA DE TRUCHA":74, "VINAGRETA":115 } }
 ];
 const CUMPL_PRODUCTOS = Object.keys(CUMPL_WEEKS[0].pedido);
 
@@ -2300,15 +2307,15 @@ const CUMPL_MESES = ["ENE 26","FEB 26","MAR 26","ABR 26","MAY 26","JUN 26","JUL 
 const CUMPL_MES_PARCIAL = [false,false,false,false,false,false,false,true];
 const CUMPL_MENSUAL = {
   "CORTE DE TRUCHA":       { pedido:[105,100,228,305,275,237,276,30], entregado:[97,97,210,258,223,214,256,32] },
-  "CUBOS DE TRUCHA":       { pedido:[193,180,218,267,217,184,230,30], entregado:[161,115,139,216,172,133,212,28] },
-  "LANGOSTINOS REBOZADOS": { pedido:[1305,1010,907,562,232,428,510,190], entregado:[1283,1004,847,548,232,481,548,208] },
-  "PASTA DE HONEY":        { pedido:[90,50,200,215,133,96,284,75], entregado:[127,54,159,208,139,98,265,41] },
+  "CUBOS DE TRUCHA":       { pedido:[193,180,218,267,217,184,230,30], entregado:[161,115,139,216,172,133,212,29] },
+  "LANGOSTINOS REBOZADOS": { pedido:[1305,1010,907,562,232,428,510,190], entregado:[1283,1004,847,548,232,481,548,237] },
+  "PASTA DE HONEY":        { pedido:[90,50,200,215,133,96,284,75], entregado:[127,54,159,208,139,98,265,75] },
   "POLLO TERIYAKI":        { pedido:[327,300,370,441,321,321,361,25], entregado:[338,323,365,448,339,304,288,49] },
-  "REDUCCIÓN DE TERIYAKI": { pedido:[750,700,590,750,730,655,760,160], entregado:[754,689,591,750,730,644,741,142] },
-  "SALSA NARANJA Y MIEL":  { pedido:[235,157,30,30,90,100,235,30], entregado:[230,184,30,30,90,128,261,30] },
-  "TAMAGO":                { pedido:[915,1080,750,950,300,204,1039,230], entregado:[929,1132,774,969,300,178,1023,123] },
-  "TIRA DE TRUCHA":        { pedido:[205,265,307,350,277,293,340,75], entregado:[99,227,248,308,251,246,298,53] },
-  "VINAGRETA":             { pedido:[522,544,534,440,411,574,458,51], entregado:[533,534,490,485,411,541,484,33] }
+  "REDUCCIÓN DE TERIYAKI": { pedido:[750,700,590,750,730,655,760,160], entregado:[754,689,591,750,730,644,741,166] },
+  "SALSA NARANJA Y MIEL":  { pedido:[235,157,30,30,90,100,235,30], entregado:[230,184,30,30,90,128,261,45] },
+  "TAMAGO":                { pedido:[915,1080,750,950,300,204,1039,230], entregado:[929,1132,774,969,300,178,1023,184] },
+  "TIRA DE TRUCHA":        { pedido:[205,265,307,350,277,293,340,75], entregado:[99,227,248,308,251,246,298,75] },
+  "VINAGRETA":             { pedido:[522,544,534,440,411,574,458,51], entregado:[533,534,490,485,411,541,484,67] }
 };
 
 function initCumplimiento() {
