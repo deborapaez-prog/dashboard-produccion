@@ -125,7 +125,7 @@ footer { text-align: center; color: #BBBBBB; font-size: 0.76rem; padding: 20px 0
       <div style="font-size:0.7rem;font-weight:700;color:rgba(255,255,255,0.6);text-transform:uppercase;letter-spacing:0.12em;margin-top:2px;">Dashboard de Producción</div>
     </div>
   </div>
-  <span class="badge">📅 Actualizado: 05/08/2026</span>
+  <span class="badge">📅 Actualizado: 06/08/2026</span>
 </header>
 
 <div class="tab-nav">
@@ -143,16 +143,16 @@ footer { text-align: center; color: #BBBBBB; font-size: 0.76rem; padding: 20px 0
 <main>
 
   <div class="alerta-ok">
-    ✅ <strong>S32 en curso: 302,7 kg (2 días activos de 6, 03–04/08).</strong>
+    ✅ <strong>S32 en curso: 475,2 kg (3 días activos de 6, 03–05/08).</strong>
     S31 cerró en 990,4 kg (6 días activos de 6, 27/07–01/08).
-    Acumulado S20–S32: 10.630,3 kg · 41,3% uso general. Objetivo semanal: 1.067,2 kg · por día: 213,4 kg.
+    Acumulado S20–S32: 10.802,7 kg · 41,2% uso general. Objetivo semanal: 1.067,2 kg · por día: 213,4 kg.
   </div>
 
   <div class="kpi-grid">
     <div class="kpi-card">
       <div class="lbl">Semana actual (S32)</div>
-      <div class="val">302,7 <span style="font-size:.85rem;color:#BBBBBB">kg</span></div>
-      <div class="sub">2 días activos (03–04/08) — en curso</div>
+      <div class="val">475,2 <span style="font-size:.85rem;color:#BBBBBB">kg</span></div>
+      <div class="sub">3 días activos (03–05/08) — en curso</div>
     </div>
     <div class="kpi-card">
       <div class="lbl">Semana anterior (S31)</div>
@@ -161,22 +161,22 @@ footer { text-align: center; color: #BBBBBB; font-size: 0.76rem; padding: 20px 0
     </div>
     <div class="kpi-card">
       <div class="lbl">kg/día S32 vs S31</div>
-      <div class="val" style="color:#EF402F">151,3</div>
+      <div class="val" style="color:#EF402F">158,4</div>
       <div class="sub">vs 165,1 kg/día S31</div>
     </div>
     <div class="kpi-card">
       <div class="lbl">Acumulado total</div>
-      <div class="val" style="color:#1D4856">10.630,3 <span style="font-size:.85rem;color:#BBBBBB">kg</span></div>
+      <div class="val" style="color:#1D4856">10.802,7 <span style="font-size:.85rem;color:#BBBBBB">kg</span></div>
       <div class="sub">S20–S32</div>
     </div>
     <div class="kpi-card">
       <div class="lbl">% uso S32</div>
-      <div class="val">42,9 <span style="font-size:.85rem;color:#BBBBBB">%</span></div>
-      <div class="sub">302,7 / 705 kg entrada (47 cajas) — semana en curso</div>
+      <div class="val">40,1 <span style="font-size:.85rem;color:#BBBBBB">%</span></div>
+      <div class="sub">475,2 / 1.185 kg entrada (79 cajas) — semana en curso</div>
     </div>
     <div class="kpi-card">
       <div class="lbl">% uso general</div>
-      <div class="val">41,3 <span style="font-size:.85rem;color:#BBBBBB">%</span></div>
+      <div class="val">41,2 <span style="font-size:.85rem;color:#BBBBBB">%</span></div>
       <div class="sub">promedio S20–S32</div>
     </div>
   </div>
@@ -1772,10 +1772,10 @@ const WEEKS = [
     daily:[153.9,219.1,199.6,181.3,145.2,91.325],
     dailyByProd:{ "Tiras":[19.6,40.425,37.975,31.85,29.4,17.15], "cortes":[15,0,16,21,14,8.2], "tiras unidas":[56.35,111.475,78.4,75.95,51.45,28.175], "cubos":[62.958,67.2,67.2,52.5,50.358,37.8], "sin embolsar":[0,0,0,0,0,0] },
     entradaBandejasDia:[25,34,32,28,20,15], activeDaysCount:6 },
-  { label:"S32", dateRange:"03–08 ago", isPartial:true, total:302.675,
-    daily:[93.09,209.585,0,0,0,0],
-    dailyByProd:{ "Tiras":[17.15,39.2,0,0,0,0], "cortes":[10,6.2,0,0,0,0], "tiras unidas":[35.28,101.185,0,0,0,0], "cubos":[30.66,63,0,0,0,0], "sin embolsar":[0,0,0,0,0,0] },
-    entradaBandejasDia:[15,32,0,0,0,0], activeDaysCount:2 }
+  { label:"S32", dateRange:"03–08 ago", isPartial:true, total:475.155,
+    daily:[93.09,209.585,172.48,0,0,0],
+    dailyByProd:{ "Tiras":[17.15,39.2,26.95,0,0,0], "cortes":[10,6.2,28,0,0,0], "tiras unidas":[35.28,101.185,90.65,0,0,0], "cubos":[30.66,63,26.88,0,0,0], "sin embolsar":[0,0,0,0,0,0] },
+    entradaBandejasDia:[15,32,32,0,0,0], activeDaysCount:3 }
 ];
 
 const PRODUCTOS = ["Tiras","cortes","tiras unidas","cubos","sin embolsar"];
