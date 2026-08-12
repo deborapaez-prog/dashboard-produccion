@@ -2491,7 +2491,8 @@ function initCumplimiento() {
       labels: CUMPL_WEEKS.map(w=>`${w.label} (${w.dateRange})`),
       datasets:[
         { label:"% Cumplimiento producción", data:evolProd, borderColor:"#1D4856", backgroundColor:"#1D485622", pointRadius:5, pointHoverRadius:7, fill:false, tension:0.3, borderWidth:2.5 },
-        { label:"% Pedido / Salidas", data:evolSal, borderColor:"#33A392", backgroundColor:"#33A39222", pointRadius:5, pointHoverRadius:7, fill:false, tension:0.3, borderWidth:2.5 }
+        { label:"% Pedido / Salidas", data:evolSal, borderColor:"#33A392", backgroundColor:"#33A39222", pointRadius:5, pointHoverRadius:7, fill:false, tension:0.3, borderWidth:2.5 },
+        { label:"Objetivo 98%", data:CUMPL_WEEKS.map(()=>98), borderColor:"#EF402F", borderDash:[7,5], borderWidth:2, pointRadius:0, pointHoverRadius:0, fill:false, tension:0 }
       ]
     },
     options:{ responsive:true, maintainAspectRatio:false, plugins:{ legend:{position:"bottom",labels:{usePointStyle:true,padding:14}}, tooltip:{callbacks:{label:ctx=>" "+ctx.dataset.label+": "+ctx.parsed.y.toFixed(1)+"%"}} }, scales:{ y:{beginAtZero:true,ticks:{callback:v=>v+"%"},grid:{color:"#edf2f7"}}, x:{grid:{display:false}} } }
