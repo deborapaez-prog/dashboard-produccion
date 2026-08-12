@@ -2340,14 +2340,14 @@ const SEMANAS_POR_MES = 4; // misma convención que "objetivo mensual" de la pes
 
 // Stock actual (TOTVS, foto al 12/08/2026). Suma Saldo Actual en depósitos CD (Centro de
 // Distribución) + CP (Centro de Producción) de "stock al 120826.xml", más el depósito MI (Mirizi,
-// sucursal 010102) — stock físico de producto terminado del CP guardado en esa sucursal externa, no
-// incluido en el export CD/CP. No se recibió una foto de MI más nueva desde el 29/07, así que ese
-// componente se mantiene igual que en la carga anterior (mismo estimado por diferencia — afecta sobre
-// todo a Tamago, Corte de Trucha, Langostinos Rebozados y Pollo Teriyaki, que son los que tienen
-// stock en MI). No incluye tránsito (dio 0 en los 10 productos en las fotos disponibles).
+// sucursal 010102) de "stock externo al 120826.xml" — stock físico de producto terminado del CP
+// guardado en esa sucursal externa, no incluido en el export CD/CP. MI sube fuerte en Cubos (0→116),
+// Langostinos Rebozados (73→487) y Tamago (214→310); baja en Pollo Teriyaki (173→80); Corte de
+// Trucha sin cambio (133); Pasta Honey, Reducción, Salsa Naranja, Tira y Vinagreta sin stock en MI.
+// No incluye tránsito (dio 0 en los 10 productos en las fotos disponibles).
 const CUMPL_STOCK = {
-  "CORTE DE TRUCHA":233, "CUBOS DE TRUCHA":48, "LANGOSTINOS REBOZADOS":178, "PASTA DE HONEY":79,
-  "POLLO TERIYAKI":291, "REDUCCIÓN DE TERIYAKI":337, "SALSA NARANJA Y MIEL":73, "TAMAGO":327,
+  "CORTE DE TRUCHA":233, "CUBOS DE TRUCHA":164, "LANGOSTINOS REBOZADOS":592, "PASTA DE HONEY":79,
+  "POLLO TERIYAKI":198, "REDUCCIÓN DE TERIYAKI":337, "SALSA NARANJA Y MIEL":73, "TAMAGO":423,
   "TIRA DE TRUCHA":35, "VINAGRETA":339
 };
 
