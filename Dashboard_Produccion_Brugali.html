@@ -125,7 +125,7 @@ footer { text-align: center; color: #BBBBBB; font-size: 0.76rem; padding: 20px 0
       <div style="font-size:0.7rem;font-weight:700;color:rgba(255,255,255,0.6);text-transform:uppercase;letter-spacing:0.12em;margin-top:2px;">Dashboard de Producción</div>
     </div>
   </div>
-  <span class="badge">📅 Actualizado: 11/08/2026</span>
+  <span class="badge">📅 Actualizado: 12/08/2026</span>
 </header>
 
 <div class="tab-nav">
@@ -396,19 +396,19 @@ footer { text-align: center; color: #BBBBBB; font-size: 0.76rem; padding: 20px 0
 <main>
 
   <div class="alerta-ok">
-    ✅ <strong>Período registrado: 08/06 – 04/08/2026.</strong> 5 productos activos. Reducción de Teriyaki con mayor volumen producido. Vinagreta: 89,9% envasada.
+    ✅ <strong>Período registrado: 08/06 – 11/08/2026.</strong> 5 productos activos. Reducción de Teriyaki con mayor volumen producido. Vinagreta: 76,1% envasada.
   </div>
 
   <div class="kpi-grid">
     <div class="kpi-card">
       <div class="lbl">Reducción Teriyaki</div>
-      <div class="val" style="color:#EF402F">1.311 <span style="font-size:.85rem;color:#BBBBBB">u</span></div>
-      <div class="sub">746 envasadas · 56,9% envasado</div>
+      <div class="val" style="color:#EF402F">1.499 <span style="font-size:.85rem;color:#BBBBBB">u</span></div>
+      <div class="sub">794 envasadas · 53% envasado</div>
     </div>
     <div class="kpi-card">
       <div class="lbl">Vinagreta 20L</div>
-      <div class="val" style="color:#33A392">841 <span style="font-size:.85rem;color:#BBBBBB">u</span></div>
-      <div class="sub">756 envasadas · 89,9% envasado</div>
+      <div class="val" style="color:#33A392">994 <span style="font-size:.85rem;color:#BBBBBB">u</span></div>
+      <div class="sub">756 envasadas · 76,1% envasado</div>
     </div>
     <div class="kpi-card">
       <div class="lbl">Salsa Naranja y Miel</div>
@@ -417,18 +417,18 @@ footer { text-align: center; color: #BBBBBB; font-size: 0.76rem; padding: 20px 0
     </div>
     <div class="kpi-card">
       <div class="lbl">Pollo Teriyaki</div>
-      <div class="val" style="color:#1D4856">480 <span style="font-size:.85rem;color:#BBBBBB">caj</span></div>
-      <div class="sub">100 envasadas · 20,8% envasado</div>
+      <div class="val" style="color:#1D4856">565 <span style="font-size:.85rem;color:#BBBBBB">caj</span></div>
+      <div class="sub">130 envasadas · 23% envasado</div>
     </div>
     <div class="kpi-card">
       <div class="lbl">Pasta Honey</div>
-      <div class="val" style="color:#33A392">378,5 <span style="font-size:.85rem;color:#BBBBBB">caj</span></div>
-      <div class="sub">94,5 envasadas · 25% envasado</div>
+      <div class="val" style="color:#33A392">434 <span style="font-size:.85rem;color:#BBBBBB">caj</span></div>
+      <div class="sub">94,5 envasadas · 21,8% envasado</div>
     </div>
     <div class="kpi-card">
       <div class="lbl">Días registrados</div>
-      <div class="val" style="color:#221F1F">44</div>
-      <div class="sub">08-jun al 04-ago</div>
+      <div class="val" style="color:#221F1F">50</div>
+      <div class="sub">08-jun al 11-ago</div>
     </div>
   </div>
 
@@ -449,7 +449,8 @@ footer { text-align: center; color: #BBBBBB; font-size: 0.76rem; padding: 20px 0
         <option value="5">S29 — 13–18 jul</option>
         <option value="6">S30 — 20–25 jul</option>
         <option value="7">S31 — 27 jul–01 ago</option>
-        <option value="8" selected>S32 — 03–08 ago</option>
+        <option value="8">S32 — 03–08 ago</option>
+        <option value="9" selected>S33 — 10–15 ago</option>
       </select>
     </h2>
     <div class="chart-wrap"><canvas id="chartCocinaDiario"></canvas></div>
@@ -473,7 +474,8 @@ footer { text-align: center; color: #BBBBBB; font-size: 0.76rem; padding: 20px 0
         <option value="5">S29 — 13–18 jul</option>
         <option value="6">S30 — 20–25 jul</option>
         <option value="7">S31 — 27 jul–01 ago</option>
-        <option value="8" selected>S32 — 03–08 ago</option>
+        <option value="8">S32 — 03–08 ago</option>
+        <option value="9" selected>S33 — 10–15 ago</option>
       </select>
     </h2>
     <div class="table-wrap">
@@ -1608,9 +1610,9 @@ footer { text-align: center; color: #BBBBBB; font-size: 0.76rem; padding: 20px 0
     <div class="alerta">
       ⚠️ <strong>Compara lo pedido a Centro de Producción vs. lo entregado por CP vs. lo que realmente salió a franquicias.</strong>
       Fuentes: planilla "Producción CP" (pestañas JULIO 26 y AGOSTO 26, leída directo en el navegador porque el MCP de Drive no llega a esta pestaña) y salidas TOTVS (detalle por transacción, export "salidas al 110826.xml", que cubre S2–S7 completo; incluye franquicias de Bs. As. — Recoleta y Palermo), filtrado solo a los 10 productos del CP.
-      El cruce de Pedido/Entregado cubre S2–S7 (30/06–10/08), <strong>todas las semanas ya cerradas</strong>. La semana S8 (11–17/08) ya arrancó en "Producción CP" pero hoy 11/08 es el primer día — sin entregado ni salidas cargadas todavía, así que no se muestra hasta que tenga datos reales.
+      El cruce de Pedido/Entregado cubre S2–S7 (30/06–10/08), <strong>todas las semanas ya cerradas</strong>. La semana S8 (11–17/08) ya arrancó en "Producción CP" pero al 12/08 sigue sin entregado ni salidas cargadas todavía, así que no se muestra hasta que tenga datos reales.
       <br><strong>% Pedido / Salidas</strong> compara lo que se pidió a CP contra lo que realmente salió a franquicias (la demanda real), sin importar si el CP llegó a entregarlo. 100% = pedido calibrado. Por debajo de 70% se pidió de menos que la demanda real (riesgo de faltante, se tapa con stock de seguridad). Por encima de 130% se pidió de más que la demanda real (posible sobre-pedido).
-      <br><strong>Stock actual</strong>: foto del saldo en TOTVS al 11/08/2026 (Centro de Distribución + Centro de Producción + depósito externo Mirizi), no varía según la semana seleccionada — es el stock disponible hoy, no un dato histórico.
+      <br><strong>Stock actual</strong>: foto del saldo en TOTVS al 12/08/2026 (Centro de Distribución + Centro de Producción + depósito externo Mirizi), no varía según la semana seleccionada — es el stock disponible hoy, no un dato histórico.
       <br><strong>Prom. salidas/sem</strong> y <strong>Semanas de stock</strong>: promedio de salidas a franquicias por semana (S2–S7, las 6 semanas cerradas) y cuántas semanas dura el stock actual a ese ritmo. Menos de 1 semana = riesgo de faltante próximo; más de 8 semanas = posible sobre-stock.
     </div>
 
@@ -2072,25 +2074,27 @@ function initLangostino() {
 }
 
 // ══════════════════════════ COCINA CALIENTE ══════════════════════════
-const CC_FECHAS = ["08-06","09-06","10-06","11-06","12-06","15-06","16-06","17-06","18-06","19-06","22-06","23-06","24-06","25-06","26-06","29-06","30-06","01-07","02-07","03-07","04-07","06-07","07-07","08-07","10-07","13-07","14-07","15-07","16-07","17-07","18-07","20-07","21-07","22-07","23-07","24-07","27-07","28-07","29-07","30-07","31-07","01-08","03-08","04-08"];
+const CC_FECHAS = ["08-06","09-06","10-06","11-06","12-06","15-06","16-06","17-06","18-06","19-06","22-06","23-06","24-06","25-06","26-06","29-06","30-06","01-07","02-07","03-07","04-07","06-07","07-07","08-07","10-07","13-07","14-07","15-07","16-07","17-07","18-07","20-07","21-07","22-07","23-07","24-07","27-07","28-07","29-07","30-07","31-07","01-08","03-08","04-08","05-08","06-08","07-08","08-08","10-08","11-08"];
 // Corrección 03/08: el 27-07 de Reducción de Teriyaki estaba mal cargado (36/36) — el valor real en el
 // sheet es 79 producida / 79 envasada. También se completó el 28-07 (envasada 36, antes en 0) y el
 // 30-07 de Pasta de Honey (8 producida, antes en 0 por el corte de una lectura anterior). Se agregan
 // 31-07 y 01-08, nuevos en el sheet.
 // 07/08: se agregan 03-08 y 04-08, leídos directo del navegador (el MCP de Drive corta la lectura de
-// esta planilla en el 30-07 sin avisar, no llega a agosto). El sheet tiene filas para 05-08, 06-08 y
-// 07-08 con "producida" parcial pero sin "envasada" todavía — no se cargan hasta que se complete esa
-// columna.
+// esta planilla en el 30-07 sin avisar, no llega a agosto).
+// 12/08: se agregan 05-08 a 08-08 y 10-08/11-08 (09-08 no tiene fila en el sheet, domingo sin
+// producción). "Envasada" sigue vacía en el sheet para casi todos estos días (misma situación que
+// pasó con 03-08/04-08) — se carga con 0 por ahora y se corrige cuando el sheet la complete. 12-08
+// (hoy) tiene todas las filas vacías todavía, no se agrega.
 const CC_DATA = {
-  "Teriyaki 500cc": { color:"#EF402F", prod:[22,36,28,42,36,36,30,36,36,36,0,30,24,36,50,32,36,41,37,0,12,36,0,24,24,36,24,51,24,36,12,12,25,40,60,0,79,36,24,24,0,36,48,24], env:[22,36,28,42,36,36,30,0,36,0,0,0,24,36,50,0,36,41,0,0,0,34,0,0,24,36,24,0,0,0,12,0,0,0,0,0,79,36,0,0,0,0,48,0] },
-  "Salsa Naranja":  { color:"#E3A127", prod:[12,0,14,0,12,12,0,0,12,12,0,26,24,0,0,24,0,0,12,0,36,15,0,24,24,0,12,0,12,0,0,0,0,0,0,0,12,0,30,12,0,0,0,0],       env:[12,0,14,0,12,12,0,0,0,12,0,26,24,0,0,0,0,0,0,0,0,14,0,0,24,0,12,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0] },
-  "Vinagreta 20L":  { color:"#33A392", prod:[51,51,51,0,0,51,43,0,0,51,34,51,0,0,51,51,51,51,0,0,0,51,42,0,0,51,43,0,0,0,0,0,0,0,0,0,0,0,0,0,33,0,34,0],      env:[51,51,51,0,0,51,43,0,0,51,34,51,0,0,51,51,51,51,0,0,0,51,0,0,0,51,0,0,0,0,0,0,0,0,0,0,0,0,0,0,33,0,34,0] },
-  "Pollo Teriyaki": { color:"#1D4856", prod:[0,12,6,38,34,0,6,41,35,0,0,6,30,29,0,0,5,0,19,12,0,0,12,42,4,0,6,0,42,14,10,10,6,6,0,13,0,0,37,0,0,0,0,5],        env:[0,12,6,0,0,0,0,0,35,0,0,0,30,0,0,0,5,0,0,12,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0] },
-  "Pasta Honey":    { color:"#F58232", prod:[7.5,4.5,8,2.5,4,0,7,0,7,11,3,9.5,3,8.5,8,9,0,16,0,19.5,11.5,11,0,5.5,22.5,12,6.5,17,8,1,0,0,22,14,14.5,10,20.5,16.5,1.5,8,23,11.5,10.5,3.5],   env:[8,4,0,0,0,0,0,0,7,11,3,0,3,0,0,0,0,0,0,20,0,0,0,0,0,12,6,0,0,0,0,0,0,0,0,0,20.5,0,0,0,0,0,0,0] }
+  "Teriyaki 500cc": { color:"#EF402F", prod:[22,36,28,42,36,36,30,36,36,36,0,30,24,36,50,32,36,41,37,0,12,36,0,24,24,36,24,51,24,36,12,12,25,40,60,0,79,36,24,24,0,36,48,24,48,24,36,0,44,36], env:[22,36,28,42,36,36,30,0,36,0,0,0,24,36,50,0,36,41,0,0,0,34,0,0,24,36,24,0,0,0,12,0,0,0,0,0,79,36,0,0,0,0,48,0,48,0,0,0,0,0] },
+  "Salsa Naranja":  { color:"#E3A127", prod:[12,0,14,0,12,12,0,0,12,12,0,26,24,0,0,24,0,0,12,0,36,15,0,24,24,0,12,0,12,0,0,0,0,0,0,0,12,0,30,12,0,0,0,0,0,0,0,0,0,0],       env:[12,0,14,0,12,12,0,0,0,12,0,26,24,0,0,0,0,0,0,0,0,14,0,0,24,0,12,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0] },
+  "Vinagreta 20L":  { color:"#33A392", prod:[51,51,51,0,0,51,43,0,0,51,34,51,0,0,51,51,51,51,0,0,0,51,42,0,0,51,43,0,0,0,0,0,0,0,0,0,0,0,0,0,33,0,34,0,0,0,51,0,51,51],      env:[51,51,51,0,0,51,43,0,0,51,34,51,0,0,51,51,51,51,0,0,0,51,0,0,0,51,0,0,0,0,0,0,0,0,0,0,0,0,0,0,33,0,34,0,0,0,0,0,0,0] },
+  "Pollo Teriyaki": { color:"#1D4856", prod:[0,12,6,38,34,0,6,41,35,0,0,6,30,29,0,0,5,0,19,12,0,0,12,42,4,0,6,0,42,14,10,10,6,6,0,13,0,0,37,0,0,0,0,5,30,37,6,0,7,5],        env:[0,12,6,0,0,0,0,0,35,0,0,0,30,0,0,0,5,0,0,12,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,30,0,0,0,0,0] },
+  "Pasta Honey":    { color:"#F58232", prod:[7.5,4.5,8,2.5,4,0,7,0,7,11,3,9.5,3,8.5,8,9,0,16,0,19.5,11.5,11,0,5.5,22.5,12,6.5,17,8,1,0,0,22,14,14.5,10,20.5,16.5,1.5,8,23,11.5,10.5,3.5,10.5,8,6,15.5,9,6.5],   env:[8,4,0,0,0,0,0,0,7,11,3,0,3,0,0,0,0,0,0,20,0,0,0,0,0,12,6,0,0,0,0,0,0,0,0,0,20.5,0,0,0,0,0,0,0,0,0,0,0,0,0] }
 };
 const CC_TOTALES = {
-  "Teriyaki 500cc": {prod:1311,env:746}, "Salsa Naranja":{prod:337,env:162},
-  "Vinagreta 20L":{prod:841,env:756}, "Pollo Teriyaki":{prod:480,env:100}, "Pasta Honey":{prod:378.5,env:94.5}
+  "Teriyaki 500cc": {prod:1499,env:794}, "Salsa Naranja":{prod:337,env:162},
+  "Vinagreta 20L":{prod:994,env:756}, "Pollo Teriyaki":{prod:565,env:130}, "Pasta Honey":{prod:434,env:94.5}
 };
 
 // Mismas semanas que la pestaña Trucha (S24–S29 — Cocina Caliente no tiene registros previos a S24)
@@ -2119,11 +2123,15 @@ const CC_WEEKS = [
   { label:"S31", dateRange:"27 jul – 01 ago", isPartial:false,
     prod:{ "Teriyaki 500cc":[79,36,24,24,0,36], "Salsa Naranja":[12,0,30,12,0,0], "Vinagreta 20L":[0,0,0,0,33,0], "Pollo Teriyaki":[0,0,37,0,0,0], "Pasta Honey":[20.5,16.5,1.5,8,23,11.5] },
     env:{ "Teriyaki 500cc":[79,36,0,0,0,0], "Salsa Naranja":[0,0,0,0,0,0], "Vinagreta 20L":[0,0,0,0,33,0], "Pollo Teriyaki":[0,0,0,0,0,0], "Pasta Honey":[20.5,0,0,0,0,0] } },
-  // S32 (03–08 ago) en curso — solo 03-08 y 04-08 cargados (el sheet tiene 05-08 y 06-08 con
-  // "producida" parcial pero sin "envasada" todavía, así que no se agregan hasta que se completen).
-  { label:"S32", dateRange:"03–08 ago", isPartial:true,
-    prod:{ "Teriyaki 500cc":[48,24,0,0,0,0], "Salsa Naranja":[0,0,0,0,0,0], "Vinagreta 20L":[34,0,0,0,0,0], "Pollo Teriyaki":[0,5,0,0,0,0], "Pasta Honey":[10.5,3.5,0,0,0,0] },
-    env:{ "Teriyaki 500cc":[48,0,0,0,0,0], "Salsa Naranja":[0,0,0,0,0,0], "Vinagreta 20L":[34,0,0,0,0,0], "Pollo Teriyaki":[0,0,0,0,0,0], "Pasta Honey":[0,0,0,0,0,0] } }
+  // S32 (03–08 ago) cerró — se completa con 05-08 a 08-08 (antes solo 03-08/04-08).
+  { label:"S32", dateRange:"03–08 ago", isPartial:false,
+    prod:{ "Teriyaki 500cc":[48,24,48,24,36,0], "Salsa Naranja":[0,0,0,0,0,0], "Vinagreta 20L":[34,0,0,0,51,0], "Pollo Teriyaki":[0,5,30,37,6,0], "Pasta Honey":[10.5,3.5,10.5,8,6,15.5] },
+    env:{ "Teriyaki 500cc":[48,0,48,0,0,0], "Salsa Naranja":[0,0,0,0,0,0], "Vinagreta 20L":[34,0,0,0,0,0], "Pollo Teriyaki":[0,0,30,0,0,0], "Pasta Honey":[0,0,0,0,0,0] } },
+  // S33 (10–15 ago) en curso — solo 10-08 y 11-08 cargados (09-08 no existe en el sheet, domingo sin
+  // producción). "Envasada" todavía vacía para estos dos días, se corrige cuando el sheet la complete.
+  { label:"S33", dateRange:"10–15 ago", isPartial:true,
+    prod:{ "Teriyaki 500cc":[44,36,0,0,0,0], "Salsa Naranja":[0,0,0,0,0,0], "Vinagreta 20L":[51,51,0,0,0,0], "Pollo Teriyaki":[7,5,0,0,0,0], "Pasta Honey":[9,6.5,0,0,0,0] },
+    env:{ "Teriyaki 500cc":[0,0,0,0,0,0], "Salsa Naranja":[0,0,0,0,0,0], "Vinagreta 20L":[0,0,0,0,0,0], "Pollo Teriyaki":[0,0,0,0,0,0], "Pasta Honey":[0,0,0,0,0,0] } }
 ];
 function ccWeekTotal(w, metric, prod) { return w[metric][prod].reduce((a,b)=>a+b,0); }
 
@@ -2153,7 +2161,7 @@ function initCocina() {
     });
   }
   document.getElementById("selCocinaDiario").addEventListener("change", function(){ buildCocinaDiario(+this.value); });
-  buildCocinaDiario(8);
+  buildCocinaDiario(9);
 
   // Barras agrupadas totales acumulados
   const nombres = Object.keys(CC_TOTALES);
@@ -2197,7 +2205,7 @@ function initCocina() {
     t.innerHTML = h;
   }
   document.getElementById("selCocinaTabla").addEventListener("change", function(){ buildTablaCocina(+this.value); });
-  buildTablaCocina(8);
+  buildTablaCocina(9);
 }
 
 // ═══════════════════════════════ CALIDAD ═════════════════════════════
@@ -2330,17 +2338,17 @@ const CUMPL_FRANQUICIAS = {
 const CUMPL_FRANQUICIA_SEMANAS = 6; // semanas cubiertas (S2, S3, S4, S5, S6, S7 — todas cerradas)
 const SEMANAS_POR_MES = 4; // misma convención que "objetivo mensual" de la pestaña Trucha (4 semanas/mes)
 
-// Stock actual (TOTVS, foto al 11/08/2026). Suma Saldo Actual en depósitos CD (Centro de
-// Distribución) + CP (Centro de Producción) de "stock al 110826.xml", más el depósito MI (Mirizi,
+// Stock actual (TOTVS, foto al 12/08/2026). Suma Saldo Actual en depósitos CD (Centro de
+// Distribución) + CP (Centro de Producción) de "stock al 120826.xml", más el depósito MI (Mirizi,
 // sucursal 010102) — stock físico de producto terminado del CP guardado en esa sucursal externa, no
 // incluido en el export CD/CP. No se recibió una foto de MI más nueva desde el 29/07, así que ese
 // componente se mantiene igual que en la carga anterior (mismo estimado por diferencia — afecta sobre
 // todo a Tamago, Corte de Trucha, Langostinos Rebozados y Pollo Teriyaki, que son los que tienen
 // stock en MI). No incluye tránsito (dio 0 en los 10 productos en las fotos disponibles).
 const CUMPL_STOCK = {
-  "CORTE DE TRUCHA":243, "CUBOS DE TRUCHA":54, "LANGOSTINOS REBOZADOS":211, "PASTA DE HONEY":89,
-  "POLLO TERIYAKI":305, "REDUCCIÓN DE TERIYAKI":334, "SALSA NARANJA Y MIEL":85, "TAMAGO":372,
-  "TIRA DE TRUCHA":55, "VINAGRETA":367
+  "CORTE DE TRUCHA":233, "CUBOS DE TRUCHA":48, "LANGOSTINOS REBOZADOS":178, "PASTA DE HONEY":79,
+  "POLLO TERIYAKI":291, "REDUCCIÓN DE TERIYAKI":337, "SALSA NARANJA Y MIEL":73, "TAMAGO":327,
+  "TIRA DE TRUCHA":35, "VINAGRETA":339
 };
 
 // Pedido/Entregado MENSUAL por producto, ene–ago 2026 (fuente: "Producción CP", pestañas JULIO 26 y
