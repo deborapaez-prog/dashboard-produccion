@@ -1356,16 +1356,16 @@ footer { text-align: center; color: #BBBBBB; font-size: 0.76rem; padding: 20px 0
     <main>
 
     <div class="alerta" style="background:#fff5f5;border-color:#EF402F;border-left-color:#EF402F;color:#7b1a1a;">
-      ⚠️ Datos de reclamos de franquicias desde oct 2025 hasta ago 2026 (fuente: HubSpot CRM, export 06/08/2026 — actualizado comparando ticket por ticket contra el export anterior del 03/08, 365→368 tickets). Solo se muestran productos elaborados en el centro de producción. 2 tickets nuevos de Langostinos Rebozados (Recoleta 04/08 — mal olor/sabor/textura, se deshace al hervir; Salta 04/08 — posible hilo/pelo/alambre), ambos abiertos. El tercer ticket nuevo (Calera, entrega incorrecta de Migny) no es producto del CP, no se cuenta. No se reauditaron los ~360 tickets restantes buscando casos de texto libre sin campo estructurado de producto (como el de Reducción de Teriyaki detectado el 03/08), así que podría haber algún otro caso sin detectar.
+      ⚠️ Datos de reclamos de franquicias desde oct 2025 hasta ago 2026 (fuente: HubSpot CRM, export 14/08/2026 — actualizado comparando ticket por ticket contra el export anterior del 06/08, 368→379 tickets). Solo se muestran productos elaborados en el centro de producción. 2 tickets nuevos de productos del CP, ambos ya cerrados: Langostinos Rebozados (Villa Allende, 06/08 — pelos, se emitió NC) y Pasta de Honey (Recoleta, 10/08 — espinas). Los otros 9 tickets nuevos son de otros productos (bebidas, postres, packaging Migny), no se cuentan. Además, los 6 tickets que estaban abiertos en la carga anterior ya se resolvieron: 5 pasaron a CERRADOS y 1 (Recoleta, Langostinos Rebozados) se reclasificó como NO CORRESPONDE — <strong>no queda ningún ticket abierto de productos del CP por el momento</strong>. No se reauditaron los ~360 tickets históricos restantes buscando casos de texto libre sin campo estructurado de producto, así que podría haber algún caso viejo sin detectar.
     </div>
 
     <!-- KPIs -->
     <div class="kpi-grid" style="grid-template-columns:repeat(auto-fit,minmax(140px,1fr))">
-      <div class="kpi-card"><div class="lbl">Total reclamos CP</div><div class="val" style="color:#EF402F">133</div><div class="sub">productos propios</div></div>
+      <div class="kpi-card"><div class="lbl">Total reclamos CP</div><div class="val" style="color:#EF402F">135</div><div class="sub">productos propios</div></div>
       <div class="kpi-card"><div class="lbl">Producto top</div><div class="val" style="color:#EF402F;font-size:1.1rem">TAMAGO</div><div class="sub">62 reclamos</div></div>
       <div class="kpi-card"><div class="lbl">Mes pico</div><div class="val" style="color:#E3A127;font-size:1.1rem">Nov-25 / Ene-26</div><div class="sub">empatados, 20 c/u</div></div>
-      <div class="kpi-card"><div class="lbl">Reclamos abiertos</div><div class="val" style="color:#F58232">6</div><div class="sub">en gestión</div></div>
-      <div class="kpi-card"><div class="lbl">Tasa cierre</div><div class="val" style="color:#33A392">91,0%</div><div class="sub">de tickets CP</div></div>
+      <div class="kpi-card"><div class="lbl">Reclamos abiertos</div><div class="val" style="color:#33A392">0</div><div class="sub">en gestión</div></div>
+      <div class="kpi-card"><div class="lbl">Tasa cierre</div><div class="val" style="color:#33A392">94,8%</div><div class="sub">de tickets CP</div></div>
     </div>
 
     <!-- Reclamos por producto -->
@@ -1389,7 +1389,7 @@ footer { text-align: center; color: #BBBBBB; font-size: 0.76rem; padding: 20px 0
           <div style="font-weight:700;font-size:0.95rem;color:#EF402F;margin-bottom:8px;">🍣 TAMAGO <span style="font-weight:400;color:#999;font-size:0.8rem">(62 reclamos)</span></div>
           <ul style="font-size:0.83rem;color:#444;line-height:1.9;list-style:none;padding:0;">
             <li>🔴 Se rompe / se deshace / queda crudo al descongelar o enrollar — la falla más recurrente</li>
-            <li>🔴 Pelo / cabello en el producto — recurrente en todo el período (incluye reclamo abierto 28/06 marcado "todas las semanas")</li>
+            <li>🔴 Pelo / cabello en el producto — recurrente en todo el período (incluye el de 28/06 marcado "todas las semanas", cerrado 16/07)</li>
             <li>🟠 Mal olor (agrio, rancio, a podrido)</li>
             <li>🟠 Manchas blancas / aspecto de hongo</li>
             <li>🟡 Cuerpo extraño puntual (hormiga)</li>
@@ -1397,14 +1397,15 @@ footer { text-align: center; color: #BBBBBB; font-size: 0.76rem; padding: 20px 0
         </div>
 
         <div style="border:1px solid #bee3f8;border-radius:10px;padding:14px;background:#ebf8ff;">
-          <div style="font-weight:700;font-size:0.95rem;color:#1D4856;margin-bottom:8px;">🦐 LANGOSTINOS REBOZADOS <span style="font-weight:400;color:#999;font-size:0.8rem">(15 reclamos)</span></div>
+          <div style="font-weight:700;font-size:0.95rem;color:#1D4856;margin-bottom:8px;">🦐 LANGOSTINOS REBOZADOS <span style="font-weight:400;color:#999;font-size:0.8rem">(16 reclamos)</span></div>
           <ul style="font-size:0.83rem;color:#444;line-height:1.9;list-style:none;padding:0;">
             <li>🔴 Mal olor / color oscuro o negro al cocinar, hongos</li>
             <li>🔴 Objetos extraños: alambre, plástico</li>
             <li>🟠 Exceso de pan rallado / poco langostino (desperdicio)</li>
             <li>🟡 Pelos</li>
-            <li>🟡 Mal olor/sabor, se desarma al hervir, color amarillento (04/08, Recoleta — abierto)</li>
-            <li>🟡 Posible hilo/pelo/alambre en el producto (04/08, Salta — abierto)</li>
+            <li>🟡 Mal olor/sabor, se desarma al hervir, color amarillento (04/08, Recoleta — reclasificado NO CORRESPONDE el 14/08)</li>
+            <li>🟡 Posible hilo/pelo/alambre en el producto (04/08, Salta — cerrado)</li>
+            <li>🟡 Pelos en el producto (06/08, Villa Allende — cerrado, se emitió NC)</li>
           </ul>
         </div>
 
@@ -1435,7 +1436,7 @@ footer { text-align: center; color: #BBBBBB; font-size: 0.76rem; padding: 20px 0
             <li>🔴 Exceso de grasa al descongelar</li>
             <li>🔴 Gramaje excedido (10–12g vs 8g estándar)</li>
             <li>🟡 Mal olor / textura babosa</li>
-            <li>🟡 Color pálido y bordes con grasa sin recortar (02/08, Santa Fe — en progreso)</li>
+            <li>🟡 Color pálido y bordes con grasa sin recortar (02/08, Santa Fe — cerrado)</li>
           </ul>
         </div>
 
@@ -1444,15 +1445,15 @@ footer { text-align: center; color: #BBBBBB; font-size: 0.76rem; padding: 20px 0
           <ul style="font-size:0.83rem;color:#444;line-height:1.9;list-style:none;padding:0;">
             <li>🔴 Sello de lote ilegible</li>
             <li>🟠 Gramaje incorrecto / tiras fragmentadas ("retazos") — 13/07, Nueva Córdoba (cerrado)</li>
-            <li>🟠 Tiras cortadas de forma dispareja, dificulta pesarlas — 26/07, Alberdi, lote TT1607261 (2 tickets duplicados: uno sigue abierto, el otro se marcó "no corresponde" el 29/07)</li>
+            <li>🟠 Tiras cortadas de forma dispareja, dificulta pesarlas — 26/07, Alberdi, lote TT1607261 (2 tickets duplicados: uno se cerró 29/07 como "no corresponde", el otro se cerró recién el 14/08 con NC emitida)</li>
             <li>🟡 Espina encontrada en el producto final</li>
           </ul>
         </div>
 
         <div style="border:1px solid #feebc8;border-radius:10px;padding:14px;background:#fffbeb;">
-          <div style="font-weight:700;font-size:0.95rem;color:#c05621;margin-bottom:8px;">🍯 PASTA DE HONEY <span style="font-weight:400;color:#999;font-size:0.8rem">(6 reclamos)</span></div>
+          <div style="font-weight:700;font-size:0.95rem;color:#c05621;margin-bottom:8px;">🍯 PASTA DE HONEY <span style="font-weight:400;color:#999;font-size:0.8rem">(7 reclamos)</span></div>
           <ul style="font-size:0.83rem;color:#444;line-height:1.9;list-style:none;padding:0;">
-            <li>🔴 Espinas encontradas (2 tickets)</li>
+            <li>🔴 Espinas encontradas (3 tickets, incluye 10/08 Recoleta — cerrado)</li>
             <li>🟠 Mal olor al descongelar</li>
             <li>🟡 Cuerpo extraño: virulana (11/07, Recoleta — cerrado 29/07, se emitió NC)</li>
           </ul>
@@ -1477,7 +1478,7 @@ footer { text-align: center; color: #BBBBBB; font-size: 0.76rem; padding: 20px 0
           <div style="font-weight:700;font-size:0.95rem;color:#2f855a;margin-bottom:8px;">🥗 VINAGRETA <span style="font-weight:400;color:#999;font-size:0.8rem">(2 reclamos)</span></div>
           <ul style="font-size:0.83rem;color:#444;line-height:1.9;list-style:none;padding:0;">
             <li>🟠 Color oscura, amarillea el arroz muy rápido</li>
-            <li>🟡 Bicho dentro del bidón (30/07, Godoy Cruz Mdza 2 — abierto)</li>
+            <li>🟡 Bicho dentro del bidón (30/07, Godoy Cruz Mdza 2 — cerrado 14/08, se emitió NC)</li>
           </ul>
         </div>
 
@@ -1487,69 +1488,8 @@ footer { text-align: center; color: #BBBBBB; font-size: 0.76rem; padding: 20px 0
     <!-- Tickets abiertos del CP -->
     <div class="card">
       <h2>Tickets activos — productos del CP <span style="font-weight:400;color:#999;font-size:0.82rem">(Esperando respuesta interna / Nuevo)</span></h2>
-      <div style="overflow-x:auto;">
-        <table style="width:100%;border-collapse:collapse;font-size:0.83rem;">
-          <thead>
-            <tr style="background:#1D4856;color:white;">
-              <th style="padding:8px 12px;text-align:left;border-radius:8px 0 0 0">Ticket</th>
-              <th style="padding:8px 12px;text-align:left">Sucursal</th>
-              <th style="padding:8px 12px;text-align:left">Producto</th>
-              <th style="padding:8px 12px;text-align:left">Descripción</th>
-              <th style="padding:8px 12px;text-align:left">Fecha</th>
-              <th style="padding:8px 12px;text-align:left;border-radius:0 8px 0 0">Lote</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr style="background:#fff5f5;border-bottom:1px solid #fed7d7;">
-              <td style="padding:8px 12px;font-family:monospace;font-size:0.75rem;color:#999">47442594201</td>
-              <td style="padding:8px 12px;font-weight:600">Recoleta</td>
-              <td style="padding:8px 12px">LANGOSTINOS REBOZADOS</td>
-              <td style="padding:8px 12px">Mal olor, sabor y textura — se desarma al hervir, color amarillento — 6kg</td>
-              <td style="padding:8px 12px">04-ago-26</td>
-              <td style="padding:8px 12px;font-family:monospace;font-size:0.8rem">—</td>
-            </tr>
-            <tr style="background:#fff;border-bottom:1px solid #e2e8f0;">
-              <td style="padding:8px 12px;font-family:monospace;font-size:0.75rem;color:#999">47424164736</td>
-              <td style="padding:8px 12px;font-weight:600">Salta</td>
-              <td style="padding:8px 12px">LANGOSTINOS REBOZADOS</td>
-              <td style="padding:8px 12px">Posible hilo, pelo o alambre en el producto</td>
-              <td style="padding:8px 12px">04-ago-26</td>
-              <td style="padding:8px 12px;font-family:monospace;font-size:0.8rem">Pedido #0064</td>
-            </tr>
-            <tr style="background:#fff5f5;border-bottom:1px solid #fed7d7;">
-              <td style="padding:8px 12px;font-family:monospace;font-size:0.75rem;color:#999">47321734805</td>
-              <td style="padding:8px 12px;font-weight:600">Godoy Cruz (Mdza 2)</td>
-              <td style="padding:8px 12px">VINAGRETA</td>
-              <td style="padding:8px 12px">Encontraron un bicho dentro de la vinagreta — 5 litros</td>
-              <td style="padding:8px 12px">30-jul-26</td>
-              <td style="padding:8px 12px;font-family:monospace;font-size:0.8rem">VI2606261</td>
-            </tr>
-            <tr style="background:#fff;border-bottom:1px solid #e2e8f0;">
-              <td style="padding:8px 12px;font-family:monospace;font-size:0.75rem;color:#999">47193876278</td>
-              <td style="padding:8px 12px;font-weight:600">Alberdi</td>
-              <td style="padding:8px 12px">TIRA DE TRUCHA</td>
-              <td style="padding:8px 12px">Tiras cortadas de forma dispareja, dificulta pesarlas y usarlas — 7kg</td>
-              <td style="padding:8px 12px">26-jul-26</td>
-              <td style="padding:8px 12px;font-family:monospace;font-size:0.8rem">TT1607261</td>
-            </tr>
-            <tr style="background:#fff5f5;border-bottom:1px solid #fed7d7;">
-              <td style="padding:8px 12px;font-family:monospace;font-size:0.75rem;color:#999">45694080547</td>
-              <td style="padding:8px 12px;font-weight:600">Alberdi</td>
-              <td style="padding:8px 12px">TAMAGO</td>
-              <td style="padding:8px 12px">Pelos — 1 caja</td>
-              <td style="padding:8px 12px">03-jun-26</td>
-              <td style="padding:8px 12px;font-family:monospace;font-size:0.8rem">24/7</td>
-            </tr>
-            <tr style="background:#fff;border-bottom:1px solid #e2e8f0;">
-              <td style="padding:8px 12px;font-family:monospace;font-size:0.75rem;color:#999">45694501543</td>
-              <td style="padding:8px 12px;font-weight:600">Villa Allende</td>
-              <td style="padding:8px 12px">TAMAGO</td>
-              <td style="padding:8px 12px">Con pelos — 2 cajas</td>
-              <td style="padding:8px 12px">02-jun-26</td>
-              <td style="padding:8px 12px;font-family:monospace;font-size:0.8rem">TA 2205261</td>
-            </tr>
-          </tbody>
-        </table>
+      <div style="padding:18px 12px;text-align:center;background:#f0fff4;border-radius:8px;color:#2f855a;font-size:0.9rem;">
+        ✅ No hay tickets abiertos de productos del CP al 14/08/2026. Los 6 que estaban en gestión el 06/08 ya se resolvieron (5 cerrados, 1 reclasificado NO CORRESPONDE).
       </div>
     </div>
 
@@ -1590,7 +1530,7 @@ footer { text-align: center; color: #BBBBBB; font-size: 0.76rem; padding: 20px 0
       <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:12px;">
         <div style="background:rgba(255,255,255,0.1);border-radius:10px;padding:14px;">
           <div style="font-weight:700;margin-bottom:6px;">🔴 ¿Por qué el TAMAGO tiene reclamos recurrentes de rotura y pelo?</div>
-          <div style="font-size:0.82rem;opacity:0.85">62 reclamos totales, casi la mitad de todo el CP. El reclamo de Neuquén que decía "pasa todas las semanas" se cerró el 16/07, pero siguen dos reclamos abiertos de pelos (Alberdi 03/06, Villa Allende 02/06). ¿Está documentado el procedimiento de cofia y malla? ¿Hay control de MP (arroz/relleno)?</div>
+          <div style="font-size:0.82rem;opacity:0.85">62 reclamos totales, casi la mitad de todo el CP. El reclamo de Neuquén que decía "pasa todas las semanas" se cerró el 16/07, y los otros dos reclamos de pelos (Alberdi 03/06, Villa Allende 02/06) que seguían abiertos ya se cerraron también (confirmado 14/08). ¿Está documentado el procedimiento de cofia y malla? ¿Hay control de MP (arroz/relleno)?</div>
         </div>
         <div style="background:rgba(255,255,255,0.1);border-radius:10px;padding:14px;">
           <div style="font-weight:700;margin-bottom:6px;">🦐🍯 3 cuerpos extraños críticos (plástico, alambre, virulana)</div>
@@ -2254,7 +2194,7 @@ function initCalidad() {
       labels: ['TAMAGO','LANGOSTINO\nREBOZADO','TIRA\nTRUCHA','CORTE\nTRUCHA','CUBOS\nTRUCHA','POLLO\nTERIYAKI','PASTA\nHONEY','SALSA\nNARANJA','REDUCCIÓN\nTERIYAKI','VINAGRETA'],
       datasets: [{
         label: 'Reclamos',
-        data: [62, 15, 11, 8, 10, 13, 6, 5, 1, 2],
+        data: [62, 16, 11, 8, 10, 13, 7, 5, 1, 2],
         backgroundColor: ['#EF402F','#1D4856','#33A392','#33A392','#33A392','#E3A127','#F58232','#F58232','#E3A127','#33A392'],
         borderRadius: 6
       }]
@@ -2276,7 +2216,7 @@ function initCalidad() {
       labels: ['Oct-25','Nov-25','Dic-25','Ene-26','Feb-26','Mar-26','Abr-26','May-26','Jun-26','Jul-26','Ago-26'],
       datasets: [{
         label: 'Reclamos CP',
-        data: [1, 20, 19, 20, 16, 17, 11, 9, 8, 9, 3],
+        data: [1, 20, 19, 20, 16, 17, 11, 9, 8, 9, 5],
         borderColor: '#EF402F',
         backgroundColor: 'rgba(239,64,47,0.12)',
         borderWidth: 2.5,
