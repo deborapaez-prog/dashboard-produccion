@@ -2509,7 +2509,7 @@ function initCumplimiento() {
     const top10 = entries.slice(0, 10);
     const topTotal = top10.reduce((s,[,v])=>s+v,0);
     const t = document.getElementById("tablaFranquicias");
-    let h = "<thead><tr><th>#</th><th>Franquicia</th><th>Total (4 sem.)</th><th>Prom. mensual (proyectado)</th><th>% del total</th></tr></thead><tbody>";
+    let h = `<thead><tr><th>#</th><th>Franquicia</th><th>Total (${CUMPL_FRANQUICIA_SEMANAS} sem.)</th><th>Prom. mensual (proyectado)</th><th>% del total</th></tr></thead><tbody>`;
     top10.forEach(([nombre, cant], i) => {
       const prom = (cant / CUMPL_FRANQUICIA_SEMANAS) * SEMANAS_POR_MES;
       const pct = total ? 100*cant/total : 0;
