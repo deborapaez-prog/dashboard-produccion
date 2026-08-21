@@ -125,7 +125,7 @@ footer { text-align: center; color: #BBBBBB; font-size: 0.76rem; padding: 20px 0
       <div style="font-size:0.7rem;font-weight:700;color:rgba(255,255,255,0.6);text-transform:uppercase;letter-spacing:0.12em;margin-top:2px;">Dashboard de Producción</div>
     </div>
   </div>
-  <span class="badge">📅 Actualizado: 19/08/2026</span>
+  <span class="badge">📅 Actualizado: 21/08/2026</span>
 </header>
 
 <div class="tab-nav">
@@ -144,15 +144,15 @@ footer { text-align: center; color: #BBBBBB; font-size: 0.76rem; padding: 20px 0
 
   <div class="alerta-ok">
     ✅ <strong>S33 cerró en 811,8 kg (5 días activos de 6, 10–15/08).</strong>
-    S34 va en 309,1 kg (2 días cargados de 6, 17–22/08, semana en curso).
-    Acumulado S20–S34: 12.404,1 kg · 41,7% uso general. Objetivo semanal: 1.067,2 kg · por día: 213,4 kg.
+    S34 va en 477,9 kg (3 días cargados de 6, 17–22/08, semana en curso).
+    Acumulado S20–S34: 12.572,9 kg · 41,4% uso general. Objetivo semanal: 1.067,2 kg · por día: 213,4 kg.
   </div>
 
   <div class="kpi-grid">
     <div class="kpi-card">
       <div class="lbl">Semana actual (S34)</div>
-      <div class="val">309,1 <span style="font-size:.85rem;color:#BBBBBB">kg</span></div>
-      <div class="sub">2 días cargados (17–22/08, en curso)</div>
+      <div class="val">477,9 <span style="font-size:.85rem;color:#BBBBBB">kg</span></div>
+      <div class="sub">3 días cargados (17–22/08, en curso)</div>
     </div>
     <div class="kpi-card">
       <div class="lbl">Semana anterior (S33)</div>
@@ -161,22 +161,22 @@ footer { text-align: center; color: #BBBBBB; font-size: 0.76rem; padding: 20px 0
     </div>
     <div class="kpi-card">
       <div class="lbl">kg/día S34 vs S33</div>
-      <div class="val" style="color:#EF402F">154,6</div>
+      <div class="val" style="color:#EF402F">159,3</div>
       <div class="sub">vs 162,4 kg/día S33</div>
     </div>
     <div class="kpi-card">
       <div class="lbl">Acumulado total</div>
-      <div class="val" style="color:#1D4856">12.404,1 <span style="font-size:.85rem;color:#BBBBBB">kg</span></div>
+      <div class="val" style="color:#1D4856">12.572,9 <span style="font-size:.85rem;color:#BBBBBB">kg</span></div>
       <div class="sub">S20–S34</div>
     </div>
     <div class="kpi-card">
       <div class="lbl">% uso S34</div>
-      <div class="val">45,8 <span style="font-size:.85rem;color:#BBBBBB">%</span></div>
-      <div class="sub">309,1 / 675 kg entrada (45 cajas)</div>
+      <div class="val">37,5 <span style="font-size:.85rem;color:#BBBBBB">%</span></div>
+      <div class="sub">477,9 / 1275 kg entrada (85 cajas)</div>
     </div>
     <div class="kpi-card">
       <div class="lbl">% uso general</div>
-      <div class="val">41,7 <span style="font-size:.85rem;color:#BBBBBB">%</span></div>
+      <div class="val">41,4 <span style="font-size:.85rem;color:#BBBBBB">%</span></div>
       <div class="sub">promedio S20–S34</div>
     </div>
   </div>
@@ -1581,7 +1581,7 @@ footer { text-align: center; color: #BBBBBB; font-size: 0.76rem; padding: 20px 0
       Fuentes: planilla "Producción CP" (pestañas JULIO 26 y AGOSTO 26, leída directo en el navegador porque el MCP de Drive no llega a esta pestaña) y salidas TOTVS (detalle por transacción, export "salidas al 180826.xml", que cubre S2–S8 completo — incluye franquicias de Bs. As. — Recoleta y Palermo), filtrado solo a los 10 productos del CP.
       El cruce de Pedido/Entregado cubre S2–S8 (30/06–17/08), <strong>todas las semanas ya cerradas</strong>.
       <br><strong>% Pedido / Salidas</strong> compara lo que se pidió a CP contra lo que realmente salió a franquicias (la demanda real), sin importar si el CP llegó a entregarlo. 100% = pedido calibrado. Por debajo de 70% se pidió de menos que la demanda real (riesgo de faltante, se tapa con stock de seguridad). Por encima de 130% se pidió de más que la demanda real (posible sobre-pedido).
-      <br><strong>Stock actual</strong>: foto del saldo en TOTVS al 19/08/2026 (Centro de Distribución + Centro de Producción + depósito externo Mirizi), no varía según la semana seleccionada — es el stock disponible hoy, no un dato histórico.
+      <br><strong>Stock actual</strong>: foto del saldo en TOTVS al 21/08/2026 (Centro de Distribución + Centro de Producción + depósito externo Mirizi), no varía según la semana seleccionada — es el stock disponible hoy, no un dato histórico.
       <br><strong>Prom. salidas/sem</strong> y <strong>Semanas de stock</strong>: promedio de salidas a franquicias por semana (S2–S8, las 7 semanas cerradas) y cuántas semanas dura el stock actual a ese ritmo. Menos de 1 semana = riesgo de faltante próximo; más de 8 semanas = posible sobre-stock.
     </div>
 
@@ -1786,10 +1786,13 @@ const WEEKS = [
   // el 18/08 aún no se había cargado) y 18-08 (143.6 kg: Tiras 33.075, tiras unidas 85.75, cubos
   // 24.78; cortes en 0 — "se hizo langostino rebosado"). 19-08 (hoy) en 0, sheet marca explícito "no
   // tener en cuenta porque quedó del día anterior" — no se carga.
-  { label:"S34", dateRange:"17–22 ago", isPartial:true, total:309.1,
-    daily:[165.5,143.6,0,0,0,0],
-    dailyByProd:{ "Tiras":[24.5,33.075,0,0,0,0], "cortes":[0,0,0,0,0,0], "tiras unidas":[107.8,85.75,0,0,0,0], "cubos":[33.18,24.78,0,0,0,0], "sin embolsar":[0,0,0,0,0,0] },
-    entradaBandejasDia:[25,20,0,0,0,0], activeDaysCount:2 }
+  // 21/08: se agrega 19-08 (168.8 kg: Tiras 34.3, tiras unidas 100.94, cubos 33.6; cortes en 0 —
+  // coincide con la fila "KG TOTALES" del sheet para ese día). 20-08 y 21-08 (hoy) siguen en 0 en el
+  // sheet, no se cargan.
+  { label:"S34", dateRange:"17–22 ago", isPartial:true, total:477.9,
+    daily:[165.5,143.6,168.8,0,0,0],
+    dailyByProd:{ "Tiras":[24.5,33.075,34.3,0,0,0], "cortes":[0,0,0,0,0,0], "tiras unidas":[107.8,85.75,100.94,0,0,0], "cubos":[33.18,24.78,33.6,0,0,0], "sin embolsar":[0,0,0,0,0,0] },
+    entradaBandejasDia:[25,20,40,0,0,0], activeDaysCount:3 }
 ];
 
 const PRODUCTOS = ["Tiras","cortes","tiras unidas","cubos","sin embolsar"];
@@ -2381,20 +2384,20 @@ const CUMPL_FRANQUICIAS_MES = {
   },
 };
 
-// Stock actual (TOTVS, foto al 19/08/2026). Suma Saldo Actual en depósitos CD (Centro de
-// Distribución) + CP (Centro de Producción) de "stock al 190826.xml", más el depósito MI (Mirizi,
+// Stock actual (TOTVS, foto al 21/08/2026). Suma Saldo Actual en depósitos CD (Centro de
+// Distribución) + CP (Centro de Producción) de "stock al 210826.xml", más el depósito MI (Mirizi,
 // sucursal 010102) de "stock externo al 140826.xml" (Corte 81, Cubos 65, Langostinos 470, Pollo 80,
 // Tamago 240 — no hay export "stock externo" más nuevo en la carpeta local, se reutiliza el del
-// 14/08 ; Pasta Honey, Reducción, Salsa Naranja, Tira y Vinagreta sin stock en MI) — stock físico de
+// 14/08; Pasta Honey, Reducción, Salsa Naranja, Tira y Vinagreta sin stock en MI) — stock físico de
 // producto terminado del CP guardado en esa sucursal externa, no incluido en el export CD/CP.
-// Respecto a la foto del 18/08: sube fuerte en Tamago (328→413) y Reducción (369→446); baja en
-// Langostinos (685→675), Salsa Naranja (57→55), Tira de Trucha (56→52) y Vinagreta (368→354) —
-// consistente con los movimientos de producción/salidas de la semana. No incluye tránsito (dio 0 en
-// los 10 productos en las fotos disponibles).
+// Respecto a la foto del 19/08: baja fuerte en Corte (259→180), Pollo (235→126) y Tira de Trucha
+// (52→14); sube en Langostinos (675→723); baja también en Cubos, Pasta Honey, Reducción, Salsa
+// Naranja, Tamago y Vinagreta — consistente con salidas a franquicias de la semana. Tránsito (TR) en
+// 0 para los 10 productos en esta foto.
 const CUMPL_STOCK = {
-  "CORTE DE TRUCHA":259, "CUBOS DE TRUCHA":168, "LANGOSTINOS REBOZADOS":675, "PASTA DE HONEY":110,
-  "POLLO TERIYAKI":235, "REDUCCIÓN DE TERIYAKI":446, "SALSA NARANJA Y MIEL":55, "TAMAGO":413,
-  "TIRA DE TRUCHA":52, "VINAGRETA":354
+  "CORTE DE TRUCHA":180, "CUBOS DE TRUCHA":160, "LANGOSTINOS REBOZADOS":723, "PASTA DE HONEY":54,
+  "POLLO TERIYAKI":126, "REDUCCIÓN DE TERIYAKI":434, "SALSA NARANJA Y MIEL":43, "TAMAGO":359,
+  "TIRA DE TRUCHA":14, "VINAGRETA":338
 };
 
 // Pedido/Entregado MENSUAL por producto, ene–ago 2026 (fuente: "Producción CP", pestañas JULIO 26 y
