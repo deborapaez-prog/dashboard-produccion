@@ -2347,13 +2347,14 @@ const CUMPL_WEEKS = [
     entregado:{ "CORTE DE TRUCHA":35, "CUBOS DE TRUCHA":46, "LANGOSTINOS REBOZADOS":73, "PASTA DE HONEY":43, "POLLO TERIYAKI":85, "REDUCCIÓN DE TERIYAKI":180, "SALSA NARANJA Y MIEL":0, "TAMAGO":216, "TIRA DE TRUCHA":70, "VINAGRETA":101 },
     salidas:  { "CORTE DE TRUCHA":30, "CUBOS DE TRUCHA":25, "LANGOSTINOS REBOZADOS":127, "PASTA DE HONEY":27, "POLLO TERIYAKI":51, "REDUCCIÓN DE TERIYAKI":120, "SALSA NARANJA Y MIEL":24, "TAMAGO":137, "TIRA DE TRUCHA":60, "VINAGRETA":87 } },
   // S9 (18–24/08) en curso — 24/08: "Producción CP", pestaña AGOSTO 26, leída directo en el
-  // navegador (columnas "18/8 al 24/8"). Salidas todavía no disponibles (última exportación TOTVS es
-  // "salidas al 210826.xml", ya usada en S8; no cubre franquicias de esta semana) — se carga en 0 por
-  // ahora, se completa cuando aparezca un export nuevo.
+  // navegador (columnas "18/8 al 24/8"). Salidas: "salidas al 240826.xml" (nueva, no estaba en la
+  // carpeta local al empezar la corrida) sí cubre la semana completa — se re-sumó también S2-S8 con
+  // este archivo para verificar y coincide exacto, al producto y a la franquicia, con lo ya cargado
+  // (sin cambios), así que no hizo falta tocar CUMPL_FRANQUICIAS ni CUMPL_FRANQUICIAS_MES.
   { label:"S9", dateRange:"18–24/08", isPartial:true,
     pedido:   { "CORTE DE TRUCHA":25, "CUBOS DE TRUCHA":25, "LANGOSTINOS REBOZADOS":180, "PASTA DE HONEY":50, "POLLO TERIYAKI":50, "REDUCCIÓN DE TERIYAKI":170, "SALSA NARANJA Y MIEL":20, "TAMAGO":200, "TIRA DE TRUCHA":90, "VINAGRETA":102 },
     entregado:{ "CORTE DE TRUCHA":25, "CUBOS DE TRUCHA":35, "LANGOSTINOS REBOZADOS":209, "PASTA DE HONEY":37, "POLLO TERIYAKI":17, "REDUCCIÓN DE TERIYAKI":121, "SALSA NARANJA Y MIEL":0, "TAMAGO":282, "TIRA DE TRUCHA":62, "VINAGRETA":85 },
-    salidas:  { "CORTE DE TRUCHA":0, "CUBOS DE TRUCHA":0, "LANGOSTINOS REBOZADOS":0, "PASTA DE HONEY":0, "POLLO TERIYAKI":0, "REDUCCIÓN DE TERIYAKI":0, "SALSA NARANJA Y MIEL":0, "TAMAGO":0, "TIRA DE TRUCHA":0, "VINAGRETA":0 } }
+    salidas:  { "CORTE DE TRUCHA":41, "CUBOS DE TRUCHA":22, "LANGOSTINOS REBOZADOS":135, "PASTA DE HONEY":29, "POLLO TERIYAKI":57, "REDUCCIÓN DE TERIYAKI":132, "SALSA NARANJA Y MIEL":16, "TAMAGO":148, "TIRA DE TRUCHA":68, "VINAGRETA":108 } }
 ];
 const CUMPL_PRODUCTOS = Object.keys(CUMPL_WEEKS[0].pedido);
 
