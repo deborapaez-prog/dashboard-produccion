@@ -2443,16 +2443,16 @@ const CUMPL_FRANQUICIAS_MES = {
 
 // Stock actual (TOTVS, foto al 26/08/2026). Suma Saldo Actual en depósitos CD (Centro de
 // Distribución) + CP (Centro de Producción) de "stock al 260826.xml", más el depósito MI (Mirizi,
-// sucursal 010102) de "stock externo al 240826.xml" (sin export más nuevo de MI; Corte 137, Cubos 97,
-// Langostinos 408, Pasta Honey 40, Pollo 145, Tamago 437 — Reducción, Salsa Naranja, Tira y Vinagreta
-// sin stock en MI) — stock físico de producto terminado del CP guardado en esa sucursal externa, no
-// incluido en el export CD/CP.
-// Respecto a la foto del 25/08: sube fuerte en Langostinos (590→729); baja en Corte (218→210), Cubos
-// (194→184), Pollo (198→192), Salsa Naranja (45→34) y Tira (33→19); sube en Reducción (423→452) y
-// Tamago (698→727); Pasta Honey y Vinagreta suben levemente.
+// sucursal 010102) de "stock externo al 260826.xml" (reemplaza a "stock externo al 240826.xml"; MI
+// ahora: Corte 80, Cubos 97, Langostinos 568, Pasta Honey 40, Pollo 103, Tamago 503 — Reducción,
+// Salsa Naranja, Tira y Vinagreta sin stock en MI) — stock físico de producto terminado del CP
+// guardado en esa sucursal externa, no incluido en el export CD/CP.
+// Respecto a la carga anterior (misma foto CD/CP del 26/08, solo cambió el export de MI): sube fuerte
+// en Langostinos (729→889) y Tamago (727→793); baja en Corte (210→153) y Pollo (192→150); Cubos,
+// Pasta Honey, Reducción, Salsa Naranja, Tira y Vinagreta sin cambio (MI sin stock o sin variación).
 const CUMPL_STOCK = {
-  "CORTE DE TRUCHA":210, "CUBOS DE TRUCHA":184, "LANGOSTINOS REBOZADOS":729, "PASTA DE HONEY":112,
-  "POLLO TERIYAKI":192, "REDUCCIÓN DE TERIYAKI":452, "SALSA NARANJA Y MIEL":34, "TAMAGO":727,
+  "CORTE DE TRUCHA":153, "CUBOS DE TRUCHA":184, "LANGOSTINOS REBOZADOS":889, "PASTA DE HONEY":112,
+  "POLLO TERIYAKI":150, "REDUCCIÓN DE TERIYAKI":452, "SALSA NARANJA Y MIEL":34, "TAMAGO":793,
   "TIRA DE TRUCHA":19, "VINAGRETA":390
 };
 
