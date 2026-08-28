@@ -125,7 +125,7 @@ footer { text-align: center; color: #BBBBBB; font-size: 0.76rem; padding: 20px 0
       <div style="font-size:0.7rem;font-weight:700;color:rgba(255,255,255,0.6);text-transform:uppercase;letter-spacing:0.12em;margin-top:2px;">Dashboard de Producción</div>
     </div>
   </div>
-  <span class="badge">📅 Actualizado: 27/08/2026</span>
+  <span class="badge">📅 Actualizado: 28/08/2026</span>
 </header>
 
 <div class="tab-nav">
@@ -144,8 +144,8 @@ footer { text-align: center; color: #BBBBBB; font-size: 0.76rem; padding: 20px 0
 
   <div class="alerta-ok">
     ✅ <strong>S34 cerró en 477,9 kg (3 días activos de 6, 17–22/08).</strong>
-    S35 (24–29/08) lleva 307,4 kg en 2 días activos: lunes 24/08 105,2 kg (33,1 Tiras, 0 cortes, 49 tiras unidas, 23,1 cubos) y miércoles 26/08 202,2 kg (35,5 Tiras, 0 cortes, 99,96 tiras unidas, 36,1 cubos, 30,6 sin embolsar — 25 cajas de entrada). El martes 25/08 quedó en 0 (el sheet lo corrigió: ese día se hizo langostino rebozado, no trucha). Jueves 27/08 (hoy) sin producción de trucha aún cargada.
-    Acumulado S20–S35: 12.880,3 kg · 41,0% uso general. Objetivo semanal: 1.067,2 kg · por día: 213,4 kg.
+    S35 (24–29/08) lleva 526,6 kg en 3 días activos: lunes 24/08 105,2 kg (33,1 Tiras, 0 cortes, 49 tiras unidas, 23,1 cubos), miércoles 26/08 202,2 kg (35,5 Tiras, 0 cortes, 99,96 tiras unidas, 36,1 cubos, 30,6 sin embolsar — 30 cajas de entrada, corregido de 25) y jueves 27/08 219,2 kg (38,0 Tiras, 19 cortes, 99,2 tiras unidas, 63 cubos, 0 sin embolsar — 30 cajas de entrada). El martes 25/08 quedó en 0 (el sheet lo corrigió: ese día se hizo langostino rebozado, no trucha). Viernes 28/08 (hoy) sin producción de trucha aún cargada.
+    Acumulado S20–S35: 13.099,5 kg · 41,0% uso general. Objetivo semanal: 1.067,2 kg · por día: 213,4 kg.
   </div>
 
   <div class="kpi-grid">
@@ -166,7 +166,7 @@ footer { text-align: center; color: #BBBBBB; font-size: 0.76rem; padding: 20px 0
     </div>
     <div class="kpi-card">
       <div class="lbl">Acumulado total</div>
-      <div class="val" style="color:#1D4856">12.880,3 <span style="font-size:.85rem;color:#BBBBBB">kg</span></div>
+      <div class="val" style="color:#1D4856">13.099,5 <span style="font-size:.85rem;color:#BBBBBB">kg</span></div>
       <div class="sub">S20–S35 (S35 en curso)</div>
     </div>
     <div class="kpi-card">
@@ -1818,10 +1818,14 @@ const WEEKS = [
   // esa producción a 26-08, que ahora suma 202,2 kg (25 cajas, 425 kg entrada a 17 kg/caja — Tiras
   // 35,525, cortes 0, tiras unidas 99,96, cubos 36,12, sin embolsar 30,6; "SE EMPIEZA 9:30HS DEBIDO A
   // DEMORA DE CAMION"). 27-08 (hoy) sin producción cargada todavía.
-  { label:"S35", dateRange:"24–29 ago", isPartial:true, total:307.4,
-    daily:[105.2,0,202.2,0,0,0],
-    dailyByProd:{ "Tiras":[33.075,0,35.525,0,0,0], "cortes":[0,0,0,0,0,0], "tiras unidas":[49,0,99.96,0,0,0], "cubos":[23.1,0,36.12,0,0,0], "sin embolsar":[0,0,30.6,0,0,0] },
-    entradaBandejasDia:[45,0,25,0,0,0], activeDaysCount:2 }
+  // 28/08: se agrega 27-08 (219,2 kg: Tiras 37,98, cortes 19, tiras unidas 99,225, cubos 63, sin
+  // embolsar 0 — 30 cajas de entrada a 15 kg/caja; el sheet también sumó "grasa" 143,7 kg como
+  // descarte, no contabilizado en el total). La entrada de 26-08 se corrigió de 25 a 30 cajas (425→510
+  // kg a 17 kg/caja, según la fila resumen semanal del sheet). 28-08 (hoy) sin producción cargada.
+  { label:"S35", dateRange:"24–29 ago", isPartial:true, total:526.6,
+    daily:[105.2,0,202.2,219.2,0,0],
+    dailyByProd:{ "Tiras":[33.075,0,35.525,37.98,0,0], "cortes":[0,0,0,19,0,0], "tiras unidas":[49,0,99.96,99.225,0,0], "cubos":[23.1,0,36.12,63,0,0], "sin embolsar":[0,0,30.6,0,0,0] },
+    entradaBandejasDia:[45,0,30,30,0,0], activeDaysCount:3 }
 ];
 
 const PRODUCTOS = ["Tiras","cortes","tiras unidas","cubos","sin embolsar"];
@@ -2405,9 +2409,12 @@ const CUMPL_WEEKS = [
   // de Pasta Honey con código distinto, que no se usa). Salidas: "salidas al 270826.xml" (reemplaza a
   // "salidas al 260826.xml"), ahora cubre 25 al 27/08 — sube en los 10 productos. Sigue siendo una
   // semana muy parcial (3 de 6 días activos), no usar todavía para comparar % de cumplimiento.
+  // 28/08: releída "SET 26" — Pedido sin cambios. Entregado sube en Langostinos (99→137), Pollo
+  // (9→15), Reducción (114→153) y Tira (11→21); resto sin cambios. No hay export de salidas más nuevo
+  // que "salidas al 270826.xml", así que Salidas queda igual (sigue cubriendo solo 25 al 27/08).
   { label:"S10", dateRange:"25–31/08", isPartial:true,
     pedido:   { "CORTE DE TRUCHA":20, "CUBOS DE TRUCHA":25, "LANGOSTINOS REBOZADOS":210, "PASTA DE HONEY":45, "POLLO TERIYAKI":90, "REDUCCIÓN DE TERIYAKI":185, "SALSA NARANJA Y MIEL":15, "TAMAGO":300, "TIRA DE TRUCHA":95, "VINAGRETA":102 },
-    entregado:{ "CORTE DE TRUCHA":1, "CUBOS DE TRUCHA":3, "LANGOSTINOS REBOZADOS":99, "PASTA DE HONEY":10, "POLLO TERIYAKI":9, "REDUCCIÓN DE TERIYAKI":114, "SALSA NARANJA Y MIEL":0, "TAMAGO":73, "TIRA DE TRUCHA":11, "VINAGRETA":51 },
+    entregado:{ "CORTE DE TRUCHA":1, "CUBOS DE TRUCHA":3, "LANGOSTINOS REBOZADOS":137, "PASTA DE HONEY":10, "POLLO TERIYAKI":15, "REDUCCIÓN DE TERIYAKI":153, "SALSA NARANJA Y MIEL":0, "TAMAGO":73, "TIRA DE TRUCHA":21, "VINAGRETA":51 },
     salidas:  { "CORTE DE TRUCHA":17, "CUBOS DE TRUCHA":17, "LANGOSTINOS REBOZADOS":83, "PASTA DE HONEY":21, "POLLO TERIYAKI":33, "REDUCCIÓN DE TERIYAKI":43, "SALSA NARANJA Y MIEL":14, "TAMAGO":104, "TIRA DE TRUCHA":41, "VINAGRETA":59 } }
 ];
 const CUMPL_PRODUCTOS = Object.keys(CUMPL_WEEKS[0].pedido);
@@ -2467,19 +2474,19 @@ const CUMPL_FRANQUICIAS_MES = {
   },
 };
 
-// Stock actual (TOTVS, foto al 27/08/2026). Suma Saldo Actual en depósitos CD (Centro de
-// Distribución) + CP (Centro de Producción) de "stock al 270826.xml" (reemplaza a "stock al
-// 260826.xml"), más el depósito MI (Mirizi, sucursal 010102) de "stock externo al 260826.xml" (sin
+// Stock actual (TOTVS, foto al 28/08/2026). Suma Saldo Actual en depósitos CD (Centro de
+// Distribución) + CP (Centro de Producción) de "stock al 280826.xml" (reemplaza a "stock al
+// 270826.xml"), más el depósito MI (Mirizi, sucursal 010102) de "stock externo al 260826.xml" (sin
 // export más nuevo disponible — MI sigue: Corte 80, Cubos 97, Langostinos 568, Pasta Honey 40, Pollo
 // 103, Tamago 503 — Reducción, Salsa Naranja, Tira y Vinagreta sin stock en MI) — stock físico de
 // producto terminado del CP guardado en esa sucursal externa, no incluido en el export CD/CP.
-// Respecto a la carga anterior (26/08, CD/CP + MI): sube en Corte (153→198), Pollo (150→169),
-// Reducción (452→481) y Vinagreta (390→406); baja fuerte en Langostinos (889→671) y Tamago (793→666),
-// y también en Cubos (184→179), Pasta Honey (112→104), Salsa Naranja (34→28) y Tira (19→4).
+// Respecto a la carga anterior (27/08, CD/CP + MI): sube en Langostinos (671→689) y Reducción
+// (481→510); baja en Corte (198→190), Cubos (179→178), Pasta Honey (104→109), Pollo (169→168),
+// Salsa Naranja (28→26), Tamago (666→649) y Vinagreta (406→393); Tira sube levemente (4→6).
 const CUMPL_STOCK = {
-  "CORTE DE TRUCHA":198, "CUBOS DE TRUCHA":179, "LANGOSTINOS REBOZADOS":671, "PASTA DE HONEY":104,
-  "POLLO TERIYAKI":169, "REDUCCIÓN DE TERIYAKI":481, "SALSA NARANJA Y MIEL":28, "TAMAGO":666,
-  "TIRA DE TRUCHA":4, "VINAGRETA":406
+  "CORTE DE TRUCHA":190, "CUBOS DE TRUCHA":178, "LANGOSTINOS REBOZADOS":689, "PASTA DE HONEY":109,
+  "POLLO TERIYAKI":168, "REDUCCIÓN DE TERIYAKI":510, "SALSA NARANJA Y MIEL":26, "TAMAGO":649,
+  "TIRA DE TRUCHA":6, "VINAGRETA":393
 };
 
 // Pedido/Entregado MENSUAL por producto, ene–ago 2026 (fuente: "Producción CP", pestañas JULIO 26 y
