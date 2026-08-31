@@ -1689,7 +1689,7 @@ footer { text-align: center; color: #BBBBBB; font-size: 0.76rem; padding: 20px 0
         <label style="display:flex;align-items:center;gap:6px;font-size:0.83rem;color:#221F1F;cursor:pointer;"><input type="checkbox" id="chkMensualEntregado" checked> Entregado (CP)</label>
         <label style="display:flex;align-items:center;gap:6px;font-size:0.83rem;color:#221F1F;cursor:pointer;"><input type="checkbox" id="chkMensualSalidas" checked> Salidas a franquicias</label>
       </div>
-      <div style="font-size:0.75rem;color:#BBBBBB;margin-bottom:6px;">Salidas a franquicias solo tiene dato en Jul 26 y Ago 26 (semanas S2–S7, export TOTVS desde el 30/06) — meses anteriores no tienen esa fuente todavía.</div>
+      <div style="font-size:0.75rem;color:#BBBBBB;margin-bottom:6px;">Salidas a franquicias solo tiene dato en Jul 26 y Ago 26 (semanas S2–S10, export TOTVS desde el 30/06 — S10 parcial, en curso) — meses anteriores no tienen esa fuente todavía.</div>
       <div class="chart-wrap" style="height:280px"><canvas id="chartCumplMensualProd"></canvas></div>
     </div>
 
@@ -2711,9 +2711,9 @@ function initCumplimiento() {
   const selMensualProd = document.getElementById("selCumplMensualProd");
   selMensualProd.innerHTML = CUMPL_PRODUCTOS.map((p,i)=>`<option value="${p}" ${i===0?"selected":""}>${p}</option>`).join("");
   // Salidas mensuales a franquicias por producto — solo hay dato real de semanas cargadas en
-  // CUMPL_WEEKS (S2–S5 caen en Jul 26, S6 en Ago 26). Los meses sin semanas cargadas quedan en
+  // CUMPL_WEEKS (S2–S5 caen en Jul 26, S6–S10 en Ago 26). Los meses sin semanas cargadas quedan en
   // null (Chart.js no dibuja barra) en vez de inventar un 0.
-  const CUMPL_WEEK_MES = { "S2":"JUL 26", "S3":"JUL 26", "S4":"JUL 26", "S5":"JUL 26", "S6":"AGO 26", "S7":"AGO 26" };
+  const CUMPL_WEEK_MES = { "S2":"JUL 26", "S3":"JUL 26", "S4":"JUL 26", "S5":"JUL 26", "S6":"AGO 26", "S7":"AGO 26", "S8":"AGO 26", "S9":"AGO 26", "S10":"AGO 26" };
   function monthlySalidas(prod) {
     const arr = new Array(CUMPL_MESES.length).fill(null);
     CUMPL_WEEKS.forEach(w => {
