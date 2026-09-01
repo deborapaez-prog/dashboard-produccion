@@ -1634,8 +1634,8 @@ footer { text-align: center; color: #BBBBBB; font-size: 0.76rem; padding: 20px 0
           <option value="5">S32 — 04–10/08</option>
           <option value="6">S33 — 11–17/08</option>
           <option value="7">S34 — 18–24/08</option>
-          <option value="8">S35 — 25–31/08</option>
-          <option value="9" selected>S36 — 01–07/09 (parcial)</option>
+          <option value="8" selected>S35 — 25–31/08</option>
+          <option value="9">S36 — 01–07/09 (parcial)</option>
         </select>
       </h2>
       <div class="chart-wrap" style="height:320px"><canvas id="chartCumplSemanal"></canvas></div>
@@ -2589,7 +2589,7 @@ function initCumplimiento() {
     });
   }
   document.getElementById("selCumplSemana").addEventListener("change", function(){ buildCumplSemanal(+this.value); });
-  buildCumplSemanal(9);
+  buildCumplSemanal(8);
 
   // % Pedido/Salidas = pedido / salidas. Mide si lo que se pidió a CP estuvo bien calibrado contra
   // la demanda real de franquicias (salidas), sin importar si el CP llegó a entregarlo o no.
@@ -2646,7 +2646,7 @@ function initCumplimiento() {
     t.innerHTML = h;
   }
   document.getElementById("selCumplSemana").addEventListener("change", function(){ buildTablaCumpl(+this.value); });
-  buildTablaCumpl(9);
+  buildTablaCumpl(8);
 
   // Salidas por franquicia (S27-S32, con filtro opcional por mes calendario)
   const selFranquicia = document.getElementById("selCumplFranquicia");
