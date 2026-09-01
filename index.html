@@ -1364,16 +1364,16 @@ footer { text-align: center; color: #BBBBBB; font-size: 0.76rem; padding: 20px 0
     <main>
 
     <div class="alerta" style="background:#fff5f5;border-color:#EF402F;border-left-color:#EF402F;color:#7b1a1a;">
-      ⚠️ Datos de reclamos de franquicias desde oct 2025 hasta ago 2026 (fuente: HubSpot CRM). 26/08: Debo subió un export nuevo, pero es una vista filtrada del pipeline "Calidad" (53 tickets, 11/06 al 26/08 — no el histórico completo), así que se usó solo para detectar altas y cambios de estado nuevos, comparando contra lo ya cargado del 18/08. <strong>8 tickets nuevos de productos del CP</strong>: 4 de TAMAGO (Villa María ×3 — mismo reclamo repetido de un cliente por un lote "white de 15" a prueba, 20/08 y 24/08 NO CORRESPONDE + 25/08 CERRADOS con NC; y Nueva Córdoba 24/08, reclamo de CP por 363 u de un lote de prueba de Tamago), 1 de LANGOSTINOS (Yerba Buena, 19/08, solo imagen adjunta sin texto), 1 de CUBOS DE TRUCHA (Santa Fe, 19/08, olor agrio/textura pegajosa/color pálido) y 2 de TIRA DE TRUCHA (Salta, 22/08, cerrado — error de etiqueta de folex, no del producto; Villa Allende, 26/08 hoy, "sabor a feo"). Además, de los 3 tickets abiertos de la carga anterior, <strong>los 2 de Santa Fe (esponja de acero y pelos) ya cerraron como NO CORRESPONDE</strong> el 18/08 — el de Rosario (se seca/quiebra al enrollar) sigue abierto. <strong>Quedan 5 tickets abiertos de productos del CP.</strong> La tabla de reclamos por sucursal no se recalculó (requiere el histórico completo, no solo este export filtrado).
+      ⚠️ Datos de reclamos de franquicias desde oct 2025 hasta ago 2026 (fuente: HubSpot CRM). <strong>01/09: Debo subió el export completo del pipeline "Calidad"</strong> (402 tickets, todo el histórico oct 2025–ago 2026 — reemplaza a las vistas filtradas que se venían usando hasta ahora), filtrado a los 10 productos del CP por el campo "Nombre Producto" y, cuando ese campo viene vacío, por el texto "Código de Producto con fallas" de la descripción. Esto da <strong>152 tickets CP</strong> (antes 146 con las vistas filtradas — la diferencia son tickets viejos que las exportaciones parciales anteriores no habían capturado, no reclamos nuevos). Cambios de estado desde el 26/08: <strong>4 tickets pasaron a cerrados</strong> — Rosario 15/08 TAMAGO (NC emitida), Yerba Buena 19/08 LANGOSTINOS (NC emitida), Santa Fe 19/08 CUBOS DE TRUCHA (NC emitida) y Villa Allende 26/08 TIRA DE TRUCHA "sabor a feo" (NO CORRESPONDE). <strong>3 tickets nuevos quedan abiertos</strong>: Nueva Córdoba 24/08 LANGOSTINOS (caja de tiras de trucha etiquetada por error como langostinos), Villa Allende 26/08 CORTE DE TRUCHA ("olor feo", mismo remito que el de Tira) y Nueva Córdoba 29/08 TIRA DE TRUCHA (llegan rotas y con espinas). Además 2 tickets nuevos ya cerrados como NO CORRESPONDE: Mendoza 30/08 SALSA NARANJA Y MIEL (vencimiento lejano, no vencido) y Monseñor 31/08 POLLO TERIYAKI (solo foto, sin descripción). <strong>Quedan 4 tickets abiertos de productos del CP.</strong> Con el histórico completo ya se pudo recalcular también la tabla de reclamos por sucursal (antes no era posible con las vistas filtradas).
     </div>
 
     <!-- KPIs -->
     <div class="kpi-grid" style="grid-template-columns:repeat(auto-fit,minmax(140px,1fr))">
-      <div class="kpi-card"><div class="lbl">Total reclamos CP</div><div class="val" style="color:#EF402F">146</div><div class="sub">productos propios</div></div>
-      <div class="kpi-card"><div class="lbl">Producto top</div><div class="val" style="color:#EF402F;font-size:1.1rem">TAMAGO</div><div class="sub">69 reclamos</div></div>
-      <div class="kpi-card"><div class="lbl">Mes pico</div><div class="val" style="color:#E3A127;font-size:1.1rem">Nov-25 / Ene-26</div><div class="sub">empatados, 20 c/u</div></div>
-      <div class="kpi-card"><div class="lbl">Reclamos abiertos</div><div class="val" style="color:#E3A127">5</div><div class="sub">en gestión</div></div>
-      <div class="kpi-card"><div class="lbl">Tasa cierre</div><div class="val" style="color:#33A392">~89%</div><div class="sub">de tickets CP (estimado, ver nota)</div></div>
+      <div class="kpi-card"><div class="lbl">Total reclamos CP</div><div class="val" style="color:#EF402F">152</div><div class="sub">productos propios</div></div>
+      <div class="kpi-card"><div class="lbl">Producto top</div><div class="val" style="color:#EF402F;font-size:1.1rem">TAMAGO</div><div class="sub">71 reclamos</div></div>
+      <div class="kpi-card"><div class="lbl">Mes pico</div><div class="val" style="color:#E3A127;font-size:1.1rem">Ene-26 / Ago-26</div><div class="sub">empatados, 21 c/u</div></div>
+      <div class="kpi-card"><div class="lbl">Reclamos abiertos</div><div class="val" style="color:#E3A127">4</div><div class="sub">en gestión</div></div>
+      <div class="kpi-card"><div class="lbl">Tasa cierre</div><div class="val" style="color:#33A392">97,4%</div><div class="sub">148 / 152 tickets CP (histórico completo)</div></div>
     </div>
 
     <!-- Reclamos por producto -->
@@ -1394,9 +1394,9 @@ footer { text-align: center; color: #BBBBBB; font-size: 0.76rem; padding: 20px 0
       <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:14px;margin-top:4px;">
 
         <div style="border:1px solid #fed7d7;border-radius:10px;padding:14px;background:#fff5f5;">
-          <div style="font-weight:700;font-size:0.95rem;color:#EF402F;margin-bottom:8px;">🍣 TAMAGO <span style="font-weight:400;color:#999;font-size:0.8rem">(69 reclamos)</span></div>
+          <div style="font-weight:700;font-size:0.95rem;color:#EF402F;margin-bottom:8px;">🍣 TAMAGO <span style="font-weight:400;color:#999;font-size:0.8rem">(71 reclamos)</span></div>
           <ul style="font-size:0.83rem;color:#444;line-height:1.9;list-style:none;padding:0;">
-            <li>🔴 Se rompe / se deshace / queda crudo al descongelar o enrollar — la falla más recurrente (incluye 15/08, Rosario — se seca y quiebra al enrollar, sin folex; sigue en gestión)</li>
+            <li>🔴 Se rompe / se deshace / queda crudo al descongelar o enrollar — la falla más recurrente (incluye 15/08, Rosario — se seca y quiebra al enrollar, sin folex; cerrado 28/08 con NC)</li>
             <li>🔴 Pelo / cabello en el producto — recurrente en todo el período (incluye 16/08, Santa Fe, "viene del centro de producción" — cerrado 18/08 como NO CORRESPONDE)</li>
             <li>🟠 Mal olor (agrio, rancio, a podrido)</li>
             <li>🟠 Manchas blancas / aspecto de hongo</li>
@@ -1408,7 +1408,7 @@ footer { text-align: center; color: #BBBBBB; font-size: 0.76rem; padding: 20px 0
         </div>
 
         <div style="border:1px solid #bee3f8;border-radius:10px;padding:14px;background:#ebf8ff;">
-          <div style="font-weight:700;font-size:0.95rem;color:#1D4856;margin-bottom:8px;">🦐 LANGOSTINOS REBOZADOS <span style="font-weight:400;color:#999;font-size:0.8rem">(17 reclamos)</span></div>
+          <div style="font-weight:700;font-size:0.95rem;color:#1D4856;margin-bottom:8px;">🦐 LANGOSTINOS REBOZADOS <span style="font-weight:400;color:#999;font-size:0.8rem">(18 reclamos)</span></div>
           <ul style="font-size:0.83rem;color:#444;line-height:1.9;list-style:none;padding:0;">
             <li>🔴 Mal olor / color oscuro o negro al cocinar, hongos</li>
             <li>🔴 Objetos extraños: alambre, plástico</li>
@@ -1417,18 +1417,20 @@ footer { text-align: center; color: #BBBBBB; font-size: 0.76rem; padding: 20px 0
             <li>🟡 Mal olor/sabor, se desarma al hervir, color amarillento (04/08, Recoleta — reclasificado NO CORRESPONDE el 14/08)</li>
             <li>🟡 Posible hilo/pelo/alambre en el producto (04/08, Salta — cerrado)</li>
             <li>🟡 Pelos en el producto (06/08, Villa Allende — cerrado, se emitió NC)</li>
-            <li>🟡 Sin descripción de texto, solo foto adjunta (19/08, Yerba Buena — en gestión, falta ver la imagen)</li>
+            <li>🟡 Sin descripción de texto, solo foto adjunta (19/08, Yerba Buena — cerrado 26/08 con NC)</li>
+            <li>🟡 Error de despacho: llegó una caja de Tira de Trucha etiquetada por error como Langostinos (24/08, Nueva Córdoba — se envió la caja correcta por Uber; en gestión)</li>
           </ul>
         </div>
 
         <div style="border:1px solid #c6f6d5;border-radius:10px;padding:14px;background:#f0fff4;">
-          <div style="font-weight:700;font-size:0.95rem;color:#2f855a;margin-bottom:8px;">🍗 POLLO TERIYAKI <span style="font-weight:400;color:#999;font-size:0.8rem">(13 reclamos)</span></div>
+          <div style="font-weight:700;font-size:0.95rem;color:#2f855a;margin-bottom:8px;">🍗 POLLO TERIYAKI <span style="font-weight:400;color:#999;font-size:0.8rem">(14 reclamos)</span></div>
           <ul style="font-size:0.83rem;color:#444;line-height:1.9;list-style:none;padding:0;">
             <li>🔴 Muy seco, sin sabor, color pálido — recurrente</li>
             <li>🟠 Mal olor / sabor fermentado (02/07, Alta Córdoba — cerrado 29/07, se emitió NC)</li>
             <li>🟠 Pequeños huesos entre las porciones</li>
             <li>🟡 Producto mezclado con langostinos</li>
             <li>🟡 Pelos y pedazo de virulana (21/07, Neuquén — cerrado 23/07, solo aviso, sin pedido de NC; se corrigió el uso de virulana en el local)</li>
+            <li>🟡 Sin descripción de texto, solo foto adjunta (31/08, Monseñor — cerrado NO CORRESPONDE)</li>
           </ul>
         </div>
 
@@ -1439,17 +1441,18 @@ footer { text-align: center; color: #BBBBBB; font-size: 0.76rem; padding: 20px 0
             <li>🟠 Cinta amarilla / mal aspecto</li>
             <li>🟡 Espinas (07/07, Recoleta — cerrado 29/07, se emitió NC)</li>
             <li>🟡 Color más oscuro de lo habitual (21/07, Recoleta — cerrado 27/07, solo diferencia de color, sin otra observación)</li>
-            <li>🟡 Olor agrio, textura pegajosa y color pálido (19/08, Santa Fe — en gestión)</li>
+            <li>🟡 Olor agrio, textura pegajosa y color pálido (19/08, Santa Fe — cerrado 26/08 con NC)</li>
           </ul>
         </div>
 
         <div style="border:1px solid #bee3f8;border-radius:10px;padding:14px;background:#ebf8ff;">
-          <div style="font-weight:700;font-size:0.95rem;color:#1D4856;margin-bottom:8px;">🐟 CORTE DE TRUCHA <span style="font-weight:400;color:#999;font-size:0.8rem">(8 reclamos)</span></div>
+          <div style="font-weight:700;font-size:0.95rem;color:#1D4856;margin-bottom:8px;">🐟 CORTE DE TRUCHA <span style="font-weight:400;color:#999;font-size:0.8rem">(9 reclamos)</span></div>
           <ul style="font-size:0.83rem;color:#444;line-height:1.9;list-style:none;padding:0;">
             <li>🔴 Exceso de grasa al descongelar</li>
             <li>🔴 Gramaje excedido (10–12g vs 8g estándar)</li>
             <li>🟡 Mal olor / textura babosa</li>
             <li>🟡 Color pálido y bordes con grasa sin recortar (02/08, Santa Fe — cerrado)</li>
+            <li>🟡 "Olor feo" (26/08, Villa Allende — mismo remito que el ticket de Tira de Trucha de esa fecha; en gestión)</li>
           </ul>
         </div>
 
@@ -1461,7 +1464,8 @@ footer { text-align: center; color: #BBBBBB; font-size: 0.76rem; padding: 20px 0
             <li>🟠 Tiras cortadas de forma dispareja, dificulta pesarlas — 26/07, Alberdi, lote TT1607261 (2 tickets duplicados: uno se cerró 29/07 como "no corresponde", el otro se cerró recién el 14/08 con NC emitida)</li>
             <li>🟡 Espina encontrada en el producto final</li>
             <li>🟡 Error de etiqueta de folex, no del producto (22/08, Salta — cerrado; el vencimiento de la caja era correcto, se rotuló mal el carro al entrar a cámara)</li>
-            <li>🟡 "Sabor a feo" (26/08 hoy, Villa Allende — en gestión, sin más detalle todavía)</li>
+            <li>🟡 "Sabor a feo" (26/08, Villa Allende — cerrado 28/08 como NO CORRESPONDE)</li>
+            <li>🟡 Llegan rotas y con espinas (29/08, Nueva Córdoba — en gestión)</li>
           </ul>
         </div>
 
@@ -1475,10 +1479,11 @@ footer { text-align: center; color: #BBBBBB; font-size: 0.76rem; padding: 20px 0
         </div>
 
         <div style="border:1px solid #feebc8;border-radius:10px;padding:14px;background:#fffbeb;">
-          <div style="font-weight:700;font-size:0.95rem;color:#c05621;margin-bottom:8px;">🍊 SALSA NARANJA Y MIEL <span style="font-weight:400;color:#999;font-size:0.8rem">(5 reclamos)</span></div>
+          <div style="font-weight:700;font-size:0.95rem;color:#c05621;margin-bottom:8px;">🍊 SALSA NARANJA Y MIEL <span style="font-weight:400;color:#999;font-size:0.8rem">(6 reclamos)</span></div>
           <ul style="font-size:0.83rem;color:#444;line-height:1.9;list-style:none;padding:0;">
             <li>🔴 Sabor quemado (2 tickets)</li>
             <li>🟡 Vencida al recibir / textura cristalizada</li>
+            <li>🟡 Vencimiento lejano (30/08, Mendoza — vencía 29/09, no estaba vencida; cerrado NO CORRESPONDE)</li>
           </ul>
         </div>
 
@@ -1515,11 +1520,10 @@ footer { text-align: center; color: #BBBBBB; font-size: 0.76rem; padding: 20px 0
             </tr>
           </thead>
           <tbody>
-            <tr style="background:#fffbeb;border-bottom:1px solid #feebc8;"><td style="padding:6px 12px">26/08</td><td style="padding:6px 12px;font-weight:600">Villa Allende</td><td style="padding:6px 12px">TIRA DE TRUCHA</td><td style="padding:6px 12px">"Sabor a feo", sin más detalle todavía</td><td style="padding:6px 12px"><span class="pill" style="background:#feebc8;color:#c05621;">Esperando resp. interna</span></td></tr>
-            <tr style="background:#fff;border-bottom:1px solid #feebc8;"><td style="padding:6px 12px">24/08</td><td style="padding:6px 12px;font-weight:600">Nueva Córdoba</td><td style="padding:6px 12px">TAMAGO</td><td style="padding:6px 12px">Lote de prueba (363 u) con volumen elevado de reclamos de clientes, piden NC</td><td style="padding:6px 12px"><span class="pill" style="background:#feebc8;color:#c05621;">Esperando resp. interna</span></td></tr>
-            <tr style="background:#fffbeb;border-bottom:1px solid #feebc8;"><td style="padding:6px 12px">19/08</td><td style="padding:6px 12px;font-weight:600">Santa Fe</td><td style="padding:6px 12px">CUBOS DE TRUCHA</td><td style="padding:6px 12px">Olor agrio, textura pegajosa y color pálido</td><td style="padding:6px 12px"><span class="pill" style="background:#feebc8;color:#c05621;">Esperando resp. interna</span></td></tr>
-            <tr style="background:#fff;border-bottom:1px solid #feebc8;"><td style="padding:6px 12px">19/08</td><td style="padding:6px 12px;font-weight:600">Yerba Buena</td><td style="padding:6px 12px">LANGOSTINOS REBOZADOS</td><td style="padding:6px 12px">Sin descripción de texto, solo foto adjunta</td><td style="padding:6px 12px"><span class="pill" style="background:#feebc8;color:#c05621;">En Progreso</span></td></tr>
-            <tr style="background:#fffbeb;"><td style="padding:6px 12px">15/08</td><td style="padding:6px 12px;font-weight:600">Rosario</td><td style="padding:6px 12px">TAMAGO</td><td style="padding:6px 12px">Se seca, se quiebra al enrollar, sin folex, más grueso de lo normal</td><td style="padding:6px 12px"><span class="pill" style="background:#feebc8;color:#c05621;">Esperando resp. interna</span></td></tr>
+            <tr style="background:#fffbeb;border-bottom:1px solid #feebc8;"><td style="padding:6px 12px">29/08</td><td style="padding:6px 12px;font-weight:600">Nueva Córdoba</td><td style="padding:6px 12px">TIRA DE TRUCHA</td><td style="padding:6px 12px">Llegan rotas y con espinas</td><td style="padding:6px 12px"><span class="pill" style="background:#feebc8;color:#c05621;">En Progreso</span></td></tr>
+            <tr style="background:#fff;border-bottom:1px solid #feebc8;"><td style="padding:6px 12px">26/08</td><td style="padding:6px 12px;font-weight:600">Villa Allende</td><td style="padding:6px 12px">CORTE DE TRUCHA</td><td style="padding:6px 12px">"Olor feo" — mismo remito que el ticket de Tira de Trucha de esa fecha (ya cerrado NO CORRESPONDE)</td><td style="padding:6px 12px"><span class="pill" style="background:#feebc8;color:#c05621;">Esperando resp. interna</span></td></tr>
+            <tr style="background:#fffbeb;border-bottom:1px solid #feebc8;"><td style="padding:6px 12px">24/08</td><td style="padding:6px 12px;font-weight:600">Nueva Córdoba</td><td style="padding:6px 12px">LANGOSTINOS REBOZADOS</td><td style="padding:6px 12px">Llegó una caja de Tira de Trucha etiquetada por error como Langostinos; se envió la correcta por Uber</td><td style="padding:6px 12px"><span class="pill" style="background:#feebc8;color:#c05621;">Nuevo</span></td></tr>
+            <tr style="background:#fff;"><td style="padding:6px 12px">24/08</td><td style="padding:6px 12px;font-weight:600">Nueva Córdoba</td><td style="padding:6px 12px">TAMAGO</td><td style="padding:6px 12px">Lote de prueba (363 u) con volumen elevado de reclamos de clientes, piden NC</td><td style="padding:6px 12px"><span class="pill" style="background:#feebc8;color:#c05621;">Esperando resp. interna</span></td></tr>
           </tbody>
         </table>
       </div>
@@ -1540,17 +1544,17 @@ footer { text-align: center; color: #BBBBBB; font-size: 0.76rem; padding: 20px 0
             </tr>
           </thead>
           <tbody>
-            <tr style="background:#fff5f5;border-bottom:1px solid #fed7d7;"><td style="padding:6px 12px;color:#999;text-align:center">1</td><td style="padding:6px 12px;font-weight:600">Villa Allende</td><td style="padding:6px 12px;text-align:center">17</td><td style="padding:6px 12px;white-space:nowrap"><div style="display:flex;align-items:center;gap:8px"><div style="background:#EF402F;height:8px;border-radius:4px;width:92px;flex-shrink:0"></div><span>13,3%</span></div></td><td style="padding:6px 12px">TAMAGO <span style="color:#999;font-size:0.78rem">65%</span> · LANGOSTINOS <span style="color:#999;font-size:0.78rem">18%</span></td></tr>
-            <tr style="background:#fff;border-bottom:1px solid #e2e8f0;"><td style="padding:6px 12px;color:#999;text-align:center">2</td><td style="padding:6px 12px;font-weight:600">Mendoza</td><td style="padding:6px 12px;text-align:center">15</td><td style="padding:6px 12px;white-space:nowrap"><div style="display:flex;align-items:center;gap:8px"><div style="background:#EF402F;height:8px;border-radius:4px;width:81px;flex-shrink:0"></div><span>11,7%</span></div></td><td style="padding:6px 12px">TAMAGO <span style="color:#999;font-size:0.78rem">73%</span> · CORTE DE TRUCHA <span style="color:#999;font-size:0.78rem">13%</span></td></tr>
-            <tr style="background:#fff5f5;border-bottom:1px solid #fed7d7;"><td style="padding:6px 12px;color:#999;text-align:center">3</td><td style="padding:6px 12px;font-weight:600">Nueva Córdoba</td><td style="padding:6px 12px;text-align:center">13</td><td style="padding:6px 12px;white-space:nowrap"><div style="display:flex;align-items:center;gap:8px"><div style="background:#EF402F;height:8px;border-radius:4px;width:70px;flex-shrink:0"></div><span>10,2%</span></div></td><td style="padding:6px 12px">CUBOS TRUCHA <span style="color:#999;font-size:0.78rem">38%</span> · TAMAGO <span style="color:#999;font-size:0.78rem">38%</span></td></tr>
-            <tr style="background:#fff;border-bottom:1px solid #e2e8f0;"><td style="padding:6px 12px;color:#999;text-align:center">4</td><td style="padding:6px 12px;font-weight:600">Neuquén</td><td style="padding:6px 12px;text-align:center">10</td><td style="padding:6px 12px;white-space:nowrap"><div style="display:flex;align-items:center;gap:8px"><div style="background:#E3A127;height:8px;border-radius:4px;width:54px;flex-shrink:0"></div><span>7,8%</span></div></td><td style="padding:6px 12px">TAMAGO <span style="color:#999;font-size:0.78rem">30%</span> · CORTE DE TRUCHA <span style="color:#999;font-size:0.78rem">20%</span></td></tr>
-            <tr style="background:#fff5f5;border-bottom:1px solid #fed7d7;"><td style="padding:6px 12px;color:#999;text-align:center">5</td><td style="padding:6px 12px;font-weight:600">Cerro</td><td style="padding:6px 12px;text-align:center">8</td><td style="padding:6px 12px;white-space:nowrap"><div style="display:flex;align-items:center;gap:8px"><div style="background:#E3A127;height:8px;border-radius:4px;width:43px;flex-shrink:0"></div><span>6,3%</span></div></td><td style="padding:6px 12px">TAMAGO <span style="color:#999;font-size:0.78rem">63%</span> · TIRA DE TRUCHA <span style="color:#999;font-size:0.78rem">25%</span></td></tr>
-            <tr style="background:#fff;border-bottom:1px solid #e2e8f0;"><td style="padding:6px 12px;color:#999;text-align:center">6</td><td style="padding:6px 12px;font-weight:600">Residencial América</td><td style="padding:6px 12px;text-align:center">8</td><td style="padding:6px 12px;white-space:nowrap"><div style="display:flex;align-items:center;gap:8px"><div style="background:#E3A127;height:8px;border-radius:4px;width:43px;flex-shrink:0"></div><span>6,3%</span></div></td><td style="padding:6px 12px">TAMAGO <span style="color:#999;font-size:0.78rem">38%</span> · SALSA NARANJA <span style="color:#999;font-size:0.78rem">38%</span></td></tr>
-            <tr style="background:#fff5f5;border-bottom:1px solid #fed7d7;"><td style="padding:6px 12px;color:#999;text-align:center">7</td><td style="padding:6px 12px;font-weight:600">Alberdi</td><td style="padding:6px 12px;text-align:center">6</td><td style="padding:6px 12px;white-space:nowrap"><div style="display:flex;align-items:center;gap:8px"><div style="background:#33A392;height:8px;border-radius:4px;width:32px;flex-shrink:0"></div><span>4,7%</span></div></td><td style="padding:6px 12px">TIRA DE TRUCHA <span style="color:#999;font-size:0.78rem">50%</span> · TAMAGO <span style="color:#999;font-size:0.78rem">33%</span></td></tr>
-            <tr style="background:#fff;border-bottom:1px solid #e2e8f0;"><td style="padding:6px 12px;color:#999;text-align:center">8</td><td style="padding:6px 12px;font-weight:600">Godoy Cruz (Mdza 2)</td><td style="padding:6px 12px;text-align:center">5</td><td style="padding:6px 12px;white-space:nowrap"><div style="display:flex;align-items:center;gap:8px"><div style="background:#33A392;height:8px;border-radius:4px;width:27px;flex-shrink:0"></div><span>3,9%</span></div></td><td style="padding:6px 12px">TAMAGO <span style="color:#999;font-size:0.78rem">60%</span> · POLLO TERIYAKI <span style="color:#999;font-size:0.78rem">40%</span></td></tr>
-            <tr style="background:#fff5f5;border-bottom:1px solid #fed7d7;"><td style="padding:6px 12px;color:#999;text-align:center">9</td><td style="padding:6px 12px;font-weight:600">Recoleta</td><td style="padding:6px 12px;text-align:center">5</td><td style="padding:6px 12px;white-space:nowrap"><div style="display:flex;align-items:center;gap:8px"><div style="background:#33A392;height:8px;border-radius:4px;width:27px;flex-shrink:0"></div><span>3,9%</span></div></td><td style="padding:6px 12px">CUBOS TRUCHA <span style="color:#999;font-size:0.78rem">40%</span></td></tr>
-            <tr style="background:#fff;border-bottom:1px solid #e2e8f0;"><td style="padding:6px 12px;color:#999;text-align:center">10</td><td style="padding:6px 12px;font-weight:600">Rafaela</td><td style="padding:6px 12px;text-align:center">4</td><td style="padding:6px 12px;white-space:nowrap"><div style="display:flex;align-items:center;gap:8px"><div style="background:#33A392;height:8px;border-radius:4px;width:21px;flex-shrink:0"></div><span>3,1%</span></div></td><td style="padding:6px 12px">Variado <span style="color:#999;font-size:0.78rem">(4 productos distintos)</span></td></tr>
-            <tr style="background:#fff5f5;border-bottom:1px solid #e2e8f0;"><td style="padding:6px 12px;color:#999" colspan="5" style="text-align:center;color:#999;font-size:0.78rem">+ 14 sucursales con 4 reclamos o menos c/u y 11 tickets sin sucursal registrada — 37 reclamos (28,9%) restantes</td></tr>
+            <tr style="background:#fff5f5;border-bottom:1px solid #fed7d7;"><td style="padding:6px 12px;color:#999;text-align:center">1</td><td style="padding:6px 12px;font-weight:600">Villa Allende</td><td style="padding:6px 12px;text-align:center">20</td><td style="padding:6px 12px;white-space:nowrap"><div style="display:flex;align-items:center;gap:8px"><div style="background:#EF402F;height:8px;border-radius:4px;width:91px;flex-shrink:0"></div><span>13,2%</span></div></td><td style="padding:6px 12px">TAMAGO <span style="color:#999;font-size:0.78rem">55%</span> · LANGOSTINOS <span style="color:#999;font-size:0.78rem">20%</span></td></tr>
+            <tr style="background:#fff;border-bottom:1px solid #e2e8f0;"><td style="padding:6px 12px;color:#999;text-align:center">2</td><td style="padding:6px 12px;font-weight:600">Nueva Córdoba</td><td style="padding:6px 12px;text-align:center">16</td><td style="padding:6px 12px;white-space:nowrap"><div style="display:flex;align-items:center;gap:8px"><div style="background:#EF402F;height:8px;border-radius:4px;width:72px;flex-shrink:0"></div><span>10,5%</span></div></td><td style="padding:6px 12px">TAMAGO <span style="color:#999;font-size:0.78rem">38%</span> · CUBOS DE TRUCHA <span style="color:#999;font-size:0.78rem">31%</span></td></tr>
+            <tr style="background:#fff5f5;border-bottom:1px solid #fed7d7;"><td style="padding:6px 12px;color:#999;text-align:center">3</td><td style="padding:6px 12px;font-weight:600">Mendoza</td><td style="padding:6px 12px;text-align:center">16</td><td style="padding:6px 12px;white-space:nowrap"><div style="display:flex;align-items:center;gap:8px"><div style="background:#EF402F;height:8px;border-radius:4px;width:72px;flex-shrink:0"></div><span>10,5%</span></div></td><td style="padding:6px 12px">TAMAGO <span style="color:#999;font-size:0.78rem">69%</span> · CORTE DE TRUCHA <span style="color:#999;font-size:0.78rem">12%</span></td></tr>
+            <tr style="background:#fff;border-bottom:1px solid #e2e8f0;"><td style="padding:6px 12px;color:#999;text-align:center">4</td><td style="padding:6px 12px;font-weight:600">Neuquén</td><td style="padding:6px 12px;text-align:center">11</td><td style="padding:6px 12px;white-space:nowrap"><div style="display:flex;align-items:center;gap:8px"><div style="background:#E3A127;height:8px;border-radius:4px;width:50px;flex-shrink:0"></div><span>7,2%</span></div></td><td style="padding:6px 12px">TAMAGO <span style="color:#999;font-size:0.78rem">36%</span> · CORTE DE TRUCHA <span style="color:#999;font-size:0.78rem">18%</span></td></tr>
+            <tr style="background:#fff5f5;border-bottom:1px solid #fed7d7;"><td style="padding:6px 12px;color:#999;text-align:center">5</td><td style="padding:6px 12px;font-weight:600">Cerro</td><td style="padding:6px 12px;text-align:center">8</td><td style="padding:6px 12px;white-space:nowrap"><div style="display:flex;align-items:center;gap:8px"><div style="background:#E3A127;height:8px;border-radius:4px;width:37px;flex-shrink:0"></div><span>5,3%</span></div></td><td style="padding:6px 12px">TAMAGO <span style="color:#999;font-size:0.78rem">62%</span> · LANGOSTINOS <span style="color:#999;font-size:0.78rem">12%</span></td></tr>
+            <tr style="background:#fff;border-bottom:1px solid #e2e8f0;"><td style="padding:6px 12px;color:#999;text-align:center">6</td><td style="padding:6px 12px;font-weight:600">Residencial América</td><td style="padding:6px 12px;text-align:center">8</td><td style="padding:6px 12px;white-space:nowrap"><div style="display:flex;align-items:center;gap:8px"><div style="background:#E3A127;height:8px;border-radius:4px;width:37px;flex-shrink:0"></div><span>5,3%</span></div></td><td style="padding:6px 12px">TAMAGO <span style="color:#999;font-size:0.78rem">38%</span> · SALSA NARANJA <span style="color:#999;font-size:0.78rem">38%</span></td></tr>
+            <tr style="background:#fff5f5;border-bottom:1px solid #fed7d7;"><td style="padding:6px 12px;color:#999;text-align:center">7</td><td style="padding:6px 12px;font-weight:600">Santa Fe</td><td style="padding:6px 12px;text-align:center">7</td><td style="padding:6px 12px;white-space:nowrap"><div style="display:flex;align-items:center;gap:8px"><div style="background:#33A392;height:8px;border-radius:4px;width:32px;flex-shrink:0"></div><span>4,6%</span></div></td><td style="padding:6px 12px">TAMAGO <span style="color:#999;font-size:0.78rem">71%</span> · CORTE DE TRUCHA <span style="color:#999;font-size:0.78rem">14%</span></td></tr>
+            <tr style="background:#fff;border-bottom:1px solid #e2e8f0;"><td style="padding:6px 12px;color:#999;text-align:center">8</td><td style="padding:6px 12px;font-weight:600">Alberdi</td><td style="padding:6px 12px;text-align:center">6</td><td style="padding:6px 12px;white-space:nowrap"><div style="display:flex;align-items:center;gap:8px"><div style="background:#33A392;height:8px;border-radius:4px;width:27px;flex-shrink:0"></div><span>3,9%</span></div></td><td style="padding:6px 12px">TIRA DE TRUCHA <span style="color:#999;font-size:0.78rem">50%</span> · TAMAGO <span style="color:#999;font-size:0.78rem">33%</span></td></tr>
+            <tr style="background:#fff5f5;border-bottom:1px solid #fed7d7;"><td style="padding:6px 12px;color:#999;text-align:center">9</td><td style="padding:6px 12px;font-weight:600">Godoy Cruz (Mdza 2)</td><td style="padding:6px 12px;text-align:center">6</td><td style="padding:6px 12px;white-space:nowrap"><div style="display:flex;align-items:center;gap:8px"><div style="background:#33A392;height:8px;border-radius:4px;width:27px;flex-shrink:0"></div><span>3,9%</span></div></td><td style="padding:6px 12px">TAMAGO <span style="color:#999;font-size:0.78rem">50%</span> · POLLO TERIYAKI <span style="color:#999;font-size:0.78rem">33%</span></td></tr>
+            <tr style="background:#fff;border-bottom:1px solid #e2e8f0;"><td style="padding:6px 12px;color:#999;text-align:center">10</td><td style="padding:6px 12px;font-weight:600">Recoleta</td><td style="padding:6px 12px;text-align:center">6</td><td style="padding:6px 12px;white-space:nowrap"><div style="display:flex;align-items:center;gap:8px"><div style="background:#33A392;height:8px;border-radius:4px;width:27px;flex-shrink:0"></div><span>3,9%</span></div></td><td style="padding:6px 12px">LANGOSTINOS <span style="color:#999;font-size:0.78rem">33%</span> · PASTA DE HONEY <span style="color:#999;font-size:0.78rem">33%</span></td></tr>
+            <tr style="background:#fff5f5;border-bottom:1px solid #e2e8f0;"><td style="padding:6px 12px;color:#999" colspan="5" style="text-align:center;color:#999;font-size:0.78rem">+ 16 sucursales con 5 reclamos o menos c/u y 11 tickets sin sucursal registrada — 48 reclamos (31,6%) restantes</td></tr>
           </tbody>
         </table>
       </div>
@@ -1562,7 +1566,7 @@ footer { text-align: center; color: #BBBBBB; font-size: 0.76rem; padding: 20px 0
       <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:12px;">
         <div style="background:rgba(255,255,255,0.1);border-radius:10px;padding:14px;">
           <div style="font-weight:700;margin-bottom:6px;">🔴 ¿Por qué el TAMAGO tiene reclamos recurrentes de rotura y pelo?</div>
-          <div style="font-size:0.82rem;opacity:0.85">69 reclamos totales, casi la mitad de todo el CP. El reclamo de Neuquén que decía "pasa todas las semanas" se cerró el 16/07, y los otros dos reclamos de pelos (Alberdi 03/06, Villa Allende 02/06) que seguían abiertos ya se cerraron también (confirmado 14/08). Se suma ahora un patrón nuevo: un mismo cliente de Villa María reclamó 3 veces por la misma partida "white de 15" de prueba entre el 18/08 y el 24/08. ¿Está documentado el procedimiento de cofia y malla? ¿Hay control de MP (arroz/relleno)?</div>
+          <div style="font-size:0.82rem;opacity:0.85">71 reclamos totales, casi la mitad de todo el CP. El reclamo de Neuquén que decía "pasa todas las semanas" se cerró el 16/07, y los otros dos reclamos de pelos (Alberdi 03/06, Villa Allende 02/06) que seguían abiertos ya se cerraron también (confirmado 14/08). Se suma ahora un patrón nuevo: un mismo cliente de Villa María reclamó 3 veces por la misma partida "white de 15" de prueba entre el 18/08 y el 24/08. ¿Está documentado el procedimiento de cofia y malla? ¿Hay control de MP (arroz/relleno)?</div>
         </div>
         <div style="background:rgba(255,255,255,0.1);border-radius:10px;padding:14px;">
           <div style="font-weight:700;margin-bottom:6px;">🦐🍯 3 cuerpos extraños críticos (plástico, alambre, virulana)</div>
@@ -2301,7 +2305,7 @@ function initCalidad() {
       labels: ['TAMAGO','LANGOSTINO\nREBOZADO','TIRA\nTRUCHA','CORTE\nTRUCHA','CUBOS\nTRUCHA','POLLO\nTERIYAKI','PASTA\nHONEY','SALSA\nNARANJA','REDUCCIÓN\nTERIYAKI','VINAGRETA'],
       datasets: [{
         label: 'Reclamos',
-        data: [69, 17, 13, 8, 11, 13, 7, 5, 1, 2],
+        data: [71, 18, 13, 9, 11, 14, 7, 6, 1, 2],
         backgroundColor: ['#EF402F','#1D4856','#33A392','#33A392','#33A392','#E3A127','#F58232','#F58232','#E3A127','#33A392'],
         borderRadius: 6
       }]
@@ -2323,7 +2327,7 @@ function initCalidad() {
       labels: ['Oct-25','Nov-25','Dic-25','Ene-26','Feb-26','Mar-26','Abr-26','May-26','Jun-26','Jul-26','Ago-26'],
       datasets: [{
         label: 'Reclamos CP',
-        data: [1, 20, 19, 20, 16, 17, 11, 9, 8, 9, 13],
+        data: [2, 20, 20, 21, 16, 17, 11, 8, 8, 8, 21],
         borderColor: '#EF402F',
         backgroundColor: 'rgba(239,64,47,0.12)',
         borderWidth: 2.5,
