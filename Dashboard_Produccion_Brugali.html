@@ -1626,8 +1626,8 @@ footer { text-align: center; color: #BBBBBB; font-size: 0.76rem; padding: 20px 0
 
     <div class="alerta">
       ⚠️ <strong>Compara lo pedido a Centro de Producción vs. lo entregado por CP vs. lo que realmente salió a franquicias.</strong>
-      Fuentes: planilla "Producción CP" (pestañas JULIO 26, AGOSTO 26 y SET 26, leída directo en el navegador porque el MCP de Drive no llega a esta pestaña) y salidas TOTVS (detalle por transacción, export "salidas al 030926.xml", que cubre S27–S35 completo más 2 días de S36 — incluye franquicias de Bs. As. — Recoleta y Palermo), filtrado solo a los 10 productos del CP.
-      El cruce de Pedido/Entregado cubre S27–S36 (30/06–07/09) — <strong>S27 a S35 ya cerradas, S36 (01–07/09) en curso</strong> (Pedido ya cargado; Entregado sigue en 0 porque CP recién arranca la semana. Nota 03/09: al releer "SET 26" en el navegador, los valores de Pedido/Entregado de esa pestaña para la semana 25/8–01/9 no coinciden con lo ya cargado acá para S35/S36 — posible re-planificación del sheet o un desfasaje de semanas — se dejan sin tocar hasta que Debo confirme. Salidas ya tiene 01 y 02/09 cargados. No usar todavía para comparar % de cumplimiento).
+      Fuentes: planilla "Producción CP" (pestañas JULIO 26, AGOSTO 26 y SET 26, leída directo en el navegador porque el MCP de Drive no llega a esta pestaña) y salidas TOTVS (detalle por transacción, export "salidas al 030926.xml", que cubre S27–S35 completo más 1 día de S36 — incluye franquicias de Bs. As. — Recoleta y Palermo), filtrado solo a los 10 productos del CP.
+      El cruce de Pedido/Entregado cubre S27–S36 (30/06–07/09) — <strong>S27 a S35 ya cerradas, S36 (02–07/09) en curso</strong> (Pedido ya cargado; Entregado sigue en 0 porque CP recién arranca la semana. Nota 03/09: la pestaña "SET 26" agrupa la semana de fin de agosto como "25/8 al 01/9" — un día más que el resto de las semanas, para no dejar el 01/09 suelto — así que S35 pasa a ser 25/08–01/09 y S36 a 02–07/09; ver el comentario junto a CUMPL_WEEKS para el detalle. Salidas ya tiene el 02/09 cargado. No usar todavía S36 para comparar % de cumplimiento).
       <br><strong>% Pedido / Salidas</strong> compara lo que se pidió a CP contra lo que realmente salió a franquicias (la demanda real), sin importar si el CP llegó a entregarlo. 100% = pedido calibrado. Por debajo de 70% se pidió de menos que la demanda real (riesgo de faltante, se tapa con stock de seguridad). Por encima de 130% se pidió de más que la demanda real (posible sobre-pedido).
       <br><strong>Stock actual</strong>: foto del saldo en TOTVS al 03/09/2026 (Centro de Distribución + Centro de Producción + depósito externo Mirizi), no varía según la semana seleccionada — es el stock disponible hoy, no un dato histórico.
       <br><strong>Prom. salidas/sem</strong> y <strong>Semanas de stock</strong>: promedio de salidas a franquicias por semana (S27–S35, las 9 semanas cerradas) y cuántas semanas dura el stock actual a ese ritmo. Menos de 1 semana = riesgo de faltante próximo; más de 8 semanas = posible sobre-stock.
@@ -1641,8 +1641,8 @@ footer { text-align: center; color: #BBBBBB; font-size: 0.76rem; padding: 20px 0
       </div>
       <div class="kpi-card">
         <div class="lbl">Pedido vs. Salidas</div>
-        <div class="val" style="color:#33A392">110,1 <span style="font-size:.85rem;color:#BBBBBB">%</span></div>
-        <div class="sub">8.789 pedidas / 7.985 salidas (S27–S35, todas cerradas)</div>
+        <div class="val" style="color:#33A392">107,2 <span style="font-size:.85rem;color:#BBBBBB">%</span></div>
+        <div class="sub">8.666 pedidas / 8.086 salidas (S27–S35, todas cerradas)</div>
       </div>
       <div class="kpi-card">
         <div class="lbl">Menor cumplimiento (mensual)</div>
@@ -1668,8 +1668,8 @@ footer { text-align: center; color: #BBBBBB; font-size: 0.76rem; padding: 20px 0
           <option value="5">S32 — 04–10/08</option>
           <option value="6">S33 — 11–17/08</option>
           <option value="7">S34 — 18–24/08</option>
-          <option value="8" selected>S35 — 25–31/08</option>
-          <option value="9">S36 — 01–07/09 (parcial)</option>
+          <option value="8" selected>S35 — 25/08–01/09</option>
+          <option value="9">S36 — 02–07/09 (parcial)</option>
         </select>
       </h2>
       <div class="chart-wrap" style="height:320px"><canvas id="chartCumplSemanal"></canvas></div>
@@ -1737,7 +1737,7 @@ footer { text-align: center; color: #BBBBBB; font-size: 0.76rem; padding: 20px 0
         </div>
         <div style="display:flex;gap:12px;align-items:flex-start;padding:10px 12px;background:#fff5f5;border-radius:8px;">
           <span style="font-size:1rem;flex-shrink:0">🚨</span>
-          <div><div style="font-size:0.85rem;font-weight:700;color:#221F1F;">S35 (25–31/08) tiene el cumplimiento más bajo de producción de toda la serie: 57,7%</div><div style="font-size:0.78rem;color:#999999;margin-top:2px;">Se pidieron 1.087 u y CP entregó apenas 627 — muy por debajo del anterior piso, S28 con 88,0% (872 pedidas / 767 entregadas). La caída es generalizada: Corte de Trucha 5,0% (1/20), Salsa Naranja 0,0% (0/15), Pollo Teriyaki 16,7% (15/90), Tamago 43,0% (129/300), Tira de Trucha 44,2% (42/95) y Vinagreta 50,0% (51/102) — el único producto que sostuvo el pedido fue Langostinos Rebozados (215/210, 102,4%). Vale la pena preguntarle a CP qué pasó esa semana.</div></div>
+          <div><div style="font-size:0.85rem;font-weight:700;color:#221F1F;">S28 (07–13/07) tiene el cumplimiento más bajo de producción entre las semanas cerradas: 88,0%</div><div style="font-size:0.78rem;color:#999999;margin-top:2px;">Se pidieron 872 u y CP entregó 767. La caída se concentra en Pollo Teriyaki 73,8% (59/80), Reducción de Teriyaki 74,2% (89/120), Langostinos Rebozados 75,6% (68/90) y Pasta de Honey 78,3% (47/60) — Corte de Trucha, Cubos de Trucha y Tamago sí sostuvieron el 100% del pedido. (Nota 03/09: S35 dejó de ser la semana más floja al corregir su rango a 25/08–01/09 — con el límite nuevo quedó en 90,2%, 964 pedidas / 870 entregadas, muy por encima del 57,7% que mostraba con el rango anterior.)</div></div>
         </div>
         <div style="display:flex;gap:12px;align-items:flex-start;padding:10px 12px;background:#fffbeb;border-radius:8px;">
           <span style="font-size:1rem;flex-shrink:0">🥗</span>
@@ -2487,46 +2487,52 @@ const CUMPL_WEEKS = [
   // cubre 25 al 28/08 (4 de 6 días) — sube en los 10 productos. Sigue siendo una semana parcial (S35
   // termina 31/08, hoy, y el export de salidas más nuevo todavía no llega a esa fecha), no usar todavía
   // para comparar % de cumplimiento.
-  // 01/09: releída "SET 26" — Pedido sin cambios. Entregado sube en Langostinos (137→215), Tamago
-  // (73→129) y Tira (21→42); resto sin cambios. Salidas: "salidas al 010926.xml" (reemplaza a
-  // "salidas al 310826.xml"), ahora cubre 25 al 31/08 completo (6 de 6 días activos) — sube en los 10
-  // productos. S35 terminó el 31/08 (ayer) y Salidas ya cubre la semana completa, así que se cierra:
-  // deja de ser parcial. Cumplimiento de producción de la semana: 627/1.087 u = 57,7% — el más bajo
-  // de las 9 semanas cerradas (ver bullet actualizado más abajo).
-  { label:"S35", dateRange:"25–31/08", isPartial:false,
-    pedido:   { "CORTE DE TRUCHA":20, "CUBOS DE TRUCHA":25, "LANGOSTINOS REBOZADOS":210, "PASTA DE HONEY":45, "POLLO TERIYAKI":90, "REDUCCIÓN DE TERIYAKI":185, "SALSA NARANJA Y MIEL":15, "TAMAGO":300, "TIRA DE TRUCHA":95, "VINAGRETA":102 },
-    entregado:{ "CORTE DE TRUCHA":1, "CUBOS DE TRUCHA":5, "LANGOSTINOS REBOZADOS":215, "PASTA DE HONEY":16, "POLLO TERIYAKI":15, "REDUCCIÓN DE TERIYAKI":153, "SALSA NARANJA Y MIEL":0, "TAMAGO":129, "TIRA DE TRUCHA":42, "VINAGRETA":51 },
-    salidas:  { "CORTE DE TRUCHA":42, "CUBOS DE TRUCHA":41, "LANGOSTINOS REBOZADOS":182, "PASTA DE HONEY":40, "POLLO TERIYAKI":81, "REDUCCIÓN DE TERIYAKI":138, "SALSA NARANJA Y MIEL":30, "TAMAGO":178, "TIRA DE TRUCHA":79, "VINAGRETA":129 } },
-  // S36 (01–07/09) — 03/09: se releyó "Producción CP" (SET 26) directo en el navegador; los valores de
-  // Pedido/Entregado de la semana 25/8-01/9 y la nueva 02/09-07/09 no coinciden claramente con la fila
-  // S36 ya cargada acá (posible re-planificación de Pedido en el sheet) — Pedido/Entregado quedan SIN
-  // TOCAR esta corrida, a la espera de que Debo confirme cuál semana del sheet corresponde a cuál acá.
-  // Salidas sí se actualiza: "salidas al 030926.xml" (reemplaza a "salidas al 020926.xml"), ahora cubre
-  // 01 y 02/09 (2 de 7 días de la semana, tipo "PA") — 03/09 (hoy) todavía no aparece en el export.
-  { label:"S36", dateRange:"01–07/09", isPartial:true,
-    pedido:   { "CORTE DE TRUCHA":25, "CUBOS DE TRUCHA":25, "LANGOSTINOS REBOZADOS":210, "PASTA DE HONEY":45, "POLLO TERIYAKI":90, "REDUCCIÓN DE TERIYAKI":170, "SALSA NARANJA Y MIEL":30, "TAMAGO":280, "TIRA DE TRUCHA":98, "VINAGRETA":102 },
+  // 03/09: se releyó "Producción CP" en el navegador (el MCP de Drive no llega a esta pestaña) y se
+  // descubrió que la pestaña "SET 26" agrupa la semana de fin de agosto como "25/8 AL 01/9" (8 días,
+  // no 25-31/08 como se venía cargando acá para S35) — el sheet corre el límite un día para no dejar
+  // el 01/09 como fila suelta de 1 día. Se adopta ese mismo límite acá: S35 pasa a ser 25/08–01/09 y
+  // deja de coincidir con la semana martes-a-lunes de Trucha/Cocina Caliente — es una excepción
+  // puntual de esta pestaña de Producción CP en el borde del mes. Pedido y Entregado de S35 se releen
+  // enteros de esa columna (Entregado sube fuerte: 627→870, CP siguió entregando después del cierre
+  // de la semana calendario). Salidas también se recalcula sobre el rango nuevo (25/08–01/09) con
+  // "salidas al 030926.xml".
+  { label:"S35", dateRange:"25/08–01/09", isPartial:false,
+    pedido:   { "CORTE DE TRUCHA":2, "CUBOS DE TRUCHA":10, "LANGOSTINOS REBOZADOS":210, "PASTA DE HONEY":40, "POLLO TERIYAKI":90, "REDUCCIÓN DE TERIYAKI":185, "SALSA NARANJA Y MIEL":15, "TAMAGO":240, "TIRA DE TRUCHA":95, "VINAGRETA":77 },
+    entregado:{ "CORTE DE TRUCHA":1, "CUBOS DE TRUCHA":10, "LANGOSTINOS REBOZADOS":254, "PASTA DE HONEY":32, "POLLO TERIYAKI":72, "REDUCCIÓN DE TERIYAKI":185, "SALSA NARANJA Y MIEL":16, "TAMAGO":129, "TIRA DE TRUCHA":95, "VINAGRETA":76 },
+    salidas:  { "CORTE DE TRUCHA":44, "CUBOS DE TRUCHA":46, "LANGOSTINOS REBOZADOS":201, "PASTA DE HONEY":44, "POLLO TERIYAKI":88, "REDUCCIÓN DE TERIYAKI":161, "SALSA NARANJA Y MIEL":34, "TAMAGO":197, "TIRA DE TRUCHA":84, "VINAGRETA":142 } },
+  // S36 (antes "01-07/09") pasa a ser 02-07/09 (6 días), en línea con el corrimiento de límite de S35
+  // de arriba — la columna de "Producción CP" para esta semana es justamente "02/09 AL 7/9". Pedido se
+  // carga entero de esa columna; Entregado sigue en 0 (CP recién arranca la semana). Salidas: "salidas
+  // al 030926.xml" cubre por ahora solo el 02/09 (1 de 6 días) — 03/09 (hoy) todavía no aparece.
+  { label:"S36", dateRange:"02–07/09", isPartial:true,
+    pedido:   { "CORTE DE TRUCHA":40, "CUBOS DE TRUCHA":40, "LANGOSTINOS REBOZADOS":210, "PASTA DE HONEY":50, "POLLO TERIYAKI":90, "REDUCCIÓN DE TERIYAKI":170, "SALSA NARANJA Y MIEL":30, "TAMAGO":340, "TIRA DE TRUCHA":98, "VINAGRETA":127 },
     entregado:{ "CORTE DE TRUCHA":0, "CUBOS DE TRUCHA":0, "LANGOSTINOS REBOZADOS":0, "PASTA DE HONEY":0, "POLLO TERIYAKI":0, "REDUCCIÓN DE TERIYAKI":0, "SALSA NARANJA Y MIEL":0, "TAMAGO":0, "TIRA DE TRUCHA":0, "VINAGRETA":0 },
-    salidas:  { "CORTE DE TRUCHA":12, "CUBOS DE TRUCHA":14, "LANGOSTINOS REBOZADOS":59, "PASTA DE HONEY":11, "POLLO TERIYAKI":28, "REDUCCIÓN DE TERIYAKI":57, "SALSA NARANJA Y MIEL":6, "TAMAGO":60, "TIRA DE TRUCHA":24, "VINAGRETA":39 } }
+    salidas:  { "CORTE DE TRUCHA":10, "CUBOS DE TRUCHA":9, "LANGOSTINOS REBOZADOS":40, "PASTA DE HONEY":7, "POLLO TERIYAKI":21, "REDUCCIÓN DE TERIYAKI":34, "SALSA NARANJA Y MIEL":2, "TAMAGO":41, "TIRA DE TRUCHA":19, "VINAGRETA":26 } }
 ];
 const CUMPL_PRODUCTOS = Object.keys(CUMPL_WEEKS[0].pedido);
 
 // Salidas a franquicias por sucursal, detalle transacción por transacción (tipo "PA" = producto
-// terminado). Fuente: "salidas al 010926.xml" (reemplaza a "salidas al 250826.xml") — recalculado
-// sobre S27-S35 (30/06-31/08, las 9 semanas ya cerradas; se suma S35, 25-31/08, recién cerrada).
-// S27-S34 no cambiaron respecto a la carga anterior (se verificó re-sumando con el archivo nuevo,
-// coincide al u por producto). Franquicia = texto después de la última "/" en "Nom Cliente" del
-// export TOTVS.
+// terminado). Fuente: "salidas al 030926.xml" — recalculado sobre S27-S35 (30/06-01/09, las 9
+// semanas ya cerradas). S27-S34 no cambiaron respecto a la carga anterior (se verificó re-sumando
+// con el archivo nuevo, coincide al u por producto). Franquicia = texto después de la última "/" en
+// "Nom Cliente" del export TOTVS.
+// 03/09: se corrigió el límite de S35. Al releer "Producción CP" (SET 26) en el navegador se
+// encontró que esa pestaña agrupa la semana como "25/8 AL 01/9" (8 días, no 25-31/08 como se venía
+// usando acá) — el mes de septiembre corre esa semana un día para no dejar el 01/09 suelto. Se
+// adopta el mismo límite en el dashboard (ver CUMPL_WEEKS) y se suma el 01/09 a esta tabla (afecta a
+// MONSEÑOR, COLON, ALTO ALBERDI, CERRO, CALERA, VILLA ALLENDE y RECTA, las franquicias con
+// despachos ese día).
 const CUMPL_FRANQUICIAS = {
-  "CORTE DE TRUCHA": { "NEUQUEN":33, "SANTA FE":22, "ROSARIO":21, "NUEVA CORDOBA":20, "SAN RAFAEL":15, "CERRO":13, "MENDOZA":13, "SAN JUAN":12, "CARLOS PAZ":11, "GODOY CRUZ":11, "RIO IV":11, "TUCUMAN":11, "VILLA ALLENDE":11, "ALTO ALBERDI":10, "GENERAL PAZ":10, "SALTA":10, "ALTA CORDOBA":9, "JARDIN":9, "MANANTIALES":9, "RESIDENCIAL AMERICA":9, "VILLA MARIA":9, "COLON":8, "MONSEÑOR":8, "YERBA BUENA":8, "LA RIOJA":7, "RECTA":7, "SABATTINI":7, "SANTA LUCIA":7, "PALERMO":6, "RECOLETA":6, "RAFAELA":4, "CALERA":3, "MANANTIALES II":3 },
-  "CUBOS DE TRUCHA": { "ROSARIO":25, "SANTA FE":21, "NEUQUEN":17, "NUEVA CORDOBA":16, "TUCUMAN":15, "CERRO":14, "PALERMO":14, "RECOLETA":11, "YERBA BUENA":11, "ALTO ALBERDI":10, "GENERAL PAZ":10, "LA RIOJA":10, "RECTA":10, "CARLOS PAZ":9, "MENDOZA":9, "VILLA ALLENDE":9, "ALTA CORDOBA":8, "GODOY CRUZ":8, "RAFAELA":8, "RIO IV":8, "SAN JUAN":8, "JARDIN":7, "VILLA MARIA":7, "COLON":6, "MANANTIALES":5, "MONSEÑOR":5, "SAN RAFAEL":5, "SALTA":4, "RESIDENCIAL AMERICA":3, "CALERA":2, "SABATTINI":2, "SANTA LUCIA":2, "MANANTIALES II":1 },
-  "LANGOSTINOS REBOZADOS": { "NUEVA CORDOBA":113, "CERRO":74, "GENERAL PAZ":64, "SANTA FE":61, "NEUQUEN":59, "TUCUMAN":59, "ALTO ALBERDI":58, "ROSARIO":57, "VILLA ALLENDE":56, "RECTA":54, "SAN JUAN":54, "LA RIOJA":52, "MANANTIALES":52, "JARDIN":50, "RIO IV":47, "ALTA CORDOBA":46, "COLON":43, "YERBA BUENA":43, "SABATTINI":38, "RESIDENCIAL AMERICA":37, "VILLA MARIA":36, "CARLOS PAZ":35, "MONSEÑOR":30, "SAN RAFAEL":29, "RECOLETA":28, "RAFAELA":26, "SALTA":26, "CALERA":25, "PALERMO":22, "SANTA LUCIA":21, "MENDOZA":14, "GODOY CRUZ":12, "MANANTIALES II":8 },
-  "PASTA DE HONEY": { "NEUQUEN":24, "ROSARIO":24, "NUEVA CORDOBA":23, "SANTA FE":21, "SAN JUAN":20, "TUCUMAN":17, "ALTO ALBERDI":13, "JARDIN":13, "SAN RAFAEL":12, "SANTA LUCIA":12, "GENERAL PAZ":11, "MENDOZA":11, "RIO IV":11, "YERBA BUENA":11, "CARLOS PAZ":10, "RAFAELA":10, "VILLA ALLENDE":10, "ALTA CORDOBA":9, "CERRO":9, "COLON":9, "LA RIOJA":9, "MANANTIALES":9, "VILLA MARIA":9, "GODOY CRUZ":8, "PALERMO":8, "RECTA":8, "RESIDENCIAL AMERICA":8, "SALTA":8, "RECOLETA":7, "SABATTINI":7, "MONSEÑOR":6, "CALERA":5, "MANANTIALES II":2 },
-  "POLLO TERIYAKI": { "ROSARIO":50, "NEUQUEN":47, "TUCUMAN":44, "SANTA FE":40, "NUEVA CORDOBA":39, "YERBA BUENA":31, "CERRO":28, "GENERAL PAZ":28, "PALERMO":28, "ALTO ALBERDI":26, "ALTA CORDOBA":23, "LA RIOJA":23, "RIO IV":22, "RECOLETA":20, "CARLOS PAZ":19, "SAN JUAN":19, "JARDIN":17, "SAN RAFAEL":16, "VILLA MARIA":16, "COLON":14, "MENDOZA":14, "MONSEÑOR":14, "VILLA ALLENDE":14, "RAFAELA":13, "RECTA":13, "GODOY CRUZ":12, "MANANTIALES":12, "RESIDENCIAL AMERICA":11, "SABATTINI":9, "SALTA":8, "SANTA LUCIA":8, "CALERA":5, "MANANTIALES II":3 },
-  "REDUCCIÓN DE TERIYAKI": { "NUEVA CORDOBA":106, "ROSARIO":96, "NEUQUEN":87, "SANTA FE":69, "PALERMO":61, "TUCUMAN":60, "ALTO ALBERDI":57, "CERRO":50, "GENERAL PAZ":50, "LA RIOJA":47, "RIO IV":46, "RECOLETA":45, "RECTA":43, "RAFAELA":38, "VILLA MARIA":37, "MONSEÑOR":36, "ALTA CORDOBA":34, "YERBA BUENA":34, "MANANTIALES":32, "RESIDENCIAL AMERICA":30, "SAN JUAN":30, "COLON":29, "JARDIN":29, "SANTA LUCIA":26, "CARLOS PAZ":25, "VILLA ALLENDE":25, "MENDOZA":24, "SAN RAFAEL":24, "GODOY CRUZ":20, "SABATTINI":17, "SALTA":16, "CALERA":13, "MANANTIALES II":6 },
-  "SALSA NARANJA Y MIEL": { "NEUQUEN":27, "NUEVA CORDOBA":19, "ROSARIO":16, "SANTA FE":16, "TUCUMAN":15, "SAN RAFAEL":14, "VILLA MARIA":13, "LA RIOJA":12, "MENDOZA":12, "GENERAL PAZ":10, "RAFAELA":10, "YERBA BUENA":10, "CERRO":9, "RIO IV":9, "RECTA":8, "SAN JUAN":8, "JARDIN":7, "ALTA CORDOBA":6, "ALTO ALBERDI":6, "PALERMO":6, "RECOLETA":6, "COLON":5, "MANANTIALES":5, "VILLA ALLENDE":5, "CARLOS PAZ":4, "GODOY CRUZ":4, "MONSEÑOR":4, "CALERA":3, "MANANTIALES II":3, "RESIDENCIAL AMERICA":3, "SALTA":3, "SANTA LUCIA":2, "SABATTINI":1 },
-  "TAMAGO": { "NEUQUEN":106, "SAN JUAN":84, "NUEVA CORDOBA":79, "SANTA FE":79, "ALTO ALBERDI":72, "GENERAL PAZ":65, "TUCUMAN":64, "RIO IV":62, "CERRO":57, "SAN RAFAEL":55, "ALTA CORDOBA":54, "COLON":54, "JARDIN":53, "SANTA LUCIA":53, "RESIDENCIAL AMERICA":52, "VILLA ALLENDE":49, "LA RIOJA":45, "MANANTIALES":45, "CARLOS PAZ":44, "MONSEÑOR":42, "SABATTINI":39, "RAFAELA":38, "MENDOZA":37, "ROSARIO":37, "YERBA BUENA":36, "RECTA":33, "SALTA":30, "GODOY CRUZ":28, "VILLA MARIA":27, "RECOLETA":23, "CALERA":19, "PALERMO":18, "MANANTIALES II":8 },
-  "TIRA DE TRUCHA": { "NEUQUEN":42, "NUEVA CORDOBA":41, "ROSARIO":37, "SANTA FE":32, "SAN JUAN":29, "ALTO ALBERDI":25, "GENERAL PAZ":22, "RIO IV":22, "SAN RAFAEL":22, "TUCUMAN":21, "CERRO":20, "COLON":18, "JARDIN":18, "SANTA LUCIA":18, "ALTA CORDOBA":17, "CARLOS PAZ":17, "VILLA MARIA":17, "LA RIOJA":16, "VILLA ALLENDE":16, "RAFAELA":15, "RECOLETA":15, "YERBA BUENA":15, "MANANTIALES":14, "MENDOZA":14, "MONSEÑOR":14, "PALERMO":14, "RECTA":13, "RESIDENCIAL AMERICA":13, "SALTA":13, "GODOY CRUZ":12, "SABATTINI":11, "CALERA":6, "MANANTIALES II":3 },
-  "VINAGRETA": { "NUEVA CORDOBA":71, "NEUQUEN":61, "SANTA FE":51, "ROSARIO":48, "TUCUMAN":46, "CERRO":44, "SAN JUAN":41, "ALTO ALBERDI":40, "GENERAL PAZ":40, "RIO IV":34, "RECTA":31, "ALTA CORDOBA":30, "JARDIN":30, "LA RIOJA":29, "SAN RAFAEL":28, "YERBA BUENA":28, "VILLA ALLENDE":27, "CARLOS PAZ":26, "COLON":26, "PALERMO":25, "RECOLETA":25, "VILLA MARIA":25, "MANANTIALES":24, "MONSEÑOR":24, "RESIDENCIAL AMERICA":24, "SALTA":22, "GODOY CRUZ":21, "RAFAELA":20, "MENDOZA":19, "SABATTINI":19, "SANTA LUCIA":17, "CALERA":10, "MANANTIALES II":5 },
+  "CORTE DE TRUCHA": { "NEUQUEN":33, "SANTA FE":22, "ROSARIO":21, "NUEVA CORDOBA":20, "SAN RAFAEL":15, "CERRO":13, "MENDOZA":13, "SAN JUAN":12, "CARLOS PAZ":11, "GODOY CRUZ":11, "RIO IV":11, "TUCUMAN":11, "VILLA ALLENDE":11, "ALTO ALBERDI":11, "GENERAL PAZ":10, "SALTA":10, "ALTA CORDOBA":9, "JARDIN":9, "MANANTIALES":9, "RESIDENCIAL AMERICA":9, "VILLA MARIA":9, "COLON":9, "MONSEÑOR":8, "YERBA BUENA":8, "LA RIOJA":7, "RECTA":7, "SABATTINI":7, "SANTA LUCIA":7, "PALERMO":6, "RECOLETA":6, "RAFAELA":4, "CALERA":3, "MANANTIALES II":3 },
+  "CUBOS DE TRUCHA": { "ROSARIO":25, "SANTA FE":21, "NEUQUEN":17, "NUEVA CORDOBA":16, "TUCUMAN":15, "CERRO":15, "PALERMO":14, "RECOLETA":11, "YERBA BUENA":11, "ALTO ALBERDI":11, "RECTA":11, "GENERAL PAZ":10, "LA RIOJA":10, "VILLA ALLENDE":10, "CARLOS PAZ":9, "MENDOZA":9, "ALTA CORDOBA":8, "GODOY CRUZ":8, "RAFAELA":8, "RIO IV":8, "SAN JUAN":8, "JARDIN":7, "VILLA MARIA":7, "COLON":6, "MONSEÑOR":6, "MANANTIALES":5, "SAN RAFAEL":5, "SALTA":4, "RESIDENCIAL AMERICA":3, "CALERA":2, "SABATTINI":2, "SANTA LUCIA":2, "MANANTIALES II":1 },
+  "LANGOSTINOS REBOZADOS": { "NUEVA CORDOBA":113, "CERRO":76, "GENERAL PAZ":64, "ALTO ALBERDI":62, "SANTA FE":61, "VILLA ALLENDE":60, "NEUQUEN":59, "TUCUMAN":59, "ROSARIO":57, "RECTA":57, "SAN JUAN":54, "LA RIOJA":52, "MANANTIALES":52, "JARDIN":50, "RIO IV":47, "ALTA CORDOBA":46, "COLON":46, "YERBA BUENA":43, "SABATTINI":38, "RESIDENCIAL AMERICA":37, "VILLA MARIA":36, "CARLOS PAZ":35, "MONSEÑOR":31, "SAN RAFAEL":29, "RECOLETA":28, "CALERA":27, "RAFAELA":26, "SALTA":26, "PALERMO":22, "SANTA LUCIA":21, "MENDOZA":14, "GODOY CRUZ":12, "MANANTIALES II":8 },
+  "PASTA DE HONEY": { "NEUQUEN":24, "ROSARIO":24, "NUEVA CORDOBA":23, "SANTA FE":21, "SAN JUAN":20, "TUCUMAN":17, "ALTO ALBERDI":14, "JARDIN":13, "SAN RAFAEL":12, "SANTA LUCIA":12, "GENERAL PAZ":11, "MENDOZA":11, "RIO IV":11, "YERBA BUENA":11, "VILLA ALLENDE":11, "CARLOS PAZ":10, "RAFAELA":10, "CERRO":10, "COLON":10, "ALTA CORDOBA":9, "LA RIOJA":9, "MANANTIALES":9, "VILLA MARIA":9, "GODOY CRUZ":8, "PALERMO":8, "RECTA":8, "RESIDENCIAL AMERICA":8, "SALTA":8, "RECOLETA":7, "SABATTINI":7, "MONSEÑOR":6, "CALERA":5, "MANANTIALES II":2 },
+  "POLLO TERIYAKI": { "ROSARIO":50, "NEUQUEN":47, "TUCUMAN":44, "SANTA FE":40, "NUEVA CORDOBA":39, "YERBA BUENA":31, "CERRO":30, "GENERAL PAZ":28, "PALERMO":28, "ALTO ALBERDI":28, "ALTA CORDOBA":23, "LA RIOJA":23, "RIO IV":22, "RECOLETA":20, "CARLOS PAZ":19, "SAN JUAN":19, "JARDIN":17, "SAN RAFAEL":16, "VILLA MARIA":16, "COLON":15, "MONSEÑOR":15, "MENDOZA":14, "VILLA ALLENDE":14, "RECTA":14, "RAFAELA":13, "GODOY CRUZ":12, "MANANTIALES":12, "RESIDENCIAL AMERICA":11, "SABATTINI":9, "SALTA":8, "SANTA LUCIA":8, "CALERA":5, "MANANTIALES II":3 },
+  "REDUCCIÓN DE TERIYAKI": { "NUEVA CORDOBA":106, "ROSARIO":96, "NEUQUEN":87, "SANTA FE":69, "ALTO ALBERDI":62, "PALERMO":61, "TUCUMAN":60, "CERRO":54, "GENERAL PAZ":50, "LA RIOJA":47, "RIO IV":46, "RECOLETA":45, "RECTA":45, "MONSEÑOR":40, "RAFAELA":38, "VILLA MARIA":37, "ALTA CORDOBA":34, "YERBA BUENA":34, "MANANTIALES":32, "COLON":31, "RESIDENCIAL AMERICA":30, "SAN JUAN":30, "JARDIN":29, "VILLA ALLENDE":29, "SANTA LUCIA":26, "CARLOS PAZ":25, "MENDOZA":24, "SAN RAFAEL":24, "GODOY CRUZ":20, "SABATTINI":17, "SALTA":16, "CALERA":15, "MANANTIALES II":6 },
+  "SALSA NARANJA Y MIEL": { "NEUQUEN":27, "NUEVA CORDOBA":19, "ROSARIO":16, "SANTA FE":16, "TUCUMAN":15, "SAN RAFAEL":14, "VILLA MARIA":13, "LA RIOJA":12, "MENDOZA":12, "GENERAL PAZ":10, "RAFAELA":10, "YERBA BUENA":10, "CERRO":9, "RIO IV":9, "RECTA":9, "SAN JUAN":8, "JARDIN":7, "ALTO ALBERDI":7, "ALTA CORDOBA":6, "PALERMO":6, "RECOLETA":6, "MONSEÑOR":6, "COLON":5, "MANANTIALES":5, "VILLA ALLENDE":5, "CARLOS PAZ":4, "GODOY CRUZ":4, "CALERA":3, "MANANTIALES II":3, "RESIDENCIAL AMERICA":3, "SALTA":3, "SANTA LUCIA":2, "SABATTINI":1 },
+  "TAMAGO": { "NEUQUEN":106, "SAN JUAN":84, "NUEVA CORDOBA":79, "SANTA FE":79, "ALTO ALBERDI":76, "GENERAL PAZ":65, "TUCUMAN":64, "RIO IV":62, "CERRO":61, "COLON":57, "SAN RAFAEL":55, "ALTA CORDOBA":54, "JARDIN":53, "SANTA LUCIA":53, "RESIDENCIAL AMERICA":52, "VILLA ALLENDE":49, "MONSEÑOR":46, "LA RIOJA":45, "MANANTIALES":45, "CARLOS PAZ":44, "SABATTINI":39, "RAFAELA":38, "MENDOZA":37, "ROSARIO":37, "YERBA BUENA":36, "RECTA":35, "SALTA":30, "GODOY CRUZ":28, "VILLA MARIA":27, "RECOLETA":23, "CALERA":21, "PALERMO":18, "MANANTIALES II":8 },
+  "TIRA DE TRUCHA": { "NEUQUEN":42, "NUEVA CORDOBA":41, "ROSARIO":37, "SANTA FE":32, "SAN JUAN":29, "ALTO ALBERDI":26, "GENERAL PAZ":22, "RIO IV":22, "SAN RAFAEL":22, "TUCUMAN":21, "CERRO":21, "COLON":19, "JARDIN":18, "SANTA LUCIA":18, "ALTA CORDOBA":17, "CARLOS PAZ":17, "VILLA MARIA":17, "LA RIOJA":16, "VILLA ALLENDE":16, "RAFAELA":15, "RECOLETA":15, "YERBA BUENA":15, "MONSEÑOR":15, "MANANTIALES":14, "MENDOZA":14, "PALERMO":14, "RECTA":13, "RESIDENCIAL AMERICA":13, "SALTA":13, "GODOY CRUZ":12, "SABATTINI":11, "CALERA":7, "MANANTIALES II":3 },
+  "VINAGRETA": { "NUEVA CORDOBA":71, "NEUQUEN":61, "SANTA FE":51, "ROSARIO":48, "TUCUMAN":46, "CERRO":46, "ALTO ALBERDI":43, "SAN JUAN":41, "GENERAL PAZ":40, "RIO IV":34, "RECTA":33, "ALTA CORDOBA":30, "JARDIN":30, "LA RIOJA":29, "VILLA ALLENDE":29, "SAN RAFAEL":28, "YERBA BUENA":28, "COLON":27, "CARLOS PAZ":26, "MONSEÑOR":26, "PALERMO":25, "RECOLETA":25, "VILLA MARIA":25, "MANANTIALES":24, "RESIDENCIAL AMERICA":24, "SALTA":22, "GODOY CRUZ":21, "RAFAELA":20, "MENDOZA":19, "SABATTINI":19, "SANTA LUCIA":17, "CALERA":11, "MANANTIALES II":5 }
 };
 const CUMPL_FRANQUICIA_SEMANAS = 9; // semanas cubiertas (S27–S35 — todas cerradas)
 const SEMANAS_POR_MES = 4; // misma convención que "objetivo mensual" de la pestaña Trucha (4 semanas/mes)
