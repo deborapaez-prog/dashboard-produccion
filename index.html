@@ -1627,7 +1627,7 @@ footer { text-align: center; color: #BBBBBB; font-size: 0.76rem; padding: 20px 0
     <div class="alerta">
       ⚠️ <strong>Compara lo pedido a Centro de Producción vs. lo entregado por CP vs. lo que realmente salió a franquicias.</strong>
       Fuentes: planilla "Producción CP" (pestañas JULIO 26, AGOSTO 26 y SET 26, leída directo en el navegador porque el MCP de Drive no llega a esta pestaña) y salidas TOTVS (detalle por transacción, export "salidas al 040926.xml", que cubre S27–S35 completo más 2 días de S36 — incluye franquicias de Bs. As. — Recoleta y Palermo), filtrado solo a los 10 productos del CP.
-      El cruce de Pedido/Entregado cubre S27–S36 (30/06–07/09) — <strong>S27 a S35 ya cerradas, S36 (02–07/09) en curso</strong> (Pedido ya cargado; Entregado sigue en 0 porque CP recién arranca la semana. Nota 03/09: la pestaña "SET 26" agrupa la semana de fin de agosto como "25/8 al 01/9" — un día más que el resto de las semanas, para no dejar el 01/09 suelto — así que S35 pasa a ser 25/08–01/09 y S36 a 02–07/09; ver el comentario junto a CUMPL_WEEKS para el detalle. Salidas ya tiene 02–03/09 cargado. No usar todavía S36 para comparar % de cumplimiento).
+      El cruce de Pedido/Entregado cubre S27–S36 (30/06–07/09) — <strong>S27 a S35 ya cerradas, S36 (02–07/09) en curso</strong> (Pedido ya cargado; Entregado ya tiene avance parcial — Langostinos Rebozados, Pollo Teriyaki y Salsa Naranja y Miel siguen en 0, el resto de los productos ya arrancó a entregar. Nota 03/09: la pestaña "SET 26" agrupa la semana de fin de agosto como "25/8 al 01/9" — un día más que el resto de las semanas, para no dejar el 01/09 suelto — así que S35 pasa a ser 25/08–01/09 y S36 a 02–07/09; ver el comentario junto a CUMPL_WEEKS para el detalle. Salidas ya tiene 02–03/09 cargado. No usar todavía S36 para comparar % de cumplimiento — la semana sigue en curso).
       <br><strong>% Pedido / Salidas</strong> compara lo que se pidió a CP contra lo que realmente salió a franquicias (la demanda real), sin importar si el CP llegó a entregarlo. 100% = pedido calibrado. Por debajo de 70% se pidió de menos que la demanda real (riesgo de faltante, se tapa con stock de seguridad). Por encima de 130% se pidió de más que la demanda real (posible sobre-pedido).
       <br><strong>Stock actual</strong>: foto del saldo en TOTVS al 04/09/2026 (Centro de Distribución + Centro de Producción + depósito externo Mirizi), no varía según la semana seleccionada — es el stock disponible hoy, no un dato histórico.
       <br><strong>Prom. salidas/sem</strong> y <strong>Semanas de stock</strong>: promedio de salidas a franquicias por semana (S27–S35, las 9 semanas cerradas) y cuántas semanas dura el stock actual a ese ritmo. Menos de 1 semana = riesgo de faltante próximo; más de 8 semanas = posible sobre-stock.
@@ -2501,13 +2501,14 @@ const CUMPL_WEEKS = [
     entregado:{ "CORTE DE TRUCHA":1, "CUBOS DE TRUCHA":10, "LANGOSTINOS REBOZADOS":254, "PASTA DE HONEY":32, "POLLO TERIYAKI":72, "REDUCCIÓN DE TERIYAKI":185, "SALSA NARANJA Y MIEL":16, "TAMAGO":129, "TIRA DE TRUCHA":95, "VINAGRETA":76 },
     salidas:  { "CORTE DE TRUCHA":44, "CUBOS DE TRUCHA":46, "LANGOSTINOS REBOZADOS":201, "PASTA DE HONEY":44, "POLLO TERIYAKI":88, "REDUCCIÓN DE TERIYAKI":161, "SALSA NARANJA Y MIEL":34, "TAMAGO":197, "TIRA DE TRUCHA":84, "VINAGRETA":142 } },
   // S36 (02-07/09, 6 días), en línea con el corrimiento de límite de S35 de arriba — la columna de
-  // "Producción CP" para esta semana es justamente "02/09 AL 7/9". Pedido y Entregado: sin archivo
-  // nuevo de "Producción CP" esta corrida (requiere lectura directa en el navegador, no disponible),
-  // se mantienen sin cambios. Salidas: "salidas al 040926.xml" (reemplaza a "salidas al 030926.xml"),
-  // ahora cubre 02–03/09 (2 de 6 días, sube en los 10 productos respecto a la carga anterior).
+  // "Producción CP" para esta semana es justamente "02/09 AL 7/9". Pedido sin cambios. Entregado: CP
+  // ya arrancó a entregar (releído en el navegador el 04/09) — Langostinos, Pollo y Salsa Naranja
+  // siguen en 0, el resto ya tiene avance parcial. Salidas: "salidas al 040926.xml" (reemplaza a
+  // "salidas al 030926.xml"), ahora cubre 02–03/09 (2 de 6 días, sube en los 10 productos respecto a
+  // la carga anterior).
   { label:"S36", dateRange:"02–07/09", isPartial:true,
     pedido:   { "CORTE DE TRUCHA":40, "CUBOS DE TRUCHA":40, "LANGOSTINOS REBOZADOS":210, "PASTA DE HONEY":50, "POLLO TERIYAKI":90, "REDUCCIÓN DE TERIYAKI":170, "SALSA NARANJA Y MIEL":30, "TAMAGO":340, "TIRA DE TRUCHA":98, "VINAGRETA":127 },
-    entregado:{ "CORTE DE TRUCHA":0, "CUBOS DE TRUCHA":0, "LANGOSTINOS REBOZADOS":0, "PASTA DE HONEY":0, "POLLO TERIYAKI":0, "REDUCCIÓN DE TERIYAKI":0, "SALSA NARANJA Y MIEL":0, "TAMAGO":0, "TIRA DE TRUCHA":0, "VINAGRETA":0 },
+    entregado:{ "CORTE DE TRUCHA":29, "CUBOS DE TRUCHA":20, "LANGOSTINOS REBOZADOS":0, "PASTA DE HONEY":17, "POLLO TERIYAKI":0, "REDUCCIÓN DE TERIYAKI":31, "SALSA NARANJA Y MIEL":0, "TAMAGO":78, "TIRA DE TRUCHA":15, "VINAGRETA":77 },
     salidas:  { "CORTE DE TRUCHA":26, "CUBOS DE TRUCHA":21, "LANGOSTINOS REBOZADOS":86, "PASTA DE HONEY":19, "POLLO TERIYAKI":43, "REDUCCIÓN DE TERIYAKI":76, "SALSA NARANJA Y MIEL":13, "TAMAGO":85, "TIRA DE TRUCHA":46, "VINAGRETA":60 } }
 ];
 const CUMPL_PRODUCTOS = Object.keys(CUMPL_WEEKS[0].pedido);
