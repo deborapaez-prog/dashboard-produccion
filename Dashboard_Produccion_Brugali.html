@@ -1629,7 +1629,7 @@ footer { text-align: center; color: #BBBBBB; font-size: 0.76rem; padding: 20px 0
     <div class="alerta">
       ⚠️ <strong>Compara lo pedido a Centro de Producción vs. lo entregado por CP vs. lo que realmente salió a franquicias.</strong>
       Fuentes: planilla "Producción CP" (pestañas JULIO 26, AGOSTO 26 y SET 26, leída directo en el navegador porque el MCP de Drive no llega a esta pestaña) y salidas TOTVS (detalle por transacción, export "salidas al 070926.xml", que ya cubre S27–S36 completo — incluye franquicias de Bs. As. — Recoleta y Palermo), filtrado solo a los 10 productos del CP.
-      El cruce de Pedido/Entregado cubre S27–S36 (30/06–07/09) — <strong>S27 a S35 ya cerradas, S36 (02–07/09) en curso</strong> (Pedido sin cambios desde el 04/09; Entregado sigue con el mismo avance parcial — Langostinos Rebozados, Pollo Teriyaki y Salsa Naranja y Miel siguen en 0, el resto de los productos ya arrancó a entregar. Nota 03/09: la pestaña "SET 26" agrupa la semana de fin de agosto como "25/8 al 01/9" — un día más que el resto de las semanas, para no dejar el 01/09 suelto — así que S35 pasa a ser 25/08–01/09 y S36 a 02–07/09; ver el comentario junto a CUMPL_WEEKS para el detalle. Salidas ya cubre la semana completa 02–07/09, pero no usar todavía S36 para comparar % de cumplimiento — Entregado (producción) todavía no cerró la semana).
+      El cruce de Pedido/Entregado cubre S27–S36 (30/06–07/09) — <strong>S27 a S35 ya cerradas, S36 (02–07/09) en curso</strong> (Entregado subió fuerte en la releída del 07/09 — Cubos, Pasta de Honey, Pollo Teriyaki, Reducción de Teriyaki, Tamago y Tira de Trucha avanzaron; Langostinos Rebozados y Salsa Naranja y Miel siguen en 0. El Pedido de Langostinos de esta semana se revisó de 210 a 0 u — se corrió a la semana siguiente, "8/9 AL 14/9", recién aparecida en el sheet con Pedido ya cargado mientras Entregado todavía no arrancó. Nota 03/09: la pestaña "SET 26" agrupa la semana de fin de agosto como "25/8 al 01/9" — un día más que el resto de las semanas, para no dejar el 01/09 suelto — así que S35 pasa a ser 25/08–01/09 y S36 a 02–07/09; ver el comentario junto a CUMPL_WEEKS para el detalle. Salidas ya cubre la semana completa 02–07/09, pero no usar todavía S36 para comparar % de cumplimiento — Entregado (producción) todavía no cerró la semana).
       <br><strong>% Pedido / Salidas</strong> compara lo que se pidió a CP contra lo que realmente salió a franquicias (la demanda real), sin importar si el CP llegó a entregarlo. 100% = pedido calibrado. Por debajo de 70% se pidió de menos que la demanda real (riesgo de faltante, se tapa con stock de seguridad). Por encima de 130% se pidió de más que la demanda real (posible sobre-pedido).
       <br><strong>Stock actual</strong>: foto del saldo en TOTVS al 07/09/2026 (Centro de Distribución + Centro de Producción + depósito externo Mirizi), no varía según la semana seleccionada — es el stock disponible hoy, no un dato histórico.
       <br><strong>Prom. salidas/sem</strong> y <strong>Semanas de stock</strong>: promedio de salidas a franquicias por semana (S27–S35, las 9 semanas cerradas) y cuántas semanas dura el stock actual a ese ritmo. Menos de 1 semana = riesgo de faltante próximo; más de 8 semanas = posible sobre-stock.
@@ -2524,15 +2524,17 @@ const CUMPL_WEEKS = [
     entregado:{ "CORTE DE TRUCHA":1, "CUBOS DE TRUCHA":10, "LANGOSTINOS REBOZADOS":254, "PASTA DE HONEY":32, "POLLO TERIYAKI":72, "REDUCCIÓN DE TERIYAKI":185, "SALSA NARANJA Y MIEL":16, "TAMAGO":129, "TIRA DE TRUCHA":95, "VINAGRETA":76 },
     salidas:  { "CORTE DE TRUCHA":44, "CUBOS DE TRUCHA":46, "LANGOSTINOS REBOZADOS":201, "PASTA DE HONEY":44, "POLLO TERIYAKI":88, "REDUCCIÓN DE TERIYAKI":161, "SALSA NARANJA Y MIEL":34, "TAMAGO":197, "TIRA DE TRUCHA":84, "VINAGRETA":142 } },
   // S36 (02-07/09, 6 días), en línea con el corrimiento de límite de S35 de arriba — la columna de
-  // "Producción CP" para esta semana es justamente "02/09 AL 7/9". 07/09: releída "SET 26" en el
-  // navegador — Pedido y Entregado sin cambios respecto al 04/09 (Langostinos, Pollo y Salsa Naranja
-  // siguen en 0 entregado; CP no cargó más avances desde entonces). Salidas: "salidas al 070926.xml"
-  // (archivo local en dashboard_updates, reemplaza a "salidas al 040926.xml"), ahora cubre la semana
-  // completa 02–07/09 (6 de 6 días) — sube en los 10 productos. Se mantiene isPartial:true porque
-  // Entregado (producción del CP) todavía no cerró la semana, aunque el calendario de salidas ya sí.
+  // "Producción CP" para esta semana es justamente "02/09 AL 7/9". 07/09 (2da lectura del día): CP
+  // siguió cargando entregas — sube en Cubos (20→40), Pasta Honey (17→43), Pollo (0→48), Reducción
+  // (31→54), Tamago (78→225) y Tira (15→41); Corte, Salsa Naranja y Vinagreta sin cambios. Langostinos
+  // sigue en 0 entregado, pero además su Pedido de esta semana se revisó de 210 a 0 (se corrió a S37,
+  // ver "8/9 AL 14/9" recién aparecida en el sheet con Pedido de Langostinos en 210) — se actualiza acá
+  // también para no romper el % de cumplimiento. Se mantiene isPartial:true: Salsa Naranja y
+  // Langostinos siguen en 0 entregado y la semana recién cierra hoy. Salidas sin cambios (sigue
+  // "salidas al 070926.xml", semana completa 02–07/09).
   { label:"S36", dateRange:"02–07/09", isPartial:true,
-    pedido:   { "CORTE DE TRUCHA":40, "CUBOS DE TRUCHA":40, "LANGOSTINOS REBOZADOS":210, "PASTA DE HONEY":50, "POLLO TERIYAKI":90, "REDUCCIÓN DE TERIYAKI":170, "SALSA NARANJA Y MIEL":30, "TAMAGO":340, "TIRA DE TRUCHA":98, "VINAGRETA":127 },
-    entregado:{ "CORTE DE TRUCHA":29, "CUBOS DE TRUCHA":20, "LANGOSTINOS REBOZADOS":0, "PASTA DE HONEY":17, "POLLO TERIYAKI":0, "REDUCCIÓN DE TERIYAKI":31, "SALSA NARANJA Y MIEL":0, "TAMAGO":78, "TIRA DE TRUCHA":15, "VINAGRETA":77 },
+    pedido:   { "CORTE DE TRUCHA":40, "CUBOS DE TRUCHA":40, "LANGOSTINOS REBOZADOS":0, "PASTA DE HONEY":50, "POLLO TERIYAKI":90, "REDUCCIÓN DE TERIYAKI":170, "SALSA NARANJA Y MIEL":30, "TAMAGO":340, "TIRA DE TRUCHA":98, "VINAGRETA":127 },
+    entregado:{ "CORTE DE TRUCHA":29, "CUBOS DE TRUCHA":40, "LANGOSTINOS REBOZADOS":0, "PASTA DE HONEY":43, "POLLO TERIYAKI":48, "REDUCCIÓN DE TERIYAKI":54, "SALSA NARANJA Y MIEL":0, "TAMAGO":225, "TIRA DE TRUCHA":41, "VINAGRETA":77 },
     salidas:  { "CORTE DE TRUCHA":38, "CUBOS DE TRUCHA":30, "LANGOSTINOS REBOZADOS":126, "PASTA DE HONEY":23, "POLLO TERIYAKI":66, "REDUCCIÓN DE TERIYAKI":103, "SALSA NARANJA Y MIEL":21, "TAMAGO":129, "TIRA DE TRUCHA":65, "VINAGRETA":95 } }
 ];
 const CUMPL_PRODUCTOS = Object.keys(CUMPL_WEEKS[0].pedido);
