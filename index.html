@@ -1369,15 +1369,16 @@ footer { text-align: center; color: #BBBBBB; font-size: 0.76rem; padding: 20px 0
     <div class="alerta" style="background:#fff5f5;border-color:#EF402F;border-left-color:#EF402F;color:#7b1a1a;">
       ⚠️ Datos de reclamos de franquicias desde oct 2025 hasta ago 2026 (fuente: HubSpot CRM). <strong>01/09: Debo subió el export completo del pipeline "Calidad"</strong> (402 tickets, todo el histórico oct 2025–ago 2026 — reemplaza a las vistas filtradas que se venían usando hasta ahora), filtrado a los 10 productos del CP por el campo "Nombre Producto" y, cuando ese campo viene vacío, por el texto "Código de Producto con fallas" de la descripción. Esto da <strong>152 tickets CP</strong> (antes 146 con las vistas filtradas — la diferencia son tickets viejos que las exportaciones parciales anteriores no habían capturado, no reclamos nuevos). Cambios de estado desde el 26/08: <strong>4 tickets pasaron a cerrados</strong> — Rosario 15/08 TAMAGO (NC emitida), Yerba Buena 19/08 LANGOSTINOS (NC emitida), Santa Fe 19/08 CUBOS DE TRUCHA (NC emitida) y Villa Allende 26/08 TIRA DE TRUCHA "sabor a feo" (NO CORRESPONDE). <strong>3 tickets nuevos quedan abiertos</strong>: Nueva Córdoba 24/08 LANGOSTINOS (caja de tiras de trucha etiquetada por error como langostinos), Villa Allende 26/08 CORTE DE TRUCHA ("olor feo", mismo remito que el de Tira) y Nueva Córdoba 29/08 TIRA DE TRUCHA (llegan rotas y con espinas). Además 2 tickets nuevos ya cerrados como NO CORRESPONDE: Mendoza 30/08 SALSA NARANJA Y MIEL (vencimiento lejano, no vencido) y Monseñor 31/08 POLLO TERIYAKI (solo foto, sin descripción). Con el histórico completo ya se pudo recalcular también la tabla de reclamos por sucursal (antes no era posible con las vistas filtradas). <strong>02/09: export actualizado</strong> (405 tickets totales, 152 siguen siendo CP — los 3 nuevos son insumos que no son del CP: Sésamo Negro, Queso Crema y un 3er reclamo de Palta, ver abajo). El ticket de Villa Allende 26/08 CORTE DE TRUCHA ("olor feo") pasó a <strong>cerrado</strong> el 02/09.
       <strong>04/09: re-verificado contra un nuevo export completo</strong> (mismos 405 tickets, sin altas ni bajas) — hubo <strong>3 cambios de estado, todos con fecha 02/09</strong>: Nueva Córdoba 24/08 TAMAGO (lote de prueba, pidieron NC) pasó a <strong>cerrado</strong>, y los 2 tickets de Palta que quedaban abiertos (Recoleta 01/09 y Rosario 31/08) también <strong>cerraron</strong> (ver tarjeta de Palta abajo). <strong>Quedan 2 tickets abiertos de productos del CP</strong>: Nueva Córdoba 24/08 LANGOSTINOS REBOZADOS y Nueva Córdoba 29/08 TIRA DE TRUCHA.
+      <strong>07/09: nuevo export</strong> (406 tickets totales, 153 CP — <strong>1 ticket nuevo</strong>: Villa Allende 05/09 CORTE DE TRUCHA, "mal sabor", 2 kg, lote Ct 1307261 — en gestión). Los 2 tickets abiertos del 04/09 (Nueva Córdoba Langostinos y Nueva Córdoba Tira) siguen sin cambios de estado. De paso se auditaron 3 tickets viejos (nov-25 a abr-26) cuya descripción libre mencionaba dos productos a la vez (ambigüedad de una versión anterior del formulario); se reclasificaron según el campo oficial "Código de Producto con fallas": 2 que estaban contados como CUBOS DE TRUCHA en realidad son TIRA DE TRUCHA y CORTE DE TRUCHA, y 1 que estaba en Pasta de Honey quedó confirmado ahí — el neto es Corte de Trucha 9→11, Cubos de Trucha 11→9, Tira de Trucha 13→14 (Pasta de Honey sin cambios). <strong>Quedan 3 tickets abiertos de productos del CP.</strong> Palta: los mismos 3 tickets de siempre, sin cambios (ver tarjeta abajo) — Debo señaló que hay más reclamos de Palta en otro pipeline de HubSpot que este export no trae; quedan pendientes de un export aparte.
     </div>
 
     <!-- KPIs -->
     <div class="kpi-grid" style="grid-template-columns:repeat(auto-fit,minmax(140px,1fr))">
-      <div class="kpi-card"><div class="lbl">Total reclamos CP</div><div class="val" style="color:#EF402F">152</div><div class="sub">productos propios</div></div>
+      <div class="kpi-card"><div class="lbl">Total reclamos CP</div><div class="val" style="color:#EF402F">153</div><div class="sub">productos propios</div></div>
       <div class="kpi-card"><div class="lbl">Producto top</div><div class="val" style="color:#EF402F;font-size:1.1rem">TAMAGO</div><div class="sub">71 reclamos</div></div>
       <div class="kpi-card"><div class="lbl">Mes pico</div><div class="val" style="color:#E3A127;font-size:1.1rem">Ene-26 / Ago-26</div><div class="sub">empatados, 21 c/u</div></div>
-      <div class="kpi-card"><div class="lbl">Reclamos abiertos</div><div class="val" style="color:#E3A127">2</div><div class="sub">en gestión</div></div>
-      <div class="kpi-card"><div class="lbl">Tasa cierre</div><div class="val" style="color:#33A392">98,7%</div><div class="sub">150 / 152 tickets CP (histórico completo)</div></div>
+      <div class="kpi-card"><div class="lbl">Reclamos abiertos</div><div class="val" style="color:#E3A127">3</div><div class="sub">en gestión</div></div>
+      <div class="kpi-card"><div class="lbl">Tasa cierre</div><div class="val" style="color:#33A392">98,0%</div><div class="sub">150 / 153 tickets CP (histórico completo)</div></div>
     </div>
 
     <!-- Reclamos por producto -->
@@ -1439,7 +1440,7 @@ footer { text-align: center; color: #BBBBBB; font-size: 0.76rem; padding: 20px 0
         </div>
 
         <div style="border:1px solid #bee3f8;border-radius:10px;padding:14px;background:#ebf8ff;">
-          <div style="font-weight:700;font-size:0.95rem;color:#1D4856;margin-bottom:8px;">🐟 CUBOS DE TRUCHA <span style="font-weight:400;color:#999;font-size:0.8rem">(11 reclamos)</span></div>
+          <div style="font-weight:700;font-size:0.95rem;color:#1D4856;margin-bottom:8px;">🐟 CUBOS DE TRUCHA <span style="font-weight:400;color:#999;font-size:0.8rem">(9 reclamos)</span></div>
           <ul style="font-size:0.83rem;color:#444;line-height:1.9;list-style:none;padding:0;">
             <li>🔴 Producto vencido / mal color y olor</li>
             <li>🟠 Cinta amarilla / mal aspecto</li>
@@ -1450,18 +1451,19 @@ footer { text-align: center; color: #BBBBBB; font-size: 0.76rem; padding: 20px 0
         </div>
 
         <div style="border:1px solid #bee3f8;border-radius:10px;padding:14px;background:#ebf8ff;">
-          <div style="font-weight:700;font-size:0.95rem;color:#1D4856;margin-bottom:8px;">🐟 CORTE DE TRUCHA <span style="font-weight:400;color:#999;font-size:0.8rem">(9 reclamos)</span></div>
+          <div style="font-weight:700;font-size:0.95rem;color:#1D4856;margin-bottom:8px;">🐟 CORTE DE TRUCHA <span style="font-weight:400;color:#999;font-size:0.8rem">(11 reclamos)</span></div>
           <ul style="font-size:0.83rem;color:#444;line-height:1.9;list-style:none;padding:0;">
             <li>🔴 Exceso de grasa al descongelar</li>
             <li>🔴 Gramaje excedido (10–12g vs 8g estándar)</li>
             <li>🟡 Mal olor / textura babosa</li>
             <li>🟡 Color pálido y bordes con grasa sin recortar (02/08, Santa Fe — cerrado)</li>
             <li>🟡 "Olor feo" (26/08, Villa Allende — mismo remito que el ticket de Tira de Trucha de esa fecha; cerrado 02/09)</li>
+            <li>🟡 Mal sabor (05/09, Villa Allende — 2 kg, lote Ct 1307261; en gestión)</li>
           </ul>
         </div>
 
         <div style="border:1px solid #bee3f8;border-radius:10px;padding:14px;background:#ebf8ff;">
-          <div style="font-weight:700;font-size:0.95rem;color:#1D4856;margin-bottom:8px;">🐟 TIRA DE TRUCHA <span style="font-weight:400;color:#999;font-size:0.8rem">(13 reclamos)</span></div>
+          <div style="font-weight:700;font-size:0.95rem;color:#1D4856;margin-bottom:8px;">🐟 TIRA DE TRUCHA <span style="font-weight:400;color:#999;font-size:0.8rem">(14 reclamos)</span></div>
           <ul style="font-size:0.83rem;color:#444;line-height:1.9;list-style:none;padding:0;">
             <li>🔴 Sello de lote ilegible</li>
             <li>🟠 Gramaje incorrecto / tiras fragmentadas ("retazos") — 13/07, Nueva Córdoba (cerrado)</li>
@@ -1525,8 +1527,9 @@ footer { text-align: center; color: #BBBBBB; font-size: 0.76rem; padding: 20px 0
             </tr>
           </thead>
           <tbody>
-            <tr style="background:#fffbeb;border-bottom:1px solid #feebc8;"><td style="padding:6px 12px;color:#999">48056054539</td><td style="padding:6px 12px">29/08</td><td style="padding:6px 12px;font-weight:600">Nueva Córdoba</td><td style="padding:6px 12px">TIRA DE TRUCHA</td><td style="padding:6px 12px">Llegan rotas y con espinas</td><td style="padding:6px 12px"><span class="pill" style="background:#feebc8;color:#c05621;">En Progreso</span></td></tr>
-            <tr style="background:#fff;"><td style="padding:6px 12px;color:#999">47906401285</td><td style="padding:6px 12px">24/08</td><td style="padding:6px 12px;font-weight:600">Nueva Córdoba</td><td style="padding:6px 12px">LANGOSTINOS REBOZADOS</td><td style="padding:6px 12px">Llegó una caja de Tira de Trucha etiquetada por error como Langostinos; se envió la correcta por Uber</td><td style="padding:6px 12px"><span class="pill" style="background:#feebc8;color:#c05621;">Nuevo</span></td></tr>
+            <tr style="background:#fffbeb;border-bottom:1px solid #feebc8;"><td style="padding:6px 12px;color:#999">48264023168</td><td style="padding:6px 12px">05/09</td><td style="padding:6px 12px;font-weight:600">Villa Allende</td><td style="padding:6px 12px">CORTE DE TRUCHA</td><td style="padding:6px 12px">Mal sabor (2 kg, lote Ct 1307261)</td><td style="padding:6px 12px"><span class="pill" style="background:#feebc8;color:#c05621;">En Progreso</span></td></tr>
+            <tr style="background:#fff;border-bottom:1px solid #feebc8;"><td style="padding:6px 12px;color:#999">48056054539</td><td style="padding:6px 12px">29/08</td><td style="padding:6px 12px;font-weight:600">Nueva Córdoba</td><td style="padding:6px 12px">TIRA DE TRUCHA</td><td style="padding:6px 12px">Llegan rotas y con espinas</td><td style="padding:6px 12px"><span class="pill" style="background:#feebc8;color:#c05621;">En Progreso</span></td></tr>
+            <tr style="background:#fffbeb;"><td style="padding:6px 12px;color:#999">47906401285</td><td style="padding:6px 12px">24/08</td><td style="padding:6px 12px;font-weight:600">Nueva Córdoba</td><td style="padding:6px 12px">LANGOSTINOS REBOZADOS</td><td style="padding:6px 12px">Llegó una caja de Tira de Trucha etiquetada por error como Langostinos; se envió la correcta por Uber</td><td style="padding:6px 12px"><span class="pill" style="background:#feebc8;color:#c05621;">Nuevo</span></td></tr>
           </tbody>
         </table>
       </div>
@@ -2372,10 +2375,10 @@ function initCalidad() {
   new Chart(document.getElementById('chartCalidadProd'), {
     type: 'bar',
     data: {
-      labels: ['TAMAGO','LANGOSTINO\nREBOZADO','POLLO\nTERIYAKI','TIRA\nTRUCHA','CUBOS\nTRUCHA','CORTE\nTRUCHA','PASTA\nHONEY','SALSA\nNARANJA','VINAGRETA','REDUCCIÓN\nTERIYAKI'],
+      labels: ['TAMAGO','LANGOSTINO\nREBOZADO','POLLO\nTERIYAKI','TIRA\nTRUCHA','CORTE\nTRUCHA','CUBOS\nTRUCHA','PASTA\nHONEY','SALSA\nNARANJA','VINAGRETA','REDUCCIÓN\nTERIYAKI'],
       datasets: [{
         label: 'Reclamos',
-        data: [71, 18, 14, 13, 11, 9, 7, 6, 2, 1],
+        data: [71, 18, 14, 14, 11, 9, 7, 6, 2, 1],
         backgroundColor: ['#EF402F','#1D4856','#E3A127','#33A392','#33A392','#33A392','#F58232','#F58232','#33A392','#E3A127'],
         borderRadius: 6
       }]
@@ -2394,10 +2397,10 @@ function initCalidad() {
   new Chart(document.getElementById('chartCalidadMes'), {
     type: 'line',
     data: {
-      labels: ['Oct-25','Nov-25','Dic-25','Ene-26','Feb-26','Mar-26','Abr-26','May-26','Jun-26','Jul-26','Ago-26'],
+      labels: ['Oct-25','Nov-25','Dic-25','Ene-26','Feb-26','Mar-26','Abr-26','May-26','Jun-26','Jul-26','Ago-26','Sep-26'],
       datasets: [{
         label: 'Reclamos CP',
-        data: [2, 20, 20, 21, 16, 17, 11, 8, 8, 8, 21],
+        data: [2, 20, 20, 21, 16, 17, 11, 8, 8, 8, 21, 1],
         borderColor: '#EF402F',
         backgroundColor: 'rgba(239,64,47,0.12)',
         borderWidth: 2.5,
