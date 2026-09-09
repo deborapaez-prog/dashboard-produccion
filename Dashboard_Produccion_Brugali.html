@@ -1711,12 +1711,12 @@ footer { text-align: center; color: #BBBBBB; font-size: 0.76rem; padding: 20px 0
       <div class="chart-wrap"><canvas id="chartCumplEvolucion"></canvas></div>
     </div>
 
-    <div class="section-title" style="margin-top:32px">📅 Vista mensual — Pedido vs Entregado del CP (Ene–Ago 2026)</div>
+    <div class="section-title" style="margin-top:32px">📅 Vista mensual — Pedido vs Entregado del CP (Ene–Sep 2026)</div>
 
     <div class="alerta">
-      ⚠️ <strong>Agosto lleva S31, S32, S33 y S34 cerradas</strong> (28/07–24/08) — su % de
-      cumplimiento todavía no es comparable 1 a 1 contra un mes cerrado (faltan S35 y S11). Julio ya cerró completo (4.376/4.493 u, 97,4%).
-      Fuente: "Producción CP", pestañas mensuales ENE 26 a AGOSTO 26.
+      ⚠️ <strong>Agosto ya cerró completo</strong> (S31 a S35, 28/07–01/09): 3.873/3.909 u, 99,1%. Julio también cerró completo (4.376/4.493 u, 97,4%).
+      <strong>Septiembre recién arranca</strong> (S36 cerrada + S37 parcial) — su % de cumplimiento (1.847/2.967 u, 62,3%) todavía no es comparable 1 a 1 contra un mes cerrado.
+      Fuente: "Producción CP", pestañas mensuales ENE 26 a SET 26.
     </div>
 
     <div class="card">
@@ -1734,7 +1734,7 @@ footer { text-align: center; color: #BBBBBB; font-size: 0.76rem; padding: 20px 0
         <label style="display:flex;align-items:center;gap:6px;font-size:0.83rem;color:#221F1F;cursor:pointer;"><input type="checkbox" id="chkMensualEntregado" checked> Entregado (CP)</label>
         <label style="display:flex;align-items:center;gap:6px;font-size:0.83rem;color:#221F1F;cursor:pointer;"><input type="checkbox" id="chkMensualSalidas" checked> Salidas a franquicias</label>
       </div>
-      <div style="font-size:0.75rem;color:#BBBBBB;margin-bottom:6px;">Salidas a franquicias solo tiene dato en Jul 26 y Ago 26 (semanas S27–S35, export TOTVS desde el 30/06 — las 9 semanas ya cerradas) — meses anteriores no tienen esa fuente todavía.</div>
+      <div style="font-size:0.75rem;color:#BBBBBB;margin-bottom:6px;">Salidas a franquicias solo tiene dato en Jul 26, Ago 26 y Sep 26 (semanas S27–S37, export TOTVS desde el 30/06 — Sep 26 todavía muy parcial, solo S36 cerrada + un día de S37) — meses anteriores no tienen esa fuente todavía.</div>
       <div class="chart-wrap" style="height:280px"><canvas id="chartCumplMensualProd"></canvas></div>
     </div>
 
@@ -2688,19 +2688,22 @@ const CUMPL_STOCK = {
 // Langostinos 520→802, Pasta 175→225, Pollo 219→259, Reducción 526→696, Salsa 57→69, Tamago 640→900,
 // Tira 248→323, Vinagreta 271→373. Entregado sube acorde a la revisión de S34: Langostinos 695→768,
 // Pasta 213→218, Pollo 229→249, Reducción 647→696, Salsa 57→69 (resto sin cambio, no baja).
-const CUMPL_MESES = ["ENE 26","FEB 26","MAR 26","ABR 26","MAY 26","JUN 26","JUL 26","AGO 26"];
-const CUMPL_MES_PARCIAL = [false,false,false,false,false,false,false,true];
+// 09/09: se agrega SEP 26 (columna MENSUAL de la pestaña "SET 26" — mismo valor ya usado para el KPI
+// "Cumplimiento producción (mensual)" de más arriba, 1.847/2.967 u = 62,3%). Mes recién arrancando
+// (S36 cerrada + S37 parcial), no comparable todavía 1 a 1 contra un mes cerrado.
+const CUMPL_MESES = ["ENE 26","FEB 26","MAR 26","ABR 26","MAY 26","JUN 26","JUL 26","AGO 26","SEP 26"];
+const CUMPL_MES_PARCIAL = [false,false,false,false,false,false,false,true,true];
 const CUMPL_MENSUAL = {
-  "CORTE DE TRUCHA":       { pedido:[105,100,228,305,275,237,276,132], entregado:[97,97,210,258,223,214,256,132] },
-  "CUBOS DE TRUCHA":       { pedido:[193,180,218,267,217,184,230,130], entregado:[161,115,139,216,172,133,212,150] },
-  "LANGOSTINOS REBOZADOS": { pedido:[1305,1010,907,562,232,428,510,802], entregado:[1283,1004,847,548,232,481,548,768] },
-  "PASTA DE HONEY":        { pedido:[90,50,200,215,133,96,284,225], entregado:[127,54,159,208,139,98,265,218] },
-  "POLLO TERIYAKI":        { pedido:[327,300,370,441,321,321,361,259], entregado:[338,323,365,448,339,304,288,249] },
-  "REDUCCIÓN DE TERIYAKI": { pedido:[750,700,590,750,730,655,760,696], entregado:[754,689,591,750,730,644,741,696] },
-  "SALSA NARANJA Y MIEL":  { pedido:[235,157,30,30,90,100,235,69], entregado:[230,184,30,30,90,128,261,69] },
-  "TAMAGO":                { pedido:[915,1080,750,950,300,204,1039,900], entregado:[929,1132,774,969,300,178,1023,892] },
-  "TIRA DE TRUCHA":        { pedido:[205,265,307,350,277,293,340,323], entregado:[99,227,248,308,251,246,298,293] },
-  "VINAGRETA":             { pedido:[522,544,534,440,411,574,458,373], entregado:[533,534,490,485,411,541,484,406] }
+  "CORTE DE TRUCHA":       { pedido:[105,100,228,305,275,237,276,132,72], entregado:[97,97,210,258,223,214,256,132,41] },
+  "CUBOS DE TRUCHA":       { pedido:[193,180,218,267,217,184,230,130,70], entregado:[161,115,139,216,172,133,212,150,50] },
+  "LANGOSTINOS REBOZADOS": { pedido:[1305,1010,907,562,232,428,510,802,420], entregado:[1283,1004,847,548,232,481,548,768,254] },
+  "PASTA DE HONEY":        { pedido:[90,50,200,215,133,96,284,225,120], entregado:[127,54,159,208,139,98,265,218,82] },
+  "POLLO TERIYAKI":        { pedido:[327,300,370,441,321,321,361,259,275], entregado:[338,323,365,448,339,304,288,249,162] },
+  "REDUCCIÓN DE TERIYAKI": { pedido:[750,700,590,750,730,655,760,696,495], entregado:[754,689,591,750,730,644,741,696,355] },
+  "SALSA NARANJA Y MIEL":  { pedido:[235,157,30,30,90,100,235,69,85], entregado:[230,184,30,30,90,128,261,69,46] },
+  "TAMAGO":                { pedido:[915,1080,750,950,300,204,1039,900,790], entregado:[929,1132,774,969,300,178,1023,892,469] },
+  "TIRA DE TRUCHA":        { pedido:[205,265,307,350,277,293,340,323,283], entregado:[99,227,248,308,251,246,298,293,185] },
+  "VINAGRETA":             { pedido:[522,544,534,440,411,574,458,373,357], entregado:[533,534,490,485,411,541,484,406,203] }
 };
 
 function initCumplimiento() {
@@ -2866,7 +2869,7 @@ function initCumplimiento() {
   // Salidas mensuales a franquicias por producto — solo hay dato real de semanas cargadas en
   // CUMPL_WEEKS (S27–S30 caen en Jul 26, S31–S35 en Ago 26). Los meses sin semanas cargadas quedan en
   // null (Chart.js no dibuja barra) en vez de inventar un 0.
-  const CUMPL_WEEK_MES = { "S27":"JUL 26", "S28":"JUL 26", "S29":"JUL 26", "S30":"JUL 26", "S31":"AGO 26", "S32":"AGO 26", "S33":"AGO 26", "S34":"AGO 26", "S35":"AGO 26" };
+  const CUMPL_WEEK_MES = { "S27":"JUL 26", "S28":"JUL 26", "S29":"JUL 26", "S30":"JUL 26", "S31":"AGO 26", "S32":"AGO 26", "S33":"AGO 26", "S34":"AGO 26", "S35":"AGO 26", "S36":"SEP 26", "S37":"SEP 26" };
   function monthlySalidas(prod) {
     const arr = new Array(CUMPL_MESES.length).fill(null);
     CUMPL_WEEKS.forEach(w => {
