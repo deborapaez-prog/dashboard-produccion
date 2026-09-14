@@ -1638,7 +1638,7 @@ footer { text-align: center; color: #BBBBBB; font-size: 0.76rem; padding: 20px 0
       Fuentes: planilla "Producción CP" (pestañas JULIO 26, AGOSTO 26 y SET 26, leída directo en el navegador porque el MCP de Drive no llega a esta pestaña — <strong>14/09: releída con Chrome dos veces</strong>, a la mañana y más tarde, Pedido/Entregado ya reflejan lo cargado en el sheet al momento de esta segunda lectura) y salidas TOTVS (detalle por transacción, export "salidas al 140926.xml", que cubre S27–S37 — incluye franquicias de Bs. As. — Recoleta y Palermo), filtrado solo a los 10 productos del CP.
       El cruce de Pedido/Entregado cubre S27–S37 (30/06–14/09) — <strong>S27 a S36 ya cerradas</strong> (S36 se completó en la releída del 08/09 — Corte, Pasta de Honey, Pollo Teriyaki, Reducción de Teriyaki, Salsa Naranja y Tamago llegaron al 100% del pedido; Cubos y Vinagreta ya estaban en 100%; Tira quedó en 91,84% (90/98), la única semana por debajo del pedido. Langostinos Rebozados sigue en 0 — su pedido se corrió a la semana siguiente). <strong>S37 (08–14/09)</strong>: Pedido 1.018 u, Entregado 697 u (68,5%, subió fuerte respecto a los 219 u de la mañana) — Vinagreta (153/153) y Tamago (210/210) ya completaron su pedido de la semana, Langostinos Rebozados casi (197/210); Salidas ya cubre la semana completa. Nota 03/09: la pestaña "SET 26" agrupa la semana de fin de agosto como "25/8 al 01/9" — un día más que el resto de las semanas, para no dejar el 01/09 suelto — así que S35 quedó en 25/08–01/09 y S36 en 02–07/09; ver el comentario junto a CUMPL_WEEKS para el detalle.
       <br><strong>% Pedido / Salidas</strong> compara lo que se pidió a CP contra lo que realmente salió a franquicias (la demanda real), sin importar si el CP llegó a entregarlo. 100% = pedido calibrado. Por debajo de 70% se pidió de menos que la demanda real (riesgo de faltante, se tapa con stock de seguridad). Por encima de 130% se pidió de más que la demanda real (posible sobre-pedido).
-      <br><strong>Stock actual</strong>: foto del saldo en TOTVS al 14/09/2026 (Centro de Distribución + Centro de Producción + depósito externo Mirizi, este último sin export nuevo esta corrida), no varía según la semana seleccionada — es el stock disponible hoy, no un dato histórico.
+      <br><strong>Stock actual</strong>: foto del saldo en TOTVS al 14/09/2026 (Centro de Distribución + Centro de Producción + depósito externo Mirizi, este último recién actualizado con "stock externo 140926.xml"), no varía según la semana seleccionada — es el stock disponible hoy, no un dato histórico.
       <br><strong>Prom. salidas/sem</strong> y <strong>Semanas de stock</strong>: promedio de salidas a franquicias por semana (S27–S36, las 10 semanas cerradas) y cuántas semanas dura el stock actual a ese ritmo. Menos de 1 semana = riesgo de faltante próximo; más de 8 semanas = posible sobre-stock.
     </div>
 
@@ -2664,18 +2664,17 @@ const CUMPL_FRANQUICIAS_MES = {
 // Distribución) + CP (Centro de Producción) de "stock al 140926.xml" (archivo local en
 // dashboard_updates, reemplaza a "stock 110926.xml"; recalculado con Python/xml.etree: Corte 59,
 // Cubos 42, Langostinos 207, Pasta Honey 74, Pollo 65, Reducción 415, Salsa Naranja 19, Tamago 298,
-// Tira 18, Vinagreta 425), más el depósito MI (Mirizi, sucursal 010102) — sin export nuevo de "stock
-// externo" esta corrida, se mantiene "stock externo al 110926.xml": Corte 80, Cubos 97, Langostinos
-// 367, Pasta Honey 40, Pollo 103, Tamago 719, Tira 0 — Reducción, Salsa Naranja y Vinagreta sin stock
-// en MI.
-// Respecto a la carga anterior (11/09, CD/CP + MI): sube en Langostinos (539→574), Pollo (162→168) y
-// Reducción (409→415); baja en Corte (147→139), Cubos (152→139), Pasta Honey (121→114), Salsa Naranja
-// (27→19), Tira (33→18) y Vinagreta (452→425); Tamago sube fuerte (788→1017, CD/CP pasa de 69 a 298 u
-// — el salto más grande de esta corrida, movimiento normal de producción/despacho pero a confirmar
-// con Debo si el volumen sorprende).
+// Tira 18, Vinagreta 425), más el depósito MI (Mirizi, sucursal 010102) de "stock externo 140926.xml"
+// (Debo lo bajó de TOTVS más tarde el mismo día — reemplaza a "stock externo al 110926.xml"): Corte
+// 80, Cubos 97, Langostinos 503, Pasta Honey 40, Pollo 103, Tamago 769, Tira 0 — Reducción, Salsa
+// Naranja y Vinagreta sin stock en MI. Solo Langostinos (367→503) y Tamago (719→769) subieron en MI;
+// el resto de los productos de MI quedó igual que en la lectura del 11/09.
+// Respecto a la carga anterior (14/09, mañana): sube en Langostinos (574→710, todo el aumento viene
+// de MI) y Tamago (1017→1067, también por MI); resto de los 10 productos sin cambio (CD/CP no tenía
+// un export más nuevo que usar).
 const CUMPL_STOCK = {
-  "CORTE DE TRUCHA":139, "CUBOS DE TRUCHA":139, "LANGOSTINOS REBOZADOS":574, "PASTA DE HONEY":114,
-  "POLLO TERIYAKI":168, "REDUCCIÓN DE TERIYAKI":415, "SALSA NARANJA Y MIEL":19, "TAMAGO":1017,
+  "CORTE DE TRUCHA":139, "CUBOS DE TRUCHA":139, "LANGOSTINOS REBOZADOS":710, "PASTA DE HONEY":114,
+  "POLLO TERIYAKI":168, "REDUCCIÓN DE TERIYAKI":415, "SALSA NARANJA Y MIEL":19, "TAMAGO":1067,
   "TIRA DE TRUCHA":18, "VINAGRETA":425
 };
 
