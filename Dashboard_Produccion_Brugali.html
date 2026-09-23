@@ -125,7 +125,7 @@ footer { text-align: center; color: #BBBBBB; font-size: 0.76rem; padding: 20px 0
       <div style="font-size:0.7rem;font-weight:700;color:rgba(255,255,255,0.6);text-transform:uppercase;letter-spacing:0.12em;margin-top:2px;">Dashboard de Producción</div>
     </div>
   </div>
-  <span class="badge">📅 Actualizado: 22/09/2026</span>
+  <span class="badge">📅 Actualizado: 23/09/2026</span>
 </header>
 
 <div class="tab-nav">
@@ -188,7 +188,7 @@ footer { text-align: center; color: #BBBBBB; font-size: 0.76rem; padding: 20px 0
   <div class="card">
     <h2>📆 Evolución mensual — kg producidos totales</h2>
     <div class="chart-wrap"><canvas id="chartMensual"></canvas></div>
-    <div style="font-size:0.75rem;color:#BBBBBB;margin-top:10px;">Fuente: pestaña "análisis mensual" de la planilla Trucha (suma de Tiras + cortes + tiras unidas + cubos por mes; no incluye "sin embolsar"). Las semanas van de lunes a sábado y no calzan justo con el calendario, así que cada mes agrupa una cantidad distinta: Mayo 3 semanas (S20–S22), Junio 4 (S23–S26), Julio 5 (S27–S31) — S31 cerró el 01/08, así que Julio ya está completo —, Agosto 4 (S32–S35) — S35 cerró el 29/08, así que Agosto también está completo — y Septiembre, que arranca con S36 (31/08–05/09, cerrada), S37 (07–12/09, cerrada) y S38 (14–19/09, cerrada) — mes en curso, todavía faltan S39 en adelante.</div>
+    <div style="font-size:0.75rem;color:#BBBBBB;margin-top:10px;">Fuente: pestaña "análisis mensual" de la planilla Trucha (suma de Tiras + cortes + tiras unidas + cubos por mes; no incluye "sin embolsar"). Las semanas van de lunes a sábado y no calzan justo con el calendario, así que cada mes agrupa una cantidad distinta: Mayo 3 semanas (S20–S22), Junio 4 (S23–S26), Julio 5 (S27–S31) — S31 cerró el 01/08, así que Julio ya está completo —, Agosto 4 (S32–S35) — S35 cerró el 29/08, así que Agosto también está completo — y Septiembre, que arranca con S36 (31/08–05/09, cerrada), S37 (07–12/09, cerrada), S38 (14–19/09, cerrada) y S39 (21–26/09, en curso, solo lunes y martes cargados) — mes todavía abierto.</div>
   </div>
 
   <div class="card">
@@ -213,7 +213,8 @@ footer { text-align: center; color: #BBBBBB; font-size: 0.76rem; padding: 20px 0
         <option value="15">S35 — 24–29/08</option>
         <option value="16">S36 — 31/08–05/09</option>
         <option value="17">S37 — 07–12/09</option>
-        <option value="18" selected>S38 — 14–19/09</option>
+        <option value="18">S38 — 14–19/09</option>
+        <option value="19" selected>S39 — 21–26/09</option>
       </select>
     </h2>
     <div class="chart-wrap"><canvas id="chartDiario"></canvas></div>
@@ -242,7 +243,8 @@ footer { text-align: center; color: #BBBBBB; font-size: 0.76rem; padding: 20px 0
         <option value="15">S35 — 24–29/08</option>
         <option value="16">S36 — 31/08–05/09</option>
         <option value="17">S37 — 07–12/09</option>
-        <option value="18" selected>S38 — 14–19/09</option>
+        <option value="18">S38 — 14–19/09</option>
+        <option value="19" selected>S39 — 21–26/09</option>
       </select>
     </h2>
     <div class="table-wrap"><table id="tablaDetalle"></table></div>
@@ -407,14 +409,14 @@ footer { text-align: center; color: #BBBBBB; font-size: 0.76rem; padding: 20px 0
 <main>
 
   <div class="alerta-ok">
-    ✅ <strong>Período registrado: 08/06 – 16/09/2026.</strong> 5 productos activos. Reducción de Teriyaki con mayor volumen producido. Vinagreta: 83,2% envasada.
+    ✅ <strong>Período registrado: 08/06 – 18/09/2026.</strong> 5 productos activos. Reducción de Teriyaki con mayor volumen producido. Vinagreta: 83,2% envasada.
   </div>
 
   <div class="kpi-grid">
     <div class="kpi-card">
       <div class="lbl">Reducción Teriyaki</div>
-      <div class="val" style="color:#EF402F">2.254 <span style="font-size:.85rem;color:#BBBBBB">u</span></div>
-      <div class="sub">1.394 envasadas · 61,8% envasado</div>
+      <div class="val" style="color:#EF402F">2.326 <span style="font-size:.85rem;color:#BBBBBB">u</span></div>
+      <div class="sub">1.466 envasadas · 63,0% envasado</div>
     </div>
     <div class="kpi-card">
       <div class="lbl">Vinagreta 20L</div>
@@ -428,8 +430,8 @@ footer { text-align: center; color: #BBBBBB; font-size: 0.76rem; padding: 20px 0
     </div>
     <div class="kpi-card">
       <div class="lbl">Pollo Teriyaki</div>
-      <div class="val" style="color:#1D4856">933 <span style="font-size:.85rem;color:#BBBBBB">caj</span></div>
-      <div class="sub">262 envasadas · 28,1% envasado</div>
+      <div class="val" style="color:#1D4856">1.017 <span style="font-size:.85rem;color:#BBBBBB">caj</span></div>
+      <div class="sub">346 envasadas · 34,0% envasado</div>
     </div>
     <div class="kpi-card">
       <div class="lbl">Pasta Honey</div>
@@ -438,8 +440,8 @@ footer { text-align: center; color: #BBBBBB; font-size: 0.76rem; padding: 20px 0
     </div>
     <div class="kpi-card">
       <div class="lbl">Días registrados</div>
-      <div class="val" style="color:#221F1F">79</div>
-      <div class="sub">08-jun al 16-sep</div>
+      <div class="val" style="color:#221F1F">81</div>
+      <div class="sub">08-jun al 18-sep</div>
     </div>
   </div>
 
@@ -1378,15 +1380,16 @@ footer { text-align: center; color: #BBBBBB; font-size: 0.76rem; padding: 20px 0
       ⚠️ Datos de reclamos de franquicias desde oct 2025 (fuente: HubSpot CRM, pipeline "Calidad"). <strong>Última actualización: 17/09</strong>, export completo (425 tickets, +5 desde el 16/09). De los 5 nuevos: 1 es de un producto del CP — <strong>Manantiales II, 15/09, TIRA DE TRUCHA</strong> (trucha rasgada, tiras de tamaño y peso disparejo, mucho olor al descongelar; En Progreso) —, 2 son de Palta (ver abajo) y 2 no son del CP (1 "LANGOSTINO DEVENADO ROTO X KG", materia prima; 1 "BATATA RALLADA CONGELADA"). El ticket de Nueva Córdoba (24/08, LANGOSTINOS REBOZADOS) pasó de "Nuevo" a "Esperando respuesta interna" — sigue abierto. Ahora hay <strong>2 tickets abiertos de productos del CP</strong>. El desglose por producto pasa a 154 CP (Tira de Trucha 14→15).
       <strong>18/09:</strong> export de HubSpot de hoy es parcial (77 tickets, los modificados recientemente, no el listado completo) — se usó para re-verificar el estado de los tickets ya trackeados como abiertos, tanto CP como Palta. Los 2 tickets CP abiertos no cambiaron de estado. Ver la tarjeta de Palta más abajo por los cambios ahí (1 ticket nuevo + 1 cambio de estado).
       <strong>21/09:</strong> export de HubSpot de hoy también es parcial (82 tickets recientes). Se re-verificaron los 2 tickets CP abiertos: <strong>48538543019</strong> (Manantiales II, Tira de Trucha) sigue "En Progreso", sin cambios; <strong>47906401285</strong> (Nueva Córdoba, Langostinos) no aparece en este export parcial (no tuvo actividad reciente), se deja igual. No hay tickets CP nuevos. Ver la tarjeta de Palta más abajo por los cambios ahí (1 ticket nuevo + 1 cierre).
+      <strong>23/09:</strong> export de HubSpot de hoy es completo (440 tickets). De los 2 tickets CP que estaban abiertos, <strong>48538543019</strong> (Manantiales II, Tira de Trucha) se cerró el 22/09 (NC N°001000000307); <strong>47906401285</strong> (Nueva Córdoba, Langostinos) sigue "Esperando respuesta interna", sin cambios. Se agregan <strong>4 tickets CP nuevos</strong>: 48627120697 (Nueva Córdoba, 21/09, Langostinos Rebozados — plástico dentro de la bolsa, En Progreso), 48628562204 (Carlos Paz, 21/09, Tira de Trucha — varias tiras con espinas, En Progreso), 48664766821 (Salta, 22/09, Tira de Trucha — tiras desarmadas/mal cortadas, Nuevo) y 48683349613 (Alberdi, 22/09, Langostinos Rebozados — langostino podrido, Nuevo). Total CP sube a 158 (154+4), ahora <strong>5 tickets abiertos</strong>. Ver la tarjeta de Palta más abajo por los cambios ahí (4 tickets nuevos + 2 cierres).
     </div>
 
     <!-- KPIs -->
     <div class="kpi-grid" style="grid-template-columns:repeat(auto-fit,minmax(140px,1fr))">
-      <div class="kpi-card"><div class="lbl">Total reclamos CP</div><div class="val" style="color:#EF402F">154</div><div class="sub">productos propios</div></div>
+      <div class="kpi-card"><div class="lbl">Total reclamos CP</div><div class="val" style="color:#EF402F">158</div><div class="sub">productos propios</div></div>
       <div class="kpi-card"><div class="lbl">Producto top</div><div class="val" style="color:#EF402F;font-size:1.1rem">TAMAGO</div><div class="sub">71 reclamos</div></div>
       <div class="kpi-card"><div class="lbl">Mes pico</div><div class="val" style="color:#E3A127;font-size:1.1rem">Ene-26 / Ago-26</div><div class="sub">empatados, 21 c/u</div></div>
-      <div class="kpi-card"><div class="lbl">Reclamos abiertos</div><div class="val" style="color:#E3A127">2</div><div class="sub">en gestión</div></div>
-      <div class="kpi-card"><div class="lbl">Tasa cierre</div><div class="val" style="color:#33A392">98,7%</div><div class="sub">152 / 154 tickets CP (histórico completo)</div></div>
+      <div class="kpi-card"><div class="lbl">Reclamos abiertos</div><div class="val" style="color:#E3A127">5</div><div class="sub">en gestión</div></div>
+      <div class="kpi-card"><div class="lbl">Tasa cierre</div><div class="val" style="color:#33A392">96,8%</div><div class="sub">153 / 158 tickets CP (histórico completo)</div></div>
     </div>
 
     <!-- Reclamos por producto -->
@@ -1421,10 +1424,11 @@ footer { text-align: center; color: #BBBBBB; font-size: 0.76rem; padding: 20px 0
         </div>
 
         <div style="border:1px solid #bee3f8;border-radius:10px;padding:14px;background:#ebf8ff;">
-          <div style="font-weight:700;font-size:0.95rem;color:#1D4856;margin-bottom:8px;">🦐 LANGOSTINOS REBOZADOS <span style="font-weight:400;color:#999;font-size:0.8rem">(18 reclamos)</span></div>
+          <div style="font-weight:700;font-size:0.95rem;color:#1D4856;margin-bottom:8px;">🦐 LANGOSTINOS REBOZADOS <span style="font-weight:400;color:#999;font-size:0.8rem">(20 reclamos)</span></div>
           <ul style="font-size:0.83rem;color:#444;line-height:1.9;list-style:none;padding:0;">
             <li>🔴 Mal olor / color oscuro o negro al cocinar, hongos</li>
-            <li>🔴 Objetos extraños: alambre, plástico</li>
+            <li>🔴 Objetos extraños: alambre, plástico (incluye 21/09, Nueva Córdoba — plástico tipo cinta dentro de la bolsa; en gestión)</li>
+            <li>🟡 Langostino podrido, color y sin olor (22/09, Alberdi, 12 kg; nuevo)</li>
             <li>🟠 Exceso de pan rallado / poco langostino (desperdicio)</li>
             <li>🟡 Pelos</li>
             <li>🟡 Mal olor/sabor, se desarma al hervir, color amarillento (04/08, Recoleta — reclasificado NO CORRESPONDE el 14/08)</li>
@@ -1471,9 +1475,11 @@ footer { text-align: center; color: #BBBBBB; font-size: 0.76rem; padding: 20px 0
         </div>
 
         <div style="border:1px solid #bee3f8;border-radius:10px;padding:14px;background:#ebf8ff;">
-          <div style="font-weight:700;font-size:0.95rem;color:#1D4856;margin-bottom:8px;">🐟 TIRA DE TRUCHA <span style="font-weight:400;color:#999;font-size:0.8rem">(15 reclamos)</span></div>
+          <div style="font-weight:700;font-size:0.95rem;color:#1D4856;margin-bottom:8px;">🐟 TIRA DE TRUCHA <span style="font-weight:400;color:#999;font-size:0.8rem">(17 reclamos)</span></div>
           <ul style="font-size:0.83rem;color:#444;line-height:1.9;list-style:none;padding:0;">
             <li>🔴 Sello de lote ilegible</li>
+            <li>🟠 Espinas encontradas (21/09, Carlos Paz — 10 tiras; en gestión)</li>
+            <li>🟡 Tiras desarmadas / mal cortadas (22/09, Salta; nuevo)</li>
             <li>🟠 Gramaje incorrecto / tiras fragmentadas ("retazos") — 13/07, Nueva Córdoba (cerrado)</li>
             <li>🟠 Tiras cortadas de forma dispareja, dificulta pesarlas — 26/07, Alberdi, lote TT1607261 (2 tickets duplicados: uno se cerró 29/07 como "no corresponde", el otro se cerró recién el 14/08 con NC emitida)</li>
             <li>🟠 Trucha rasgada, tiras de tamaño y peso disparejo (algunas no llegan a 35g, otras lo superan) y mucho olor al descongelar — 15/09, Manantiales II, lote TT2908261 (en gestión, ya se decomisó con autorización y video)</li>
@@ -1536,8 +1542,11 @@ footer { text-align: center; color: #BBBBBB; font-size: 0.76rem; padding: 20px 0
             </tr>
           </thead>
           <tbody>
-            <tr style="background:#fffbeb;"><td style="padding:6px 12px;color:#999">48538543019</td><td style="padding:6px 12px">15/09</td><td style="padding:6px 12px;font-weight:600">Manantiales II</td><td style="padding:6px 12px">TIRA DE TRUCHA</td><td style="padding:6px 12px">Trucha rasgada, tiras de tamaño y peso disparejo (algunas no llegan a 35g, otras lo superan), mucho olor al descongelar; ya se decomisó con autorización y video</td><td style="padding:6px 12px"><span class="pill" style="background:#c6f6d5;color:#2f855a;">En Progreso</span></td></tr>
-            <tr style="background:#fff;"><td style="padding:6px 12px;color:#999">47906401285</td><td style="padding:6px 12px">24/08</td><td style="padding:6px 12px;font-weight:600">Nueva Córdoba</td><td style="padding:6px 12px">LANGOSTINOS REBOZADOS</td><td style="padding:6px 12px">Llegó una caja de Tira de Trucha etiquetada por error como Langostinos; se envió la correcta por Uber</td><td style="padding:6px 12px"><span class="pill" style="background:#feebc8;color:#c05621;">Esperando respuesta interna</span></td></tr>
+            <tr style="background:#fffbeb;"><td style="padding:6px 12px;color:#999">48664766821</td><td style="padding:6px 12px">22/09</td><td style="padding:6px 12px;font-weight:600">Salta</td><td style="padding:6px 12px">TIRA DE TRUCHA</td><td style="padding:6px 12px">Tiras llegan desarmadas / mal cortadas</td><td style="padding:6px 12px"><span class="pill" style="background:#fed7d7;color:#c53030;">Nuevo</span></td></tr>
+            <tr style="background:#fff;"><td style="padding:6px 12px;color:#999">48683349613</td><td style="padding:6px 12px">22/09</td><td style="padding:6px 12px;font-weight:600">Alberdi</td><td style="padding:6px 12px">LANGOSTINOS REBOZADOS</td><td style="padding:6px 12px">Langostino podrido (color, sin olor) — 12 kg</td><td style="padding:6px 12px"><span class="pill" style="background:#fed7d7;color:#c53030;">Nuevo</span></td></tr>
+            <tr style="background:#fffbeb;"><td style="padding:6px 12px;color:#999">48628562204</td><td style="padding:6px 12px">21/09</td><td style="padding:6px 12px;font-weight:600">Carlos Paz</td><td style="padding:6px 12px">TIRA DE TRUCHA</td><td style="padding:6px 12px">Varias tiras llegaron con espinas (10 tiras)</td><td style="padding:6px 12px"><span class="pill" style="background:#c6f6d5;color:#2f855a;">En Progreso</span></td></tr>
+            <tr style="background:#fff;"><td style="padding:6px 12px;color:#999">48627120697</td><td style="padding:6px 12px">21/09</td><td style="padding:6px 12px;font-weight:600">Nueva Córdoba</td><td style="padding:6px 12px">LANGOSTINOS REBOZADOS</td><td style="padding:6px 12px">Llegó un plástico (aspecto cinta) dentro de la bolsa (1 caja)</td><td style="padding:6px 12px"><span class="pill" style="background:#c6f6d5;color:#2f855a;">En Progreso</span></td></tr>
+            <tr style="background:#fffbeb;"><td style="padding:6px 12px;color:#999">47906401285</td><td style="padding:6px 12px">24/08</td><td style="padding:6px 12px;font-weight:600">Nueva Córdoba</td><td style="padding:6px 12px">LANGOSTINOS REBOZADOS</td><td style="padding:6px 12px">Llegó una caja de Tira de Trucha etiquetada por error como Langostinos; se envió la correcta por Uber</td><td style="padding:6px 12px"><span class="pill" style="background:#feebc8;color:#c05621;">Esperando respuesta interna</span></td></tr>
           </tbody>
         </table>
       </div>
@@ -1546,12 +1555,12 @@ footer { text-align: center; color: #BBBBBB; font-size: 0.76rem; padding: 20px 0
     <!-- Reclamos por Palta (materia prima, no es producto del CP — seguimiento aparte) -->
     <div class="card" style="margin-bottom:22px;border-left:4px solid #6B8E23;">
       <h2>🥑 Reclamos por Palta <span style="font-weight:400;color:#999;font-size:0.82rem">(materia prima comprada, no es producto del CP — seguimiento aparte)</span></h2>
-      <div style="font-size:0.8rem;color:#777;margin-bottom:12px;">📌 En HubSpot hay <strong>18 reclamos históricos de Palta</strong> en total (revisado 02/09) — la mayoría son viejos y están en otro pipeline, sin detalle disponible acá. Esta tarjeta detalla los que entran por el pipeline "Calidad", que es lo que se sigue trackeando de acá en adelante. <strong>18/09:</strong> se agrega el ticket <strong>48603284814</strong> (Rosario, 17/09 22:02 — creado después de la exportación del 17/09, por eso no se había cargado), y el ticket 48628488772 (Residencial América) pasó de "Nuevo" a <strong>En Progreso</strong>. Se re-verificó también el estado de los 3 tickets ya trackeados como abiertos (48587646092, 48595312518) contra el export más nuevo — sin cambios. <strong>21/09:</strong> se agrega el ticket <strong>48635206992</strong> (Villa María, 20/09 10:45), y el ticket 48595312518 (Villa Allende) pasó de "Esperando respuesta interna" a <strong>Cerrado (18/09)</strong>. Se re-verificaron también 48587646092, 48628488772 y 48603284814 — sin cambios. <strong>Columna Kg:</strong> cuando el ticket registra "Cantidad/peso" en cajones se convierte a kg asumiendo 9 kg por cajón; el ticket 48574116740 no tiene cantidad cargada ("anular" en el campo), no se incluye en el total. El ticket 48635206992 tiene los campos del formulario desordenados (remito y lote mezclados) — se tomó el "2,154kg" mencionado en la descripción como cantidad, a confirmar.</div>
+      <div style="font-size:0.8rem;color:#777;margin-bottom:12px;">📌 En HubSpot hay <strong>18 reclamos históricos de Palta</strong> en total (revisado 02/09) — la mayoría son viejos y están en otro pipeline, sin detalle disponible acá. Esta tarjeta detalla los que entran por el pipeline "Calidad", que es lo que se sigue trackeando de acá en adelante. <strong>18/09:</strong> se agrega el ticket <strong>48603284814</strong> (Rosario, 17/09 22:02 — creado después de la exportación del 17/09, por eso no se había cargado), y el ticket 48628488772 (Residencial América) pasó de "Nuevo" a <strong>En Progreso</strong>. Se re-verificó también el estado de los 3 tickets ya trackeados como abiertos (48587646092, 48595312518) contra el export más nuevo — sin cambios. <strong>21/09:</strong> se agrega el ticket <strong>48635206992</strong> (Villa María, 20/09 10:45), y el ticket 48595312518 (Villa Allende) pasó de "Esperando respuesta interna" a <strong>Cerrado (18/09)</strong>. Se re-verificaron también 48587646092, 48628488772 y 48603284814 — sin cambios. <strong>23/09 (export completo, 440 tickets):</strong> se agregan 4 tickets nuevos — <strong>48614203532</strong> (Rosario, 21/09, "suma al reclamo del jueves 17/9", probablemente relacionado a 48603284814 — palta oxidada, 3 cajones), <strong>48661707124</strong> (Nueva Córdoba, 22/09, palta pasada, 9,535 kg), <strong>48656206226</strong> (Rosario, 22/09, palta madura/oxidada/hueca, gran volumen — 187,315 kg) y <strong>48648732464</strong> (Recoleta, 22/09, textura blanda, hongos, 9,76 kg). De los 4 tickets ya trackeados como abiertos, <strong>48603284814</strong> (Rosario) se cerró el 22/09 (NC N°001000000305) y <strong>48635206992</strong> (Villa María) también se cerró el 22/09 (NC N°001000000304); 48587646092 y 48628488772 siguen sin cambios. <strong>Columna Kg:</strong> cuando el ticket registra "Cantidad/peso" en cajones se convierte a kg asumiendo 9 kg por cajón; el ticket 48574116740 no tiene cantidad cargada ("anular" en el campo), no se incluye en el total. El ticket 48635206992 tiene los campos del formulario desordenados (remito y lote mezclados) — se tomó el "2,154kg" mencionado en la descripción como cantidad, a confirmar.</div>
       <div class="kpi-grid" style="grid-template-columns:repeat(auto-fit,minmax(140px,1fr));margin-bottom:16px;">
-        <div class="kpi-card"><div class="lbl">Total reclamos</div><div class="val" style="color:#6B8E23">12</div><div class="sub">vía Calidad</div></div>
-        <div class="kpi-card"><div class="lbl">Abiertos</div><div class="val" style="color:#EF402F">4</div><div class="sub">en gestión</div></div>
-        <div class="kpi-card"><div class="lbl">Tasa cierre</div><div class="val" style="color:#33A392">66,7 <span style="font-size:.85rem;color:#BBBBBB">%</span></div><div class="sub">8 / 12 tickets</div></div>
-        <div class="kpi-card"><div class="lbl">Total kg reclamados</div><div class="val" style="color:#6B8E23">173,55 <span style="font-size:.85rem;color:#BBBBBB">kg</span></div><div class="sub">11 tickets con cantidad cargada</div></div>
+        <div class="kpi-card"><div class="lbl">Total reclamos</div><div class="val" style="color:#6B8E23">16</div><div class="sub">vía Calidad</div></div>
+        <div class="kpi-card"><div class="lbl">Abiertos</div><div class="val" style="color:#EF402F">6</div><div class="sub">en gestión</div></div>
+        <div class="kpi-card"><div class="lbl">Tasa cierre</div><div class="val" style="color:#33A392">62,5 <span style="font-size:.85rem;color:#BBBBBB">%</span></div><div class="sub">10 / 16 tickets</div></div>
+        <div class="kpi-card"><div class="lbl">Total kg reclamados</div><div class="val" style="color:#6B8E23">407,16 <span style="font-size:.85rem;color:#BBBBBB">kg</span></div><div class="sub">15 tickets con cantidad cargada</div></div>
       </div>
       <div style="overflow-x:auto;">
         <table style="width:100%;border-collapse:collapse;font-size:0.83rem;">
@@ -1576,9 +1585,13 @@ footer { text-align: center; color: #BBBBBB; font-size: 0.76rem; padding: 20px 0
             <tr style="background:#fff;border-bottom:1px solid #feebc8;"><td style="padding:6px 12px;color:#999">48599516563</td><td style="padding:6px 12px">15/09</td><td style="padding:6px 12px;font-weight:600">Recta Martinolli</td><td style="padding:6px 12px">Reclamo real de la misma partida que 48574116740 (código L3000316), 5,37 kg — NC emitida</td><td style="padding:6px 12px;text-align:right">5,37</td><td style="padding:6px 12px"><span class="pill" style="background:#c6f6d5;color:#2f855a;">Cerrado (16/09)</span></td></tr>
             <tr style="background:#fffbeb;border-bottom:1px solid #feebc8;"><td style="padding:6px 12px;color:#999">48595312518</td><td style="padding:6px 12px">16/09</td><td style="padding:6px 12px;font-weight:600">Villa Allende</td><td style="padding:6px 12px">Palta negra (llega al próximo pedido)</td><td style="padding:6px 12px;text-align:right">8,00</td><td style="padding:6px 12px"><span class="pill" style="background:#c6f6d5;color:#2f855a;">Cerrado (18/09)</span></td></tr>
             <tr style="background:#fff;border-bottom:1px solid #feebc8;"><td style="padding:6px 12px;color:#999">48628488772</td><td style="padding:6px 12px">17/09</td><td style="padding:6px 12px;font-weight:600">Residencial América</td><td style="padding:6px 12px">Palta pasada de tiempo, con hongo, raíz y muy blanda — no llega al próximo pedido (2 cajones)</td><td style="padding:6px 12px;text-align:right">18,00 <span style="color:#999;font-size:0.75rem">(2 caj.)</span></td><td style="padding:6px 12px"><span class="pill" style="background:#c6f6d5;color:#2f855a;">En Progreso</span></td></tr>
-            <tr style="background:#fffbeb;border-bottom:1px solid #feebc8;"><td style="padding:6px 12px;color:#999">48603284814</td><td style="padding:6px 12px">17/09</td><td style="padding:6px 12px;font-weight:600">Rosario</td><td style="padding:6px 12px">Pedido de 16 cajones llegó semi maduro, se rompe al tacto y muy mantecoso, no se puede enrollar — sigue pasándose en frío (4,386 kg sacados hasta ahora)</td><td style="padding:6px 12px;text-align:right">4,39</td><td style="padding:6px 12px"><span class="pill" style="background:#c6f6d5;color:#2f855a;">En Progreso</span></td></tr>
-            <tr style="background:#fff;"><td style="padding:6px 12px;color:#999">48635206992</td><td style="padding:6px 12px">20/09</td><td style="padding:6px 12px;font-weight:600">Villa María</td><td style="padding:6px 12px">Palta que maduró muy rápido y se puso en mal estado — desperdicio de 2,154 kg (formulario con remito/lote desordenados, cantidad a confirmar)</td><td style="padding:6px 12px;text-align:right">2,15 <span style="color:#999;font-size:0.75rem">(aprox.)</span></td><td style="padding:6px 12px"><span class="pill" style="background:#feebc8;color:#c05621;">Esperando respuesta interna</span></td></tr>
-            <tr class="row-total"><td style="padding:6px 12px" colspan="4">Total (11 tickets con cantidad cargada)</td><td style="padding:6px 12px;text-align:right">173,55</td><td></td></tr>
+            <tr style="background:#fffbeb;border-bottom:1px solid #feebc8;"><td style="padding:6px 12px;color:#999">48603284814</td><td style="padding:6px 12px">17/09</td><td style="padding:6px 12px;font-weight:600">Rosario</td><td style="padding:6px 12px">Pedido de 16 cajones llegó semi maduro, se rompe al tacto y muy mantecoso, no se puede enrollar — sigue pasándose en frío (4,386 kg sacados hasta ahora)</td><td style="padding:6px 12px;text-align:right">4,39</td><td style="padding:6px 12px"><span class="pill" style="background:#c6f6d5;color:#2f855a;">Cerrado (22/09)</span></td></tr>
+            <tr style="background:#fff;border-bottom:1px solid #feebc8;"><td style="padding:6px 12px;color:#999">48635206992</td><td style="padding:6px 12px">20/09</td><td style="padding:6px 12px;font-weight:600">Villa María</td><td style="padding:6px 12px">Palta que maduró muy rápido y se puso en mal estado — desperdicio de 2,154 kg (formulario con remito/lote desordenados, cantidad a confirmar)</td><td style="padding:6px 12px;text-align:right">2,15 <span style="color:#999;font-size:0.75rem">(aprox.)</span></td><td style="padding:6px 12px"><span class="pill" style="background:#c6f6d5;color:#2f855a;">Cerrado (22/09)</span></td></tr>
+            <tr style="background:#fffbeb;border-bottom:1px solid #feebc8;"><td style="padding:6px 12px;color:#999">48614203532</td><td style="padding:6px 12px">21/09</td><td style="padding:6px 12px;font-weight:600">Rosario</td><td style="padding:6px 12px">"Suma al reclamo de palta del jueves 17/9" — palta oxidada, probablemente relacionado a 48603284814 (3 cajones)</td><td style="padding:6px 12px;text-align:right">27,00 <span style="color:#999;font-size:0.75rem">(3 caj.)</span></td><td style="padding:6px 12px"><span class="pill" style="background:#feebc8;color:#c05621;">Esperando respuesta interna</span></td></tr>
+            <tr style="background:#fff;border-bottom:1px solid #feebc8;"><td style="padding:6px 12px;color:#999">48661707124</td><td style="padding:6px 12px">22/09</td><td style="padding:6px 12px;font-weight:600">Nueva Córdoba</td><td style="padding:6px 12px">Palta pasada</td><td style="padding:6px 12px;text-align:right">9,54</td><td style="padding:6px 12px"><span class="pill" style="background:#fed7d7;color:#c53030;">Nuevo</span></td></tr>
+            <tr style="background:#fffbeb;border-bottom:1px solid #feebc8;"><td style="padding:6px 12px;color:#999">48656206226</td><td style="padding:6px 12px">22/09</td><td style="padding:6px 12px;font-weight:600">Rosario</td><td style="padding:6px 12px">Palta madura/quemada/oxidada/hueca, más de 200 kg no recuperable</td><td style="padding:6px 12px;text-align:right">187,32</td><td style="padding:6px 12px"><span class="pill" style="background:#fed7d7;color:#c53030;">Nuevo</span></td></tr>
+            <tr style="background:#fff;"><td style="padding:6px 12px;color:#999">48648732464</td><td style="padding:6px 12px">22/09</td><td style="padding:6px 12px;font-weight:600">Recoleta</td><td style="padding:6px 12px">Textura blanda y pastosa, color marrón, presencia de hongos</td><td style="padding:6px 12px;text-align:right">9,76</td><td style="padding:6px 12px"><span class="pill" style="background:#feebc8;color:#c05621;">Esperando respuesta interna</span></td></tr>
+            <tr class="row-total"><td style="padding:6px 12px" colspan="4">Total (15 tickets con cantidad cargada)</td><td style="padding:6px 12px;text-align:right">407,16</td><td></td></tr>
           </tbody>
         </table>
       </div>
@@ -1651,10 +1664,10 @@ footer { text-align: center; color: #BBBBBB; font-size: 0.76rem; padding: 20px 0
 
     <div class="alerta">
       ⚠️ <strong>Compara lo pedido a Centro de Producción vs. lo entregado por CP vs. lo que realmente salió a franquicias.</strong>
-      Fuentes: planilla "Producción CP" (pestañas JULIO 26, AGOSTO 26 y SET 26, leída directo en el navegador porque el MCP de Drive no llega a esta pestaña — <strong>22/09: releída</strong>, S37 y S38 sin cambios respecto al 21/09) y salidas TOTVS (detalle por transacción, export "salidas al 220926.xml", que ahora cubre S27–S38 completas — incluye franquicias de Bs. As. — Recoleta y Palermo), filtrado solo a los 10 productos del CP.
-      El cruce de Pedido/Entregado cubre S27–S38 (30/06–21/09) — <strong>S27 a S36 ya cerradas</strong> (S36 se completó en la releída del 08/09 — Corte, Pasta de Honey, Pollo Teriyaki, Reducción de Teriyaki, Salsa Naranja y Tamago llegaron al 100% del pedido; Cubos y Vinagreta ya estaban en 100%; Tira quedó en 91,84% (90/98), la única semana por debajo del pedido. Langostinos Rebozados sigue en 0 — su pedido se corrió a la semana siguiente). <strong>S37 (08–14/09)</strong>: Pedido 958 u (se revisó a la baja en Pasta de Honey y Pollo Teriyaki), Entregado 982 u (102,5%, sin cambios desde el 17/09) — Corte (30/30), Cubos (20/20), Pasta de Honey (20/20), Tira (90/90) y Vinagreta (153/153) completaron su pedido, Tamago lo superó (301/210); Langostinos (197/210) y Reducción (115/140) quedan cerca; Salsa Naranja (20/40) y Pollo Teriyaki (36/45) son los más atrasados. Se mantiene <strong>isPartial:true</strong> a la espera de que Debo confirme el cierre. <strong>S38 (15–21/09)</strong>: Pedido 1.046 u, Entregado 542 u (51,8%, sin cambios desde el 21/09 pese a que la semana calendario ya cerró) — Pasta de Honey completó su pedido (40/40), Reducción (103/130) y Langostinos (140/220) quedan cerca, Cubos (21/40), Vinagreta (94/153), Pollo Teriyaki (57/95), Tira (26/98), Salsa Naranja (16/30) y Corte (15/30) avanzan a mitad de camino o menos, Tamago sigue muy atrás (30/210); se mantiene <strong>isPartial:true</strong> a la espera de que Debo confirme el cierre — CP podría seguir cargando avance retroactivo. Nota 03/09: la pestaña "SET 26" agrupa la semana de fin de agosto como "25/8 al 01/9" — un día más que el resto de las semanas, para no dejar el 01/09 suelto — así que S35 quedó en 25/08–01/09 y S36 en 02–07/09; ver el comentario junto a CUMPL_WEEKS para el detalle.
+      Fuentes: planilla "Producción CP" (pestañas JULIO 26, AGOSTO 26 y SET 26, leída directo en el navegador porque el MCP de Drive no llega a esta pestaña — <strong>23/09: releída</strong>, ver S38 abajo) y salidas TOTVS (detalle por transacción, export "salidas al 230926.xml", que ahora cubre S27–S38 completas — incluye franquicias de Bs. As. — Recoleta y Palermo), filtrado solo a los 10 productos del CP.
+      El cruce de Pedido/Entregado cubre S27–S38 (30/06–22/09) — <strong>S27 a S36 ya cerradas</strong> (S36 se completó en la releída del 08/09 — Corte, Pasta de Honey, Pollo Teriyaki, Reducción de Teriyaki, Salsa Naranja y Tamago llegaron al 100% del pedido; Cubos y Vinagreta ya estaban en 100%; Tira quedó en 91,84% (90/98), la única semana por debajo del pedido. Langostinos Rebozados sigue en 0 — su pedido se corrió a la semana siguiente). <strong>S37 (08–14/09)</strong>: Pedido 958 u (se revisó a la baja en Pasta de Honey y Pollo Teriyaki), Entregado 982 u (102,5%, sin cambios desde el 17/09) — Corte (30/30), Cubos (20/20), Pasta de Honey (20/20), Tira (90/90) y Vinagreta (153/153) completaron su pedido, Tamago lo superó (301/210); Langostinos (197/210) y Reducción (115/140) quedan cerca; Salsa Naranja (20/40) y Pollo Teriyaki (36/45) son los más atrasados. Se mantiene <strong>isPartial:true</strong> a la espera de que Debo confirme el cierre. <strong>S38 (15–22/09)</strong>: <strong>23/09 — ojo, el sheet corrió el límite de semana un día</strong> (mismo fenómeno que pasó con S35), ahora agrupa "15/9 AL 22/9" en vez de "15/9 AL 21/9". Pedido 1.004 u (bajó en Cubos, Reducción y Salsa Naranja por revisión de plan, subió en Pasta de Honey), Entregado 970 u (96,6%, subió fuerte desde el 51,8% del 21/09) — Corte, Cubos, Pollo Teriyaki y Tamago completaron su pedido (100%), Langostinos lo superó (232/220); Pasta de Honey también lo superó (55/50); Reducción y Salsa Naranja quedaron en el mismo nivel que antes (103/103 y 16/20); Vinagreta (128/153) y Tira (76/98) son los únicos con margen real todavía. Se mantiene <strong>isPartial:true</strong> — el corrimiento del límite de semana todavía no fue confirmado por Debo. Nota 03/09: la pestaña "SET 26" agrupa la semana de fin de agosto como "25/8 al 01/9" — un día más que el resto de las semanas, para no dejar el 01/09 suelto — así que S35 quedó en 25/08–01/09 y S36 en 02–07/09; ver el comentario junto a CUMPL_WEEKS para el detalle.
       <br><strong>% Pedido / Salidas</strong> compara lo que se pidió a CP contra lo que realmente salió a franquicias (la demanda real), sin importar si el CP llegó a entregarlo. 100% = pedido calibrado. Por debajo de 70% se pidió de menos que la demanda real (riesgo de faltante, se tapa con stock de seguridad). Por encima de 130% se pidió de más que la demanda real (posible sobre-pedido).
-      <br><strong>Stock actual</strong>: foto del saldo en TOTVS al 22/09/2026 (Centro de Distribución + Centro de Producción, actualizado con "stock al 220926.xml"; depósito externo Mirizi sigue con "stock externo al 180926.xml" — el archivo del 21/09 con ese nombre no era un export de MI real, ver comentario junto a CUMPL_STOCK), no varía según la semana seleccionada — es el stock disponible hoy, no un dato histórico.
+      <br><strong>Stock actual</strong>: foto del saldo en TOTVS al 23/09/2026 (Centro de Distribución + Centro de Producción, actualizado con "stock al 230926.xml"; depósito externo Mirizi sigue con "stock externo al 180926.xml" — no apareció un export de MI más nuevo esta corrida, ver comentario junto a CUMPL_STOCK), no varía según la semana seleccionada — es el stock disponible hoy, no un dato histórico.
       <br><strong>Prom. salidas/sem</strong> y <strong>Semanas de stock</strong>: promedio de salidas a franquicias por semana (S27–S36, las 10 semanas cerradas) y cuántas semanas dura el stock actual a ese ritmo. Menos de 1 semana = riesgo de faltante próximo; más de 8 semanas = posible sobre-stock.
     </div>
 
@@ -1696,7 +1709,7 @@ footer { text-align: center; color: #BBBBBB; font-size: 0.76rem; padding: 20px 0
           <option value="8">S35 — 25/08–01/09</option>
           <option value="9">S36 — 02–07/09</option>
           <option value="10">S37 — 08–14/09</option>
-          <option value="11" selected>S38 — 15–21/09</option>
+          <option value="11" selected>S38 — 15–22/09</option>
         </select>
       </h2>
       <div class="chart-wrap" style="height:320px"><canvas id="chartCumplSemanal"></canvas></div>
@@ -1941,7 +1954,20 @@ const WEEKS = [
   { label:"S38", dateRange:"14–19 sep", isPartial:false, total:970.6,
     daily:[179.39,251.61,177.8,190.3,171.5,0],
     dailyByProd:{ "Tiras":[26.95,26.95,17.15,13.48,19.6,0], "cortes":[14,19,20,0,0,0], "tiras unidas":[76.44,93.1,70.07,108.78,93.1,0], "cubos":[21,112.56,70.56,68.04,58.8,0], "sin embolsar":[41,0,0,0,0,0] },
-    entradaBandejasDia:[27,32,32,32,30,0], activeDaysCount:5 }
+    entradaBandejasDia:[27,32,32,32,30,0], activeDaysCount:5 },
+  // S39 (21–26 sep) recién arranca — 23/09: se agregan lunes 21/09 (211,1 kg) y martes 22/09 (175,3 kg).
+  // Miércoles 23/09 (hoy) todavía sin carga en el sheet. OJO: a partir de esta semana el sheet cambió
+  // las categorías de producto — ya no existe "tiras unidas" como una sola fila, ahora son dos filas
+  // separadas "tiras rotas" y "tiras unidas x2" (21/09: 33,81 y 44,1; 22/09: 42,63 y 36,75). Para no
+  // romper el formato del dashboard se sumaron ambas dentro de "tiras unidas" (decisión automática de
+  // esta corrida, a confirmar por Debo — si prefiere separarlas como categorías nuevas, avisar). El
+  // sheet también agregó una columna "grasa" (recorte descartado, no producto terminado: 137 kg 21/09,
+  // 132,2 kg 22/09) que NO se incluyó acá por no ser producto embolsado — si Debo quiere trackear
+  // merma/rendimiento como métrica aparte, se puede agregar en una próxima corrida.
+  { label:"S39", dateRange:"21–26 sep", isPartial:true, total:386.4,
+    daily:[211.1,175.3,0,0,0,0],
+    dailyByProd:{ "Tiras":[31.85,12.25,0,0,0,0], "cortes":[22,27,0,0,0,0], "tiras unidas":[77.91,79.38,0,0,0,0], "cubos":[79.38,56.7,0,0,0,0], "sin embolsar":[0,0,0,0,0,0] },
+    entradaBandejasDia:[33,32,0,0,0,0], activeDaysCount:2 }
 ];
 
 const PRODUCTOS = ["Tiras","cortes","tiras unidas","cubos","sin embolsar"];
@@ -2049,7 +2075,7 @@ function initDiario(wi) {
   });
 }
 document.getElementById("selDiario").addEventListener("change", function(){ initDiario(+this.value); });
-initDiario(18);
+initDiario(19);
 
 function buildTabla(wi) {
   const w = WEEKS[wi];
@@ -2077,7 +2103,7 @@ function buildTabla(wi) {
   t.innerHTML = h;
 }
 document.getElementById("selTabla").addEventListener("change", function(){ buildTabla(+this.value); });
-buildTabla(18);
+buildTabla(19);
 
 // ═══════════════════════════ LANGOSTINO ══════════════════════════════
 // ═══════════════════════ CALCULADORA DE INSUMOS (RECETAS) ═══════════════════════
@@ -2261,7 +2287,10 @@ function initLangostino() {
 // el sheet para los 5). 16-09 (hoy) tiene fila pero todas las columnas vacías, no se agrega. Se corrige
 // además un desalineo histórico: el array de Pollo Teriyaki tenía un valor de menos que el resto desde
 // 12-09 (sábado, "resto sin producción" nunca se le agregó el 0 a Pollo) — se inserta ese 0 faltante.
-const CC_FECHAS = ["08-06","09-06","10-06","11-06","12-06","15-06","16-06","17-06","18-06","19-06","22-06","23-06","24-06","25-06","26-06","29-06","30-06","01-07","02-07","03-07","04-07","06-07","07-07","08-07","10-07","13-07","14-07","15-07","16-07","17-07","18-07","20-07","21-07","22-07","23-07","24-07","27-07","28-07","29-07","30-07","31-07","01-08","03-08","04-08","05-08","06-08","07-08","08-08","10-08","11-08","12-08","13-08","14-08","15-08","17-08","18-08","19-08","20-08","21-08","24-08","25-08","26-08","27-08","28-08","29-08","31-08","01-09","02-09","03-09","04-09","05-09","07-09","08-09","09-09","11-09","12-09","14-09","15-09","16-09"];
+const CC_FECHAS = ["08-06","09-06","10-06","11-06","12-06","15-06","16-06","17-06","18-06","19-06","22-06","23-06","24-06","25-06","26-06","29-06","30-06","01-07","02-07","03-07","04-07","06-07","07-07","08-07","10-07","13-07","14-07","15-07","16-07","17-07","18-07","20-07","21-07","22-07","23-07","24-07","27-07","28-07","29-07","30-07","31-07","01-08","03-08","04-08","05-08","06-08","07-08","08-08","10-08","11-08","12-08","13-08","14-08","15-08","17-08","18-08","19-08","20-08","21-08","24-08","25-08","26-08","27-08","28-08","29-08","31-08","01-09","02-09","03-09","04-09","05-09","07-09","08-09","09-09","11-09","12-09","14-09","15-09","16-09","17-09","18-09"];
+// 23/09: se agregan 17-09 y 18-09, ambas con producida y envasada completas (columna "se cerró" = OK
+// en el sheet) — Teriyaki 500cc 36/36 ambos días, Pollo Teriyaki 42/42 ambos días, resto sin producción
+// esos días. 19-09 (sábado) sigue sin fila en el sheet.
 // 15/09: se corrige 11-09 — el sheet muestra Pollo Teriyaki 28 (no 0) y Pasta Honey 2,5 (no 0) ese
 // día, que habían quedado cargados en 0 por error de lectura anterior (Teriyaki 500cc 36 sin cambio;
 // Salsa Naranja y Vinagreta siguen sin producción ese día). Se agrega 12-09 (sábado: solo Pasta Honey
@@ -2329,14 +2358,18 @@ const CC_FECHAS = ["08-06","09-06","10-06","11-06","12-06","15-06","16-06","17-0
 // 18-09 (nada nuevo para 19, 20, 21 o 22/09 todavía) y no cambió nada de lo ya revisado: 15-09 y 16-09
 // siguen con producida cargada pero envasada vacía (no se agregan), y 17-09/18-09 siguen con producida
 // vacía aunque envasada tiene 36 (Reducción) y 42 (Pollo Teriyaki) en ambas fechas — mismos valores que
-// el 18/09, sin fila "se cerró" que lo confirme, así que tampoco se agregan. Sin cambios en
-// CC_FECHAS/CC_DATA esta corrida.
+// el 18/09, sin fila "se cerró" que lo confirme, así que tampoco se agregan.
+// 23/09: releído con Chrome — 17-09 y 18-09 ahora tienen "CANTIDAD producida" cargada Y coincide con la
+// "envasada" ya vista (Reducción 36/36, Pollo Teriyaki 42/42 ambos días; Salsa Naranja, Vinagreta y
+// Pasta Honey sin producción esos días), con la columna "se cerró" en "OK" — se agregan ambas fechas.
+// 19-09 (sábado) sigue sin fila en el sheet, ni siquiera vacía; se trata como confirmado sin producción
+// (mismo criterio que Trucha para ese mismo sábado). Nada nuevo para 20, 21 o 22/09.
 const CC_DATA = {
-  "Teriyaki 500cc": { color:"#EF402F", prod:[22,36,28,42,36,36,30,36,36,36,0,30,24,36,50,32,36,41,37,0,12,36,0,24,24,36,24,51,24,36,12,12,25,40,60,0,79,36,24,24,0,36,48,24,48,24,39,0,41,40,39,36,37,0,36,33,36,24,36,30,37,39,24,0,12,24,23,35,29,28,24,44,0,0,36,0,29,24,36], env:[22,36,28,42,36,36,30,0,36,0,0,0,24,36,50,0,36,41,0,0,0,34,0,0,24,36,24,0,0,0,12,0,0,0,0,0,79,36,0,0,0,0,48,0,48,24,39,0,41,0,39,36,37,0,36,33,36,24,36,30,37,0,0,0,12,24,23,35,29,0,0,0,0,0,0,0,29,0,0] },
-  "Salsa Naranja": { color:"#E3A127", prod:[12,0,14,0,12,12,0,0,12,12,0,26,24,0,0,24,0,0,12,0,36,15,0,24,24,0,12,0,12,0,0,0,0,0,0,0,12,0,30,12,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,12,0,0,0,0,0,0,16,0,0,0,0,30,0,0,0,0,0,0,20,12,0], env:[12,0,14,0,12,12,0,0,0,12,0,26,24,0,0,0,0,0,0,0,0,14,0,0,24,0,12,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,16,0,0,0,0,30,0,0,0,0,0,0,20,0,0] },
-  "Vinagreta 20L": { color:"#33A392", prod:[51,51,51,0,0,51,43,0,0,51,34,51,0,0,51,51,51,51,0,0,0,51,42,0,0,51,43,0,0,0,0,0,0,0,0,0,0,0,0,0,33,0,34,0,0,0,51,0,51,51,0,0,42,0,8,51,34,0,51,50,51,0,0,0,0,51,51,0,0,51,0,51,51,52,0,0,51,42,0], env:[51,51,51,0,0,51,43,0,0,51,34,51,0,0,51,51,51,51,0,0,0,51,0,0,0,51,0,0,0,0,0,0,0,0,0,0,0,0,0,0,33,0,34,0,0,0,51,0,51,51,0,0,42,0,8,51,34,0,51,50,51,0,0,0,0,51,51,0,0,50,0,0,0,0,0,0,51,0,0] },
-  "Pollo Teriyaki": { color:"#1D4856", prod:[0,12,6,38,34,0,6,41,35,0,0,6,30,29,0,0,5,0,19,12,0,0,12,42,4,0,6,0,42,14,10,10,6,6,0,13,0,0,37,0,0,0,0,5,30,37,6,0,7,5,31,36,12,0,0,0,11,12,12,9,6,21,20,16,0,9,9,35,35,9,0,0,0,28,0,0,11,6,40], env:[0,12,6,0,0,0,0,0,35,0,0,0,30,0,0,0,5,0,0,12,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,30,0,0,0,0,0,31,36,12,0,0,0,11,12,12,9,0,0,0,0,0,9,0,0,0,0,0,0,0,0,0,0,0,0,0] },
-  "Pasta Honey": { color:"#F58232", prod:[7.5,4.5,8,2.5,4,0,7,0,7,11,3,9.5,3,8.5,8,9,0,16,0,19.5,11.5,11,0,5.5,22.5,12,6.5,17,8,1,0,0,22,14,14.5,10,20.5,16.5,1.5,8,23,11.5,10.5,3.5,10.5,8,6,15.5,9,6.5,6.5,4,0,18,19.5,9,4,6,0,8.5,5,5.5,11,20.5,12,0,6,5.5,6.5,0,16,12,4,0,2.5,21.5,3,11.5,3], env:[8,4,0,0,0,0,0,0,7,11,3,0,3,0,0,0,0,0,0,20,0,0,0,0,0,12,6,0,0,0,0,0,0,0,0,0,20.5,0,0,0,0,0,0,0,0,0,0,0,0,0,6.5,0,0,18,19.5,9,4,6,0,8.5,0,0,0,0,12,0,0,0,0,0,0,0,0,0,0,0,0,0,0] }
+  "Teriyaki 500cc": { color:"#EF402F", prod:[22,36,28,42,36,36,30,36,36,36,0,30,24,36,50,32,36,41,37,0,12,36,0,24,24,36,24,51,24,36,12,12,25,40,60,0,79,36,24,24,0,36,48,24,48,24,39,0,41,40,39,36,37,0,36,33,36,24,36,30,37,39,24,0,12,24,23,35,29,28,24,44,0,0,36,0,29,24,36,36,36], env:[22,36,28,42,36,36,30,0,36,0,0,0,24,36,50,0,36,41,0,0,0,34,0,0,24,36,24,0,0,0,12,0,0,0,0,0,79,36,0,0,0,0,48,0,48,24,39,0,41,0,39,36,37,0,36,33,36,24,36,30,37,0,0,0,12,24,23,35,29,0,0,0,0,0,0,0,29,0,0,36,36] },
+  "Salsa Naranja": { color:"#E3A127", prod:[12,0,14,0,12,12,0,0,12,12,0,26,24,0,0,24,0,0,12,0,36,15,0,24,24,0,12,0,12,0,0,0,0,0,0,0,12,0,30,12,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,12,0,0,0,0,0,0,16,0,0,0,0,30,0,0,0,0,0,0,20,12,0,0,0], env:[12,0,14,0,12,12,0,0,0,12,0,26,24,0,0,0,0,0,0,0,0,14,0,0,24,0,12,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,16,0,0,0,0,30,0,0,0,0,0,0,20,0,0,0,0] },
+  "Vinagreta 20L": { color:"#33A392", prod:[51,51,51,0,0,51,43,0,0,51,34,51,0,0,51,51,51,51,0,0,0,51,42,0,0,51,43,0,0,0,0,0,0,0,0,0,0,0,0,0,33,0,34,0,0,0,51,0,51,51,0,0,42,0,8,51,34,0,51,50,51,0,0,0,0,51,51,0,0,51,0,51,51,52,0,0,51,42,0,0,0], env:[51,51,51,0,0,51,43,0,0,51,34,51,0,0,51,51,51,51,0,0,0,51,0,0,0,51,0,0,0,0,0,0,0,0,0,0,0,0,0,0,33,0,34,0,0,0,51,0,51,51,0,0,42,0,8,51,34,0,51,50,51,0,0,0,0,51,51,0,0,50,0,0,0,0,0,0,51,0,0,0,0] },
+  "Pollo Teriyaki": { color:"#1D4856", prod:[0,12,6,38,34,0,6,41,35,0,0,6,30,29,0,0,5,0,19,12,0,0,12,42,4,0,6,0,42,14,10,10,6,6,0,13,0,0,37,0,0,0,0,5,30,37,6,0,7,5,31,36,12,0,0,0,11,12,12,9,6,21,20,16,0,9,9,35,35,9,0,0,0,28,0,0,11,6,40,42,42], env:[0,12,6,0,0,0,0,0,35,0,0,0,30,0,0,0,5,0,0,12,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,30,0,0,0,0,0,31,36,12,0,0,0,11,12,12,9,0,0,0,0,0,9,0,0,0,0,0,0,0,0,0,0,0,0,0,42,42] },
+  "Pasta Honey": { color:"#F58232", prod:[7.5,4.5,8,2.5,4,0,7,0,7,11,3,9.5,3,8.5,8,9,0,16,0,19.5,11.5,11,0,5.5,22.5,12,6.5,17,8,1,0,0,22,14,14.5,10,20.5,16.5,1.5,8,23,11.5,10.5,3.5,10.5,8,6,15.5,9,6.5,6.5,4,0,18,19.5,9,4,6,0,8.5,5,5.5,11,20.5,12,0,6,5.5,6.5,0,16,12,4,0,2.5,21.5,3,11.5,3,0,0], env:[8,4,0,0,0,0,0,0,7,11,3,0,3,0,0,0,0,0,0,20,0,0,0,0,0,12,6,0,0,0,0,0,0,0,0,0,20.5,0,0,0,0,0,0,0,0,0,0,0,0,0,6.5,0,0,18,19.5,9,4,6,0,8.5,0,0,0,0,12,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0] }
 
 };
 // 09/09: se agrega 08-09 (Vinagreta 51, Pasta Honey 4 — Reducción, Salsa Naranja y Pollo sin
@@ -2344,8 +2377,8 @@ const CC_DATA = {
 // 15/09: recalculado como suma directa de los arrays prod[]/env[] tras corregir 11-09 (Pollo Teriyaki
 // y Pasta Honey) y agregar 12-09 y 14-09.
 const CC_TOTALES = {
-  "Teriyaki 500cc": {prod:2254,env:1394}, "Salsa Naranja":{prod:427,env:228},
-  "Vinagreta 20L":{prod:1681,env:1399}, "Pollo Teriyaki":{prod:933,env:262}, "Pasta Honey":{prod:655,env:178}
+  "Teriyaki 500cc": {prod:2326,env:1466}, "Salsa Naranja":{prod:427,env:228},
+  "Vinagreta 20L":{prod:1681,env:1399}, "Pollo Teriyaki":{prod:1017,env:346}, "Pasta Honey":{prod:655,env:178}
 };
 
 // Mismas semanas que la pestaña Trucha (S24–S29 — Cocina Caliente no tiene registros previos a S24)
@@ -2435,10 +2468,14 @@ const CC_WEEKS = [
   // Vinagreta 51/51, Pollo 11, Pasta Honey 3 — Pollo y Pasta con envasada todavía vacía en el sheet) y
   // 15-09 (Reducción 24, Salsa Naranja 12, Vinagreta 42, Pollo 6, Pasta Honey 11,5 — envasada vacía para
   // los 5). 17/09: se agrega 16-09 (Reducción 36, Pollo 40, Pasta Honey 3 — Salsa Naranja y Vinagreta sin
-  // producción ese día; envasada vacía para los 3). 17-09 (hoy) sin fila cargada todavía. isPartial:true.
-  { label:"S38", dateRange:"14–19 sep", isPartial:true,
-    prod:{ "Teriyaki 500cc":[29,24,36,0,0,0], "Salsa Naranja":[20,12,0,0,0,0], "Vinagreta 20L":[51,42,0,0,0,0], "Pollo Teriyaki":[11,6,40,0,0,0], "Pasta Honey":[3,11.5,3,0,0,0] },
-    env:{ "Teriyaki 500cc":[29,0,0,0,0,0], "Salsa Naranja":[20,0,0,0,0,0], "Vinagreta 20L":[51,0,0,0,0,0], "Pollo Teriyaki":[0,0,0,0,0,0], "Pasta Honey":[0,0,0,0,0,0] } }
+  // producción ese día; envasada vacía para los 3). 17-09 (hoy) sin fila cargada todavía.
+  // 23/09: se agregan 17-09 y 18-09 (Reducción 36/36 y 36/36, Pollo 42/42 y 42/42 — Salsa Naranja,
+  // Vinagreta y Pasta Honey sin producción ninguno de los dos días). 19-09 (sábado) confirmado sin fila
+  // en el sheet, mismo criterio que otros sábados sin producción — semana cierra en sus 6 días, pasa a
+  // isPartial:false.
+  { label:"S38", dateRange:"14–19 sep", isPartial:false,
+    prod:{ "Teriyaki 500cc":[29,24,36,36,36,0], "Salsa Naranja":[20,12,0,0,0,0], "Vinagreta 20L":[51,42,0,0,0,0], "Pollo Teriyaki":[11,6,40,42,42,0], "Pasta Honey":[3,11.5,3,0,0,0] },
+    env:{ "Teriyaki 500cc":[29,0,0,36,36,0], "Salsa Naranja":[20,0,0,0,0,0], "Vinagreta 20L":[51,0,0,0,0,0], "Pollo Teriyaki":[0,0,0,42,42,0], "Pasta Honey":[0,0,0,0,0,0] } }
 ];
 function ccWeekTotal(w, metric, prod) { return w[metric][prod].reduce((a,b)=>a+b,0); }
 
@@ -2524,7 +2561,7 @@ function initCalidad() {
       labels: ['TAMAGO','LANGOSTINO\nREBOZADO','POLLO\nTERIYAKI','TIRA\nTRUCHA','CORTE\nTRUCHA','CUBOS\nTRUCHA','PASTA\nHONEY','SALSA\nNARANJA','VINAGRETA','REDUCCIÓN\nTERIYAKI'],
       datasets: [{
         label: 'Reclamos',
-        data: [71, 18, 14, 14, 11, 9, 7, 6, 2, 1],
+        data: [71, 20, 14, 17, 11, 9, 7, 6, 2, 1],
         backgroundColor: ['#EF402F','#1D4856','#E3A127','#33A392','#33A392','#33A392','#F58232','#F58232','#33A392','#E3A127'],
         borderRadius: 6
       }]
@@ -2546,7 +2583,7 @@ function initCalidad() {
       labels: ['Oct-25','Nov-25','Dic-25','Ene-26','Feb-26','Mar-26','Abr-26','May-26','Jun-26','Jul-26','Ago-26','Sep-26'],
       datasets: [{
         label: 'Reclamos CP',
-        data: [2, 20, 20, 21, 16, 17, 11, 8, 8, 8, 21, 1],
+        data: [2, 20, 20, 21, 16, 17, 11, 8, 8, 8, 21, 5],
         borderColor: '#EF402F',
         backgroundColor: 'rgba(239,64,47,0.12)',
         borderWidth: 2.5,
@@ -2749,10 +2786,21 @@ const CUMPL_WEEKS = [
   // productos (Corte 23→38, Cubos 33→46, Langostinos 128→167, Pasta Honey 26→38, Pollo 37→85, Reducción
   // 135→177, Salsa Naranja 22→22 sin cambio, Tamago 98→142, Tira 52→74, Vinagreta 79→109). Verificado
   // además que S27–S37 no cambiaron con este export nuevo (coincide exacto, al u, con lo ya cargado).
-  { label:"S38", dateRange:"15–21/09", isPartial:true,
-    pedido:   { "CORTE DE TRUCHA":30, "CUBOS DE TRUCHA":40, "LANGOSTINOS REBOZADOS":220, "PASTA DE HONEY":40, "POLLO TERIYAKI":95, "REDUCCIÓN DE TERIYAKI":130, "SALSA NARANJA Y MIEL":30, "TAMAGO":210, "TIRA DE TRUCHA":98, "VINAGRETA":153 },
-    entregado:{ "CORTE DE TRUCHA":15, "CUBOS DE TRUCHA":21, "LANGOSTINOS REBOZADOS":140, "PASTA DE HONEY":40, "POLLO TERIYAKI":57, "REDUCCIÓN DE TERIYAKI":103, "SALSA NARANJA Y MIEL":16, "TAMAGO":30, "TIRA DE TRUCHA":26, "VINAGRETA":94 },
-    salidas:  { "CORTE DE TRUCHA":38, "CUBOS DE TRUCHA":46, "LANGOSTINOS REBOZADOS":167, "PASTA DE HONEY":38, "POLLO TERIYAKI":85, "REDUCCIÓN DE TERIYAKI":177, "SALSA NARANJA Y MIEL":22, "TAMAGO":142, "TIRA DE TRUCHA":74, "VINAGRETA":109 } }
+  // 23/09: OJO — la pestaña "SET 26" corrió el límite de semana de nuevo (mismo fenómeno que S35 en
+  // agosto/septiembre): la columna ahora agrupa "15/9 AL 22/9" (un día más) y la semana siguiente pasa a
+  // ser "23/9 AL 28/9". Se adopta el mismo criterio que en S35: se corre el dateRange de S38 a 15–22/09.
+  // Pedido baja en Cubos (40→25), Reducción (130→103) y Salsa Naranja (30→20) — revisión de plan, mismo
+  // criterio que otras correcciones — y sube en Pasta Honey (40→50); resto sin cambio. Entregado nunca
+  // baja: sube en Corte, Cubos, Langostinos, Pasta Honey, Pollo, Tamago, Tira y Vinagreta; Reducción y
+  // Salsa Naranja sin cambio. Total: 1.004 pedido / 970 entregado (96,6%). Salidas: recalculadas con
+  // "salidas al 230926.xml" sobre el rango extendido 15–22/09 — S27–S37 y el rango previo 15–21/09 de
+  // S38 no cambiaron (verificado, coincide al u); se suma el 22/09 (el único día con movimientos nuevos)
+  // a lo ya cargado. Se mantiene isPartial:true — el cambio de límite de semana todavía no fue
+  // confirmado por Debo.
+  { label:"S38", dateRange:"15–22/09", isPartial:true,
+    pedido:   { "CORTE DE TRUCHA":30, "CUBOS DE TRUCHA":25, "LANGOSTINOS REBOZADOS":220, "PASTA DE HONEY":50, "POLLO TERIYAKI":95, "REDUCCIÓN DE TERIYAKI":103, "SALSA NARANJA Y MIEL":20, "TAMAGO":210, "TIRA DE TRUCHA":98, "VINAGRETA":153 },
+    entregado:{ "CORTE DE TRUCHA":30, "CUBOS DE TRUCHA":25, "LANGOSTINOS REBOZADOS":232, "PASTA DE HONEY":55, "POLLO TERIYAKI":95, "REDUCCIÓN DE TERIYAKI":103, "SALSA NARANJA Y MIEL":16, "TAMAGO":210, "TIRA DE TRUCHA":76, "VINAGRETA":128 },
+    salidas:  { "CORTE DE TRUCHA":55, "CUBOS DE TRUCHA":63, "LANGOSTINOS REBOZADOS":242, "PASTA DE HONEY":52, "POLLO TERIYAKI":129, "REDUCCIÓN DE TERIYAKI":266, "SALSA NARANJA Y MIEL":43, "TAMAGO":206, "TIRA DE TRUCHA":109, "VINAGRETA":171 } }
 ];
 const CUMPL_PRODUCTOS = Object.keys(CUMPL_WEEKS[0].pedido);
 
@@ -2832,27 +2880,23 @@ const CUMPL_FRANQUICIAS_MES = {
   },
 };
 
-// Stock actual (TOTVS, foto al 22/09/2026). Suma Saldo Actual en depósitos CD (Centro de
-// Distribución) + CP (Centro de Producción) de "stock al 220926.xml" (archivo local en
-// dashboard_updates, reemplaza a "stock al 180926.xml"; recalculado con Python/xml.etree: Corte 53,
-// Cubos 96, Langostinos 14, Pasta Honey 89, Pollo 68, Reducción 365, Salsa Naranja 8, Tamago 165,
-// Tira 73, Vinagreta 401 — TR en 0 para los 10 productos, no se suma), más el depósito MI (Mirizi,
-// sucursal 010102): Corte 80, Cubos 64, Langostinos 487, Pasta Honey 40, Pollo 79, Tamago 753,
-// Tira 0 — Reducción, Salsa Naranja y Vinagreta sin stock en MI. Sin cambios respecto a la carga
-// anterior porque la MI sigue tomada de "stock externo al 180926.xml" (18/09): el archivo
-// "stock externo al 210926.xml" que apareció en la carpeta local esta corrida NO es un export de MI
-// genuino pese al nombre — verificado por contenido (372 filas CD, 69 CP, 43 TR, solo 2 MI, misma
-// estructura que un export de stock completo) — parece ser un duplicado/mal renombrado de
-// "stock al 210926.xml". Se descarta para MI y se sigue usando el del 18/09 (dato de MI con 4 días de
-// atraso) — a confirmar con Debo si puede resubir un export de MI real más reciente.
-// Respecto a la carga anterior (18/09): baja en Corte (143→133), Cubos (166→160), Langostinos
-// (634→501), Pasta Honey (131→129), Pollo (189→147), Reducción (418→365), Salsa Naranja (25→8) y
-// Tamago (930→918); sube en Tira (63→73). Vinagreta baja de 431 a 401. Todo el movimiento es de
-// CD/CP (MI sin cambio, mismo dato del 18/09).
+// Stock actual (TOTVS, foto al 23/09/2026). Suma Saldo Actual en depósitos CD (Centro de
+// Distribución) + CP (Centro de Producción) de "stock al 230926.xml" (archivo local en
+// dashboard_updates, reemplaza a "stock al 220926.xml"; recalculado con Python/xml.etree, validado
+// contra el archivo del 22/09 antes de usarlo: Corte 87, Cubos 86, Langostinos 142, Pasta Honey 81,
+// Pollo 72, Reducción 322, Salsa Naranja 4, Tamago 228, Tira 56, Vinagreta 371 — TR en 0 para los 10
+// productos, no se suma), más el depósito MI (Mirizi, sucursal 010102), sin cambios respecto a la
+// carga anterior: Corte 80, Cubos 64, Langostinos 487, Pasta Honey 40, Pollo 79, Tamago 753, Tira 0 —
+// Reducción, Salsa Naranja y Vinagreta sin stock en MI. Sigue sin aparecer un export de MI más nuevo
+// que "stock externo al 180926.xml" (18/09) — pendiente que Debo resuba uno más reciente.
+// Respecto a la carga anterior (22/09): sube fuerte en Langostinos (501→629, entraron a CD las 232 u
+// que CP entregó en S38) y en Corte (133→167) y Tamago (918→981); baja en Cubos (160→150), Pasta
+// Honey (129→121), Reducción (365→322), Salsa Naranja (8→4), Tira (73→56) y Vinagreta (401→371).
+// Pollo sube levemente (147→151).
 const CUMPL_STOCK = {
-  "CORTE DE TRUCHA":133, "CUBOS DE TRUCHA":160, "LANGOSTINOS REBOZADOS":501, "PASTA DE HONEY":129,
-  "POLLO TERIYAKI":147, "REDUCCIÓN DE TERIYAKI":365, "SALSA NARANJA Y MIEL":8, "TAMAGO":918,
-  "TIRA DE TRUCHA":73, "VINAGRETA":401
+  "CORTE DE TRUCHA":167, "CUBOS DE TRUCHA":150, "LANGOSTINOS REBOZADOS":629, "PASTA DE HONEY":121,
+  "POLLO TERIYAKI":151, "REDUCCIÓN DE TERIYAKI":322, "SALSA NARANJA Y MIEL":4, "TAMAGO":981,
+  "TIRA DE TRUCHA":56, "VINAGRETA":371
 };
 
 // Pedido/Entregado MENSUAL por producto, ene–ago 2026 (fuente: "Producción CP", pestañas JULIO 26 y
