@@ -1715,7 +1715,8 @@ footer { text-align: center; color: #BBBBBB; font-size: 0.76rem; padding: 20px 0
           <option value="8">S35 — 25/08–01/09</option>
           <option value="9">S36 — 02–07/09</option>
           <option value="10">S37 — 08–14/09</option>
-          <option value="11" selected>S38 — 15–22/09</option>
+          <option value="11">S38 — 15–22/09</option>
+          <option value="12" selected>S39 — 23–28/09 (en curso)</option>
         </select>
       </h2>
       <div class="chart-wrap" style="height:320px"><canvas id="chartCumplSemanal"></canvas></div>
@@ -2819,7 +2820,16 @@ const CUMPL_WEEKS = [
   { label:"S38", dateRange:"15–22/09", isPartial:true,
     pedido:   { "CORTE DE TRUCHA":30, "CUBOS DE TRUCHA":25, "LANGOSTINOS REBOZADOS":220, "PASTA DE HONEY":50, "POLLO TERIYAKI":95, "REDUCCIÓN DE TERIYAKI":103, "SALSA NARANJA Y MIEL":20, "TAMAGO":210, "TIRA DE TRUCHA":98, "VINAGRETA":153 },
     entregado:{ "CORTE DE TRUCHA":30, "CUBOS DE TRUCHA":25, "LANGOSTINOS REBOZADOS":232, "PASTA DE HONEY":55, "POLLO TERIYAKI":95, "REDUCCIÓN DE TERIYAKI":103, "SALSA NARANJA Y MIEL":16, "TAMAGO":210, "TIRA DE TRUCHA":76, "VINAGRETA":128 },
-    salidas:  { "CORTE DE TRUCHA":55, "CUBOS DE TRUCHA":63, "LANGOSTINOS REBOZADOS":242, "PASTA DE HONEY":52, "POLLO TERIYAKI":129, "REDUCCIÓN DE TERIYAKI":266, "SALSA NARANJA Y MIEL":43, "TAMAGO":206, "TIRA DE TRUCHA":109, "VINAGRETA":171 } }
+    salidas:  { "CORTE DE TRUCHA":55, "CUBOS DE TRUCHA":63, "LANGOSTINOS REBOZADOS":242, "PASTA DE HONEY":52, "POLLO TERIYAKI":129, "REDUCCIÓN DE TERIYAKI":266, "SALSA NARANJA Y MIEL":43, "TAMAGO":206, "TIRA DE TRUCHA":109, "VINAGRETA":171 } },
+  // 24/09: se agrega S39 a pedido de Debo, aunque recién arranca. Pestaña "SET 26" (Chrome), columna
+  // "23/9 AL 28/9": Pedido cargado (838 u; Langostinos en 0, nota del sheet "No hay produccion langos"),
+  // Entregado todavía vacío para los 10 productos (se carga en 0). Salidas: "salidas al 240926.xml",
+  // solo 23/09 (único día de S39 en el export). isPartial:true. No entra en CUMPL_FRANQUICIAS (sigue
+  // S27–S38) para no bajar el promedio semanal con una semana de 1 día.
+  { label:"S39", dateRange:"23–28/09", isPartial:true,
+    pedido:   { "CORTE DE TRUCHA":45, "CUBOS DE TRUCHA":45, "LANGOSTINOS REBOZADOS":0, "PASTA DE HONEY":40, "POLLO TERIYAKI":100, "REDUCCIÓN DE TERIYAKI":100, "SALSA NARANJA Y MIEL":35, "TAMAGO":210, "TIRA DE TRUCHA":110, "VINAGRETA":153 },
+    entregado:{ "CORTE DE TRUCHA":0, "CUBOS DE TRUCHA":0, "LANGOSTINOS REBOZADOS":0, "PASTA DE HONEY":0, "POLLO TERIYAKI":0, "REDUCCIÓN DE TERIYAKI":0, "SALSA NARANJA Y MIEL":0, "TAMAGO":0, "TIRA DE TRUCHA":0, "VINAGRETA":0 },
+    salidas:  { "CORTE DE TRUCHA":11, "CUBOS DE TRUCHA":4, "LANGOSTINOS REBOZADOS":30, "PASTA DE HONEY":10, "POLLO TERIYAKI":9, "REDUCCIÓN DE TERIYAKI":21, "SALSA NARANJA Y MIEL":2, "TAMAGO":26, "TIRA DE TRUCHA":18, "VINAGRETA":21 } }
 ];
 const CUMPL_PRODUCTOS = Object.keys(CUMPL_WEEKS[0].pedido);
 
@@ -3024,7 +3034,7 @@ function initCumplimiento() {
     });
   }
   document.getElementById("selCumplSemana").addEventListener("change", function(){ buildCumplSemanal(+this.value); });
-  buildCumplSemanal(11);
+  buildCumplSemanal(12);
 
   // % Pedido/Salidas = pedido / salidas. Mide si lo que se pidió a CP estuvo bien calibrado contra
   // la demanda real de franquicias (salidas), sin importar si el CP llegó a entregarlo o no.
@@ -3081,7 +3091,7 @@ function initCumplimiento() {
     t.innerHTML = h;
   }
   document.getElementById("selCumplSemana").addEventListener("change", function(){ buildTablaCumpl(+this.value); });
-  buildTablaCumpl(11);
+  buildTablaCumpl(12);
 
   // Salidas por franquicia (S27-S32, con filtro opcional por mes calendario)
   const selFranquicia = document.getElementById("selCumplFranquicia");
