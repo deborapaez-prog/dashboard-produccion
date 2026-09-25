@@ -1773,7 +1773,7 @@ footer { text-align: center; color: #BBBBBB; font-size: 0.76rem; padding: 20px 0
         <label style="display:flex;align-items:center;gap:6px;font-size:0.83rem;color:#221F1F;cursor:pointer;"><input type="checkbox" id="chkMensualEntregado" checked> Entregado (CP)</label>
         <label style="display:flex;align-items:center;gap:6px;font-size:0.83rem;color:#221F1F;cursor:pointer;"><input type="checkbox" id="chkMensualSalidas" checked> Salidas a franquicias</label>
       </div>
-      <div style="font-size:0.75rem;color:#BBBBBB;margin-bottom:6px;">Salidas a franquicias solo tiene dato en Jul 26, Ago 26 y Sep 26 (semanas S27–S38, export TOTVS desde el 30/06 — Sep 26 con S36 y S37 cerradas + S38 con su semana completa cargada) — meses anteriores no tienen esa fuente todavía.</div>
+      <div style="font-size:0.75rem;color:#BBBBBB;margin-bottom:6px;">Salidas a franquicias solo tiene dato en Jul 26, Ago 26 y Sep 26 (semanas S27–S39, export TOTVS desde el 30/06 — Sep 26 suma S36 a S38 completas + S39 en curso, hasta el 24/09) — meses anteriores no tienen esa fuente todavía.</div>
       <div class="chart-wrap" style="height:280px"><canvas id="chartCumplMensualProd"></canvas></div>
     </div>
 
@@ -3203,7 +3203,7 @@ function initCumplimiento() {
   // Salidas mensuales a franquicias por producto — solo hay dato real de semanas cargadas en
   // CUMPL_WEEKS (S27–S30 caen en Jul 26, S31–S35 en Ago 26). Los meses sin semanas cargadas quedan en
   // null (Chart.js no dibuja barra) en vez de inventar un 0.
-  const CUMPL_WEEK_MES = { "S27":"JUL 26", "S28":"JUL 26", "S29":"JUL 26", "S30":"JUL 26", "S31":"AGO 26", "S32":"AGO 26", "S33":"AGO 26", "S34":"AGO 26", "S35":"AGO 26", "S36":"SEP 26", "S37":"SEP 26" };
+  const CUMPL_WEEK_MES = { "S27":"JUL 26", "S28":"JUL 26", "S29":"JUL 26", "S30":"JUL 26", "S31":"AGO 26", "S32":"AGO 26", "S33":"AGO 26", "S34":"AGO 26", "S35":"AGO 26", "S36":"SEP 26", "S37":"SEP 26", "S38":"SEP 26", "S39":"SEP 26" };
   function monthlySalidas(prod) {
     const arr = new Array(CUMPL_MESES.length).fill(null);
     CUMPL_WEEKS.forEach(w => {
@@ -3229,7 +3229,7 @@ function initCumplimiento() {
         labels: CUMPL_MESES.map((m,i)=> m + (CUMPL_MES_PARCIAL[i] ? " *" : "")),
         datasets:[
           { label:"Pedido a CP", data:d.pedido, backgroundColor:"#BBBBBB", borderRadius:4, hidden:!chkMensualPedido.checked },
-          { label:"Entregado (CP)", data:d.entregado, backgroundColor:CUMPL_COLORES[prod], borderRadius:4, hidden:!chkMensualEntregado.checked },
+          { label:"Entregado (CP)", data:d.entregado, backgroundColor:"#1D4856", borderRadius:4, hidden:!chkMensualEntregado.checked },
           { label:"Salidas a franquicias", data:salidas, backgroundColor:"#33A392", borderRadius:4, hidden:!chkMensualSalidas.checked }
         ]
       },
