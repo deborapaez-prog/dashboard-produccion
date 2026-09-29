@@ -2004,7 +2004,7 @@ const WEEKS = [
   // (mismo criterio). 21, 22 y 23/09 sin cambios. Total semana 1.009,2→1.113,6 kg.
   { label:"S39", dateRange:"21–26 sep", isPartial:false, total:1113.6,
     daily:[211.1,175.3,181.2,190.2,170.2,185.6],
-    dailyByProd:{ "Tiras":[31.85,12.25,15.925,15.93,12.25,17.15], "cortes":[22,27,20.5,24,26,22.5], "tiras unidas":[77.91,79.38,64.925,67.13,56.35,66.15], "cubos":[79.38,56.7,79.8,83.16,75.6,79.8], "sin embolsar":[0,0,0,0,0,0] },
+    dailyByProd:{ "Tiras":[31.85,12.25,15.925,15.93,12.25,17.15], "cortes":[22,27,20.5,24,26,22.5], "tiras rotas":[33.81,42.63,44.1,45.57,34.3,41.65], "tiras unidas x2":[44.1,36.75,20.825,21.56,22.05,24.5], "cubos":[79.38,56.7,79.8,83.16,75.6,79.8], "sin embolsar":[0,0,0,0,0,0] },
     entradaBandejasDia:[33,32,32,32,30,32], activeDaysCount:6 },
   // S40 (28/09–03/10) arranca — 29/09: se agrega lunes 28/09 (lote 28092026: Tiras 9,8, cortes 0, tiras
   // rotas 58,9225 + tiras unidas x2 75,95 = 134,8725 en "tiras unidas", cubos 58,905 — 29 cajas de
@@ -2012,12 +2012,15 @@ const WEEKS = [
   // (hoy) sin carga todavía.
   { label:"S40", dateRange:"28/09–03/10", isPartial:true, total:203.6,
     daily:[203.6,0,0,0,0,0],
-    dailyByProd:{ "Tiras":[9.8,0,0,0,0,0], "cortes":[0,0,0,0,0,0], "tiras unidas":[134.8725,0,0,0,0,0], "cubos":[58.905,0,0,0,0,0], "sin embolsar":[0,0,0,0,0,0] },
+    dailyByProd:{ "Tiras":[9.8,0,0,0,0,0], "cortes":[0,0,0,0,0,0], "tiras rotas":[58.9225,0,0,0,0,0], "tiras unidas x2":[75.95,0,0,0,0,0], "cubos":[58.905,0,0,0,0,0], "sin embolsar":[0,0,0,0,0,0] },
     entradaBandejasDia:[29,0,0,0,0,0], activeDaysCount:1 }
 ];
 
-const PRODUCTOS = ["Tiras","cortes","tiras unidas","cubos","sin embolsar"];
-const COLORES = { "Tiras":"#1D4856","cortes":"#33A392","tiras unidas":"#E3A127","cubos":"#EF402F","sin embolsar":"#F58232" };
+// 29/09 (pedido de Debo): desde S39 el sheet separa "tiras rotas" y "tiras unidas x2" — se muestran como
+// categorías propias. Semanas anteriores solo tienen "tiras unidas" (el sheet no las distinguía).
+const PRODUCTOS = ["Tiras","cortes","tiras unidas","tiras rotas","tiras unidas x2","cubos","sin embolsar"];
+const COLORES = { "Tiras":"#1D4856","cortes":"#33A392","tiras unidas":"#E3A127","tiras rotas":"#8B5E34","tiras unidas x2":"#E3A127","cubos":"#EF402F","sin embolsar":"#F58232" };
+const prodVals = (w,p) => w.dailyByProd[p] || [0,0,0,0,0,0];
 const DIAS = ["L","M","M","J","V","S"];
 const KG_POR_CAJA_ENTRADA = 15;
 function entradaKg(w) { return w.entradaBandejasDia.reduce((a,b)=>a+b,0) * KG_POR_CAJA_ENTRADA; }
@@ -2122,7 +2125,7 @@ new Chart(document.getElementById("chartMensual").getContext("2d"), {
 
 let chartDiario;
 function buildDiarioDatasets(wi) {
-  return PRODUCTOS.map(p=>({ label:p, data:WEEKS[wi].dailyByProd[p], backgroundColor:COLORES[p], borderRadius:4, borderSkipped:false }));
+  return PRODUCTOS.filter(p=>prodVals(WEEKS[wi],p).some(v=>v>0)).map(p=>({ label:p, data:prodVals(WEEKS[wi],p), backgroundColor:COLORES[p], borderRadius:4, borderSkipped:false }));
 }
 function initDiario(wi) {
   if (chartDiario) chartDiario.destroy();
@@ -2141,7 +2144,7 @@ function buildTabla(wi) {
   DIAS.forEach(d=>{ h+=`<th>${d}</th>`; });
   h += "<th>Total</th></tr></thead><tbody>";
   PRODUCTOS.forEach(p=>{
-    const vals = w.dailyByProd[p];
+    const vals = prodVals(w,p);
     const tot = vals.reduce((a,b)=>a+b,0);
     if(tot===0) return;
     h += `<tr><td><span class="dot" style="background:${COLORES[p]}"></span>${p}</td>`;
