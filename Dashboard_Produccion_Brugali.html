@@ -125,7 +125,7 @@ footer { text-align: center; color: #BBBBBB; font-size: 0.76rem; padding: 20px 0
       <div style="font-size:0.7rem;font-weight:700;color:rgba(255,255,255,0.6);text-transform:uppercase;letter-spacing:0.12em;margin-top:2px;">Dashboard de Producción</div>
     </div>
   </div>
-  <span class="badge">📅 Actualizado: 29/09/2026</span>
+  <span class="badge">📅 Actualizado: 30/09/2026</span>
 </header>
 
 <div class="tab-nav">
@@ -144,8 +144,8 @@ footer { text-align: center; color: #BBBBBB; font-size: 0.76rem; padding: 20px 0
 
   <div class="alerta-ok">
     ✅ <strong>S39 cerró (21–26/09) en 1.113,6 kg</strong>, 6 de 6 días activos — corregida el 29/09: el sheet completó los kg de las bandejas que faltaban (+104,4 kg). Supera a S38 (970,6 kg) y al objetivo semanal; 185,6 kg/día vs 194,1 de S38. Lunes 211,1 · martes 175,3 · miércoles 181,2 · jueves 190,2 · viernes 170,2 · sábado 185,6 kg. % uso 38,9% (1.113,6 / 2.865 kg de entrada).
-    <br>🟡 <strong>S40 (28/09–03/10) en curso:</strong> lunes 28/09 203,6 kg (29 cajas, 46,8% uso). Martes 29/09 todavía sin carga.
-    <br>Acumulado S20–S40: 17.787,6 kg · 41,5% uso general. Objetivo semanal: 1.067,2 kg · por día: 213,4 kg.
+    <br>🟡 <strong>S40 (28/09–03/10) en curso:</strong> lunes 28/09 155,7 kg (29 cajas, 35,8% uso — corregido en el sheet el 30/09, antes 203,6). Martes 29 y miércoles 30/09 todavía sin carga.
+    <br>Acumulado S20–S40: 17.739,7 kg · 41,4% uso general. Objetivo semanal: 1.067,2 kg · por día: 213,4 kg.
   </div>
 
   <div class="kpi-grid">
@@ -166,7 +166,7 @@ footer { text-align: center; color: #BBBBBB; font-size: 0.76rem; padding: 20px 0
     </div>
     <div class="kpi-card">
       <div class="lbl">Acumulado total</div>
-      <div class="val" style="color:#1D4856">17.787,6 <span style="font-size:.85rem;color:#BBBBBB">kg</span></div>
+      <div class="val" style="color:#1D4856">17.739,7 <span style="font-size:.85rem;color:#BBBBBB">kg</span></div>
       <div class="sub">S20–S40 (S40 en curso)</div>
     </div>
     <div class="kpi-card">
@@ -176,7 +176,7 @@ footer { text-align: center; color: #BBBBBB; font-size: 0.76rem; padding: 20px 0
     </div>
     <div class="kpi-card">
       <div class="lbl">% uso general</div>
-      <div class="val">41,5 <span style="font-size:.85rem;color:#BBBBBB">%</span></div>
+      <div class="val">41,4 <span style="font-size:.85rem;color:#BBBBBB">%</span></div>
       <div class="sub">promedio S20–S40</div>
     </div>
   </div>
@@ -1684,10 +1684,10 @@ footer { text-align: center; color: #BBBBBB; font-size: 0.76rem; padding: 20px 0
 
     <div class="alerta">
       ⚠️ <strong>Compara lo pedido a Centro de Producción vs. lo entregado por CP vs. lo que realmente salió a franquicias.</strong>
-      Fuentes: planilla "Producción CP" (pestañas JULIO 26, AGOSTO 26 y SET 26, leída directo en el navegador porque el MCP de Drive no llega a esta pestaña — <strong>29/09: releída</strong>) y salidas TOTVS (detalle por transacción, export "salidas al 290926.xml", que cubre S27–S38 completas y S39 hasta el 28/09 — incluye franquicias de Bs. As. — Recoleta y Palermo), filtrado solo a los 10 productos del CP.
+      Fuentes: planilla "Producción CP" (pestañas JULIO 26, AGOSTO 26 y SET 26, leída directo en el navegador porque el MCP de Drive no llega a esta pestaña — <strong>30/09: releída, sin cambios</strong>) y salidas TOTVS (detalle por transacción, export "salidas al 290926.xml" — re-verificado con "salidas al 300926.xml": S27–S39 sin cambios —, que cubre S27–S38 completas y S39 hasta el 28/09 — incluye franquicias de Bs. As. — Recoleta y Palermo), filtrado solo a los 10 productos del CP.
       El cruce de Pedido/Entregado cubre S27–S38 (30/06–22/09) — <strong>S27 a S36 ya cerradas</strong> (S36 se completó en la releída del 08/09 — Corte, Pasta de Honey, Pollo Teriyaki, Reducción de Teriyaki, Salsa Naranja y Tamago llegaron al 100% del pedido; Cubos y Vinagreta ya estaban en 100%; Tira quedó en 91,84% (90/98), la única semana por debajo del pedido. Langostinos Rebozados sigue en 0 — su pedido se corrió a la semana siguiente). <strong>S37 (08–14/09)</strong>: Pedido 958 u (se revisó a la baja en Pasta de Honey y Pollo Teriyaki), Entregado 982 u (102,5%, sin cambios desde el 17/09) — Corte (30/30), Cubos (20/20), Pasta de Honey (20/20), Tira (90/90) y Vinagreta (153/153) completaron su pedido, Tamago lo superó (301/210); Langostinos (197/210) y Reducción (115/140) quedan cerca; Salsa Naranja (20/40) y Pollo Teriyaki (36/45) son los más atrasados. Se mantiene <strong>isPartial:true</strong> a la espera de que Debo confirme el cierre. <strong>S38 (15–22/09)</strong>: <strong>23/09 — ojo, el sheet corrió el límite de semana un día</strong> (mismo fenómeno que pasó con S35), ahora agrupa "15/9 AL 22/9" en vez de "15/9 AL 21/9". Pedido 1.004 u (bajó en Cubos, Reducción y Salsa Naranja por revisión de plan, subió en Pasta de Honey), Entregado 970 u (96,6%, subió fuerte desde el 51,8% del 21/09) — Corte, Cubos, Pollo Teriyaki y Tamago completaron su pedido (100%), Langostinos lo superó (232/220); Pasta de Honey también lo superó (55/50); Reducción y Salsa Naranja quedaron en el mismo nivel que antes (103/103 y 16/20); Vinagreta (128/153) y Tira (76/98) son los únicos con margen real todavía. Se mantiene <strong>isPartial:true</strong> — el corrimiento del límite de semana todavía no fue confirmado por Debo. Nota 03/09: la pestaña "SET 26" agrupa la semana de fin de agosto como "25/8 al 01/9" — un día más que el resto de las semanas, para no dejar el 01/09 suelto — así que S35 quedó en 25/08–01/09 y S36 en 02–07/09; ver el comentario junto a CUMPL_WEEKS para el detalle.
       <br><strong>% Pedido / Salidas</strong> compara lo que se pidió a CP contra lo que realmente salió a franquicias (la demanda real), sin importar si el CP llegó a entregarlo. 100% = pedido calibrado. Por debajo de 70% se pidió de menos que la demanda real (riesgo de faltante, se tapa con stock de seguridad). Por encima de 130% se pidió de más que la demanda real (posible sobre-pedido).
-      <br><strong>Stock actual</strong>: foto del saldo en TOTVS al 29/09/2026 (Centro de Distribución + Centro de Producción, "stock al 290926.xml", más depósito externo Mirizi con "stock externo al 290926.xml"), no varía según la semana seleccionada — es el stock disponible hoy, no un dato histórico.
+      <br><strong>Stock actual</strong>: foto del saldo en TOTVS al 30/09/2026 (Centro de Distribución + Centro de Producción, "stock al 300926.xml", más depósito externo Mirizi con "stock externo al 300926.xml"), no varía según la semana seleccionada — es el stock disponible hoy, no un dato histórico.
       <br><strong>Prom. salidas/sem</strong> y <strong>Semanas de stock</strong>: promedio de salidas a franquicias por semana (S27–S36, las 10 semanas cerradas) y cuántas semanas dura el stock actual a ese ritmo. Menos de 1 semana = riesgo de faltante próximo; más de 8 semanas = posible sobre-stock.
     </div>
 
@@ -2010,9 +2010,12 @@ const WEEKS = [
   // rotas 58,9225 + tiras unidas x2 75,95 = 134,8725 en "tiras unidas", cubos 58,905 — 29 cajas de
   // entrada, total 203,6 kg = "total" del día en el sheet; grasa 123 kg, no incluida). Martes 29/09
   // (hoy) sin carga todavía.
-  { label:"S40", dateRange:"28/09–03/10", isPartial:true, total:203.6,
-    daily:[203.6,0,0,0,0,0],
-    dailyByProd:{ "Tiras":[9.8,0,0,0,0,0], "cortes":[0,0,0,0,0,0], "tiras rotas":[58.9225,0,0,0,0,0], "tiras unidas x2":[75.95,0,0,0,0,0], "cubos":[58.905,0,0,0,0,0], "sin embolsar":[0,0,0,0,0,0] },
+  // 30/09: releída la pestaña s40 (gviz, Chrome) — el sheet corrigió el lunes 28/09: tiras rotas
+  // 58,9225→60,025 (12,25 bandejas) y tiras unidas x2 75,95→26,95 (5,5 bandejas); total del día
+  // 203,6→155,7 kg (= "total" del sheet). 29 y 30/09 siguen en 0 en el sheet.
+  { label:"S40", dateRange:"28/09–03/10", isPartial:true, total:155.7,
+    daily:[155.7,0,0,0,0,0],
+    dailyByProd:{ "Tiras":[9.8,0,0,0,0,0], "cortes":[0,0,0,0,0,0], "tiras rotas":[60.025,0,0,0,0,0], "tiras unidas x2":[26.95,0,0,0,0,0], "cubos":[58.905,0,0,0,0,0], "sin embolsar":[0,0,0,0,0,0] },
     entradaBandejasDia:[29,0,0,0,0,0], activeDaysCount:1 }
 ];
 
@@ -2105,7 +2108,8 @@ const MESES_TRUCHA = [
   // Septiembre cierra con S36–S39. Debo confirmó que S40 (28/09–03/10) ya es parte de octubre.
   { label:"Septiembre", total:4001.7, entrada:9720, semanas:"S36–S39", cantSemanas:4, isPartial:false },
   // 29/09: Octubre arranca con S40 (lunes 28/09: 203,6 kg, 29 cajas × 15 = 435 kg de entrada).
-  { label:"Octubre", total:203.6, entrada:435, semanas:"S40", cantSemanas:1, isPartial:true }
+  // 30/09: lunes 28/09 corregido en el sheet (203,6→155,7 kg).
+  { label:"Octubre", total:155.7, entrada:435, semanas:"S40", cantSemanas:1, isPartial:true }
 ];
 new Chart(document.getElementById("chartMensual").getContext("2d"), {
   type:"bar",
@@ -2898,6 +2902,9 @@ const CUMPL_WEEKS = [
   // Sigue isPartial:true. Salidas S39 con "salidas al 290926.xml": el 28/09 pasa de 6 a 41 u → 426 u.
   // S27–S38 re-verificadas, coinciden al u. El export ya trae 72 u del 29/09 (S40), no se agrega S40
   // porque la columna de la semana en SET 26 todavía está vacía.
+  // 30/09: releída "SET 26" (gviz) — S38 (1.004/970) y S39 (838/675) sin cambios; columna de S40 sigue
+  // vacía y no hay pestaña de octubre todavía. "salidas al 300926.xml": S27–S39 coinciden al u (S39 426).
+  // Trae 331 u de S40 (29 y 30/09), no se agrega S40 hasta que el sheet tenga su pedido.
 ];
 const CUMPL_PRODUCTOS = Object.keys(CUMPL_WEEKS[0].pedido);
 
@@ -3015,10 +3022,15 @@ const CUMPL_FRANQUICIAS_MES = {
 // Honey 68, Pollo 112, Reducción 277, Salsa Naranja 21, Tamago 199, Tira 75, Vinagreta 326; CP: Reducción
 // 17, Tamago 40, Vinagreta 51 — TR en 0 y 1 u de Pollo en D4, no se suman. MI con "stock externo al
 // 290926.xml" (idéntico al del 28/09). Script validado contra "stock al 280926.xml" (reproduce la carga).
+// 30/09: reemplazado entero con "stock al 300926.xml" — CD: Corte 100, Cubos 124, Langostinos 151, Pasta
+// Honey 67, Pollo 110, Reducción 291, Salsa Naranja 21, Tamago 232, Tira 73, Vinagreta 372; CP: Corte 9,
+// Cubos 20, Reducción 1 — TR en 0 y 1 u de Pollo en D4, no se suman. MI con "stock externo al 300926.xml"
+// (primer cambio desde el 28/09): Corte 35, Cubos 115, Langostinos 352, Pasta Honey 88, Pollo 97, Tamago
+// 919, Tira 0. Script validado contra "stock al 290926.xml" (reproduce la carga anterior).
 const CUMPL_STOCK = {
-  "CORTE DE TRUCHA":136, "CUBOS DE TRUCHA":168, "LANGOSTINOS REBOZADOS":480, "PASTA DE HONEY":108,
-  "POLLO TERIYAKI":153, "REDUCCIÓN DE TERIYAKI":294, "SALSA NARANJA Y MIEL":21, "TAMAGO":1035,
-  "TIRA DE TRUCHA":75, "VINAGRETA":377
+  "CORTE DE TRUCHA":144, "CUBOS DE TRUCHA":259, "LANGOSTINOS REBOZADOS":503, "PASTA DE HONEY":155,
+  "POLLO TERIYAKI":207, "REDUCCIÓN DE TERIYAKI":292, "SALSA NARANJA Y MIEL":21, "TAMAGO":1151,
+  "TIRA DE TRUCHA":73, "VINAGRETA":372
 };
 
 // Pedido/Entregado MENSUAL por producto, ene–ago 2026 (fuente: "Producción CP", pestañas JULIO 26 y
