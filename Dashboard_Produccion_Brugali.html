@@ -125,7 +125,7 @@ footer { text-align: center; color: #BBBBBB; font-size: 0.76rem; padding: 20px 0
       <div style="font-size:0.7rem;font-weight:700;color:rgba(255,255,255,0.6);text-transform:uppercase;letter-spacing:0.12em;margin-top:2px;">Dashboard de Producción</div>
     </div>
   </div>
-  <span class="badge">📅 Actualizado: 02/10/2026</span>
+  <span class="badge">📅 Actualizado: 05/10/2026</span>
 </header>
 
 <div class="tab-nav">
@@ -1696,9 +1696,9 @@ footer { text-align: center; color: #BBBBBB; font-size: 0.76rem; padding: 20px 0
       <br><strong>Prom. salidas/sem</strong> y <strong>Semanas de stock</strong>: promedio de salidas a franquicias por semana (S27–S36, las 10 semanas cerradas) y cuántas semanas dura el stock actual a ese ritmo. Menos de 1 semana = riesgo de faltante próximo; más de 8 semanas = posible sobre-stock.
     -->
     <div class="alerta">
-      ⚠️ <strong>Pedido a CP vs. entregado por CP vs. salidas reales a franquicias</strong> (10 productos del CP). Fuentes: "Producción CP" (SET 26 y OCT 26) y salidas TOTVS al 02/10. S37 a S39 siguen abiertas hasta que Debo confirme el cierre; S40 recién arranca.
+      ⚠️ <strong>Pedido a CP vs. entregado por CP vs. salidas reales a franquicias</strong> (10 productos del CP). Fuentes: "Producción CP" (SET 26 y OCT 26) y salidas TOTVS al 05/10. S37 a S39 siguen abiertas hasta que Debo confirme el cierre; S40 recién arranca.
       <br><strong>% Pedido / Salidas</strong>: 100% = pedido calibrado · &lt;70% pedido corto (riesgo de faltante) · &gt;130% sobre-pedido.
-      <br><strong>Stock actual</strong>: foto TOTVS al 02/10 (CD + CP; Mirizi al 30/09). <strong>Semanas de stock</strong>: stock ÷ promedio de salidas S27–S36 · &lt;1 riesgo de faltante · &gt;8 sobre-stock.
+      <br><strong>Stock actual</strong>: foto TOTVS al 05/10 (CD + CP; Mirizi al 30/09). <strong>Semanas de stock</strong>: stock ÷ promedio de salidas S27–S36 · &lt;1 riesgo de faltante · &gt;8 sobre-stock.
     </div>
 
     <div class="kpi-grid" style="grid-template-columns:repeat(auto-fit,minmax(160px,1fr))">
@@ -2932,10 +2932,12 @@ const CUMPL_WEEKS = [
   // 02/10: Salidas S40 con "salidas al 021026.xml" — suma el 01/10 (263 u) → 850 u. S27–S39 coinciden al u.
   // No se pudo releer OCT 26 (Chrome sin permiso sobre docs.google.com en esta corrida): Pedido/Entregado
   // sin cambios.
+  // 05/10: Salidas S40 con "salidas al 051026.xml" — suma el 02/10 (279 u) → 1.129 u. S27–S39 coinciden al u.
+  // OCT 26 sigue sin releerse (Chrome sin permiso sobre docs.google.com): Pedido/Entregado sin cambios.
   { label:"S40", dateRange:"29/09–05/10", isPartial:true,
     pedido:   { "CORTE DE TRUCHA":45, "CUBOS DE TRUCHA":45, "LANGOSTINOS REBOZADOS":230, "PASTA DE HONEY":45, "POLLO TERIYAKI":100, "REDUCCIÓN DE TERIYAKI":100, "SALSA NARANJA Y MIEL":35, "TAMAGO":210, "TIRA DE TRUCHA":90, "VINAGRETA":153 },
     entregado:{ "CORTE DE TRUCHA":0, "CUBOS DE TRUCHA":0, "LANGOSTINOS REBOZADOS":0, "PASTA DE HONEY":0, "POLLO TERIYAKI":0, "REDUCCIÓN DE TERIYAKI":0, "SALSA NARANJA Y MIEL":0, "TAMAGO":0, "TIRA DE TRUCHA":0, "VINAGRETA":0 },
-    salidas:  { "CORTE DE TRUCHA":38, "CUBOS DE TRUCHA":41, "LANGOSTINOS REBOZADOS":143, "PASTA DE HONEY":37, "POLLO TERIYAKI":84, "REDUCCIÓN DE TERIYAKI":140, "SALSA NARANJA Y MIEL":32, "TAMAGO":135, "TIRA DE TRUCHA":71, "VINAGRETA":129 } }
+    salidas:  { "CORTE DE TRUCHA":49, "CUBOS DE TRUCHA":56, "LANGOSTINOS REBOZADOS":183, "PASTA DE HONEY":47, "POLLO TERIYAKI":111, "REDUCCIÓN DE TERIYAKI":193, "SALSA NARANJA Y MIEL":52, "TAMAGO":181, "TIRA DE TRUCHA":94, "VINAGRETA":163 } }
 ];
 const CUMPL_PRODUCTOS = Object.keys(CUMPL_WEEKS[0].pedido);
 
@@ -3067,10 +3069,14 @@ const CUMPL_FRANQUICIAS_MES = {
 // Honey 35, Pollo 22, Reducción 264, Salsa Naranja 10, Tamago 122, Tira 17, Vinagreta 330; CP: Cubos 9, Salsa
 // Naranja 20, Tira 15 — 1 u de Pollo en D4, no se suma. MI: sigue sin "stock externo" más nuevo que el del
 // 30/09, se mantiene. Script validado contra "stock al 011026.xml" (reproduce la carga anterior).
+// 05/10: reemplazado entero con "stock al 051026.xml" — CD: Corte 119, Cubos 53, Langostinos 70, Pasta
+// Honey 46, Pollo 45, Reducción 241, Salsa Naranja 50, Tamago 76, Tira 9, Vinagreta 313; CP: Langostinos 44,
+// Pasta Honey 3, Pollo 19, Tamago 40, Tira 23 — 1 u de Pollo en D4, no se suma. MI: sigue el del 30/09.
+// Script validado contra "stock al 021026.xml" (reproduce la carga anterior).
 const CUMPL_STOCK = {
-  "CORTE DE TRUCHA":165, "CUBOS DE TRUCHA":183, "LANGOSTINOS REBOZADOS":462, "PASTA DE HONEY":123,
-  "POLLO TERIYAKI":119, "REDUCCIÓN DE TERIYAKI":264, "SALSA NARANJA Y MIEL":30, "TAMAGO":1041,
-  "TIRA DE TRUCHA":32, "VINAGRETA":330
+  "CORTE DE TRUCHA":154, "CUBOS DE TRUCHA":168, "LANGOSTINOS REBOZADOS":466, "PASTA DE HONEY":137,
+  "POLLO TERIYAKI":161, "REDUCCIÓN DE TERIYAKI":241, "SALSA NARANJA Y MIEL":50, "TAMAGO":1035,
+  "TIRA DE TRUCHA":32, "VINAGRETA":313
 };
 
 // Pedido/Entregado MENSUAL por producto, ene–ago 2026 (fuente: "Producción CP", pestañas JULIO 26 y
