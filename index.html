@@ -288,120 +288,89 @@ footer { text-align: center; color: #BBBBBB; font-size: 0.76rem; padding: 20px 0
 <div id="tab-langostino" class="tab-panel">
 <main>
 
+  <!-- 08/10: rearmada a pedido de Debo con todas las jornadas de la planilla "registro de produccion de
+       langostino" (pestañas REBOZADO y LIMPIEZA, leídas con Chrome/gviz). Antes mostraba solo el lote 26/05.
+       % de uso = kg rebozado / (kg entrada + kg mezcla), misma fórmula que la planilla. -->
   <div class="alerta-ok">
-    ✅ <strong>Lote 26052026 registrado.</strong> Producto principal: Langostino Rebozado. Peso promedio por unidad: 0,0103 kg.
+    ✅ <strong>7 jornadas de rebozado registradas (26/05 a 29/09): 8.248 kg de langostino rebozado</strong> (≈1.375 cajas × 6 kg) con 6.760 kg de entrada. Última: 29/09, 1.586 kg, 98,1% de uso. Desde el 21/08 se trabaja con langostino devenado roto (ese día también se rebozó un lote de langostino limpiado en el CP). Próxima jornada en la planilla: 13/10 (todavía sin datos).
   </div>
 
   <div class="kpi-grid">
     <div class="kpi-card">
-      <div class="lbl">Entrada (ENTRADA)</div>
-      <div class="val">1.140 <span style="font-size:.85rem;color:#BBBBBB">kg</span></div>
-      <div class="sub">95 bandejas × 12 kg/bandeja</div>
+      <div class="lbl">Rebozado total</div>
+      <div class="val" style="color:#33A392">8.248 <span style="font-size:.85rem;color:#BBBBBB">kg</span></div>
+      <div class="sub">7 jornadas · ≈1.375 cajas × 6 kg</div>
     </div>
     <div class="kpi-card">
-      <div class="lbl">Langostino Rebozado</div>
-      <div class="val" style="color:#33A392">1.644 <span style="font-size:.85rem;color:#BBBBBB">kg</span></div>
-      <div class="sub">404 band. × 4 kg + 14 band. × 2 kg</div>
+      <div class="lbl">Entrada total</div>
+      <div class="val">6.760 <span style="font-size:.85rem;color:#BBBBBB">kg</span></div>
+      <div class="sub">+ 1.552,5 kg de mezcla</div>
     </div>
     <div class="kpi-card">
-      <div class="lbl">Mezcla</div>
-      <div class="val" style="color:#E3A127">256,5 <span style="font-size:.85rem;color:#BBBBBB">kg</span></div>
-      <div class="sub">95 bandejas × 2,7 kg/bandeja</div>
+      <div class="lbl">% uso general</div>
+      <div class="val" style="color:#1D4856">99,2 <span style="font-size:.85rem;color:#BBBBBB">%</span></div>
+      <div class="sub">rebozado / (entrada + mezcla)</div>
     </div>
     <div class="kpi-card">
-      <div class="lbl">Rendimiento rebozado</div>
-      <div class="val" style="color:#1D4856">144%</div>
-      <div class="sub">1.644 kg producido / 1.140 kg entrada</div>
+      <div class="lbl">Última jornada (29/09)</div>
+      <div class="val">1.586 <span style="font-size:.85rem;color:#BBBBBB">kg</span></div>
+      <div class="sub">98,1% uso · 110 bandejas de entrada</div>
     </div>
     <div class="kpi-card">
-      <div class="lbl">Peso prom. por unidad</div>
-      <div class="val">0,0103 <span style="font-size:.85rem;color:#BBBBBB">kg</span></div>
-      <div class="sub">10,3 g por unidad</div>
+      <div class="lbl">Prom. por jornada (ago–sep)</div>
+      <div class="val" style="color:#E3A127">1.101 <span style="font-size:.85rem;color:#BBBBBB">kg</span></div>
+      <div class="sub">6 jornadas desde el 21/08 · 95,5% uso</div>
     </div>
     <div class="kpi-card">
-      <div class="lbl">Lote</div>
-      <div class="val" style="font-size:1.1rem;color:#221F1F">26/05</div>
-      <div class="sub">#26052026</div>
+      <div class="lbl">Limpieza (20/08)</div>
+      <div class="val">64,5 <span style="font-size:.85rem;color:#BBBBBB">%</span></div>
+      <div class="sub">480 kg con cola → 309,7 kg limpio</div>
     </div>
   </div>
 
   <div class="card">
-    <h2>🦐 Distribución de producción — Lote 26052026</h2>
+    <h2>📊 Producción por jornada — entrada + mezcla vs. rebozado</h2>
     <div class="chart-wrap"><canvas id="chartLangostino"></canvas></div>
   </div>
 
   <div class="card">
-    <h2>📋 Detalle de producción por producto</h2>
+    <h2>📋 Detalle por jornada (pestaña REBOZADO)</h2>
+    <div class="table-wrap"><table id="tablaLangostino"></table></div>
+    <div style="font-size:0.75rem;color:#BBBBBB;margin-top:10px;">Bandejas de rebozado: 4 kg y 2 kg. La entrada pasó de bandejas de 10 kg a 12 kg desde el 07/09. El 26/05 no tiene el % de uso calculado en la planilla — acá se calcula con la misma fórmula. Las jornadas del 03/08, 10/08, 14/08 y 17/08 figuran sin datos (el 03/08 dice "se limpiaron langostino con cola"); 13/10 está creada sin datos.</div>
+  </div>
+
+  <div class="card">
+    <h2>🧽 Limpieza de langostino con cola (pestaña LIMPIEZA)</h2>
     <div class="table-wrap">
       <table>
-        <thead>
-          <tr>
-            <th>Producto</th>
-            <th>Bandejas</th>
-            <th>kg / bandeja</th>
-            <th>kg total</th>
-            <th>Estado</th>
-          </tr>
-        </thead>
+        <thead><tr><th>Fecha</th><th>Entrada</th><th>Langostino limpio</th><th>% de uso</th><th>Obs.</th></tr></thead>
         <tbody>
-          <tr class="row-entrada">
-            <td>⬆️ ENTRADA (materia prima)</td>
-            <td>95</td>
-            <td>12,00</td>
-            <td><strong>1.140,00</strong></td>
-            <td><span class="pill pill-ok">Registrado</span></td>
-          </tr>
-          <tr>
-            <td><span class="dot" style="background:#f6ad55"></span>Mezcla</td>
-            <td>95</td>
-            <td>2,70</td>
-            <td>256,50</td>
-            <td><span class="pill pill-ok">Registrado</span></td>
-          </tr>
-          <tr>
-            <td><span class="dot" style="background:#4299e1"></span>Langostino Rebozado (grande)</td>
-            <td>404</td>
-            <td>4,00</td>
-            <td>1.616,00</td>
-            <td><span class="pill pill-ok">Registrado</span></td>
-          </tr>
-          <tr>
-            <td><span class="dot" style="background:#76e4f7"></span>Langostino Rebozado (chico)</td>
-            <td>14</td>
-            <td>2,00</td>
-            <td>28,00</td>
-            <td><span class="pill pill-ok">Registrado</span></td>
-          </tr>
-          <tr class="row-total">
-            <td>TOTAL PRODUCIDO</td>
-            <td>513</td>
-            <td>—</td>
-            <td>1.900,50</td>
-            <td>—</td>
-          </tr>
+          <tr><td>20/08</td><td>480 kg<br><span style="font-size:0.75em;color:#999">40 band. × 12 kg</span></td><td>309,7 kg</td><td>64,5%</td><td>—</td></tr>
+          <tr><td>07/09</td><td>72 kg<br><span style="font-size:0.75em;color:#999">6 band. × 12 kg</span></td><td class="cero">sin cargar</td><td class="cero">—</td><td>de 14 a 17:30 hs</td></tr>
         </tbody>
       </table>
     </div>
+    <div style="font-size:0.75rem;color:#BBBBBB;margin-top:10px;">El 07/09 tiene la entrada cargada pero no el kg limpio; el 29/09 figura sin datos.</div>
   </div>
 
   <div class="card" style="border-left:4px solid #E3A127;background:white;">
     <h2 style="color:#E3A127;margin-bottom:16px;">❓ Preguntas de la semana — Langostino</h2>
     <div style="display:flex;flex-direction:column;gap:10px;">
       <div style="display:flex;gap:12px;align-items:flex-start;padding:10px 12px;background:#fffbeb;border-radius:8px;">
-        <span style="font-size:1rem;flex-shrink:0">📆</span>
-        <div><div style="font-size:0.85rem;font-weight:700;color:#221F1F;">¿Con qué frecuencia se procesa langostino?</div><div style="font-size:0.78rem;color:#999999;margin-top:2px;">Solo hay un lote registrado. ¿Es producción bajo pedido, semanal o mensual? ¿Hay cronograma?</div></div>
+        <span style="font-size:1rem;flex-shrink:0">📉</span>
+        <div><div style="font-size:0.85rem;font-weight:700;color:#221F1F;">¿Por qué el 25/08 rindió solo 84,7%?</div><div style="font-size:0.78rem;color:#999999;margin-top:2px;">Es la jornada más baja: 100 bandejas de entrada pero mezcla cargada para 80. El resto de las jornadas con devenado roto estuvo entre 94% y 100%.</div></div>
       </div>
       <div style="display:flex;gap:12px;align-items:flex-start;padding:10px 12px;background:#fffbeb;border-radius:8px;">
-        <span style="font-size:1rem;flex-shrink:0">⚖️</span>
-        <div><div style="font-size:0.85rem;font-weight:700;color:#221F1F;">¿El rendimiento del rebozado está dentro de lo esperado?</div><div style="font-size:0.78rem;color:#999999;margin-top:2px;">El producto sale más pesado que la entrada (por el rebozado). ¿Hay un % de absorción teórico para comparar?</div></div>
+        <span style="font-size:1rem;flex-shrink:0">🏷️</span>
+        <div><div style="font-size:0.85rem;font-weight:700;color:#221F1F;">Lote repetido en la planilla</div><div style="font-size:0.78rem;color:#999999;margin-top:2px;">Las jornadas del 07/09 y 12/09 tienen cargado el lote 25082026 (el del 25/08). ¿Es la misma materia prima o quedó copiado? Afecta la trazabilidad.</div></div>
+      </div>
+      <div style="display:flex;gap:12px;align-items:flex-start;padding:10px 12px;background:#fffbeb;border-radius:8px;">
+        <span style="font-size:1rem;flex-shrink:0">🧽</span>
+        <div><div style="font-size:0.85rem;font-weight:700;color:#221F1F;">¿Conviene limpiar en el CP o usar devenado roto?</div><div style="font-size:0.78rem;color:#999999;margin-top:2px;">La limpieza del 20/08 aprovechó 64,5% (480 → 309,7 kg). El rebozado con ese langostino limpiado dio 101,6% de uso vs 95,4% del devenado roto del mismo día.</div></div>
       </div>
       <div style="display:flex;gap:12px;align-items:flex-start;padding:10px 12px;background:#fffbeb;border-radius:8px;">
         <span style="font-size:1rem;flex-shrink:0">❄️</span>
         <div><div style="font-size:0.85rem;font-weight:700;color:#221F1F;">¿Se controló la temperatura durante el descongelado de 24 hs?</div><div style="font-size:0.78rem;color:#999999;margin-top:2px;">El descongelado a temperatura ambiente es un punto crítico de inocuidad. ¿Queda registrado?</div></div>
-      </div>
-      <div style="display:flex;gap:12px;align-items:flex-start;padding:10px 12px;background:#fffbeb;border-radius:8px;">
-        <span style="font-size:1rem;flex-shrink:0">📋</span>
-        <div><div style="font-size:0.85rem;font-weight:700;color:#221F1F;">¿Las cantidades de la receta de rebozado están documentadas?</div><div style="font-size:0.78rem;color:#999999;margin-top:2px;">En TOTVS solo figura pimienta con cantidad. Pan rallado, batter, harina y mostaza figuran "según proceso". ¿Hay registro?</div></div>
       </div>
     </div>
   </div>
@@ -2368,15 +2337,46 @@ function initCalculadora() {
   calcular();
 }
 
+// 08/10: todas las jornadas de la pestaña REBOZADO de "registro de produccion de langostino" (gviz, Chrome).
+// Entrada y mezcla = bandejas × kg/bandeja; rebozado = bandejas de 4 kg + bandejas de 2 kg.
+const LANG_JORNADAS = [
+  { fecha:"26/05", lote:"26052026", tipo:"—",             entBand:95,  entKgB:12, mezBand:95,  b4:404, b2:14 },
+  { fecha:"21/08", lote:"21082026", tipo:"Limpiado",      entBand:40,  entKgB:10, mezBand:40,  b4:127, b2:4 },
+  { fecha:"21/08", lote:"21082026", tipo:"Devenado roto", entBand:50,  entKgB:10, mezBand:50,  b4:149, b2:5 },
+  { fecha:"25/08", lote:"25082026", tipo:"Devenado roto", entBand:100, entKgB:10, mezBand:80,  b4:253, b2:9 },
+  { fecha:"07/09", lote:"25082026", tipo:"Devenado roto", entBand:92,  entKgB:12, mezBand:92,  b4:313, b2:10 },
+  { fecha:"12/09", lote:"25082026", tipo:"Devenado roto", entBand:108, entKgB:12, mezBand:108, b4:392, b2:13 },
+  { fecha:"29/09", lote:"29092026", tipo:"Devenado roto", entBand:110, entKgB:12, mezBand:110, b4:390, b2:13 }
+];
+const LANG_MEZCLA_KG_BAND = 2.7;
+function langCalc(j) {
+  const ent = j.entBand*j.entKgB, mez = j.mezBand*LANG_MEZCLA_KG_BAND, reb = j.b4*4 + j.b2*2;
+  return { ent, mez, reb, uso: reb/(ent+mez)*100 };
+}
 function initLangostino() {
+  const fmt = (v,d=1) => v.toLocaleString("es-AR",{minimumFractionDigits:d,maximumFractionDigits:d});
+  const labels = LANG_JORNADAS.map(j => j.fecha + (j.fecha==="21/08" ? (j.tipo==="Limpiado" ? " (limpiado)" : " (roto)") : ""));
+  const calc = LANG_JORNADAS.map(langCalc);
   new Chart(document.getElementById("chartLangostino").getContext("2d"), {
-    type:"doughnut",
-    data:{
-      labels:["Langostino Rebozado grande","Langostino Rebozado chico","Mezcla"],
-      datasets:[{ data:[1616,28,256.5], backgroundColor:["#4299e1","#76e4f7","#f6ad55"], borderWidth:2 }]
-    },
-    options:{ responsive:true, maintainAspectRatio:false, plugins:{ legend:{position:"bottom",labels:{usePointStyle:true,padding:16}}, tooltip:{callbacks:{label:ctx=>" "+ctx.label+": "+ctx.parsed.toFixed(1)+" kg"}} } }
+    type:"bar",
+    data:{ labels, datasets:[
+      { label:"Entrada", data:calc.map(x=>x.ent), backgroundColor:"#BBBBBB", borderRadius:6, stack:"in" },
+      { label:"Mezcla", data:calc.map(x=>x.mez), backgroundColor:"#f6ad55", borderRadius:6, stack:"in" },
+      { label:"Rebozado", data:calc.map(x=>x.reb), backgroundColor:"#33A392", borderRadius:6, stack:"out" }
+    ] },
+    options:{ responsive:true, maintainAspectRatio:false, plugins:{ legend:{position:"bottom",labels:{usePointStyle:true,padding:14,font:{size:11}}}, tooltip:{ callbacks:{
+      label:ctx=>" "+ctx.dataset.label+": "+fmt(ctx.parsed.y)+" kg",
+      afterBody:ctx=>"% de uso: "+fmt(calc[ctx[0].dataIndex].uso)+"%"
+    } } }, scales:{ x:{stacked:true,grid:{display:false}}, y:{stacked:true,beginAtZero:true,grid:{color:"#edf2f7"},ticks:{callback:v=>v+" kg"}} } }
   });
+  let h = "<thead><tr><th>Fecha</th><th>Lote</th><th>Materia prima</th><th>Entrada</th><th>Mezcla</th><th>Rebozado</th><th>% uso</th></tr></thead><tbody>";
+  const T = {ent:0,mez:0,reb:0,b4:0,b2:0};
+  LANG_JORNADAS.forEach((j,i)=>{ const x=calc[i];
+    T.ent+=x.ent; T.mez+=x.mez; T.reb+=x.reb; T.b4+=j.b4; T.b2+=j.b2;
+    h += `<tr><td>${j.fecha}</td><td>${j.lote}</td><td>${j.tipo}</td><td>${fmt(x.ent,0)} kg<br><span style="font-size:0.75em;color:#999">${j.entBand} band. × ${j.entKgB} kg</span></td><td>${fmt(x.mez)} kg</td><td><strong>${fmt(x.reb,0)} kg</strong><br><span style="font-size:0.75em;color:#999">${j.b4} band. 4 kg + ${j.b2} band. 2 kg</span></td><td>${fmt(x.uso)}%</td></tr>`;
+  });
+  h += `<tr class="row-total"><td>TOTAL</td><td>—</td><td>—</td><td>${fmt(T.ent,0)} kg</td><td>${fmt(T.mez)} kg</td><td>${fmt(T.reb,0)} kg<br><span style="font-size:0.75em">${T.b4} + ${T.b2} band.</span></td><td>${fmt(T.reb/(T.ent+T.mez)*100)}%</td></tr></tbody>`;
+  document.getElementById("tablaLangostino").innerHTML = h;
 }
 
 // ══════════════════════════ COCINA CALIENTE ══════════════════════════
