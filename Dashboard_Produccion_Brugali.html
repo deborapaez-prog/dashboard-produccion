@@ -1754,8 +1754,8 @@ footer { text-align: center; color: #BBBBBB; font-size: 0.76rem; padding: 20px 0
           <option value="10">S37 — 08–14/09</option>
           <option value="11">S38 — 15–22/09</option>
           <option value="12">S39 — 23–28/09 (abierta)</option>
-          <option value="13">S40 — 29/09–05/10 (abierta)</option>
-          <option value="14" selected>S41 — 06–12/10 (en curso)</option>
+          <option value="13">S40 — 29/09–06/10 (abierta)</option>
+          <option value="14" selected>S41 — 07–13/10 (en curso)</option>
         </select>
       </h2>
       <div class="chart-wrap" style="height:320px"><canvas id="chartCumplSemanal"></canvas></div>
@@ -2976,16 +2976,19 @@ const CUMPL_WEEKS = [
   // Salidas S41 con "salidas al 071026.xml": solo 06/10 (217 u).
   // 08/10: Salidas S41 con "salidas al 081026.xml" — suma el 07/10 (154 u) → 371 u. S40 coincide al u (1.391).
   // OCT 26 releída (gviz, Chrome): Entregado sin cambios (S40 796 u, S41 vacío). El sheet bajó el pedido de
-  // Langostinos de S40 230→98 y lo pasó a S41 (0→132), y renombró la columna a "7/10 AL 13/10" — NO se
-  // aplica (regla: no bajar números ya cargados); pendiente que Debo confirme.
-  { label:"S40", dateRange:"29/09–05/10", isPartial:true,
-    pedido:   { "CORTE DE TRUCHA":45, "CUBOS DE TRUCHA":45, "LANGOSTINOS REBOZADOS":230, "PASTA DE HONEY":45, "POLLO TERIYAKI":100, "REDUCCIÓN DE TERIYAKI":100, "SALSA NARANJA Y MIEL":35, "TAMAGO":210, "TIRA DE TRUCHA":90, "VINAGRETA":153 },
+  // Langostinos de S40 230→98 y lo pasó a S41 (0→132), y renombró la columna a "7/10 AL 13/10".
+  // 08/10 (2da pasada, Debo confirmó "actualizar como está la planilla"): se aplica — S40 Langostinos
+  // pedido 98 (S40 1.053→921 u, entregado 796 = 86,4%), S41 Langostinos pedido 132 (868→1.000 u). Límites
+  // de semana como el sheet: S40 = 29/09–06/10 ("29 AL 6/10"), S41 = 07–13/10 → las salidas del 06/10
+  // (217 u) pasan de S41 a S40 (1.391→1.608 u) y S41 queda solo con el 07/10 (154 u).
+  { label:"S40", dateRange:"29/09–06/10", isPartial:true,
+    pedido:   { "CORTE DE TRUCHA":45, "CUBOS DE TRUCHA":45, "LANGOSTINOS REBOZADOS":98, "PASTA DE HONEY":45, "POLLO TERIYAKI":100, "REDUCCIÓN DE TERIYAKI":100, "SALSA NARANJA Y MIEL":35, "TAMAGO":210, "TIRA DE TRUCHA":90, "VINAGRETA":153 },
     entregado:{ "CORTE DE TRUCHA":45, "CUBOS DE TRUCHA":45, "LANGOSTINOS REBOZADOS":98, "PASTA DE HONEY":40, "POLLO TERIYAKI":58, "REDUCCIÓN DE TERIYAKI":100, "SALSA NARANJA Y MIEL":35, "TAMAGO":150, "TIRA DE TRUCHA":72, "VINAGRETA":153 },
-    salidas:  { "CORTE DE TRUCHA":58, "CUBOS DE TRUCHA":68, "LANGOSTINOS REBOZADOS":226, "PASTA DE HONEY":60, "POLLO TERIYAKI":141, "REDUCCIÓN DE TERIYAKI":255, "SALSA NARANJA Y MIEL":64, "TAMAGO":204, "TIRA DE TRUCHA":112, "VINAGRETA":203 } },
-  { label:"S41", dateRange:"06–12/10", isPartial:true,
-    pedido:   { "CORTE DE TRUCHA":45, "CUBOS DE TRUCHA":45, "LANGOSTINOS REBOZADOS":0, "PASTA DE HONEY":30, "POLLO TERIYAKI":140, "REDUCCIÓN DE TERIYAKI":100, "SALSA NARANJA Y MIEL":35, "TAMAGO":210, "TIRA DE TRUCHA":110, "VINAGRETA":153 },
+    salidas:  { "CORTE DE TRUCHA":71, "CUBOS DE TRUCHA":74, "LANGOSTINOS REBOZADOS":262, "PASTA DE HONEY":70, "POLLO TERIYAKI":157, "REDUCCIÓN DE TERIYAKI":295, "SALSA NARANJA Y MIEL":67, "TAMAGO":246, "TIRA DE TRUCHA":131, "VINAGRETA":235 } },
+  { label:"S41", dateRange:"07–13/10", isPartial:true,
+    pedido:   { "CORTE DE TRUCHA":45, "CUBOS DE TRUCHA":45, "LANGOSTINOS REBOZADOS":132, "PASTA DE HONEY":30, "POLLO TERIYAKI":140, "REDUCCIÓN DE TERIYAKI":100, "SALSA NARANJA Y MIEL":35, "TAMAGO":210, "TIRA DE TRUCHA":110, "VINAGRETA":153 },
     entregado:{ "CORTE DE TRUCHA":0, "CUBOS DE TRUCHA":0, "LANGOSTINOS REBOZADOS":0, "PASTA DE HONEY":0, "POLLO TERIYAKI":0, "REDUCCIÓN DE TERIYAKI":0, "SALSA NARANJA Y MIEL":0, "TAMAGO":0, "TIRA DE TRUCHA":0, "VINAGRETA":0 },
-    salidas:  { "CORTE DE TRUCHA":22, "CUBOS DE TRUCHA":10, "LANGOSTINOS REBOZADOS":60, "PASTA DE HONEY":14, "POLLO TERIYAKI":30, "REDUCCIÓN DE TERIYAKI":68, "SALSA NARANJA Y MIEL":5, "TAMAGO":75, "TIRA DE TRUCHA":31, "VINAGRETA":56 } }
+    salidas:  { "CORTE DE TRUCHA":9, "CUBOS DE TRUCHA":4, "LANGOSTINOS REBOZADOS":24, "PASTA DE HONEY":4, "POLLO TERIYAKI":14, "REDUCCIÓN DE TERIYAKI":28, "SALSA NARANJA Y MIEL":2, "TAMAGO":33, "TIRA DE TRUCHA":12, "VINAGRETA":24 } }
 ];
 const CUMPL_PRODUCTOS = Object.keys(CUMPL_WEEKS[0].pedido);
 
