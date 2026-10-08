@@ -414,39 +414,39 @@ footer { text-align: center; color: #BBBBBB; font-size: 0.76rem; padding: 20px 0
 <main>
 
   <div class="alerta-ok">
-    ✅ <strong>Período registrado: 08/06 – 03/10/2026.</strong> 5 productos activos. Reducción de Teriyaki con mayor volumen producido (2.568 u). Vinagreta: 90,2% envasada. 25/09 (Salsa Naranja) y 05 a 07/10 tienen producida pero falta completar envasada — se cargan cuando cierre.
+    ✅ <strong>Período registrado: 08/06 – 05/10/2026.</strong> 5 productos activos. Reducción de Teriyaki con mayor volumen producido (2.568 u). Vinagreta: 90,4% envasada. 25/09 (Salsa Naranja) y 06–07/10 tienen producida pero falta completar envasada — se cargan cuando cierre.
   </div>
 
   <div class="kpi-grid">
     <div class="kpi-card">
       <div class="lbl">Reducción Teriyaki</div>
-      <div class="val" style="color:#EF402F">2.326 <span style="font-size:.85rem;color:#BBBBBB">u</span></div>
-      <div class="sub">1.466 envasadas · 63,0% envasado</div>
+      <div class="val" style="color:#EF402F">2.568 <span style="font-size:.85rem;color:#BBBBBB">u</span></div>
+      <div class="sub">1.804 envasadas · 70,2% envasado</div>
     </div>
     <div class="kpi-card">
       <div class="lbl">Vinagreta 20L</div>
-      <div class="val" style="color:#33A392">1.681 <span style="font-size:.85rem;color:#BBBBBB">u</span></div>
-      <div class="sub">1.399 envasadas · 83,2% envasado</div>
+      <div class="val" style="color:#33A392">1.962 <span style="font-size:.85rem;color:#BBBBBB">u</span></div>
+      <div class="sub">1.774 envasadas · 90,4% envasado</div>
     </div>
     <div class="kpi-card">
       <div class="lbl">Salsa Naranja y Miel</div>
-      <div class="val" style="color:#E3A127">427 <span style="font-size:.85rem;color:#BBBBBB">u</span></div>
-      <div class="sub">228 envasadas · 53,4% envasado</div>
+      <div class="val" style="color:#E3A127">569 <span style="font-size:.85rem;color:#BBBBBB">u</span></div>
+      <div class="sub">381 envasadas · 67,0% envasado</div>
     </div>
     <div class="kpi-card">
       <div class="lbl">Pollo Teriyaki</div>
-      <div class="val" style="color:#1D4856">1.017 <span style="font-size:.85rem;color:#BBBBBB">caj</span></div>
-      <div class="sub">346 envasadas · 34,0% envasado</div>
+      <div class="val" style="color:#1D4856">1.130 <span style="font-size:.85rem;color:#BBBBBB">caj</span></div>
+      <div class="sub">505 envasadas · 44,7% envasado</div>
     </div>
     <div class="kpi-card">
       <div class="lbl">Pasta Honey</div>
-      <div class="val" style="color:#33A392">655 <span style="font-size:.85rem;color:#BBBBBB">caj</span></div>
-      <div class="sub">178 envasadas · 27,2% envasado</div>
+      <div class="val" style="color:#33A392">700,5 <span style="font-size:.85rem;color:#BBBBBB">caj</span></div>
+      <div class="sub">253 envasadas · 36,1% envasado</div>
     </div>
     <div class="kpi-card">
       <div class="lbl">Días registrados</div>
-      <div class="val" style="color:#221F1F">81</div>
-      <div class="sub">08-jun al 18-sep</div>
+      <div class="val" style="color:#221F1F">91</div>
+      <div class="sub">08-jun al 05-oct</div>
     </div>
   </div>
 
@@ -473,7 +473,10 @@ footer { text-align: center; color: #BBBBBB; font-size: 0.76rem; padding: 20px 0
         <option value="11">S35 — 24–29 ago</option>
         <option value="12">S36 — 31 ago–05 sep</option>
         <option value="13">S37 — 07–12 sep</option>
-        <option value="14" selected>S38 — 14–19 sep</option>
+        <option value="14">S38 — 14–19 sep</option>
+        <option value="15">S39 — 21–26 sep</option>
+        <option value="16">S40 — 28 sep–03 oct</option>
+        <option value="17" selected>S41 — 05–10 oct (en curso)</option>
       </select>
     </h2>
     <div class="chart-wrap"><canvas id="chartCocinaDiario"></canvas></div>
@@ -503,7 +506,10 @@ footer { text-align: center; color: #BBBBBB; font-size: 0.76rem; padding: 20px 0
         <option value="11">S35 — 24–29 ago</option>
         <option value="12">S36 — 31 ago–05 sep</option>
         <option value="13">S37 — 07–12 sep</option>
-        <option value="14" selected>S38 — 14–19 sep</option>
+        <option value="14">S38 — 14–19 sep</option>
+        <option value="15">S39 — 21–26 sep</option>
+        <option value="16">S40 — 28 sep–03 oct</option>
+        <option value="17" selected>S41 — 05–10 oct (en curso)</option>
       </select>
     </h2>
     <div class="table-wrap">
@@ -2402,7 +2408,9 @@ function initLangostino() {
 // 34, Pasta Honey 8 · 02-10 Salsa Naranja 30, Vinagreta 51, Pollo 9 · 03-10 Reducción 48, Salsa Naranja
 // 12, Vinagreta 26). 25-09 sigue sin cargar (Salsa Naranja 14 sin envasada). 05 a 07-10 tienen producida
 // pero envasada vacía — se cargan cuando se complete. CC_TOTALES recalculado como suma de los arrays.
-const CC_FECHAS = ["08-06","09-06","10-06","11-06","12-06","15-06","16-06","17-06","18-06","19-06","22-06","23-06","24-06","25-06","26-06","29-06","30-06","01-07","02-07","03-07","04-07","06-07","07-07","08-07","10-07","13-07","14-07","15-07","16-07","17-07","18-07","20-07","21-07","22-07","23-07","24-07","27-07","28-07","29-07","30-07","31-07","01-08","03-08","04-08","05-08","06-08","07-08","08-08","10-08","11-08","12-08","13-08","14-08","15-08","17-08","18-08","19-08","20-08","21-08","24-08","25-08","26-08","27-08","28-08","29-08","31-08","01-09","02-09","03-09","04-09","05-09","07-09","08-09","09-09","11-09","12-09","14-09","15-09","16-09","17-09","18-09","23-09","24-09","26-09","28-09","29-09","30-09","01-10","02-10","03-10"];
+// 08/10 (tarde, a pedido de Debo): releído (gviz) — el sheet completó envasada de Vinagreta del 05-10
+// (51/51, único producto ese día) → se agrega 05-10. 06 y 07-10 siguen con envasada vacía.
+const CC_FECHAS = ["08-06","09-06","10-06","11-06","12-06","15-06","16-06","17-06","18-06","19-06","22-06","23-06","24-06","25-06","26-06","29-06","30-06","01-07","02-07","03-07","04-07","06-07","07-07","08-07","10-07","13-07","14-07","15-07","16-07","17-07","18-07","20-07","21-07","22-07","23-07","24-07","27-07","28-07","29-07","30-07","31-07","01-08","03-08","04-08","05-08","06-08","07-08","08-08","10-08","11-08","12-08","13-08","14-08","15-08","17-08","18-08","19-08","20-08","21-08","24-08","25-08","26-08","27-08","28-08","29-08","31-08","01-09","02-09","03-09","04-09","05-09","07-09","08-09","09-09","11-09","12-09","14-09","15-09","16-09","17-09","18-09","23-09","24-09","26-09","28-09","29-09","30-09","01-10","02-10","03-10","05-10"];
 // 23/09: se agregan 17-09 y 18-09, ambas con producida y envasada completas (columna "se cerró" = OK
 // en el sheet) — Teriyaki 500cc 36/36 ambos días, Pollo Teriyaki 42/42 ambos días, resto sin producción
 // esos días. 19-09 (sábado) sigue sin fila en el sheet.
@@ -2480,11 +2488,11 @@ const CC_FECHAS = ["08-06","09-06","10-06","11-06","12-06","15-06","16-06","17-0
 // 19-09 (sábado) sigue sin fila en el sheet, ni siquiera vacía; se trata como confirmado sin producción
 // (mismo criterio que Trucha para ese mismo sábado). Nada nuevo para 20, 21 o 22/09.
 const CC_DATA = {
-  "Teriyaki 500cc": { color:"#EF402F", prod:[22,36,28,42,36,36,30,36,36,36,0,30,24,36,50,32,36,41,37,0,12,36,0,24,24,36,24,51,24,36,12,12,25,40,60,0,79,36,24,24,0,36,48,24,48,24,39,0,41,40,39,36,37,0,36,33,36,24,36,30,37,39,24,0,12,24,23,35,29,28,24,44,0,0,42,0,29,28,36,36,36,24,36,25,36,38,25,0,0,48], env:[22,36,28,42,36,36,30,0,36,0,0,0,24,36,50,0,36,41,0,0,0,34,0,0,24,36,24,0,0,0,12,0,0,0,0,0,79,36,0,0,0,0,48,0,48,24,39,0,41,0,39,36,37,0,36,33,36,24,36,30,37,0,0,0,12,24,23,35,29,0,0,0,0,0,42,0,29,28,36,36,36,24,36,25,36,38,25,0,0,48] },
-  "Salsa Naranja": { color:"#E3A127", prod:[12,0,14,0,12,12,0,0,12,12,0,26,24,0,0,24,0,0,12,0,36,15,0,24,24,0,12,0,12,0,0,0,0,0,0,0,12,0,30,12,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,12,0,0,0,0,0,0,16,0,0,0,0,30,0,0,0,0,0,0,20,16,0,0,0,22,14,0,0,0,24,36,30,12], env:[12,0,14,0,12,12,0,0,0,12,0,26,24,0,0,0,0,0,0,0,0,14,0,0,24,0,12,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,16,0,0,0,0,30,0,0,0,0,0,0,20,16,0,0,0,22,13,0,0,0,24,36,30,12] },
-  "Vinagreta 20L": { color:"#33A392", prod:[51,51,51,0,0,51,43,0,0,51,34,51,0,0,51,51,51,51,0,0,0,51,42,0,0,51,43,0,0,0,0,0,0,0,0,0,0,0,0,0,33,0,34,0,0,0,51,0,51,51,0,0,42,0,8,51,34,0,51,50,51,0,0,0,0,51,51,0,0,51,0,51,51,52,0,0,51,42,0,0,0,0,0,51,51,51,0,0,51,26], env:[51,51,51,0,0,51,43,0,0,51,34,51,0,0,51,51,51,51,0,0,0,51,0,0,0,51,0,0,0,0,0,0,0,0,0,0,0,0,0,0,33,0,34,0,0,0,51,0,51,51,0,0,42,0,8,51,34,0,51,50,51,0,0,0,0,51,51,0,0,50,0,0,0,52,0,0,51,42,0,0,0,0,0,51,51,51,0,0,51,26] },
-  "Pollo Teriyaki": { color:"#1D4856", prod:[0,12,6,38,34,0,6,41,35,0,0,6,30,29,0,0,5,0,19,12,0,0,12,42,4,0,6,0,42,14,10,10,6,6,0,13,0,0,37,0,0,0,0,5,30,37,6,0,7,5,31,36,12,0,0,0,11,12,12,9,6,21,20,16,0,9,9,35,35,9,0,0,0,28,28,0,11,6,40,42,42,0,29,0,0,5,8,34,9,0], env:[0,12,6,0,0,0,0,0,35,0,0,0,30,0,0,0,5,0,0,12,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,30,0,0,0,0,0,31,36,12,0,0,0,11,12,12,9,0,0,0,0,0,9,0,0,0,0,0,0,0,0,28,0,0,6,40,42,42,0,29,0,0,5,8,34,9,0] },
-  "Pasta Honey": { color:"#F58232", prod:[7.5,4.5,8,2.5,4,0,7,0,7,11,3,9.5,3,8.5,8,9,0,16,0,19.5,11.5,11,0,5.5,22.5,12,6.5,17,8,1,0,0,22,14,14.5,10,20.5,16.5,1.5,8,23,11.5,10.5,3.5,10.5,8,6,15.5,9,6.5,6.5,4,0,18,19.5,9,4,6,0,8.5,5,5.5,11,20.5,12,0,6,5.5,6.5,0,16,12,4,0,2,21,3,11.5,3,0,0,0,0,10,15,7,6.5,8,0,0], env:[8,4,0,0,0,0,0,0,7,11,3,0,3,0,0,0,0,0,0,20,0,0,0,0,0,12,6,0,0,0,0,0,0,0,0,0,20.5,0,0,0,0,0,0,0,0,0,0,0,0,0,6.5,0,0,18,19.5,9,4,6,0,8.5,0,0,0,0,12,0,0,0,0,0,0,0,0,0,2,12,0,11.5,3,0,0,0,0,10,15,7,6.5,8,0,0] }
+  "Teriyaki 500cc": { color:"#EF402F", prod:[22,36,28,42,36,36,30,36,36,36,0,30,24,36,50,32,36,41,37,0,12,36,0,24,24,36,24,51,24,36,12,12,25,40,60,0,79,36,24,24,0,36,48,24,48,24,39,0,41,40,39,36,37,0,36,33,36,24,36,30,37,39,24,0,12,24,23,35,29,28,24,44,0,0,42,0,29,28,36,36,36,24,36,25,36,38,25,0,0,48,0], env:[22,36,28,42,36,36,30,0,36,0,0,0,24,36,50,0,36,41,0,0,0,34,0,0,24,36,24,0,0,0,12,0,0,0,0,0,79,36,0,0,0,0,48,0,48,24,39,0,41,0,39,36,37,0,36,33,36,24,36,30,37,0,0,0,12,24,23,35,29,0,0,0,0,0,42,0,29,28,36,36,36,24,36,25,36,38,25,0,0,48,0] },
+  "Salsa Naranja": { color:"#E3A127", prod:[12,0,14,0,12,12,0,0,12,12,0,26,24,0,0,24,0,0,12,0,36,15,0,24,24,0,12,0,12,0,0,0,0,0,0,0,12,0,30,12,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,12,0,0,0,0,0,0,16,0,0,0,0,30,0,0,0,0,0,0,20,16,0,0,0,22,14,0,0,0,24,36,30,12,0], env:[12,0,14,0,12,12,0,0,0,12,0,26,24,0,0,0,0,0,0,0,0,14,0,0,24,0,12,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,16,0,0,0,0,30,0,0,0,0,0,0,20,16,0,0,0,22,13,0,0,0,24,36,30,12,0] },
+  "Vinagreta 20L": { color:"#33A392", prod:[51,51,51,0,0,51,43,0,0,51,34,51,0,0,51,51,51,51,0,0,0,51,42,0,0,51,43,0,0,0,0,0,0,0,0,0,0,0,0,0,33,0,34,0,0,0,51,0,51,51,0,0,42,0,8,51,34,0,51,50,51,0,0,0,0,51,51,0,0,51,0,51,51,52,0,0,51,42,0,0,0,0,0,51,51,51,0,0,51,26,51], env:[51,51,51,0,0,51,43,0,0,51,34,51,0,0,51,51,51,51,0,0,0,51,0,0,0,51,0,0,0,0,0,0,0,0,0,0,0,0,0,0,33,0,34,0,0,0,51,0,51,51,0,0,42,0,8,51,34,0,51,50,51,0,0,0,0,51,51,0,0,50,0,0,0,52,0,0,51,42,0,0,0,0,0,51,51,51,0,0,51,26,51] },
+  "Pollo Teriyaki": { color:"#1D4856", prod:[0,12,6,38,34,0,6,41,35,0,0,6,30,29,0,0,5,0,19,12,0,0,12,42,4,0,6,0,42,14,10,10,6,6,0,13,0,0,37,0,0,0,0,5,30,37,6,0,7,5,31,36,12,0,0,0,11,12,12,9,6,21,20,16,0,9,9,35,35,9,0,0,0,28,28,0,11,6,40,42,42,0,29,0,0,5,8,34,9,0,0], env:[0,12,6,0,0,0,0,0,35,0,0,0,30,0,0,0,5,0,0,12,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,30,0,0,0,0,0,31,36,12,0,0,0,11,12,12,9,0,0,0,0,0,9,0,0,0,0,0,0,0,0,28,0,0,6,40,42,42,0,29,0,0,5,8,34,9,0,0] },
+  "Pasta Honey": { color:"#F58232", prod:[7.5,4.5,8,2.5,4,0,7,0,7,11,3,9.5,3,8.5,8,9,0,16,0,19.5,11.5,11,0,5.5,22.5,12,6.5,17,8,1,0,0,22,14,14.5,10,20.5,16.5,1.5,8,23,11.5,10.5,3.5,10.5,8,6,15.5,9,6.5,6.5,4,0,18,19.5,9,4,6,0,8.5,5,5.5,11,20.5,12,0,6,5.5,6.5,0,16,12,4,0,2,21,3,11.5,3,0,0,0,0,10,15,7,6.5,8,0,0,0], env:[8,4,0,0,0,0,0,0,7,11,3,0,3,0,0,0,0,0,0,20,0,0,0,0,0,12,6,0,0,0,0,0,0,0,0,0,20.5,0,0,0,0,0,0,0,0,0,0,0,0,0,6.5,0,0,18,19.5,9,4,6,0,8.5,0,0,0,0,12,0,0,0,0,0,0,0,0,0,2,12,0,11.5,3,0,0,0,0,10,15,7,6.5,8,0,0,0] }
 
 };
 // 09/09: se agrega 08-09 (Vinagreta 51, Pasta Honey 4 — Reducción, Salsa Naranja y Pollo sin
@@ -2495,7 +2503,7 @@ const CC_DATA = {
 // 29/09: se agregan 23-09 y 24-09 (producida y envasada completas) y se recalcula como suma de los arrays.
 const CC_TOTALES = {
   "Teriyaki 500cc": {prod:2568,env:1804}, "Salsa Naranja":{prod:569,env:381},
-  "Vinagreta 20L":{prod:1911,env:1723}, "Pollo Teriyaki":{prod:1130,env:505}, "Pasta Honey":{prod:700.5,env:253}
+  "Vinagreta 20L":{prod:1962,env:1774}, "Pollo Teriyaki":{prod:1130,env:505}, "Pasta Honey":{prod:700.5,env:253}
 };
 
 // Mismas semanas que la pestaña Trucha (S24–S29 — Cocina Caliente no tiene registros previos a S24)
@@ -2597,7 +2605,21 @@ const CC_WEEKS = [
     // 24/09: el sheet completó envasada de 15-09 y 16-09, y corrigió producida de 15-09 (Reducción 24→28,
     // Salsa Naranja 12→16). Pollo y Pasta Honey de 14-09 siguen sin envasada cargada.
     prod:{ "Teriyaki 500cc":[29,28,36,36,36,0], "Salsa Naranja":[20,16,0,0,0,0], "Vinagreta 20L":[51,42,0,0,0,0], "Pollo Teriyaki":[11,6,40,42,42,0], "Pasta Honey":[3,11.5,3,0,0,0] },
-    env:{ "Teriyaki 500cc":[29,28,36,36,36,0], "Salsa Naranja":[20,16,0,0,0,0], "Vinagreta 20L":[51,42,0,0,0,0], "Pollo Teriyaki":[0,6,40,42,42,0], "Pasta Honey":[0,11.5,3,0,0,0] } }
+    env:{ "Teriyaki 500cc":[29,28,36,36,36,0], "Salsa Naranja":[20,16,0,0,0,0], "Vinagreta 20L":[51,42,0,0,0,0], "Pollo Teriyaki":[0,6,40,42,42,0], "Pasta Honey":[0,11.5,3,0,0,0] } },
+  // 08/10 (a pedido de Debo): se agregan S39–S41, mismos datos que CC_DATA. S39: 21 y 22-09 sin producción
+  // ("no se trabajó"); 25-09 queda en 0 porque no está cargado en CC_DATA (Salsa Naranja 14 producida sin
+  // envasada en el sheet — Reducción 24, Pollo 34 y Pasta Honey 1 de ese día tampoco se cuentan).
+  { label:"S39", dateRange:"21–26 sep", isPartial:false,
+    prod:{ "Teriyaki 500cc":[0,0,24,36,0,25], "Salsa Naranja":[0,0,22,14,0,0], "Vinagreta 20L":[0,0,0,0,0,51], "Pollo Teriyaki":[0,0,0,29,0,0], "Pasta Honey":[0,0,0,0,0,10] },
+    env:{ "Teriyaki 500cc":[0,0,24,36,0,25], "Salsa Naranja":[0,0,22,13,0,0], "Vinagreta 20L":[0,0,0,0,0,51], "Pollo Teriyaki":[0,0,0,29,0,0], "Pasta Honey":[0,0,0,0,0,10] } },
+  { label:"S40", dateRange:"28 sep–03 oct", isPartial:false,
+    prod:{ "Teriyaki 500cc":[36,38,25,0,0,48], "Salsa Naranja":[0,0,24,36,30,12], "Vinagreta 20L":[51,51,0,0,51,26], "Pollo Teriyaki":[0,5,8,34,9,0], "Pasta Honey":[15,7,6.5,8,0,0] },
+    env:{ "Teriyaki 500cc":[36,38,25,0,0,48], "Salsa Naranja":[0,0,24,36,30,12], "Vinagreta 20L":[51,51,0,0,51,26], "Pollo Teriyaki":[0,5,8,34,9,0], "Pasta Honey":[15,7,6.5,8,0,0] } },
+  // S41 en curso: solo 05-10 completo. 06-10 (Pasta Honey 13+4, Vinagreta 26) y 07-10 (Reducción 24, Pollo
+  // 35, Pasta Honey 5,5) tienen producida pero envasada vacía — se cargan cuando se complete.
+  { label:"S41", dateRange:"05–10 oct", isPartial:true,
+    prod:{ "Teriyaki 500cc":[0,0,0,0,0,0], "Salsa Naranja":[0,0,0,0,0,0], "Vinagreta 20L":[51,0,0,0,0,0], "Pollo Teriyaki":[0,0,0,0,0,0], "Pasta Honey":[0,0,0,0,0,0] },
+    env:{ "Teriyaki 500cc":[0,0,0,0,0,0], "Salsa Naranja":[0,0,0,0,0,0], "Vinagreta 20L":[51,0,0,0,0,0], "Pollo Teriyaki":[0,0,0,0,0,0], "Pasta Honey":[0,0,0,0,0,0] } }
 ];
 function ccWeekTotal(w, metric, prod) { return w[metric][prod].reduce((a,b)=>a+b,0); }
 
@@ -2627,7 +2649,7 @@ function initCocina() {
     });
   }
   document.getElementById("selCocinaDiario").addEventListener("change", function(){ buildCocinaDiario(+this.value); });
-  buildCocinaDiario(14);
+  buildCocinaDiario(17);
 
   // Barras agrupadas totales acumulados
   const nombres = Object.keys(CC_TOTALES);
@@ -2671,7 +2693,7 @@ function initCocina() {
     t.innerHTML = h;
   }
   document.getElementById("selCocinaTabla").addEventListener("change", function(){ buildTablaCocina(+this.value); });
-  buildTablaCocina(14);
+  buildTablaCocina(17);
 }
 
 // ═══════════════════════════════ CALIDAD ═════════════════════════════
