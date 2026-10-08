@@ -361,10 +361,6 @@ footer { text-align: center; color: #BBBBBB; font-size: 0.76rem; padding: 20px 0
         <div><div style="font-size:0.85rem;font-weight:700;color:#221F1F;">¿Por qué el 25/08 rindió solo 84,7%?</div><div style="font-size:0.78rem;color:#999999;margin-top:2px;">Es la jornada más baja: 100 bandejas de entrada pero mezcla cargada para 80. El resto de las jornadas con devenado roto estuvo entre 94% y 100%.</div></div>
       </div>
       <div style="display:flex;gap:12px;align-items:flex-start;padding:10px 12px;background:#fffbeb;border-radius:8px;">
-        <span style="font-size:1rem;flex-shrink:0">🏷️</span>
-        <div><div style="font-size:0.85rem;font-weight:700;color:#221F1F;">Lote repetido en la planilla</div><div style="font-size:0.78rem;color:#999999;margin-top:2px;">Las jornadas del 07/09 y 12/09 tienen cargado el lote 25082026 (el del 25/08). ¿Es la misma materia prima o quedó copiado? Afecta la trazabilidad.</div></div>
-      </div>
-      <div style="display:flex;gap:12px;align-items:flex-start;padding:10px 12px;background:#fffbeb;border-radius:8px;">
         <span style="font-size:1rem;flex-shrink:0">🧽</span>
         <div><div style="font-size:0.85rem;font-weight:700;color:#221F1F;">¿Conviene limpiar en el CP o usar devenado roto?</div><div style="font-size:0.78rem;color:#999999;margin-top:2px;">La limpieza del 20/08 aprovechó 64,5% (480 → 309,7 kg). El rebozado con ese langostino limpiado dio 101,6% de uso vs 95,4% del devenado roto del mismo día.</div></div>
       </div>
@@ -2337,6 +2333,8 @@ function initCalculadora() {
   calcular();
 }
 
+// 08/10 (tarde): Debo corrigió en la planilla los lotes de 07/09 (7092026) y 12/09 (12092026), antes
+// copiados del 25/08. Kg sin cambios.
 // 08/10: todas las jornadas de la pestaña REBOZADO de "registro de produccion de langostino" (gviz, Chrome).
 // Entrada y mezcla = bandejas × kg/bandeja; rebozado = bandejas de 4 kg + bandejas de 2 kg.
 const LANG_JORNADAS = [
@@ -2344,8 +2342,8 @@ const LANG_JORNADAS = [
   { fecha:"21/08", lote:"21082026", tipo:"Limpiado",      entBand:40,  entKgB:10, mezBand:40,  b4:127, b2:4 },
   { fecha:"21/08", lote:"21082026", tipo:"Devenado roto", entBand:50,  entKgB:10, mezBand:50,  b4:149, b2:5 },
   { fecha:"25/08", lote:"25082026", tipo:"Devenado roto", entBand:100, entKgB:10, mezBand:80,  b4:253, b2:9 },
-  { fecha:"07/09", lote:"25082026", tipo:"Devenado roto", entBand:92,  entKgB:12, mezBand:92,  b4:313, b2:10 },
-  { fecha:"12/09", lote:"25082026", tipo:"Devenado roto", entBand:108, entKgB:12, mezBand:108, b4:392, b2:13 },
+  { fecha:"07/09", lote:"7092026",  tipo:"Devenado roto", entBand:92,  entKgB:12, mezBand:92,  b4:313, b2:10 },
+  { fecha:"12/09", lote:"12092026", tipo:"Devenado roto", entBand:108, entKgB:12, mezBand:108, b4:392, b2:13 },
   { fecha:"29/09", lote:"29092026", tipo:"Devenado roto", entBand:110, entKgB:12, mezBand:110, b4:390, b2:13 }
 ];
 const LANG_MEZCLA_KG_BAND = 2.7;
