@@ -1683,7 +1683,7 @@ footer { text-align: center; color: #BBBBBB; font-size: 0.76rem; padding: 20px 0
     <div class="alerta">
       ⚠️ <strong>Pedido a CP vs. entregado por CP vs. salidas reales a franquicias</strong> (10 productos del CP). Fuentes: "Producción CP" (SET 26 y OCT 26) y salidas TOTVS al 13/10. S37 a S40 siguen abiertas hasta que Debo confirme el cierre; S41 en curso.
       <br><strong>% Pedido / Salidas</strong>: 100% = pedido calibrado · &lt;70% pedido corto (riesgo de faltante) · &gt;130% sobre-pedido.
-      <br><strong>Stock actual</strong>: foto TOTVS al 13/10 (CD + CP; Mirizi al 09/10, sin export externo nuevo). <strong>Semanas de stock</strong>: stock ÷ promedio de salidas S27–S36 · &lt;1 riesgo de faltante · &gt;8 sobre-stock.
+      <br><strong>Stock actual</strong>: foto TOTVS al 13/10 (CD + CP + Mirizi). <strong>Semanas de stock</strong>: stock ÷ promedio de salidas S27–S36 · &lt;1 riesgo de faltante · &gt;8 sobre-stock.
     </div>
 
     <div class="kpi-grid" style="grid-template-columns:repeat(auto-fit,minmax(160px,1fr))">
@@ -3184,12 +3184,12 @@ const CUMPL_FRANQUICIAS_MES = {
 // Cubos 131, Langostinos 312, Pasta Honey 48, Pollo 41, Tamago 807. Script validado contra los del 08/10.
 // 13/10: reemplazado entero con "stock al 131026.xml" — CD: Corte 91, Cubos 52, Langostinos 93, Pasta Honey 36,
 // Pollo 25, Reducción 82, Salsa Naranja 58, Tamago 216, Tira 12, Vinagreta 306; CP: Corte 10, Pasta Honey 5,
-// Reducción 44, Tamago 25, Tira 39 — 1 u de Pollo en D4, no se suma. OJO: no hay "stock externo" nuevo (último
-// en dashboard_updates: 091026), así que Mirizi queda con los valores del 09/10 (Corte 16, Cubos 131, Langostinos
-// 312, Pasta Honey 48, Pollo 41, Tamago 807) — a confirmar por Debo. Script validado contra "stock al 091026.xml".
+// Reducción 44, Tamago 25, Tira 39 — 1 u de Pollo en D4, no se suma. MI con "stock externo al 131026.xml" (Debo
+// lo dejó después de la corrida automática): Corte 16, Cubos 131, Langostinos 312, Pasta Honey 48, Pollo 41,
+// Tamago 687 (807→687, el resto igual que el 09/10). Scripts validados contra los del 09/10.
 const CUMPL_STOCK = {
   "CORTE DE TRUCHA":117, "CUBOS DE TRUCHA":183, "LANGOSTINOS REBOZADOS":405, "PASTA DE HONEY":89,
-  "POLLO TERIYAKI":66, "REDUCCIÓN DE TERIYAKI":126, "SALSA NARANJA Y MIEL":58, "TAMAGO":1048,
+  "POLLO TERIYAKI":66, "REDUCCIÓN DE TERIYAKI":126, "SALSA NARANJA Y MIEL":58, "TAMAGO":928,
   "TIRA DE TRUCHA":51, "VINAGRETA":306
 };
 
