@@ -144,8 +144,8 @@ footer { text-align: center; color: #BBBBBB; font-size: 0.76rem; padding: 20px 0
 
   <div class="alerta-ok">
     ✅ <strong>S42 cerró (12–17/10) en 996,3 kg</strong>, 6 de 6 días activos (con sábado 17/10). Queda 70,9 kg abajo del objetivo semanal; apenas por encima de S41 (995,4 kg), pero con un día más baja a 166,0 kg/día vs 199,1 de S41. Lunes 133,7 · martes 62,2 · miércoles 207,4 · jueves 282,7 (incluye 104,9 kg sin embolsar) · viernes 159,4 (incluye 56,4 kg sin embolsar) · sábado 151,0 kg. % uso 44,3% (996,3 / 2.250 kg de entrada) — mejor que S41 (41,0%).
-    <br>🟡 <strong>S43 (19–24/10) en curso:</strong> lunes 19/10 198,5 kg (34 cajas; tiras 27,0 · cortes 18,0 · tiras rotas 34,3 · tiras unidas x2 43,6 · cubos 75,6). 38,9% uso — por debajo de los 213,4 kg/día del objetivo, pero arranca mejor que el lunes de S42 (133,7 kg).
-    <br>Acumulado S20–S43: 20.749,6 kg · 41,5% uso general. Objetivo semanal: 1.067,2 kg · por día: 213,4 kg.
+    <br>🟡 <strong>S43 (19–24/10) en curso:</strong> 580,5 kg en 3 días (lunes 198,5 · martes 188,0 · miércoles 194,0) → 193,5 kg/día, por debajo de los 213,4 kg/día del objetivo pero arriba de S42 (166,0). 37,9% uso (580,5 / 1.530 kg de entrada, 102 cajas). Para llegar al objetivo semanal faltan 486,7 kg.
+    <br>Acumulado S20–S43: 21.131,6 kg · 41,4% uso general. Objetivo semanal: 1.067,2 kg · por día: 213,4 kg.
   </div>
 
   <div class="kpi-grid">
@@ -166,7 +166,7 @@ footer { text-align: center; color: #BBBBBB; font-size: 0.76rem; padding: 20px 0
     </div>
     <div class="kpi-card">
       <div class="lbl">Acumulado total</div>
-      <div class="val" style="color:#1D4856">20.749,6 <span style="font-size:.85rem;color:#BBBBBB">kg</span></div>
+      <div class="val" style="color:#1D4856">21.131,6 <span style="font-size:.85rem;color:#BBBBBB">kg</span></div>
       <div class="sub">S20–S43 (S43 en curso)</div>
     </div>
     <div class="kpi-card">
@@ -176,7 +176,7 @@ footer { text-align: center; color: #BBBBBB; font-size: 0.76rem; padding: 20px 0
     </div>
     <div class="kpi-card">
       <div class="lbl">% uso general</div>
-      <div class="val">41,5 <span style="font-size:.85rem;color:#BBBBBB">%</span></div>
+      <div class="val">41,4 <span style="font-size:.85rem;color:#BBBBBB">%</span></div>
       <div class="sub">promedio S20–S43</div>
     </div>
   </div>
@@ -264,7 +264,7 @@ footer { text-align: center; color: #BBBBBB; font-size: 0.76rem; padding: 20px 0
     <div style="display:flex;flex-direction:column;gap:10px;">
       <div style="display:flex;gap:12px;align-items:flex-start;padding:10px 12px;background:#fffbeb;border-radius:8px;">
         <span style="font-size:1rem;flex-shrink:0">📦</span>
-        <div><div style="font-size:0.85rem;font-weight:700;color:#221F1F;">¿A dónde va el ~59% de la trucha que entra?</div><div style="font-size:0.78rem;color:#999999;margin-top:2px;">El % de uso promedio es 41,5%. ¿Hay registro de merma (piel, espinas, grasa, recortes)? ¿Se pesa el descarte?</div></div>
+        <div><div style="font-size:0.85rem;font-weight:700;color:#221F1F;">¿A dónde va el ~59% de la trucha que entra?</div><div style="font-size:0.78rem;color:#999999;margin-top:2px;">El % de uso promedio es 41,4%. ¿Hay registro de merma (piel, espinas, grasa, recortes)? ¿Se pesa el descarte?</div></div>
       </div>
       <div style="display:flex;gap:12px;align-items:flex-start;padding:10px 12px;background:#fffbeb;border-radius:8px;">
         <span style="font-size:1rem;flex-shrink:0">📅</span>
@@ -1798,7 +1798,7 @@ footer { text-align: center; color: #BBBBBB; font-size: 0.76rem; padding: 20px 0
         <label style="display:flex;align-items:center;gap:6px;font-size:0.83rem;color:#221F1F;cursor:pointer;"><input type="checkbox" id="chkMensualEntregado" checked> Entregado (CP)</label>
         <label style="display:flex;align-items:center;gap:6px;font-size:0.83rem;color:#221F1F;cursor:pointer;"><input type="checkbox" id="chkMensualSalidas" checked> Salidas a franquicias</label>
       </div>
-      <div style="font-size:0.75rem;color:#BBBBBB;margin-bottom:6px;">Salidas a franquicias solo tiene dato en Jul 26, Ago 26 y Sep 26 (semanas S27–S39, export TOTVS desde el 30/06 — Sep 26 suma S36 a S38 completas + S39 en curso, hasta el 28/09) — meses anteriores no tienen esa fuente todavía.</div>
+      <div style="font-size:0.75rem;color:#BBBBBB;margin-bottom:6px;">Salidas a franquicias: por fecha exacta del movimiento (export TOTVS desde el 30/06, Jul 26 incluye el 30/06) — Sep 26 completo (01–30/09), Oct 26 en curso. Meses anteriores no tienen esa fuente todavía.</div>
       <div class="chart-wrap" style="height:280px"><canvas id="chartCumplMensualProd"></canvas></div>
     </div>
 
@@ -2063,10 +2063,13 @@ const WEEKS = [
   // S43 (19–24/10) — 20/10: ya hay pestaña s43 (gviz, texto Chrome). Lunes 19/10: 198,5 kg (34 cajas = 510 kg;
   // tiras 11 bandejas, cortes 9, tiras rotas 7, tiras unidas x2 8,9, cubos 18; sin "sin embolsar"). 20/10 (hoy)
   // en adelante sin carga. S42 releída: sin cambios.
-  { label:"S43", dateRange:"19–24/10", isPartial:true, total:198.46,
-    daily:[198.46,0,0,0,0,0],
-    dailyByProd:{ "Tiras":[26.95,0,0,0,0,0], "cortes":[18,0,0,0,0,0], "tiras rotas":[34.3,0,0,0,0,0], "tiras unidas x2":[43.61,0,0,0,0,0], "cubos":[75.6,0,0,0,0,0], "sin embolsar":[0,0,0,0,0,0] },
-    entradaBandejasDia:[34,0,0,0,0,0], activeDaysCount:1 }
+  // 22/10 (a pedido de Debo): releída s43 (gviz, texto Chrome) — 19/10 sin cambios. + martes 20/10: 188,0 kg (34
+  // cajas; obs. "quedaron 13 cajas de la semana anterior") + miércoles 21/10: 194,0 kg (34 cajas). 22/10 (hoy) en
+  // adelante sin carga. Total 580,5 kg en 3 días (coincide con "KG TOTALES" del sheet).
+  { label:"S43", dateRange:"19–24/10", isPartial:true, total:580.455,
+    daily:[198.46,188.025,193.97,0,0,0],
+    dailyByProd:{ "Tiras":[26.95,22.05,29.4,0,0,0], "cortes":[18,16,14,0,0,0], "tiras rotas":[34.3,44.1,38.22,0,0,0], "tiras unidas x2":[43.61,35.525,36.75,0,0,0], "cubos":[75.6,70.35,75.6,0,0,0], "sin embolsar":[0,0,0,0,0,0] },
+    entradaBandejasDia:[34,34,34,0,0,0], activeDaysCount:3 }
 ];
 
 // 29/09 (pedido de Debo): desde S39 el sheet separa "tiras rotas" y "tiras unidas x2" — se muestran como
@@ -2171,7 +2174,8 @@ const MESES_TRUCHA = [
   // 19/10: S42 cerrada — 15/10 corregido (+1 kg cortes, +63 kg cubos), + 16/10 (103,0 kg sin los 56,4 kg "sin
   // embolsar"; 27 cajas) + 17/10 (151,0 kg; 15 cajas) → 2.735,0 kg. Entrada += 42 cajas × 15 = 630 → 7.080 kg.
   // 20/10: + S43 en curso, lunes 19/10 (198,5 kg; 34 cajas = 510 kg) → 2.933,5 kg. Entrada 7.590 kg.
-  { label:"Octubre", total:2933.47, entrada:7590, semanas:"S40–S43", cantSemanas:4, isPartial:true }
+  // 22/10: + martes 20/10 (188,0 kg) + miércoles 21/10 (194,0 kg), 68 cajas = 1.020 kg → 3.315,5 kg. Entrada 8.610 kg.
+  { label:"Octubre", total:3315.465, entrada:8610, semanas:"S40–S43", cantSemanas:4, isPartial:true }
 ];
 new Chart(document.getElementById("chartMensual").getContext("2d"), {
   type:"bar",
@@ -3615,18 +3619,16 @@ function initCumplimiento() {
   // Detalle mensual por producto
   const selMensualProd = document.getElementById("selCumplMensualProd");
   selMensualProd.innerHTML = CUMPL_PRODUCTOS.map((p,i)=>`<option value="${p}" ${i===0?"selected":""}>${p}</option>`).join("");
-  // Salidas mensuales a franquicias por producto — solo hay dato real de semanas cargadas en
-  // CUMPL_WEEKS (S27–S30 caen en Jul 26, S31–S35 en Ago 26). Los meses sin semanas cargadas quedan en
-  // null (Chart.js no dibuja barra) en vez de inventar un 0.
-  const CUMPL_WEEK_MES = { "S27":"JUL 26", "S28":"JUL 26", "S29":"JUL 26", "S30":"JUL 26", "S31":"AGO 26", "S32":"AGO 26", "S33":"AGO 26", "S34":"AGO 26", "S35":"AGO 26", "S36":"SEP 26", "S37":"SEP 26", "S38":"SEP 26", "S39":"SEP 26", "S40":"OCT 26", "S41":"OCT 26", "S42":"OCT 26" };
+  // Salidas mensuales a franquicias por producto — 22/10 (pedido de Debo): por fecha exacta del movimiento,
+  // sumando todas las franquicias de CUMPL_FRANQUICIAS_MES (mismo export/filtro que el Top 10). Antes se
+  // sumaba por semana de CUMPL_WEEKS, y S40 (29/09–06/10) dejaba el 29 y 30/09 en octubre. Los meses sin
+  // dato quedan en null (Chart.js no dibuja barra) en vez de inventar un 0.
+  const CUMPL_MES_FRANQ = { "JUL 26":"JULIO", "AGO 26":"AGOSTO", "SEP 26":"SEPTIEMBRE", "OCT 26":"OCTUBRE" };
   function monthlySalidas(prod) {
-    const arr = new Array(CUMPL_MESES.length).fill(null);
-    CUMPL_WEEKS.forEach(w => {
-      const mes = CUMPL_WEEK_MES[w.label];
-      const mi = CUMPL_MESES.indexOf(mes);
-      if (mi >= 0) arr[mi] = (arr[mi] || 0) + w.salidas[prod];
+    return CUMPL_MESES.map(m => {
+      const porFranq = (CUMPL_FRANQUICIAS_MES[CUMPL_MES_FRANQ[m]] || {})[prod];
+      return porFranq ? Object.values(porFranq).reduce((a,b)=>a+b,0) : null;
     });
-    return arr;
   }
 
   const chkMensualPedido = document.getElementById("chkMensualPedido");
