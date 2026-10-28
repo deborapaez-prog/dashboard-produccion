@@ -189,7 +189,7 @@ footer { text-align: center; color: #BBBBBB; font-size: 0.76rem; padding: 20px 0
   <div class="card">
     <h2>📆 Evolución mensual — kg producidos totales</h2>
     <div class="chart-wrap"><canvas id="chartMensual"></canvas></div>
-    <div style="font-size:0.75rem;color:#BBBBBB;margin-top:10px;">Fuente: pestaña "análisis mensual" de la planilla Trucha (suma de Tiras + cortes + tiras unidas + cubos por mes; no incluye "sin embolsar"). Las semanas van de lunes a sábado y no calzan justo con el calendario, así que cada mes agrupa una cantidad distinta: Mayo 3 semanas (S20–S22), Junio 4 (S23–S26), Julio 5 (S27–S31) — S31 cerró el 01/08, así que Julio ya está completo —, Agosto 4 (S32–S35) — S35 cerró el 29/08, así que Agosto también está completo — y Septiembre, que arranca con S36 (31/08–05/09, cerrada), S37 (07–12/09, cerrada), S38 (14–19/09, cerrada) S39 (21–26/09, cerrada) — Septiembre ya cerró. Octubre arranca con S40 (28/09–03/10, cerrada: aunque empieza el 28/09, la semana entera cuenta para octubre) S41 (05–10/10, cerrada), S42 (12–17/10, cerrada), S43 (19–24/10, cerrada) y S44 (26–31/10, en curso).</div>
+    <div style="font-size:0.75rem;color:#BBBBBB;margin-top:10px;">Fuente: pestaña "análisis mensual" de la planilla Trucha (suma de Tiras + cortes + tiras unidas + cubos por mes; no incluye "sin embolsar"). Las semanas van de lunes a sábado y no calzan justo con el calendario, así que cada mes agrupa una cantidad distinta: Mayo 3 semanas (S20–S22), Junio 4 (S23–S26), Julio 5 (S27–S31) — S31 cerró el 01/08, así que Julio ya está completo —, Agosto 4 (S32–S35) — S35 cerró el 29/08, así que Agosto también está completo — y Septiembre 5 (S36–S40) — S40 (28/09–03/10) cuenta entera para septiembre, como en la planilla — y Octubre arranca con S41 (05–10/10, cerrada), S42 (12–17/10, cerrada), S43 (19–24/10, cerrada) y S44 (26–31/10, en curso).</div>
   </div>
 
   <div class="card">
@@ -2174,7 +2174,10 @@ const MESES_TRUCHA = [
   // cajas × 15 = 930. Mes sigue abierto (S40, 28/09–03/10, arranca en septiembre; sin carga todavía).
   // 29/09: S39 corregida (+104,4 kg de bandejas que el sheet completó: 24, 25 y 26/09) → 4.001,7 kg.
   // Septiembre cierra con S36–S39. Debo confirmó que S40 (28/09–03/10) ya es parte de octubre.
-  { label:"Septiembre", total:4001.7, entrada:9720, semanas:"S36–S39", cantSemanas:4, isPartial:false },
+  // 28/10 (pedido de Debo): S40 vuelve a septiembre, como en la pestaña "análisis mensual" del sheet → + 975,5 kg
+  // (entrada 160 cajas × 15 = 2.400 kg) → 4.977,2 kg. El sheet da 4.677,7: la diferencia (299,5 kg) son tiras rotas
+  // y tiras unidas x2 de S39/S40 que el sheet completó en las pestañas semanales pero no en "análisis mensual".
+  { label:"Septiembre", total:4977.185, entrada:12120, semanas:"S36–S40", cantSemanas:5, isPartial:false },
   // 29/09: Octubre arranca con S40 (lunes 28/09: 203,6 kg, 29 cajas × 15 = 435 kg de entrada).
   // 30/09: lunes 28/09 corregido en el sheet (203,6→155,7 kg).
   // 01/10: + miércoles 30/09 (210,0 kg, 30 cajas = 450 kg); martes 29/09 sin producción.
@@ -2194,7 +2197,8 @@ const MESES_TRUCHA = [
   // 27/10: S43 cerrada (+ viernes 23/10: 200,6 kg, 35 cajas; sábado 24/10 sin trucha) + S44 en curso (lunes 26/10:
   // 201,3 kg, 34 cajas) → 3.956,0 kg. Entrada += 69 cajas × 15 = 1.035 → 10.200 kg.
   // 28/10: + martes 27/10 (210,9 kg; 34 cajas = 510 kg) → 4.166,9 kg. Entrada 10.710 kg.
-  { label:"Octubre", total:4166.86, entrada:10710, semanas:"S40–S44", cantSemanas:5, isPartial:true }
+  // 28/10 (pedido de Debo): S40 pasa a septiembre → Octubre = S41–S44: 3.191,4 kg (igual al sheet), entrada 8.310 kg.
+  { label:"Octubre", total:3191.375, entrada:8310, semanas:"S41–S44", cantSemanas:4, isPartial:true }
 ];
 new Chart(document.getElementById("chartMensual").getContext("2d"), {
   type:"bar",
