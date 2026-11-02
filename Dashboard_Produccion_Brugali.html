@@ -815,7 +815,7 @@ footer { text-align: center; color: #BBBBBB; font-size: 0.76rem; padding: 20px 0
         <table>
           <thead><tr><th>Ingrediente</th><th>Cantidad</th><th>Unidad</th></tr></thead>
           <tbody>
-            <tr class="mp-row"><td>Pasta de trucha × kg (intermedio)</td><td>1</td><td>kg</td></tr>
+            <tr class="mp-row"><td>Pasta de trucha × kg (intermedio)</td><td>1,67</td><td>kg</td></tr>
             <tr><td>Azúcar pack × 10 kg</td><td>0,42</td><td>kg</td></tr>
             <tr><td>Miel bidón × 5 kg</td><td>0,17</td><td>kg</td></tr>
             <tr><td>Salsa de soja bidón × 5L</td><td>0,1857</td><td>lt</td></tr>
@@ -826,10 +826,10 @@ footer { text-align: center; color: #BBBBBB; font-size: 0.76rem; padding: 20px 0
         <table>
           <thead><tr><th>Ingrediente</th><th>Cantidad</th><th>Unidad</th></tr></thead>
           <tbody>
-            <tr class="mp-row"><td>Trucha filet trim A PBI fresco</td><td>0,27</td><td>kg</td></tr>
+            <tr class="mp-row"><td>Trucha filet trim A PBI fresco</td><td>1,27</td><td>kg</td></tr>
           </tbody>
         </table>
-        <div style="font-size:0.75rem;color:#BBBBBB;padding:8px 14px 0">Rev. 003 (TOTVS, actualizada el 02/11/2026): suma la pasta de trucha a la estructura, 1 kg por kg de Pasta de Honey (antes no estaba en TOTVS y se mostraba el dato manual de 6,52 kg). La pasta de trucha tiene estructura propia desde el 02/11: 0,27 kg de trucha filet trim por kg. Resto sin cambios: miel en bidón × 5 kg (0,034 bidón = 0,17 kg), soja 0,03714 bidón × 5 = 0,1857 lt, vino 0,285 lt.</div>
+        <div style="font-size:0.75rem;color:#BBBBBB;padding:8px 14px 0">Rev. 003 (TOTVS, corregida por Debo el 02/11/2026): suma la pasta de trucha a la estructura, 1,67 kg por kg de Pasta de Honey (antes no estaba en TOTVS y se mostraba el dato manual de 6,52 kg). La pasta de trucha tiene estructura propia desde el 02/11: 1,27 kg de trucha filet trim por kg. Resto sin cambios: miel en bidón × 5 kg (0,034 bidón = 0,17 kg), soja 0,03714 bidón × 5 = 0,1857 lt, vino 0,285 lt.</div>
       </div>
     </div>
 
@@ -2306,6 +2306,8 @@ buildTabla(24);
 // 02/11 (pedido de Debo): revisado con "recetas al 021126.xml". Único cambio vs. 30/10: Pasta de Honey × kg (L20000361,
 // rev. 003) ahora incluye Pasta de trucha × kg (L200064) = 1 kg/kg, reemplaza el dato manual de 6,52 kg; y L200064
 // tiene estructura nueva (rev. 001): 0,27 kg de trucha filet trim por kg. El resto de los productos sin cambios.
+// 02/11 (2da pasada): Debo corrigió la estructura en TOTVS (capturas de pantalla) — pasta de trucha 1 → 1,67 kg por
+// kg de Pasta de Honey (OP 000312: 400,8 kg para 240 kg = 40 cajas) y trucha filet trim 0,27 → 1,27 kg por kg de pasta.
 // 30/10: revisado con "recetas TOTVS 301026.xml" — los 10 productos sin cambios respecto al 08/10. Se agrega Salsa
 // Teriyaki × 5 lt (L3000312, rev. 003 vigente desde 23/10/2026).
 // 08/10: actualizado con "estructuras de productos al 081026.xml" (última revisión de cada código). Insumos
@@ -2356,7 +2358,7 @@ const RECETAS = {
     ],
     intermedioNombre:"Pasta de Honey × kg", intermedioPorUnidad:6,
     intermedio:[
-      {nombre:"Pasta de trucha × kg", cantidad:1, unidad:"kg"},
+      {nombre:"Pasta de trucha × kg", cantidad:1.67, unidad:"kg"},
       {nombre:"Azúcar pack × 10 kg", cantidad:0.42, unidad:"kg", pack:{size:10, tipo:"pack"}},
       {nombre:"Miel bidón × 5 kg", cantidad:0.17, unidad:"kg", pack:{size:5, tipo:"bidón"}},
       {nombre:"Salsa de soja bidón × 5L", cantidad:0.1857, unidad:"lt", pack:{size:5, tipo:"bidón"}},
