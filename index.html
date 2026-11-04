@@ -1735,7 +1735,7 @@ footer { text-align: center; color: #BBBBBB; font-size: 0.76rem; padding: 20px 0
       <div class="kpi-card">
         <div class="lbl">Cumplimiento producción (mensual)</div>
         <div class="val" style="color:#33A392">96,0 <span style="font-size:.85rem;color:#BBBBBB">%</span></div>
-        <div class="sub">3.489 / 3.634 u pedidas — OCT 26 cerrado (col. MENSUAL, 02/11). NOV 26 va en 27,0% (674 / 2.494 u, ya con el pedido de la semana siguiente a S44)</div>
+        <div class="sub">3.489 / 3.634 u pedidas — OCT 26 cerrado (col. MENSUAL, 02/11). NOV 26 va en 26,1% (651 / 2.494 u, ya con el pedido de la semana siguiente a S44)</div>
       </div>
       <div class="kpi-card">
         <div class="lbl">Pedido vs. Salidas</div>
@@ -1814,7 +1814,7 @@ footer { text-align: center; color: #BBBBBB; font-size: 0.76rem; padding: 20px 0
 
     <div class="alerta">
       ⚠️ <strong>Octubre cerró</strong> (S40 a S43, col. MENSUAL de OCT 26 releída el 02/11): 3.489/3.634 u, 96,0%. Septiembre: 4.474/4.665 u, 95,9%.
-      <strong>Noviembre en curso</strong> (col. MENSUAL de NOV 26, releída el 03/11): 674/2.494 u, 27,0% — S44 (27/10–02/11) 674/1.192 u y la semana siguiente ya con pedido (1.302 u) pero sin entregas.
+      <strong>Noviembre en curso</strong> (col. MENSUAL de NOV 26, releída el 03/11): 651/2.494 u, 26,1% — S44 (27/10–02/11) 651/1.192 u y la semana siguiente ya con pedido (1.302 u) pero sin entregas.
       Fuente: "Producción CP", pestañas mensuales ENE 26 a NOV 26.
     </div>
 
@@ -3270,9 +3270,10 @@ const CUMPL_WEEKS = [
   // sin rango de fechas en el encabezado ni columna de entregado en gviz) — S45 no se agrega todavía. Salidas con
   // "salidas al 031126.xml": + 02/11 (247 u) → S44 1.156 u. S40–S43 y 27–30/10 coinciden al u; script validado contra
   // "salidas al 021126.xml" (reproduce S44 909).
+  // 04/11 (a pedido de Debo): se aplica el entregado del sheet para Corte 29→9 y Cubos 24→21 → 651 / 1.192 u (54,6%).
   { label:"S44", dateRange:"27/10–02/11", isPartial:true,
     pedido:   { "CORTE DE TRUCHA":60, "CUBOS DE TRUCHA":50, "LANGOSTINOS REBOZADOS":250, "PASTA DE HONEY":40, "POLLO TERIYAKI":110, "REDUCCIÓN DE TERIYAKI":200, "SALSA NARANJA Y MIEL":28, "TAMAGO":150, "TIRA DE TRUCHA":100, "VINAGRETA":204 },
-    entregado:{ "CORTE DE TRUCHA":29, "CUBOS DE TRUCHA":24, "LANGOSTINOS REBOZADOS":247, "PASTA DE HONEY":20, "POLLO TERIYAKI":38, "REDUCCIÓN DE TERIYAKI":121, "SALSA NARANJA Y MIEL":24, "TAMAGO":20, "TIRA DE TRUCHA":77, "VINAGRETA":74 },
+    entregado:{ "CORTE DE TRUCHA":9, "CUBOS DE TRUCHA":21, "LANGOSTINOS REBOZADOS":247, "PASTA DE HONEY":20, "POLLO TERIYAKI":38, "REDUCCIÓN DE TERIYAKI":121, "SALSA NARANJA Y MIEL":24, "TAMAGO":20, "TIRA DE TRUCHA":77, "VINAGRETA":74 },
     salidas:  { "CORTE DE TRUCHA":61, "CUBOS DE TRUCHA":46, "LANGOSTINOS REBOZADOS":217, "PASTA DE HONEY":39, "POLLO TERIYAKI":90, "REDUCCIÓN DE TERIYAKI":167, "SALSA NARANJA Y MIEL":55, "TAMAGO":211, "TIRA DE TRUCHA":102, "VINAGRETA":168 } }
 ];
 // 02/11 (a pedido de Debo): se aplican los pedidos revisados del sheet OCT 26 — S40 Pollo 100→58, Tamago 210→150;
@@ -3664,11 +3665,12 @@ const CUMPL_STOCK = {
 // 03/11: col. MENSUAL de NOV 26 (gviz) — Pedido suma el bloque de la semana siguiente a S44 (1.192→2.494 u); Entregado
 // sube con S44: Reducción 107→121, Tira 32→77, Vinagreta 22→74 (el sheet trae Corte 9 y Cubos 21, más bajos que lo ya
 // cargado — no se bajan). 674 / 2.494 u = 27,0% (con el entregado del sheet: 651 / 2.494 = 26,1%).
+// 04/11 (a pedido de Debo): se aplica el entregado del sheet para Corte 29→9 y Cubos 24→21 → 651 / 2.494 u = 26,1%.
 const CUMPL_MESES = ["ENE 26","FEB 26","MAR 26","ABR 26","MAY 26","JUN 26","JUL 26","AGO 26","SEP 26","OCT 26","NOV 26"];
 const CUMPL_MES_PARCIAL = [false,false,false,false,false,false,false,false,false,false,true];
 const CUMPL_MENSUAL = {
-  "CORTE DE TRUCHA":       { pedido:[105,100,228,305,275,237,276,132,147,193,125], entregado:[97,97,210,258,223,214,256,132,146,190,29] },
-  "CUBOS DE TRUCHA":       { pedido:[193,180,218,267,217,184,230,130,140,179,125], entregado:[161,115,139,216,172,133,212,150,140,190,24] },
+  "CORTE DE TRUCHA":       { pedido:[105,100,228,305,275,237,276,132,147,193,125], entregado:[97,97,210,258,223,214,256,132,146,190,9] },
+  "CUBOS DE TRUCHA":       { pedido:[193,180,218,267,217,184,230,130,140,179,125], entregado:[161,115,139,216,172,133,212,150,140,190,21] },
   "LANGOSTINOS REBOZADOS": { pedido:[1305,1010,907,562,232,428,510,802,640,595,510], entregado:[1283,1004,847,548,232,481,548,768,683,582,247] },
   "PASTA DE HONEY":        { pedido:[90,50,200,215,133,96,284,225,180,153,80], entregado:[127,54,159,208,139,98,265,218,177,141,20] },
   "POLLO TERIYAKI":        { pedido:[327,300,370,441,321,321,361,259,402,421,220], entregado:[338,323,365,448,339,304,288,249,375,402,38] },
