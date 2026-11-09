@@ -1726,7 +1726,7 @@ footer { text-align: center; color: #BBBBBB; font-size: 0.76rem; padding: 20px 0
       <br><strong>Prom. salidas/sem</strong> y <strong>Semanas de stock</strong>: promedio de salidas a franquicias por semana (S27–S36, las 10 semanas cerradas) y cuántas semanas dura el stock actual a ese ritmo. Menos de 1 semana = riesgo de faltante próximo; más de 8 semanas = posible sobre-stock.
     -->
     <div class="alerta">
-      ⚠️ <strong>Pedido a CP vs. entregado por CP vs. salidas reales a franquicias</strong> (10 productos del CP). Fuentes: "Producción CP" (OCT 26 y NOV 26, releída 05/11) y salidas TOTVS al 09/11 (último movimiento 06/11, que ya cae en la semana siguiente a S44, todavía no cargada). S37 a S43 siguen abiertas hasta que Debo confirme el cierre; S44 en curso.
+      ⚠️ <strong>Pedido a CP vs. entregado por CP vs. salidas reales a franquicias</strong> (10 productos del CP). Fuentes: "Producción CP" (OCT 26 y NOV 26, releída 09/11) y salidas TOTVS al 09/11 (último movimiento 06/11). S37 a S44 siguen abiertas hasta que Debo confirme el cierre; S45 en curso.
       <br><strong>% Pedido / Salidas</strong>: 100% = pedido calibrado · &lt;70% pedido corto (riesgo de faltante) · &gt;130% sobre-pedido.
       <br><strong>Stock actual</strong>: foto TOTVS al 09/11 (CD + CP + Mirizi). <strong>Semanas de stock</strong>: stock ÷ promedio de salidas S27–S36 · &lt;1 riesgo de faltante · &gt;8 sobre-stock.
     </div>
@@ -1735,7 +1735,7 @@ footer { text-align: center; color: #BBBBBB; font-size: 0.76rem; padding: 20px 0
       <div class="kpi-card">
         <div class="lbl">Cumplimiento producción (mensual)</div>
         <div class="val" style="color:#33A392">96,0 <span style="font-size:.85rem;color:#BBBBBB">%</span></div>
-        <div class="sub">3.489 / 3.634 u pedidas — OCT 26 cerrado (col. MENSUAL, 02/11). NOV 26 va en 17,2% (651 / 3.791 u, ya con el pedido de las 2 semanas siguientes a S44)</div>
+        <div class="sub">3.489 / 3.634 u pedidas — OCT 26 cerrado (col. MENSUAL, 02/11). NOV 26 va en 34,7% (1.315 / 3.791 u, releída 09/11 — S44 + S45 con entregas, la 3ra semana solo con pedido)</div>
       </div>
       <div class="kpi-card">
         <div class="lbl">Pedido vs. Salidas</div>
@@ -1775,7 +1775,8 @@ footer { text-align: center; color: #BBBBBB; font-size: 0.76rem; padding: 20px 0
           <option value="14">S41 — 07–13/10 (abierta)</option>
           <option value="15">S42 — 14–19/10 (abierta)</option>
           <option value="16">S43 — 20–26/10 (abierta)</option>
-          <option value="17" selected>S44 — 27/10–02/11 (en curso)</option>
+          <option value="17">S44 — 27/10–02/11 (abierta)</option>
+          <option value="18" selected>S45 — 03–09/11 (en curso)</option>
         </select>
       </h2>
       <div class="chart-wrap" style="height:320px"><canvas id="chartCumplSemanal"></canvas></div>
@@ -1814,7 +1815,7 @@ footer { text-align: center; color: #BBBBBB; font-size: 0.76rem; padding: 20px 0
 
     <div class="alerta">
       ⚠️ <strong>Octubre cerró</strong> (S40 a S43, col. MENSUAL de OCT 26 releída el 02/11): 3.489/3.634 u, 96,0%. Septiembre: 4.474/4.665 u, 95,9%.
-      <strong>Noviembre en curso</strong> (col. MENSUAL de NOV 26, releída el 05/11): 651/3.791 u, 17,2% — S44 (27/10–02/11) 651/1.192 u y las 2 semanas siguientes ya con pedido (1.302 + 1.297 u) pero sin entregas.
+      <strong>Noviembre en curso</strong> (col. MENSUAL de NOV 26, releída el 09/11): 1.315/3.791 u, 34,7% — S44 (27/10–02/11) 651/1.192 u, S45 (03–09/11) 664/1.302 u y la semana siguiente con pedido (1.297 u) pero sin entregas.
       Fuente: "Producción CP", pestañas mensuales ENE 26 a NOV 26.
     </div>
 
@@ -3280,7 +3281,16 @@ const CUMPL_WEEKS = [
   { label:"S44", dateRange:"27/10–02/11", isPartial:true,
     pedido:   { "CORTE DE TRUCHA":60, "CUBOS DE TRUCHA":50, "LANGOSTINOS REBOZADOS":250, "PASTA DE HONEY":40, "POLLO TERIYAKI":110, "REDUCCIÓN DE TERIYAKI":200, "SALSA NARANJA Y MIEL":28, "TAMAGO":150, "TIRA DE TRUCHA":100, "VINAGRETA":204 },
     entregado:{ "CORTE DE TRUCHA":9, "CUBOS DE TRUCHA":21, "LANGOSTINOS REBOZADOS":247, "PASTA DE HONEY":20, "POLLO TERIYAKI":38, "REDUCCIÓN DE TERIYAKI":121, "SALSA NARANJA Y MIEL":24, "TAMAGO":20, "TIRA DE TRUCHA":77, "VINAGRETA":74 },
-    salidas:  { "CORTE DE TRUCHA":61, "CUBOS DE TRUCHA":46, "LANGOSTINOS REBOZADOS":217, "PASTA DE HONEY":39, "POLLO TERIYAKI":90, "REDUCCIÓN DE TERIYAKI":167, "SALSA NARANJA Y MIEL":55, "TAMAGO":211, "TIRA DE TRUCHA":102, "VINAGRETA":168 } }
+    salidas:  { "CORTE DE TRUCHA":61, "CUBOS DE TRUCHA":46, "LANGOSTINOS REBOZADOS":217, "PASTA DE HONEY":39, "POLLO TERIYAKI":90, "REDUCCIÓN DE TERIYAKI":167, "SALSA NARANJA Y MIEL":55, "TAMAGO":211, "TIRA DE TRUCHA":102, "VINAGRETA":168 } },
+  // S45 — 09/11 (a pedido de Debo): NOV 26 releída (gviz por gid, Chrome). S44 sin cambios en Pedido ni Entregado. El 2do
+  // bloque de semana (sin rango de fechas en el encabezado) ya trae Entregado → se agrega como S45 = 03–09/11 (martes a
+  // lunes, mismo corte que S44). Pedido 1.302 u / Entregado 664 u (51,0%; Pasta Honey y Tamago todavía sin entregas).
+  // Salidas con "salidas al 091126.xml": 03/11 252 u + 04/11 182 + 05/11 127 + 06/11 126 = 687 u. El 3er bloque (pedido
+  // 1.297 u, sin entregado) no se agrega todavía.
+  { label:"S45", dateRange:"03–09/11", isPartial:true,
+    pedido:   { "CORTE DE TRUCHA":65, "CUBOS DE TRUCHA":75, "LANGOSTINOS REBOZADOS":260, "PASTA DE HONEY":40, "POLLO TERIYAKI":110, "REDUCCIÓN DE TERIYAKI":250, "SALSA NARANJA Y MIEL":28, "TAMAGO":150, "TIRA DE TRUCHA":120, "VINAGRETA":204 },
+    entregado:{ "CORTE DE TRUCHA":46, "CUBOS DE TRUCHA":42, "LANGOSTINOS REBOZADOS":172, "PASTA DE HONEY":0, "POLLO TERIYAKI":64, "REDUCCIÓN DE TERIYAKI":122, "SALSA NARANJA Y MIEL":22, "TAMAGO":0, "TIRA DE TRUCHA":49, "VINAGRETA":147 },
+    salidas:  { "CORTE DE TRUCHA":44, "CUBOS DE TRUCHA":27, "LANGOSTINOS REBOZADOS":141, "PASTA DE HONEY":26, "POLLO TERIYAKI":45, "REDUCCIÓN DE TERIYAKI":80, "SALSA NARANJA Y MIEL":15, "TAMAGO":162, "TIRA DE TRUCHA":53, "VINAGRETA":94 } }
 ];
 // 02/11 (a pedido de Debo): se aplican los pedidos revisados del sheet OCT 26 — S40 Pollo 100→58, Tamago 210→150;
 // S41 Tamago 210→111, Tira 110→95; S42 Langostinos 250→215, Tamago 150→130, Vinagreta 153→59; S43 Pasta Honey 45→33.
@@ -3685,19 +3695,22 @@ const CUMPL_STOCK = {
 // 05/11: col. MENSUAL de NOV 26 (gviz) — Pedido suma un tercer bloque de semana (sin rango de fechas, 1.297 u):
 // 2.494→3.791 u (Corte 125→197, Cubos 125→185, Langostinos 510→760, Pasta Honey 80→125, Pollo 220→330, Reducción
 // 450→700, Salsa Naranja 56→96, Tamago 300→500, Tira 220→340, Vinagreta 408→558). Entregado sin cambios → 651 / 3.791 = 17,2%.
+// 09/11 (a pedido de Debo): col. MENSUAL de NOV 26 (gviz) — Pedido sin cambios (3.791 u). Entregado suma el 2do bloque
+// (S45): Corte 9→55, Cubos 21→63, Langostinos 247→419, Pollo 38→102, Reducción 121→243, Salsa Naranja 24→46, Tira 77→126,
+// Vinagreta 74→221 (Pasta Honey y Tamago sin cambio) → 1.315 / 3.791 = 34,7% (sin Salsa Teriyaki 5 lt ni Pasta de Trucha).
 const CUMPL_MESES = ["ENE 26","FEB 26","MAR 26","ABR 26","MAY 26","JUN 26","JUL 26","AGO 26","SEP 26","OCT 26","NOV 26"];
 const CUMPL_MES_PARCIAL = [false,false,false,false,false,false,false,false,false,false,true];
 const CUMPL_MENSUAL = {
-  "CORTE DE TRUCHA":       { pedido:[105,100,228,305,275,237,276,132,147,193,197], entregado:[97,97,210,258,223,214,256,132,146,190,9] },
-  "CUBOS DE TRUCHA":       { pedido:[193,180,218,267,217,184,230,130,140,179,185], entregado:[161,115,139,216,172,133,212,150,140,190,21] },
-  "LANGOSTINOS REBOZADOS": { pedido:[1305,1010,907,562,232,428,510,802,640,595,760], entregado:[1283,1004,847,548,232,481,548,768,683,582,247] },
+  "CORTE DE TRUCHA":       { pedido:[105,100,228,305,275,237,276,132,147,193,197], entregado:[97,97,210,258,223,214,256,132,146,190,55] },
+  "CUBOS DE TRUCHA":       { pedido:[193,180,218,267,217,184,230,130,140,179,185], entregado:[161,115,139,216,172,133,212,150,140,190,63] },
+  "LANGOSTINOS REBOZADOS": { pedido:[1305,1010,907,562,232,428,510,802,640,595,760], entregado:[1283,1004,847,548,232,481,548,768,683,582,419] },
   "PASTA DE HONEY":        { pedido:[90,50,200,215,133,96,284,225,180,153,125], entregado:[127,54,159,208,139,98,265,218,177,141,20] },
-  "POLLO TERIYAKI":        { pedido:[327,300,370,441,321,321,361,259,402,421,330], entregado:[338,323,365,448,339,304,288,249,375,402,38] },
-  "REDUCCIÓN DE TERIYAKI": { pedido:[750,700,590,750,730,655,760,696,698,610,700], entregado:[754,689,591,750,730,644,741,696,673,583,121] },
-  "SALSA NARANJA Y MIEL":  { pedido:[235,157,30,30,90,100,235,69,140,125,96], entregado:[230,184,30,30,90,128,261,69,117,141,24] },
+  "POLLO TERIYAKI":        { pedido:[327,300,370,441,321,321,361,259,402,421,330], entregado:[338,323,365,448,339,304,288,249,375,402,102] },
+  "REDUCCIÓN DE TERIYAKI": { pedido:[750,700,590,750,730,655,760,696,698,610,700], entregado:[754,689,591,750,730,644,741,696,673,583,243] },
+  "SALSA NARANJA Y MIEL":  { pedido:[235,157,30,30,90,100,235,69,140,125,96], entregado:[230,184,30,30,90,128,261,69,117,141,46] },
   "TAMAGO":                { pedido:[915,1080,750,950,300,204,1039,900,1210,511,500], entregado:[929,1132,774,969,300,178,1023,892,1146,491,20] },
-  "TIRA DE TRUCHA":        { pedido:[205,265,307,350,277,293,340,323,491,378,340], entregado:[99,227,248,308,251,246,298,293,431,331,77] },
-  "VINAGRETA":             { pedido:[522,544,534,440,411,574,458,373,612,469,558], entregado:[533,534,490,485,411,541,484,406,586,438,74] }
+  "TIRA DE TRUCHA":        { pedido:[205,265,307,350,277,293,340,323,491,378,340], entregado:[99,227,248,308,251,246,298,293,431,331,126] },
+  "VINAGRETA":             { pedido:[522,544,534,440,411,574,458,373,612,469,558], entregado:[533,534,490,485,411,541,484,406,586,438,221] }
 };
 
 function initCumplimiento() {
@@ -3719,7 +3732,7 @@ function initCumplimiento() {
     });
   }
   document.getElementById("selCumplSemana").addEventListener("change", function(){ buildCumplSemanal(+this.value); });
-  buildCumplSemanal(17);
+  buildCumplSemanal(18);
 
   // % Pedido/Salidas = pedido / salidas. Mide si lo que se pidió a CP estuvo bien calibrado contra
   // la demanda real de franquicias (salidas), sin importar si el CP llegó a entregarlo o no.
