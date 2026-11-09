@@ -1728,7 +1728,7 @@ footer { text-align: center; color: #BBBBBB; font-size: 0.76rem; padding: 20px 0
     <div class="alerta">
       ⚠️ <strong>Pedido a CP vs. entregado por CP vs. salidas reales a franquicias</strong> (10 productos del CP). Fuentes: "Producción CP" (OCT 26 y NOV 26, releída 09/11) y salidas TOTVS al 09/11 (último movimiento 06/11). S37 a S44 siguen abiertas hasta que Debo confirme el cierre; S45 en curso.
       <br><strong>% Pedido / Salidas</strong>: 100% = pedido calibrado · &lt;70% pedido corto (riesgo de faltante) · &gt;130% sobre-pedido.
-      <br><strong>Stock actual</strong>: foto TOTVS al 09/11 (CD + CP + Mirizi). <strong>Semanas de stock</strong>: stock ÷ promedio de salidas S27–S36 · &lt;1 riesgo de faltante · &gt;8 sobre-stock.
+      <br><strong>Stock actual</strong>: foto TOTVS al 09/11 12 h (CD + CP; Mirizi de la mañana). <strong>Semanas de stock</strong>: stock ÷ promedio de salidas S27–S36 · &lt;1 riesgo de faltante · &gt;8 sobre-stock.
     </div>
 
     <div class="kpi-grid" style="grid-template-columns:repeat(auto-fit,minmax(160px,1fr))">
@@ -3571,10 +3571,15 @@ const CUMPL_FRANQUICIAS_MES = {
 // Reducción 179, Salsa Naranja 18, Tamago 195, Tira 37, Vinagreta 191; CP: Corte 46, Cubos 42, Pollo 64, Reducción 50,
 // Vinagreta 51 — 1 u de Pollo en D4, no se suma. MI con "stock externo al 091126.xml": Cubos 131, Langostinos 206, Pollo 72,
 // Tamago 341. Script validado contra "stock al 051126.xml" + "stock externo al 051126.xml" (reproduce la carga anterior).
+// 09/11 12hs (a pedido de Debo): reemplazado entero con "stock al 091126 12hs.xml" — CD: Corte 49, Cubos 65, Langostinos 66,
+// Pasta Honey 42, Pollo 60, Reducción 158, Salsa Naranja 13, Tamago 169, Tira 23, Vinagreta 171; CP: Corte 59, Cubos 50,
+// Pollo 64, Reducción 50, Salsa Naranja 22, Tamago 27, Tira 19, Vinagreta 95 — 1 u de Pollo en D4, no se suma. MI: no hay
+// "stock externo" de las 12hs, se mantiene el de la mañana ("stock externo al 091126.xml": Cubos 131, Langostinos 206,
+// Pollo 72, Tamago 341). Mismo script que la carga de la mañana.
 const CUMPL_STOCK = {
-  "CORTE DE TRUCHA":103, "CUBOS DE TRUCHA":243, "LANGOSTINOS REBOZADOS":293, "PASTA DE HONEY":50,
-  "POLLO TERIYAKI":209, "REDUCCIÓN DE TERIYAKI":229, "SALSA NARANJA Y MIEL":18, "TAMAGO":536,
-  "TIRA DE TRUCHA":37, "VINAGRETA":242
+  "CORTE DE TRUCHA":108, "CUBOS DE TRUCHA":246, "LANGOSTINOS REBOZADOS":272, "PASTA DE HONEY":42,
+  "POLLO TERIYAKI":196, "REDUCCIÓN DE TERIYAKI":208, "SALSA NARANJA Y MIEL":35, "TAMAGO":537,
+  "TIRA DE TRUCHA":42, "VINAGRETA":266
 };
 
 // Pedido/Entregado MENSUAL por producto, ene–ago 2026 (fuente: "Producción CP", pestañas JULIO 26 y
