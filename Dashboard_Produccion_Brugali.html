@@ -125,7 +125,7 @@ footer { text-align: center; color: #BBBBBB; font-size: 0.76rem; padding: 20px 0
       <div style="font-size:0.7rem;font-weight:700;color:rgba(255,255,255,0.6);text-transform:uppercase;letter-spacing:0.12em;margin-top:2px;">Dashboard de Producción</div>
     </div>
   </div>
-  <span class="badge">📅 Actualizado: 09/11/2026</span>
+  <span class="badge">📅 Actualizado: 11/11/2026</span>
 </header>
 
 <div class="tab-nav">
@@ -144,8 +144,8 @@ footer { text-align: center; color: #BBBBBB; font-size: 0.76rem; padding: 20px 0
 
   <div class="alerta-ok">
     ✅ <strong>S45 cerró (02–07/11) en 1.130,7 kg</strong>, 5 de 6 días activos (sábado 07/11 sin producción). Supera el objetivo semanal por 63,5 kg y mejora a S44 (+10,9 kg): 226,1 kg/día vs 224,0 de S44. Lunes 211,1 · martes 222,6 · miércoles 253,8 · jueves 234,0 · viernes 209,2 (incluye 83,8 kg sin embolsar). 46,2% uso (1.130,7 / 2.445 kg de entrada, 163 cajas).
-    <br>🟡 <strong>S46 (09–14/11):</strong> sin carga todavía. Noviembre va en 1.046,9 kg (S45, sin "sin embolsar").
-    <br>Acumulado S20–S45: 23.821,3 kg · 41,7% uso general. Objetivo semanal: 1.067,2 kg · por día: 213,4 kg.
+    <br>🟡 <strong>S46 (09–14/11, en curso):</strong> lunes 09/11 cargado — 181,1 kg, 29 cajas de entrada (435 kg, 41,6% uso; 2 ausencias). Martes 10/11 en 0 en la planilla. Noviembre va en 1.228,0 kg (S45 + lunes S46, sin "sin embolsar").
+    <br>Acumulado S20–S46: 24.002,4 kg · 41,7% uso general. Objetivo semanal: 1.067,2 kg · por día: 213,4 kg.
   </div>
 
   <div class="kpi-grid">
@@ -166,8 +166,8 @@ footer { text-align: center; color: #BBBBBB; font-size: 0.76rem; padding: 20px 0
     </div>
     <div class="kpi-card">
       <div class="lbl">Acumulado total</div>
-      <div class="val" style="color:#1D4856">23.821,3 <span style="font-size:.85rem;color:#BBBBBB">kg</span></div>
-      <div class="sub">S20–S45</div>
+      <div class="val" style="color:#1D4856">24.002,4 <span style="font-size:.85rem;color:#BBBBBB">kg</span></div>
+      <div class="sub">S20–S46</div>
     </div>
     <div class="kpi-card">
       <div class="lbl">% uso S45</div>
@@ -177,7 +177,7 @@ footer { text-align: center; color: #BBBBBB; font-size: 0.76rem; padding: 20px 0
     <div class="kpi-card">
       <div class="lbl">% uso general</div>
       <div class="val">41,7 <span style="font-size:.85rem;color:#BBBBBB">%</span></div>
-      <div class="sub">promedio S20–S45</div>
+      <div class="sub">promedio S20–S46</div>
     </div>
   </div>
 
@@ -189,7 +189,7 @@ footer { text-align: center; color: #BBBBBB; font-size: 0.76rem; padding: 20px 0
   <div class="card">
     <h2>📆 Evolución mensual — kg producidos totales</h2>
     <div class="chart-wrap"><canvas id="chartMensual"></canvas></div>
-    <div style="font-size:0.75rem;color:#BBBBBB;margin-top:10px;">Fuente: pestaña "análisis mensual" de la planilla Trucha (suma de Tiras + cortes + tiras unidas + cubos por mes; no incluye "sin embolsar"). Las semanas van de lunes a sábado y no calzan justo con el calendario, así que cada mes agrupa una cantidad distinta: Mayo 3 semanas (S20–S22), Junio 4 (S23–S26), Julio 5 (S27–S31) — S31 cerró el 01/08, así que Julio ya está completo —, Agosto 4 (S32–S35) — S35 cerró el 29/08, así que Agosto también está completo — y Septiembre 5 (S36–S40) — S40 (28/09–03/10) cuenta entera para septiembre, como en la planilla — y Octubre arranca con S41 (05–10/10, cerrada), S42 (12–17/10, cerrada), S43 (19–24/10, cerrada) y S44 (26–31/10, cerrada), así que Octubre también está completo. Noviembre arranca con S45 (02–07/11, cerrada); S46 todavía sin carga.</div>
+    <div style="font-size:0.75rem;color:#BBBBBB;margin-top:10px;">Fuente: pestaña "análisis mensual" de la planilla Trucha (suma de Tiras + cortes + tiras unidas + cubos por mes; no incluye "sin embolsar"). Las semanas van de lunes a sábado y no calzan justo con el calendario, así que cada mes agrupa una cantidad distinta: Mayo 3 semanas (S20–S22), Junio 4 (S23–S26), Julio 5 (S27–S31) — S31 cerró el 01/08, así que Julio ya está completo —, Agosto 4 (S32–S35) — S35 cerró el 29/08, así que Agosto también está completo — y Septiembre 5 (S36–S40) — S40 (28/09–03/10) cuenta entera para septiembre, como en la planilla — y Octubre arranca con S41 (05–10/10, cerrada), S42 (12–17/10, cerrada), S43 (19–24/10, cerrada) y S44 (26–31/10, cerrada), así que Octubre también está completo. Noviembre arranca con S45 (02–07/11, cerrada) y S46 (09–14/11, en curso).</div>
   </div>
 
   <div class="card">
@@ -221,7 +221,8 @@ footer { text-align: center; color: #BBBBBB; font-size: 0.76rem; padding: 20px 0
         <option value="22">S42 — 12–17/10</option>
         <option value="23">S43 — 19–24/10</option>
         <option value="24">S44 — 26–31/10</option>
-        <option value="25" selected>S45 — 02–07/11</option>
+        <option value="25">S45 — 02–07/11</option>
+        <option value="26" selected>S46 — 09–14/11</option>
       </select>
     </h2>
     <div class="chart-wrap"><canvas id="chartDiario"></canvas></div>
@@ -257,7 +258,8 @@ footer { text-align: center; color: #BBBBBB; font-size: 0.76rem; padding: 20px 0
         <option value="22">S42 — 12–17/10</option>
         <option value="23">S43 — 19–24/10</option>
         <option value="24">S44 — 26–31/10</option>
-        <option value="25" selected>S45 — 02–07/11</option>
+        <option value="25">S45 — 02–07/11</option>
+        <option value="26" selected>S46 — 09–14/11</option>
       </select>
     </h2>
     <div class="table-wrap"><table id="tablaDetalle"></table></div>
@@ -387,7 +389,7 @@ footer { text-align: center; color: #BBBBBB; font-size: 0.76rem; padding: 20px 0
 <main>
 
   <div class="alerta-ok">
-    ✅ <strong>Período registrado: 08/06 – 28/10/2026.</strong> 5 productos activos. Reducción de Teriyaki con mayor volumen producido (3.088 u). Vinagreta: 91,7% envasada. 29/10, 30/10 y 02/11 tienen producida pero falta envasada — se cargan cuando se complete.
+    ✅ <strong>Período registrado: 08/06 – 30/10/2026.</strong> 5 productos activos. Reducción de Teriyaki con mayor volumen producido (3.136 u). Vinagreta: 91,8% envasada. 02/11 a 09/11 tienen producida pero falta envasada — se cargan cuando se complete.
   </div>
 
   <div class="kpi-grid">
@@ -1726,16 +1728,16 @@ footer { text-align: center; color: #BBBBBB; font-size: 0.76rem; padding: 20px 0
       <br><strong>Prom. salidas/sem</strong> y <strong>Semanas de stock</strong>: promedio de salidas a franquicias por semana (S27–S36, las 10 semanas cerradas) y cuántas semanas dura el stock actual a ese ritmo. Menos de 1 semana = riesgo de faltante próximo; más de 8 semanas = posible sobre-stock.
     -->
     <div class="alerta">
-      ⚠️ <strong>Pedido a CP vs. entregado por CP vs. salidas reales a franquicias</strong> (10 productos del CP). Fuentes: "Producción CP" (OCT 26 y NOV 26, releída 09/11) y salidas TOTVS al 09/11 (último movimiento 06/11). S37 a S44 siguen abiertas hasta que Debo confirme el cierre; S45 en curso.
+      ⚠️ <strong>Pedido a CP vs. entregado por CP vs. salidas reales a franquicias</strong> (10 productos del CP). Fuentes: "Producción CP" (OCT 26 y NOV 26, releída 11/11) y salidas TOTVS al 11/11 (último movimiento 10/11). S37 a S44 siguen abiertas hasta que Debo confirme el cierre; S45 en curso.
       <br><strong>% Pedido / Salidas</strong>: 100% = pedido calibrado · &lt;70% pedido corto (riesgo de faltante) · &gt;130% sobre-pedido.
-      <br><strong>Stock actual</strong>: foto TOTVS al 09/11 12 h (CD + CP; Mirizi de la mañana). <strong>Semanas de stock</strong>: stock ÷ promedio de salidas S27–S36 · &lt;1 riesgo de faltante · &gt;8 sobre-stock.
+      <br><strong>Stock actual</strong>: foto TOTVS al 11/11 (CD + CP + Mirizi). <strong>Semanas de stock</strong>: stock ÷ promedio de salidas S27–S36 · &lt;1 riesgo de faltante · &gt;8 sobre-stock.
     </div>
 
     <div class="kpi-grid" style="grid-template-columns:repeat(auto-fit,minmax(160px,1fr))">
       <div class="kpi-card">
         <div class="lbl">Cumplimiento producción (mensual)</div>
         <div class="val" style="color:#33A392">96,0 <span style="font-size:.85rem;color:#BBBBBB">%</span></div>
-        <div class="sub">3.489 / 3.634 u pedidas — OCT 26 cerrado (col. MENSUAL, 02/11). NOV 26 va en 34,7% (1.315 / 3.791 u, releída 09/11 — S44 + S45 con entregas, la 3ra semana solo con pedido)</div>
+        <div class="sub">3.489 / 3.634 u pedidas — OCT 26 cerrado (col. MENSUAL, 02/11). NOV 26 va en 35,4% (1.342 / 3.791 u, releída 11/11 — S44 + S45 con entregas, la 3ra semana solo con pedido)</div>
       </div>
       <div class="kpi-card">
         <div class="lbl">Pedido vs. Salidas</div>
@@ -1815,7 +1817,7 @@ footer { text-align: center; color: #BBBBBB; font-size: 0.76rem; padding: 20px 0
 
     <div class="alerta">
       ⚠️ <strong>Octubre cerró</strong> (S40 a S43, col. MENSUAL de OCT 26 releída el 02/11): 3.489/3.634 u, 96,0%. Septiembre: 4.474/4.665 u, 95,9%.
-      <strong>Noviembre en curso</strong> (col. MENSUAL de NOV 26, releída el 09/11): 1.315/3.791 u, 34,7% — S44 (27/10–02/11) 651/1.192 u, S45 (03–09/11) 664/1.302 u y la semana siguiente con pedido (1.297 u) pero sin entregas.
+      <strong>Noviembre en curso</strong> (col. MENSUAL de NOV 26, releída el 11/11): 1.342/3.791 u, 35,4% — S44 (27/10–02/11) 651/1.192 u, S45 (03–09/11) 691/1.302 u y la semana siguiente con pedido (1.297 u) pero sin entregas.
       Fuente: "Producción CP", pestañas mensuales ENE 26 a NOV 26.
     </div>
 
@@ -2140,7 +2142,15 @@ const WEEKS = [
   { label:"S45", dateRange:"02–07/11", isPartial:false, total:1130.7225,
     daily:[211.1275,222.605,253.78,233.965,209.245,0],
     dailyByProd:{ "Tiras":[48.3875,30.625,31.85,36.75,28.175,0], "cortes":[16,17.4,22.4,24,20,0], "tiras rotas":[7.35,51.94,41.65,39.935,40.18,0], "tiras unidas x2":[29.4,52.92,54.88,61.25,49.49,0], "cubos":[47.25,69.72,81.9,72.03,71.4,0], "sin embolsar":[62.74,0,21.1,0,0,0] },
-    entradaBandejasDia:[25,30,40,34,34,0], activeDaysCount:5 }
+    entradaBandejasDia:[25,30,40,34,34,0], activeDaysCount:5 },
+  // S46 (09–14/11) — 11/11: pestaña s46 (gviz, texto Chrome). Lunes 09/11: 181,1 kg (29 cajas = 435 kg; 2 ausencias;
+  // tiras 8 bandejas, cortes 9,6, tiras rotas 9,6, tiras unidas x2 7,1, cubos 14,4; sin "sin embolsar"). Coincide con
+  // "KG TOTALES" del sheet (181,1). Martes 10/11 en 0 (sin carga; nota "se hace langostino" en la hoja). 11/11 en adelante
+  // sin carga. s45 sin cambios.
+  { label:"S46", dateRange:"09–14/11", isPartial:true, total:181.11,
+    daily:[181.11,0,0,0,0,0],
+    dailyByProd:{ "Tiras":[19.6,0,0,0,0,0], "cortes":[19.2,0,0,0,0,0], "tiras rotas":[47.04,0,0,0,0,0], "tiras unidas x2":[34.79,0,0,0,0,0], "cubos":[60.48,0,0,0,0,0], "sin embolsar":[0,0,0,0,0,0] },
+    entradaBandejasDia:[29,0,0,0,0,0], activeDaysCount:1 }
 ];
 
 // 29/09 (pedido de Debo): desde S39 el sheet separa "tiras rotas" y "tiras unidas x2" — se muestran como
@@ -2262,7 +2272,8 @@ const MESES_TRUCHA = [
   // 05/11: + martes 03/11 (222,6 kg; 30 cajas) + miércoles 04/11 (232,7 kg sin los 21,1 kg "sin embolsar"; 40 cajas)
   // → 603,7 kg. Entrada += 70 cajas × 15 = 1.050 → 1.425 kg.
   // 09/11: + jueves 05/11 (234,0 kg) + viernes 06/11 (209,2 kg), 68 cajas = 1.020 kg → 1.046,9 kg (igual al sheet). Entrada 2.445 kg.
-  { label:"Noviembre", total:1046.8825, entrada:2445, semanas:"S45", cantSemanas:1, isPartial:true }
+  // 11/11: + S46 en curso, lunes 09/11 (181,1 kg; 29 cajas = 435 kg) → 1.228,0 kg. Entrada 2.880 kg.
+  { label:"Noviembre", total:1227.9925, entrada:2880, semanas:"S45–S46", cantSemanas:2, isPartial:true }
 ];
 new Chart(document.getElementById("chartMensual").getContext("2d"), {
   type:"bar",
@@ -2293,7 +2304,7 @@ function initDiario(wi) {
   });
 }
 document.getElementById("selDiario").addEventListener("change", function(){ initDiario(+this.value); });
-initDiario(25);
+initDiario(26);
 
 function buildTabla(wi) {
   const w = WEEKS[wi];
@@ -2321,7 +2332,7 @@ function buildTabla(wi) {
   t.innerHTML = h;
 }
 document.getElementById("selTabla").addEventListener("change", function(){ buildTabla(+this.value); });
-buildTabla(25);
+buildTabla(26);
 
 // ═══════════════════════════ LANGOSTINO ══════════════════════════════
 // ═══════════════════════ CALCULADORA DE INSUMOS (RECETAS) ═══════════════════════
@@ -2568,7 +2579,7 @@ function initLangostino() {
 // (51/51, único producto ese día) → se agrega 05-10. 06 y 07-10 siguen con envasada vacía.
 // 08/10 (a pedido de Debo): se carga 25-09 como todo envasado — Reducción 24/24, Salsa Naranja 14/14 (en el
 // sheet la envasada de Salsa Naranja sigue vacía; Debo indicó tomarla como envasada), Pollo 34/34, Pasta Honey 1/1.
-const CC_FECHAS = ["08-06","09-06","10-06","11-06","12-06","15-06","16-06","17-06","18-06","19-06","22-06","23-06","24-06","25-06","26-06","29-06","30-06","01-07","02-07","03-07","04-07","06-07","07-07","08-07","10-07","13-07","14-07","15-07","16-07","17-07","18-07","20-07","21-07","22-07","23-07","24-07","27-07","28-07","29-07","30-07","31-07","01-08","03-08","04-08","05-08","06-08","07-08","08-08","10-08","11-08","12-08","13-08","14-08","15-08","17-08","18-08","19-08","20-08","21-08","24-08","25-08","26-08","27-08","28-08","29-08","31-08","01-09","02-09","03-09","04-09","05-09","07-09","08-09","09-09","11-09","12-09","14-09","15-09","16-09","17-09","18-09","23-09","24-09","25-09","26-09","28-09","29-09","30-09","01-10","02-10","03-10","05-10","06-10","07-10","08-10","09-10","12-10","13-10","14-10","15-10","16-10","17-10","19-10","20-10","21-10","22-10","23-10","24-10","26-10","27-10","28-10"];
+const CC_FECHAS = ["08-06","09-06","10-06","11-06","12-06","15-06","16-06","17-06","18-06","19-06","22-06","23-06","24-06","25-06","26-06","29-06","30-06","01-07","02-07","03-07","04-07","06-07","07-07","08-07","10-07","13-07","14-07","15-07","16-07","17-07","18-07","20-07","21-07","22-07","23-07","24-07","27-07","28-07","29-07","30-07","31-07","01-08","03-08","04-08","05-08","06-08","07-08","08-08","10-08","11-08","12-08","13-08","14-08","15-08","17-08","18-08","19-08","20-08","21-08","24-08","25-08","26-08","27-08","28-08","29-08","31-08","01-09","02-09","03-09","04-09","05-09","07-09","08-09","09-09","11-09","12-09","14-09","15-09","16-09","17-09","18-09","23-09","24-09","25-09","26-09","28-09","29-09","30-09","01-10","02-10","03-10","05-10","06-10","07-10","08-10","09-10","12-10","13-10","14-10","15-10","16-10","17-10","19-10","20-10","21-10","22-10","23-10","24-10","26-10","27-10","28-10","29-10","30-10"];
 // 23/09: se agregan 17-09 y 18-09, ambas con producida y envasada completas (columna "se cerró" = OK
 // en el sheet) — Teriyaki 500cc 36/36 ambos días, Pollo Teriyaki 42/42 ambos días, resto sin producción
 // esos días. 19-09 (sábado) sigue sin fila en el sheet.
@@ -2646,11 +2657,11 @@ const CC_FECHAS = ["08-06","09-06","10-06","11-06","12-06","15-06","16-06","17-0
 // 19-09 (sábado) sigue sin fila en el sheet, ni siquiera vacía; se trata como confirmado sin producción
 // (mismo criterio que Trucha para ese mismo sábado). Nada nuevo para 20, 21 o 22/09.
 const CC_DATA = {
-  "Teriyaki 500cc": { color:"#EF402F", prod:[22,36,28,42,36,36,30,36,36,36,0,30,24,36,50,32,36,41,37,0,12,36,0,24,24,36,24,51,24,36,12,12,25,40,60,0,79,36,24,24,0,36,48,24,48,24,39,0,41,40,39,36,37,0,36,33,36,24,36,30,37,39,24,0,12,24,23,35,29,28,24,44,0,0,42,0,29,28,36,36,36,24,36,24,25,36,38,25,0,0,48,0,0,24,24,24,0,0,24,48,36,38,36,24,0,24,24,24,39,30,77], env:[22,36,28,42,36,36,30,0,36,0,0,0,24,36,50,0,36,41,0,0,0,34,0,0,24,36,24,0,0,0,12,0,0,0,0,0,79,36,0,0,0,0,48,0,48,24,39,0,41,0,39,36,37,0,36,33,36,24,36,30,37,0,0,0,12,24,23,35,29,0,0,0,0,0,42,0,29,28,36,36,36,24,36,24,25,36,38,25,0,0,48,0,0,24,24,24,0,0,24,24,36,38,36,24,0,24,24,24,39,30,77] },
-  "Salsa Naranja": { color:"#E3A127", prod:[12,0,14,0,12,12,0,0,12,12,0,26,24,0,0,24,0,0,12,0,36,15,0,24,24,0,12,0,12,0,0,0,0,0,0,0,12,0,30,12,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,12,0,0,0,0,0,0,16,0,0,0,0,30,0,0,0,0,0,0,20,16,0,0,0,22,14,14,0,0,0,24,36,30,12,0,0,0,12,14,0,0,13,0,12,12,0,0,0,0,0,12,12,0,0], env:[12,0,14,0,12,12,0,0,0,12,0,26,24,0,0,0,0,0,0,0,0,14,0,0,24,0,12,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,16,0,0,0,0,30,0,0,0,0,0,0,20,16,0,0,0,22,13,14,0,0,0,24,36,30,12,0,0,0,12,14,0,0,13,0,12,12,0,0,0,0,0,12,12,0,0] },
-  "Vinagreta 20L": { color:"#33A392", prod:[51,51,51,0,0,51,43,0,0,51,34,51,0,0,51,51,51,51,0,0,0,51,42,0,0,51,43,0,0,0,0,0,0,0,0,0,0,0,0,0,33,0,34,0,0,0,51,0,51,51,0,0,42,0,8,51,34,0,51,50,51,0,0,0,0,51,51,0,0,51,0,51,51,52,0,0,51,42,0,0,0,0,0,0,51,51,51,0,0,51,26,51,26,0,0,0,0,42,0,0,16,0,43,0,0,0,53,45,51,0,22], env:[51,51,51,0,0,51,43,0,0,51,34,51,0,0,51,51,51,51,0,0,0,51,0,0,0,51,0,0,0,0,0,0,0,0,0,0,0,0,0,0,33,0,34,0,0,0,51,0,51,51,0,0,42,0,8,51,34,0,51,50,51,0,0,0,0,51,51,0,0,50,0,0,0,52,0,0,51,42,0,0,0,0,0,0,51,51,51,0,0,51,26,51,26,0,0,0,0,42,0,0,16,0,43,0,0,0,53,45,51,0,22] },
-  "Pollo Teriyaki": { color:"#1D4856", prod:[0,12,6,38,34,0,6,41,35,0,0,6,30,29,0,0,5,0,19,12,0,0,12,42,4,0,6,0,42,14,10,10,6,6,0,13,0,0,37,0,0,0,0,5,30,37,6,0,7,5,31,36,12,0,0,0,11,12,12,9,6,21,20,16,0,9,9,35,35,9,0,0,0,28,28,0,11,6,40,42,42,0,29,34,0,0,5,8,34,9,0,0,0,35,33,35,28,0,9,18,14,39,0,27,24,37,10,0,7,33,0], env:[0,12,6,0,0,0,0,0,35,0,0,0,30,0,0,0,5,0,0,12,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,30,0,0,0,0,0,31,36,12,0,0,0,11,12,12,9,0,0,0,0,0,9,0,0,0,0,0,0,0,0,28,0,0,6,40,42,42,0,29,34,0,0,5,8,34,9,0,0,0,35,33,35,28,0,9,18,14,39,0,27,24,37,10,0,7,33,0] },
-  "Pasta Honey": { color:"#F58232", prod:[7.5,4.5,8,2.5,4,0,7,0,7,11,3,9.5,3,8.5,8,9,0,16,0,19.5,11.5,11,0,5.5,22.5,12,6.5,17,8,1,0,0,22,14,14.5,10,20.5,16.5,1.5,8,23,11.5,10.5,3.5,10.5,8,6,15.5,9,6.5,6.5,4,0,18,19.5,9,4,6,0,8.5,5,5.5,11,20.5,12,0,6,5.5,6.5,0,16,12,4,0,2,21,3,11.5,3,0,0,0,0,1,10,15,7,6.5,8,0,0,0,17,5.5,0,0,3.5,0,19.5,1,0,0,7,6.5,4,0,7.5,8,0,0,20], env:[8,4,0,0,0,0,0,0,7,11,3,0,3,0,0,0,0,0,0,20,0,0,0,0,0,12,6,0,0,0,0,0,0,0,0,0,20.5,0,0,0,0,0,0,0,0,0,0,0,0,0,6.5,0,0,18,19.5,9,4,6,0,8.5,0,0,0,0,12,0,0,0,0,0,0,0,0,0,2,12,0,11.5,3,0,0,0,0,1,10,15,7,6.5,8,0,0,0,17,5.5,0,0,3.5,0,19.5,1,0,0,7,6.5,4,0,7.5,8,0,0,20] }
+  "Teriyaki 500cc": { color:"#EF402F", prod:[22,36,28,42,36,36,30,36,36,36,0,30,24,36,50,32,36,41,37,0,12,36,0,24,24,36,24,51,24,36,12,12,25,40,60,0,79,36,24,24,0,36,48,24,48,24,39,0,41,40,39,36,37,0,36,33,36,24,36,30,37,39,24,0,12,24,23,35,29,28,24,44,0,0,42,0,29,28,36,36,36,24,36,24,25,36,38,25,0,0,48,0,0,24,24,24,0,0,24,48,36,38,36,24,0,24,24,24,39,30,77,24,24], env:[22,36,28,42,36,36,30,0,36,0,0,0,24,36,50,0,36,41,0,0,0,34,0,0,24,36,24,0,0,0,12,0,0,0,0,0,79,36,0,0,0,0,48,0,48,24,39,0,41,0,39,36,37,0,36,33,36,24,36,30,37,0,0,0,12,24,23,35,29,0,0,0,0,0,42,0,29,28,36,36,36,24,36,24,25,36,38,25,0,0,48,0,0,24,24,24,0,0,24,24,36,38,36,24,0,24,24,24,39,30,77,24,24] },
+  "Salsa Naranja": { color:"#E3A127", prod:[12,0,14,0,12,12,0,0,12,12,0,26,24,0,0,24,0,0,12,0,36,15,0,24,24,0,12,0,12,0,0,0,0,0,0,0,12,0,30,12,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,12,0,0,0,0,0,0,16,0,0,0,0,30,0,0,0,0,0,0,20,16,0,0,0,22,14,14,0,0,0,24,36,30,12,0,0,0,12,14,0,0,13,0,12,12,0,0,0,0,0,12,12,0,0,0,0], env:[12,0,14,0,12,12,0,0,0,12,0,26,24,0,0,0,0,0,0,0,0,14,0,0,24,0,12,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,16,0,0,0,0,30,0,0,0,0,0,0,20,16,0,0,0,22,13,14,0,0,0,24,36,30,12,0,0,0,12,14,0,0,13,0,12,12,0,0,0,0,0,12,12,0,0,0,0] },
+  "Vinagreta 20L": { color:"#33A392", prod:[51,51,51,0,0,51,43,0,0,51,34,51,0,0,51,51,51,51,0,0,0,51,42,0,0,51,43,0,0,0,0,0,0,0,0,0,0,0,0,0,33,0,34,0,0,0,51,0,51,51,0,0,42,0,8,51,34,0,51,50,51,0,0,0,0,51,51,0,0,51,0,51,51,52,0,0,51,42,0,0,0,0,0,0,51,51,51,0,0,51,26,51,26,0,0,0,0,42,0,0,16,0,43,0,0,0,53,45,51,0,22,0,43], env:[51,51,51,0,0,51,43,0,0,51,34,51,0,0,51,51,51,51,0,0,0,51,0,0,0,51,0,0,0,0,0,0,0,0,0,0,0,0,0,0,33,0,34,0,0,0,51,0,51,51,0,0,42,0,8,51,34,0,51,50,51,0,0,0,0,51,51,0,0,50,0,0,0,52,0,0,51,42,0,0,0,0,0,0,51,51,51,0,0,51,26,51,26,0,0,0,0,42,0,0,16,0,43,0,0,0,53,45,51,0,22,0,43] },
+  "Pollo Teriyaki": { color:"#1D4856", prod:[0,12,6,38,34,0,6,41,35,0,0,6,30,29,0,0,5,0,19,12,0,0,12,42,4,0,6,0,42,14,10,10,6,6,0,13,0,0,37,0,0,0,0,5,30,37,6,0,7,5,31,36,12,0,0,0,11,12,12,9,6,21,20,16,0,9,9,35,35,9,0,0,0,28,28,0,11,6,40,42,42,0,29,34,0,0,5,8,34,9,0,0,0,35,33,35,28,0,9,18,14,39,0,27,24,37,10,0,7,33,44,0,5], env:[0,12,6,0,0,0,0,0,35,0,0,0,30,0,0,0,5,0,0,12,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,30,0,0,0,0,0,31,36,12,0,0,0,11,12,12,9,0,0,0,0,0,9,0,0,0,0,0,0,0,0,28,0,0,6,40,42,42,0,29,34,0,0,5,8,34,9,0,0,0,35,33,35,28,0,9,18,14,39,0,27,24,37,10,0,7,33,44,0,5] },
+  "Pasta Honey": { color:"#F58232", prod:[7.5,4.5,8,2.5,4,0,7,0,7,11,3,9.5,3,8.5,8,9,0,16,0,19.5,11.5,11,0,5.5,22.5,12,6.5,17,8,1,0,0,22,14,14.5,10,20.5,16.5,1.5,8,23,11.5,10.5,3.5,10.5,8,6,15.5,9,6.5,6.5,4,0,18,19.5,9,4,6,0,8.5,5,5.5,11,20.5,12,0,6,5.5,6.5,0,16,12,4,0,2,21,3,11.5,3,0,0,0,0,1,10,15,7,6.5,8,0,0,0,17,5.5,0,0,3.5,0,19.5,1,0,0,7,6.5,4,0,7.5,8,0,0,20,1,15], env:[8,4,0,0,0,0,0,0,7,11,3,0,3,0,0,0,0,0,0,20,0,0,0,0,0,12,6,0,0,0,0,0,0,0,0,0,20.5,0,0,0,0,0,0,0,0,0,0,0,0,0,6.5,0,0,18,19.5,9,4,6,0,8.5,0,0,0,0,12,0,0,0,0,0,0,0,0,0,2,12,0,11.5,3,0,0,0,0,1,10,15,7,6.5,8,0,0,0,17,5.5,0,0,3.5,0,19.5,1,0,0,7,6.5,4,0,7.5,8,0,0,20,1,15] }
 
 };
 // 09/09: se agrega 08-09 (Vinagreta 51, Pasta Honey 4 — Reducción, Salsa Naranja y Pollo sin
@@ -2666,9 +2677,13 @@ const CC_DATA = {
 // 30/10: se agregan 24-10, 26-10, 27-10 y 28-10 (el sheet completó envasada = producida) y se recalcula como suma de
 // los arrays. 29-10 con producida pero envasada vacía — se carga cuando se complete.
 // 03/11: releído (gviz) — 29-10, 30-10 y 02-11 con producida pero envasada vacía; no se agregan todavía.
+// 11/11: releído (gviz, Chrome) — el sheet completó envasada de 29-10 (Reducción 24/24, Pasta Honey 1/1) y 30-10 (Reducción
+// 24/24, Vinagreta 43/43, Pollo 5/5, Pasta Honey 15/15) → se agregan. El sheet ahora trae 28-10 Pollo Teriyaki 44/44 "OK"
+// (antes 0) → se corrige 0→44. 29-10 ya no trae Salsa Naranja 12 ni Pollo 38 (filas vacías), no se cargan. 02-11 a 09-11
+// con producida pero envasada vacía. Recalculado como suma de los arrays.
 const CC_TOTALES = {
-  "Teriyaki 500cc": {prod:3088,env:2300}, "Salsa Naranja":{prod:670,env:482},
-  "Vinagreta 20L":{prod:2260,env:2072}, "Pollo Teriyaki":{prod:1513,env:888}, "Pasta Honey":{prod:801,env:353.5}
+  "Teriyaki 500cc": {prod:3136,env:2348}, "Salsa Naranja":{prod:670,env:482},
+  "Vinagreta 20L":{prod:2303,env:2115}, "Pollo Teriyaki":{prod:1562,env:937}, "Pasta Honey":{prod:817,env:369.5}
 };
 
 // Mismas semanas que la pestaña Trucha (S24–S29 — Cocina Caliente no tiene registros previos a S24)
@@ -2798,11 +2813,11 @@ const CC_WEEKS = [
   { label:"S43", dateRange:"19–24 oct", isPartial:false,
     prod:{ "Teriyaki 500cc":[36,24,0,24,24,24], "Salsa Naranja":[0,0,0,0,0,12], "Vinagreta 20L":[43,0,0,0,53,45], "Pollo Teriyaki":[0,27,24,37,10,0], "Pasta Honey":[7,6.5,4,0,7.5,8] },
     env:{ "Teriyaki 500cc":[36,24,0,24,24,24], "Salsa Naranja":[0,0,0,0,0,12], "Vinagreta 20L":[43,0,0,0,53,45], "Pollo Teriyaki":[0,27,24,37,10,0], "Pasta Honey":[7,6.5,4,0,7.5,8] } },
-  // S44 en curso: 26 a 28-10 completos. 29-10 (Reducción 24, Salsa Naranja 12, Pollo 38, Pasta Honey 1) sin envasada
-  // todavía — se carga cuando se complete.
-  { label:"S44", dateRange:"26–31 oct", isPartial:true,
-    prod:{ "Teriyaki 500cc":[39,30,77,0,0,0], "Salsa Naranja":[12,0,0,0,0,0], "Vinagreta 20L":[51,0,22,0,0,0], "Pollo Teriyaki":[7,33,0,0,0,0], "Pasta Honey":[0,0,20,0,0,0] },
-    env:{ "Teriyaki 500cc":[39,30,77,0,0,0], "Salsa Naranja":[12,0,0,0,0,0], "Vinagreta 20L":[51,0,22,0,0,0], "Pollo Teriyaki":[7,33,0,0,0,0], "Pasta Honey":[0,0,20,0,0,0] } }
+  // S44: 26 a 28-10 completos. 11/11: + 29-10 y 30-10 (envasada completa) y 28-10 Pollo 0→44 (corregido en el sheet).
+  // Sábado 31-10 sin filas en el sheet → semana cerrada.
+  { label:"S44", dateRange:"26–31 oct", isPartial:false,
+    prod:{ "Teriyaki 500cc":[39,30,77,24,24,0], "Salsa Naranja":[12,0,0,0,0,0], "Vinagreta 20L":[51,0,22,0,43,0], "Pollo Teriyaki":[7,33,44,0,5,0], "Pasta Honey":[0,0,20,1,15,0] },
+    env:{ "Teriyaki 500cc":[39,30,77,24,24,0], "Salsa Naranja":[12,0,0,0,0,0], "Vinagreta 20L":[51,0,22,0,43,0], "Pollo Teriyaki":[7,33,44,0,5,0], "Pasta Honey":[0,0,20,1,15,0] } }
 ];
 function ccWeekTotal(w, metric, prod) { return w[metric][prod].reduce((a,b)=>a+b,0); }
 
@@ -3292,10 +3307,14 @@ const CUMPL_WEEKS = [
   // lunes, mismo corte que S44). Pedido 1.302 u / Entregado 664 u (51,0%; Pasta Honey y Tamago todavía sin entregas).
   // Salidas con "salidas al 091126.xml": 03/11 252 u + 04/11 182 + 05/11 127 + 06/11 126 = 687 u. El 3er bloque (pedido
   // 1.297 u, sin entregado) no se agrega todavía.
+  // 11/11: NOV 26 releída (gviz por gid, Chrome) — S45 Entregado Tamago 0→27 → 691 / 1.302 u (53,1%); resto y Pedido sin
+  // cambios; S44 sin cambios. 3er bloque sigue sin entregado (pedido 1.297 u) → S46 no se agrega. Salidas con "salidas al
+  // 111126.xml": + 09/11 (31 u) → S45 718 u (03–06/11 re-sumados coinciden al u: 687). El 10/11 (299 u) queda para S46.
+  // Script validado contra "salidas al 091126.xml" (reproduce S44 1.156 y S45 687).
   { label:"S45", dateRange:"03–09/11", isPartial:true,
     pedido:   { "CORTE DE TRUCHA":65, "CUBOS DE TRUCHA":75, "LANGOSTINOS REBOZADOS":260, "PASTA DE HONEY":40, "POLLO TERIYAKI":110, "REDUCCIÓN DE TERIYAKI":250, "SALSA NARANJA Y MIEL":28, "TAMAGO":150, "TIRA DE TRUCHA":120, "VINAGRETA":204 },
-    entregado:{ "CORTE DE TRUCHA":46, "CUBOS DE TRUCHA":42, "LANGOSTINOS REBOZADOS":172, "PASTA DE HONEY":0, "POLLO TERIYAKI":64, "REDUCCIÓN DE TERIYAKI":122, "SALSA NARANJA Y MIEL":22, "TAMAGO":0, "TIRA DE TRUCHA":49, "VINAGRETA":147 },
-    salidas:  { "CORTE DE TRUCHA":44, "CUBOS DE TRUCHA":27, "LANGOSTINOS REBOZADOS":141, "PASTA DE HONEY":26, "POLLO TERIYAKI":45, "REDUCCIÓN DE TERIYAKI":80, "SALSA NARANJA Y MIEL":15, "TAMAGO":162, "TIRA DE TRUCHA":53, "VINAGRETA":94 } }
+    entregado:{ "CORTE DE TRUCHA":46, "CUBOS DE TRUCHA":42, "LANGOSTINOS REBOZADOS":172, "PASTA DE HONEY":0, "POLLO TERIYAKI":64, "REDUCCIÓN DE TERIYAKI":122, "SALSA NARANJA Y MIEL":22, "TAMAGO":27, "TIRA DE TRUCHA":49, "VINAGRETA":147 },
+    salidas:  { "CORTE DE TRUCHA":46, "CUBOS DE TRUCHA":28, "LANGOSTINOS REBOZADOS":147, "PASTA DE HONEY":28, "POLLO TERIYAKI":48, "REDUCCIÓN DE TERIYAKI":84, "SALSA NARANJA Y MIEL":15, "TAMAGO":166, "TIRA DE TRUCHA":56, "VINAGRETA":100 } }
 ];
 // 02/11 (a pedido de Debo): se aplican los pedidos revisados del sheet OCT 26 — S40 Pollo 100→58, Tamago 210→150;
 // S41 Tamago 210→111, Tira 110→95; S42 Langostinos 250→215, Tamago 150→130, Vinagreta 153→59; S43 Pasta Honey 45→33.
@@ -3415,17 +3434,18 @@ const CUMPL_FRANQUICIAS_MES = {
   // cual vienen en TOTVS. 05/11: recalculado con "salidas al 051126.xml" (+ 03/11, 252 u → 499 u; 02/11 re-sumado con el
   // mismo archivo coincide al u; "VILLA  ALLENDE NUEVO" se suma como VILLA ALLENDE). 09/11: recalculado con "salidas al
   // 091126.xml" (+ 04/11 182 u, 05/11 127 u, 06/11 126 u → 934 u; 02–03/11 re-sumados coinciden al u: 499 u).
+  // 11/11: recalculado con "salidas al 111126.xml" (+ 09/11 31 u, 10/11 299 u → 1.264 u; 02–06/11 re-sumados coinciden al u: 934 u).
   "NOVIEMBRE": {
-    "CORTE DE TRUCHA": { "SAN RAFAEL":6, "ROSARIO":5, "NUEVA CORDOBA":4, "SAN JUAN":4, "LA RIOJA":4, "MANANTIALES I":3, "ALTO ALBERDI":3, "MENDOZA":3, "GODOY CRUZ":3, "CERRO":3, "SANTA LUCIA":3, "CARLOS PAZ":2, "JARDIN":2, "VILLA MARIA":2, "COLON":2, "RECTA":2, "MANANTIALES II":1, "ALTA CORDOBA":1, "SABATTINI":1, "GENERAL PAZ":1, "RESIDENCIAL AMERICA":1, "VILLA ALLENDE":1, "CALERA":1, "RIO IV":1, "FORTE MALL":1, "MONSEÑOR":1 },
-    "CUBOS DE TRUCHA": { "NUEVA CORDOBA":4, "PALERMO":3, "ALTO ALBERDI":3, "MENDOZA":3, "CERRO":3, "CARLOS PAZ":2, "GENERAL PAZ":2, "ROSARIO":2, "COLON":2, "RECTA":2, "RIO IV":2, "SAN JUAN":2, "ALTA CORDOBA":1, "VILLA MARIA":1, "RECOLETA":1, "MONSEÑOR":1, "GODOY CRUZ":1, "SAN RAFAEL":1, "SANTA LUCIA":1, "LA RIOJA":1, "MANANTIALES I":1, "RESIDENCIAL AMERICA":1 },
-    "LANGOSTINOS REBOZADOS": { "CERRO":17, "NUEVA CORDOBA":15, "ALTO ALBERDI":12, "SAN JUAN":12, "GENERAL PAZ":10, "LA RIOJA":10, "VILLA ALLENDE":9, "RECTA":9, "SAN RAFAEL":8, "MANANTIALES I":7, "ROSARIO":7, "RIO IV":7, "CARLOS PAZ":6, "ALTA CORDOBA":6, "SABATTINI":6, "COLON":6, "SANTA LUCIA":6, "JARDIN":5, "RESIDENCIAL AMERICA":5, "VILLA MARIA":5, "MONSEÑOR":5, "MANANTIALES II":4, "RECOLETA":4, "FORTE MALL":3, "PALERMO":3, "MENDOZA":3, "GODOY CRUZ":3, "CALERA":2 },
-    "PASTA DE HONEY": { "SAN JUAN":4, "MENDOZA":3, "GODOY CRUZ":3, "SANTA LUCIA":3, "NUEVA CORDOBA":2, "ROSARIO":2, "LA RIOJA":2, "MANANTIALES I":1, "RESIDENCIAL AMERICA":1, "VILLA MARIA":1, "RECOLETA":1, "COLON":1, "SAN RAFAEL":1, "VILLA ALLENDE":1, "CALERA":1, "RIO IV":1, "JARDIN":1, "GENERAL PAZ":1, "CERRO":1, "MONSEÑOR":1, "ALTO ALBERDI":1 },
-    "POLLO TERIYAKI": { "NUEVA CORDOBA":6, "ROSARIO":6, "CERRO":5, "LA RIOJA":5, "ALTO ALBERDI":4, "PALERMO":3, "RECOLETA":3, "MONSEÑOR":3, "RECTA":3, "SANTA LUCIA":3, "SAN JUAN":3, "GENERAL PAZ":2, "RESIDENCIAL AMERICA":2, "COLON":2, "MENDOZA":2, "VILLA ALLENDE":2, "RIO IV":2, "CARLOS PAZ":2, "MANANTIALES II":1, "MANANTIALES I":1, "ALTA CORDOBA":1, "VILLA MARIA":1, "GODOY CRUZ":1, "SAN RAFAEL":1, "JARDIN":1, "SABATTINI":1, "CALERA":1 },
-    "REDUCCIÓN DE TERIYAKI": { "ROSARIO":14, "NUEVA CORDOBA":11, "ALTO ALBERDI":10, "CERRO":10, "RESIDENCIAL AMERICA":9, "PALERMO":8, "LA RIOJA":8, "SAN RAFAEL":7, "SANTA LUCIA":7, "GODOY CRUZ":6, "RECTA":6, "MONSEÑOR":4, "SAN JUAN":4, "ALTA CORDOBA":3, "VILLA MARIA":3, "VILLA ALLENDE":3, "CARLOS PAZ":2, "GENERAL PAZ":2, "JARDIN":2, "MANANTIALES II":1 },
-    "SALSA NARANJA Y MIEL": { "LA RIOJA":4, "ROSARIO":3, "ALTO ALBERDI":3, "SABATTINI":2, "SAN RAFAEL":2, "CERRO":2, "MANANTIALES I":1, "SANTA LUCIA":1, "SAN JUAN":1, "NUEVA CORDOBA":1, "RECTA":1 },
-    "TAMAGO": { "SAN JUAN":16, "ALTO ALBERDI":14, "MENDOZA":14, "SAN RAFAEL":13, "CERRO":12, "GODOY CRUZ":10, "GENERAL PAZ":9, "SANTA LUCIA":9, "RIO IV":8, "ALTA CORDOBA":7, "RESIDENCIAL AMERICA":7, "COLON":7, "LA RIOJA":7, "MANANTIALES I":6, "MONSEÑOR":6, "MANANTIALES II":6, "VILLA ALLENDE":6, "RECTA":6, "CARLOS PAZ":5, "JARDIN":5, "SABATTINI":5, "FORTE MALL":3, "NUEVA CORDOBA":2, "CALERA":2 },
-    "TIRA DE TRUCHA": { "SAN JUAN":7, "ALTO ALBERDI":5, "NUEVA CORDOBA":5, "ROSARIO":4, "CERRO":4, "SAN RAFAEL":4, "LA RIOJA":4, "RECOLETA":3, "COLON":3, "MENDOZA":3, "VILLA ALLENDE":3, "SANTA LUCIA":3, "RIO IV":3, "MANANTIALES II":2, "MANANTIALES I":2, "CARLOS PAZ":2, "SABATTINI":2, "GENERAL PAZ":2, "VILLA MARIA":2, "PALERMO":2, "MONSEÑOR":2, "GODOY CRUZ":2, "RECTA":2, "FORTE MALL":1, "JARDIN":1, "ALTA CORDOBA":1, "RESIDENCIAL AMERICA":1, "CALERA":1 },
-    "VINAGRETA": { "ALTO ALBERDI":11, "ROSARIO":11, "SAN RAFAEL":10, "NUEVA CORDOBA":9, "CERRO":9, "SAN JUAN":9, "GENERAL PAZ":6, "RIO IV":6, "MENDOZA":5, "LA RIOJA":5, "PALERMO":4, "RECOLETA":4, "COLON":4, "GODOY CRUZ":4, "VILLA ALLENDE":4, "RECTA":4, "SANTA LUCIA":4, "MANANTIALES II":3, "CARLOS PAZ":3, "JARDIN":3, "ALTA CORDOBA":3, "VILLA MARIA":3, "MONSEÑOR":3, "FORTE MALL":2, "MANANTIALES I":2, "SABATTINI":2, "RESIDENCIAL AMERICA":2, "CALERA":1 },
+    "CORTE DE TRUCHA": { "ROSARIO":6, "SAN RAFAEL":6, "NUEVA CORDOBA":5, "SAN JUAN":4, "LA RIOJA":4, "MANANTIALES II":3, "MANANTIALES I":3, "JARDIN":3, "VILLA MARIA":3, "ALTO ALBERDI":3, "COLON":3, "MENDOZA":3, "GODOY CRUZ":3, "CERRO":3, "VILLA ALLENDE":3, "RECTA":3, "SANTA LUCIA":3, "CARLOS PAZ":2, "ALTA CORDOBA":2, "SABATTINI":2, "GENERAL PAZ":2, "MONSEÑOR":2, "RECOLETA":2, "RESIDENCIAL AMERICA":1, "CALERA":1, "RIO IV":1, "FORTE MALL":1, "PALERMO":1 },
+    "CUBOS DE TRUCHA": { "ROSARIO":5, "NUEVA CORDOBA":4, "PALERMO":4, "CERRO":4, "GENERAL PAZ":3, "ALTO ALBERDI":3, "MENDOZA":3, "CARLOS PAZ":2, "ALTA CORDOBA":2, "MONSEÑOR":2, "COLON":2, "RECTA":2, "RIO IV":2, "SAN JUAN":2, "VILLA MARIA":1, "RECOLETA":1, "GODOY CRUZ":1, "SAN RAFAEL":1, "SANTA LUCIA":1, "LA RIOJA":1, "MANANTIALES I":1, "RESIDENCIAL AMERICA":1, "MANANTIALES II":1, "JARDIN":1, "VILLA ALLENDE":1 },
+    "LANGOSTINOS REBOZADOS": { "NUEVA CORDOBA":21, "CERRO":17, "ROSARIO":16, "GENERAL PAZ":15, "VILLA ALLENDE":13, "RECTA":13, "ALTO ALBERDI":12, "SAN JUAN":12, "MANANTIALES I":11, "VILLA MARIA":10, "LA RIOJA":10, "ALTA CORDOBA":9, "COLON":9, "JARDIN":8, "SABATTINI":8, "RECOLETA":8, "SAN RAFAEL":8, "MANANTIALES II":7, "CARLOS PAZ":7, "RESIDENCIAL AMERICA":7, "PALERMO":7, "MONSEÑOR":7, "RIO IV":7, "SANTA LUCIA":6, "CALERA":5, "FORTE MALL":4, "MENDOZA":3, "GODOY CRUZ":3 },
+    "PASTA DE HONEY": { "ROSARIO":4, "SAN JUAN":4, "NUEVA CORDOBA":3, "MENDOZA":3, "GODOY CRUZ":3, "SANTA LUCIA":3, "CERRO":3, "MANANTIALES I":2, "VILLA MARIA":2, "RECOLETA":2, "COLON":2, "VILLA ALLENDE":2, "LA RIOJA":2, "JARDIN":2, "GENERAL PAZ":2, "ALTO ALBERDI":2, "RESIDENCIAL AMERICA":1, "SAN RAFAEL":1, "CALERA":1, "RIO IV":1, "MONSEÑOR":1, "MANANTIALES II":1, "PALERMO":1, "ALTA CORDOBA":1, "CARLOS PAZ":1, "FORTE MALL":1, "RECTA":1 },
+    "POLLO TERIYAKI": { "ROSARIO":10, "NUEVA CORDOBA":8, "PALERMO":7, "RECOLETA":6, "CERRO":5, "RECTA":5, "LA RIOJA":5, "GENERAL PAZ":4, "ALTO ALBERDI":4, "MONSEÑOR":4, "ALTA CORDOBA":3, "RESIDENCIAL AMERICA":3, "COLON":3, "VILLA ALLENDE":3, "SANTA LUCIA":3, "SAN JUAN":3, "CARLOS PAZ":3, "MANANTIALES II":2, "MANANTIALES I":2, "VILLA MARIA":2, "MENDOZA":2, "RIO IV":2, "JARDIN":2, "SABATTINI":2, "GODOY CRUZ":1, "SAN RAFAEL":1, "CALERA":1 },
+    "REDUCCIÓN DE TERIYAKI": { "ROSARIO":22, "PALERMO":18, "NUEVA CORDOBA":15, "ALTO ALBERDI":10, "CERRO":10, "RECOLETA":10, "RESIDENCIAL AMERICA":9, "RECTA":9, "LA RIOJA":8, "SAN RAFAEL":7, "SANTA LUCIA":7, "GODOY CRUZ":6, "ALTA CORDOBA":5, "VILLA MARIA":5, "VILLA ALLENDE":5, "MONSEÑOR":4, "SAN JUAN":4, "JARDIN":4, "CARLOS PAZ":3, "MANANTIALES I":3, "GENERAL PAZ":2, "FORTE MALL":2, "MANANTIALES II":1, "CALERA":1 },
+    "SALSA NARANJA Y MIEL": { "ROSARIO":4, "LA RIOJA":4, "ALTO ALBERDI":3, "MANANTIALES I":2, "SABATTINI":2, "SAN RAFAEL":2, "CERRO":2, "RESIDENCIAL AMERICA":2, "SANTA LUCIA":1, "SAN JUAN":1, "NUEVA CORDOBA":1, "RECTA":1, "CARLOS PAZ":1, "VILLA ALLENDE":1 },
+    "TAMAGO": { "ALTO ALBERDI":17, "SAN JUAN":16, "MENDOZA":14, "ALTA CORDOBA":13, "GENERAL PAZ":13, "SAN RAFAEL":13, "CERRO":12, "MONSEÑOR":11, "MANANTIALES I":10, "COLON":10, "GODOY CRUZ":10, "JARDIN":9, "RESIDENCIAL AMERICA":9, "VILLA ALLENDE":9, "RECTA":9, "SANTA LUCIA":9, "SABATTINI":8, "RIO IV":8, "MANANTIALES II":7, "LA RIOJA":7, "CARLOS PAZ":6, "NUEVA CORDOBA":6, "FORTE MALL":4, "CALERA":4 },
+    "TIRA DE TRUCHA": { "ROSARIO":9, "NUEVA CORDOBA":8, "SAN JUAN":7, "ALTO ALBERDI":6, "RECOLETA":5, "CARLOS PAZ":4, "GENERAL PAZ":4, "VILLA MARIA":4, "COLON":4, "CERRO":4, "SAN RAFAEL":4, "VILLA ALLENDE":4, "RECTA":4, "LA RIOJA":4, "MANANTIALES I":3, "JARDIN":3, "ALTA CORDOBA":3, "SABATTINI":3, "PALERMO":3, "MONSEÑOR":3, "MENDOZA":3, "SANTA LUCIA":3, "RIO IV":3, "MANANTIALES II":2, "FORTE MALL":2, "GODOY CRUZ":2, "RESIDENCIAL AMERICA":2, "CALERA":1 },
+    "VINAGRETA": { "ROSARIO":18, "NUEVA CORDOBA":15, "ALTO ALBERDI":11, "CERRO":10, "SAN RAFAEL":10, "GENERAL PAZ":9, "RECOLETA":9, "SAN JUAN":9, "PALERMO":8, "RECTA":7, "ALTA CORDOBA":6, "VILLA MARIA":6, "MONSEÑOR":6, "RIO IV":6, "CARLOS PAZ":5, "JARDIN":5, "COLON":5, "MENDOZA":5, "VILLA ALLENDE":5, "LA RIOJA":5, "MANANTIALES I":4, "RESIDENCIAL AMERICA":4, "GODOY CRUZ":4, "SANTA LUCIA":4, "MANANTIALES II":3, "SABATTINI":3, "FORTE MALL":2, "CALERA":2 }
   }
 };
 
@@ -3576,10 +3596,14 @@ const CUMPL_FRANQUICIAS_MES = {
 // Pollo 64, Reducción 50, Salsa Naranja 22, Tamago 27, Tira 19, Vinagreta 95 — 1 u de Pollo en D4, no se suma. MI: no hay
 // "stock externo" de las 12hs, se mantiene el de la mañana ("stock externo al 091126.xml": Cubos 131, Langostinos 206,
 // Pollo 72, Tamago 341). Mismo script que la carga de la mañana.
+// 11/11: reemplazado entero con "stock al 111126.xml" — CD: Corte 102, Cubos 110, Langostinos 40, Pasta Honey 36, Pollo 115,
+// Reducción 278, Salsa Naranja 34, Tamago 164, Tira 33, Vinagreta 249; CP: Pasta Honey 40, Tamago 48 — 1 u de Pollo en D4,
+// no se suma. MI con "stock externo al 111126.xml" (igual al del 09/11): Cubos 131, Langostinos 206, Pollo 72, Tamago 341.
+// Script validado contra "stock al 091126 12hs.xml" + "stock externo al 091126.xml" (reproduce la carga anterior).
 const CUMPL_STOCK = {
-  "CORTE DE TRUCHA":108, "CUBOS DE TRUCHA":246, "LANGOSTINOS REBOZADOS":272, "PASTA DE HONEY":42,
-  "POLLO TERIYAKI":196, "REDUCCIÓN DE TERIYAKI":208, "SALSA NARANJA Y MIEL":35, "TAMAGO":537,
-  "TIRA DE TRUCHA":42, "VINAGRETA":266
+  "CORTE DE TRUCHA":102, "CUBOS DE TRUCHA":241, "LANGOSTINOS REBOZADOS":246, "PASTA DE HONEY":76,
+  "POLLO TERIYAKI":187, "REDUCCIÓN DE TERIYAKI":278, "SALSA NARANJA Y MIEL":34, "TAMAGO":553,
+  "TIRA DE TRUCHA":33, "VINAGRETA":249
 };
 
 // Pedido/Entregado MENSUAL por producto, ene–ago 2026 (fuente: "Producción CP", pestañas JULIO 26 y
@@ -3708,6 +3732,7 @@ const CUMPL_STOCK = {
 // 09/11 (a pedido de Debo): col. MENSUAL de NOV 26 (gviz) — Pedido sin cambios (3.791 u). Entregado suma el 2do bloque
 // (S45): Corte 9→55, Cubos 21→63, Langostinos 247→419, Pollo 38→102, Reducción 121→243, Salsa Naranja 24→46, Tira 77→126,
 // Vinagreta 74→221 (Pasta Honey y Tamago sin cambio) → 1.315 / 3.791 = 34,7% (sin Salsa Teriyaki 5 lt ni Pasta de Trucha).
+// 11/11: col. MENSUAL de NOV 26 releída — Pedido sin cambios; Entregado Tamago 20→47 (S45) → 1.342 / 3.791 = 35,4%.
 const CUMPL_MESES = ["ENE 26","FEB 26","MAR 26","ABR 26","MAY 26","JUN 26","JUL 26","AGO 26","SEP 26","OCT 26","NOV 26"];
 const CUMPL_MES_PARCIAL = [false,false,false,false,false,false,false,false,false,false,true];
 const CUMPL_MENSUAL = {
@@ -3718,7 +3743,7 @@ const CUMPL_MENSUAL = {
   "POLLO TERIYAKI":        { pedido:[327,300,370,441,321,321,361,259,402,421,330], entregado:[338,323,365,448,339,304,288,249,375,402,102] },
   "REDUCCIÓN DE TERIYAKI": { pedido:[750,700,590,750,730,655,760,696,698,610,700], entregado:[754,689,591,750,730,644,741,696,673,583,243] },
   "SALSA NARANJA Y MIEL":  { pedido:[235,157,30,30,90,100,235,69,140,125,96], entregado:[230,184,30,30,90,128,261,69,117,141,46] },
-  "TAMAGO":                { pedido:[915,1080,750,950,300,204,1039,900,1210,511,500], entregado:[929,1132,774,969,300,178,1023,892,1146,491,20] },
+  "TAMAGO":                { pedido:[915,1080,750,950,300,204,1039,900,1210,511,500], entregado:[929,1132,774,969,300,178,1023,892,1146,491,47] },
   "TIRA DE TRUCHA":        { pedido:[205,265,307,350,277,293,340,323,491,378,340], entregado:[99,227,248,308,251,246,298,293,431,331,126] },
   "VINAGRETA":             { pedido:[522,544,534,440,411,574,458,373,612,469,558], entregado:[533,534,490,485,411,541,484,406,586,438,221] }
 };
@@ -3811,7 +3836,7 @@ function initCumplimiento() {
     AGOSTO: 'Total real despachado del 01 al 31/08/2026, por fecha exacta de la transacción. Fuente: "salidas al 161026.xml", tipo de movimiento "PA".',
     SEPTIEMBRE: 'Total real despachado del 01 al 30/09/2026, por fecha exacta de la transacción. Fuente: "salidas al 161026.xml", tipo de movimiento "PA".',
     OCTUBRE: 'Total real despachado del 01 al 31/10/2026, por fecha exacta de la transacción. Fuente: "salidas al 021126.xml", tipo de movimiento "PA".',
-    NOVIEMBRE: 'Total real despachado desde el 01/11/2026 (mes en curso; por ahora 02 al 06/11), por fecha exacta de la transacción. Fuente: "salidas al 091126.xml", tipo de movimiento "PA".'
+    NOVIEMBRE: 'Total real despachado desde el 01/11/2026 (mes en curso; por ahora 02 al 10/11), por fecha exacta de la transacción. Fuente: "salidas al 111126.xml", tipo de movimiento "PA".'
   };
   function buildTablaFranquicias(prod, mes) {
     document.getElementById("notaFranquicias").textContent = NOTAS_FRANQUICIAS[mes];
