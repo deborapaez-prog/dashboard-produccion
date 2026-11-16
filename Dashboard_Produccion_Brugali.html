@@ -1730,7 +1730,7 @@ footer { text-align: center; color: #BBBBBB; font-size: 0.76rem; padding: 20px 0
       <br><strong>Prom. salidas/sem</strong> y <strong>Semanas de stock</strong>: promedio de salidas a franquicias por semana (S27–S36, las 10 semanas cerradas) y cuántas semanas dura el stock actual a ese ritmo. Menos de 1 semana = riesgo de faltante próximo; más de 8 semanas = posible sobre-stock.
     -->
     <div class="alerta">
-      ⚠️ <strong>Pedido a CP vs. entregado por CP vs. salidas reales a franquicias</strong> (10 productos del CP). Fuentes: "Producción CP" (OCT 26 y NOV 26, releída 12/11) y salidas TOTVS al 11/11 (último movimiento 10/11). S37 a S44 siguen abiertas hasta que Debo confirme el cierre; S45 en curso.
+      ⚠️ <strong>Pedido a CP vs. entregado por CP vs. salidas reales a franquicias</strong> (10 productos del CP). Fuentes: "Producción CP" (OCT 26 y NOV 26, releída 16/11) y salidas TOTVS al 16/11 (último movimiento 13/11). S37 a S45 siguen abiertas hasta que Debo confirme el cierre; S46 en curso.
       <br><strong>% Pedido / Salidas</strong>: 100% = pedido calibrado · &lt;70% pedido corto (riesgo de faltante) · &gt;130% sobre-pedido.
       <br><strong>Stock actual</strong>: foto TOTVS al 16/11 (CD + CP + Mirizi). <strong>Semanas de stock</strong>: stock ÷ promedio de salidas S27–S36 · &lt;1 riesgo de faltante · &gt;8 sobre-stock.
     </div>
@@ -1739,7 +1739,7 @@ footer { text-align: center; color: #BBBBBB; font-size: 0.76rem; padding: 20px 0
       <div class="kpi-card">
         <div class="lbl">Cumplimiento producción (mensual)</div>
         <div class="val" style="color:#33A392">96,0 <span style="font-size:.85rem;color:#BBBBBB">%</span></div>
-        <div class="sub">3.489 / 3.634 u pedidas — OCT 26 cerrado (col. MENSUAL, 02/11). NOV 26 va en 41,1% (1.559 / 3.791 u, releída 12/11 — S44 + S45 con entregas, la 3ra semana solo con pedido)</div>
+        <div class="sub">3.489 / 3.634 u pedidas — OCT 26 cerrado (col. MENSUAL, 02/11). NOV 26 va en 43,7% (2.226 / 5.089 u, releída 16/11 — S44 a S46 con entregas, la 4ta semana solo con pedido)</div>
       </div>
       <div class="kpi-card">
         <div class="lbl">Pedido vs. Salidas</div>
@@ -1780,7 +1780,8 @@ footer { text-align: center; color: #BBBBBB; font-size: 0.76rem; padding: 20px 0
           <option value="15">S42 — 14–19/10 (abierta)</option>
           <option value="16">S43 — 20–26/10 (abierta)</option>
           <option value="17">S44 — 27/10–02/11 (abierta)</option>
-          <option value="18" selected>S45 — 03–09/11 (en curso)</option>
+          <option value="18">S45 — 03–09/11 (abierta)</option>
+          <option value="19" selected>S46 — 10–16/11 (en curso)</option>
         </select>
       </h2>
       <div class="chart-wrap" style="height:320px"><canvas id="chartCumplSemanal"></canvas></div>
@@ -1819,7 +1820,7 @@ footer { text-align: center; color: #BBBBBB; font-size: 0.76rem; padding: 20px 0
 
     <div class="alerta">
       ⚠️ <strong>Octubre cerró</strong> (S40 a S43, col. MENSUAL de OCT 26 releída el 02/11): 3.489/3.634 u, 96,0%. Septiembre: 4.474/4.665 u, 95,9%.
-      <strong>Noviembre en curso</strong> (col. MENSUAL de NOV 26, releída el 12/11): 1.559/3.791 u, 41,1% — S44 (27/10–02/11) 651/1.192 u, S45 (03–09/11) 908/1.302 u y la semana siguiente con pedido (1.297 u) pero sin entregas.
+      <strong>Noviembre en curso</strong> (col. MENSUAL de NOV 26, releída el 16/11): 2.226/5.089 u, 43,7% — S44 (27/10–02/11) 651/1.192 u, S45 (03–09/11) 1.174/1.302 u, S46 (10–16/11) 401/1.211 u y la semana del 17/11 con pedido (1.384 u) pero sin entregas.
       Fuente: "Producción CP", pestañas mensuales ENE 26 a NOV 26.
     </div>
 
@@ -3320,10 +3321,22 @@ const CUMPL_WEEKS = [
   // 12/11: NOV 26 releída (gviz por gid) — el bloque ahora se titula "04/11 al 10/11". S45 Entregado sube: Corte 46→59, Cubos
   // 42→55, Pasta Honey 0→40, Reducción 122→206, Tamago 27→75, Tira 49→68 → 908 / 1.302 u (69,7%). Pedido sin cambios; S44 sin
   // cambios. 3er bloque ("11/11 al 16/11") sigue sin entregado (pedido 1.297 u) → S46 no se agrega. Salidas sin archivo nuevo.
+  // 16/11 (a pedido de Debo): NOV 26 releída (gviz por gid, Chrome). S44 sin cambios. S45 Entregado sube: Corte 59→65, Cubos
+  // 55→64, Langostinos 172→260, Pollo 64→99, Reducción 206→244, Tamago 75→100, Tira 68→82, Vinagreta 147→198 (Pasta Honey y
+  // Salsa Naranja sin cambio) → 1.174 / 1.302 u (90,2%). Pedido sin cambios. Salidas re-sumadas con "salidas al 161126.xml":
+  // coinciden al u (718).
   { label:"S45", dateRange:"03–09/11", isPartial:true,
     pedido:   { "CORTE DE TRUCHA":65, "CUBOS DE TRUCHA":75, "LANGOSTINOS REBOZADOS":260, "PASTA DE HONEY":40, "POLLO TERIYAKI":110, "REDUCCIÓN DE TERIYAKI":250, "SALSA NARANJA Y MIEL":28, "TAMAGO":150, "TIRA DE TRUCHA":120, "VINAGRETA":204 },
-    entregado:{ "CORTE DE TRUCHA":59, "CUBOS DE TRUCHA":55, "LANGOSTINOS REBOZADOS":172, "PASTA DE HONEY":40, "POLLO TERIYAKI":64, "REDUCCIÓN DE TERIYAKI":206, "SALSA NARANJA Y MIEL":22, "TAMAGO":75, "TIRA DE TRUCHA":68, "VINAGRETA":147 },
-    salidas:  { "CORTE DE TRUCHA":46, "CUBOS DE TRUCHA":28, "LANGOSTINOS REBOZADOS":147, "PASTA DE HONEY":28, "POLLO TERIYAKI":48, "REDUCCIÓN DE TERIYAKI":84, "SALSA NARANJA Y MIEL":15, "TAMAGO":166, "TIRA DE TRUCHA":56, "VINAGRETA":100 } }
+    entregado:{ "CORTE DE TRUCHA":65, "CUBOS DE TRUCHA":64, "LANGOSTINOS REBOZADOS":260, "PASTA DE HONEY":40, "POLLO TERIYAKI":99, "REDUCCIÓN DE TERIYAKI":244, "SALSA NARANJA Y MIEL":22, "TAMAGO":100, "TIRA DE TRUCHA":82, "VINAGRETA":198 },
+    salidas:  { "CORTE DE TRUCHA":46, "CUBOS DE TRUCHA":28, "LANGOSTINOS REBOZADOS":147, "PASTA DE HONEY":28, "POLLO TERIYAKI":48, "REDUCCIÓN DE TERIYAKI":84, "SALSA NARANJA Y MIEL":15, "TAMAGO":166, "TIRA DE TRUCHA":56, "VINAGRETA":100 } },
+  // S46 — 16/11 (a pedido de Debo): NOV 26, bloque "11/11/2026 al 16/11" (ya trae Entregado). Acá S46 = 10–16/11 (martes a
+  // lunes, mismo corte que S44/S45). Pedido 1.211 u (antes, sin entregas, el bloque sumaba 1.297 u) / Entregado 401 u (33,1%;
+  // Cubos, Pasta Honey y Tamago todavía sin entregas). Salidas con "salidas al 161126.xml" (último movimiento 13/11): 10/11
+  // 299 u + 11/11 244 + 12/11 289 + 13/11 268 = 1.100 u. El 4to bloque ("17/11 al 23/11", solo pedido 1.384 u) no se agrega.
+  { label:"S46", dateRange:"10–16/11", isPartial:true,
+    pedido:   { "CORTE DE TRUCHA":72, "CUBOS DE TRUCHA":60, "LANGOSTINOS REBOZADOS":164, "PASTA DE HONEY":45, "POLLO TERIYAKI":110, "REDUCCIÓN DE TERIYAKI":250, "SALSA NARANJA Y MIEL":40, "TAMAGO":200, "TIRA DE TRUCHA":120, "VINAGRETA":150 },
+    entregado:{ "CORTE DE TRUCHA":8, "CUBOS DE TRUCHA":0, "LANGOSTINOS REBOZADOS":164, "PASTA DE HONEY":0, "POLLO TERIYAKI":18, "REDUCCIÓN DE TERIYAKI":93, "SALSA NARANJA Y MIEL":24, "TAMAGO":0, "TIRA DE TRUCHA":39, "VINAGRETA":55 },
+    salidas:  { "CORTE DE TRUCHA":63, "CUBOS DE TRUCHA":31, "LANGOSTINOS REBOZADOS":196, "PASTA DE HONEY":44, "POLLO TERIYAKI":102, "REDUCCIÓN DE TERIYAKI":174, "SALSA NARANJA Y MIEL":30, "TAMAGO":204, "TIRA DE TRUCHA":97, "VINAGRETA":159 } }
 ];
 // 02/11 (a pedido de Debo): se aplican los pedidos revisados del sheet OCT 26 — S40 Pollo 100→58, Tamago 210→150;
 // S41 Tamago 210→111, Tira 110→95; S42 Langostinos 250→215, Tamago 150→130, Vinagreta 153→59; S43 Pasta Honey 45→33.
@@ -3444,17 +3457,18 @@ const CUMPL_FRANQUICIAS_MES = {
   // mismo archivo coincide al u; "VILLA  ALLENDE NUEVO" se suma como VILLA ALLENDE). 09/11: recalculado con "salidas al
   // 091126.xml" (+ 04/11 182 u, 05/11 127 u, 06/11 126 u → 934 u; 02–03/11 re-sumados coinciden al u: 499 u).
   // 11/11: recalculado con "salidas al 111126.xml" (+ 09/11 31 u, 10/11 299 u → 1.264 u; 02–06/11 re-sumados coinciden al u: 934 u).
+  // 16/11 (a pedido de Debo): recalculado con "salidas al 161126.xml" (+ 11/11 244 u, 12/11 289 u, 13/11 268 u -> 2.065 u; 01-10/11 re-sumados coinciden al u: 1.264 u).
   "NOVIEMBRE": {
-    "CORTE DE TRUCHA": { "ROSARIO":6, "SAN RAFAEL":6, "NUEVA CORDOBA":5, "SAN JUAN":4, "LA RIOJA":4, "MANANTIALES II":3, "MANANTIALES I":3, "JARDIN":3, "VILLA MARIA":3, "ALTO ALBERDI":3, "COLON":3, "MENDOZA":3, "GODOY CRUZ":3, "CERRO":3, "VILLA ALLENDE":3, "RECTA":3, "SANTA LUCIA":3, "CARLOS PAZ":2, "ALTA CORDOBA":2, "SABATTINI":2, "GENERAL PAZ":2, "MONSEÑOR":2, "RECOLETA":2, "RESIDENCIAL AMERICA":1, "CALERA":1, "RIO IV":1, "FORTE MALL":1, "PALERMO":1 },
-    "CUBOS DE TRUCHA": { "ROSARIO":5, "NUEVA CORDOBA":4, "PALERMO":4, "CERRO":4, "GENERAL PAZ":3, "ALTO ALBERDI":3, "MENDOZA":3, "CARLOS PAZ":2, "ALTA CORDOBA":2, "MONSEÑOR":2, "COLON":2, "RECTA":2, "RIO IV":2, "SAN JUAN":2, "VILLA MARIA":1, "RECOLETA":1, "GODOY CRUZ":1, "SAN RAFAEL":1, "SANTA LUCIA":1, "LA RIOJA":1, "MANANTIALES I":1, "RESIDENCIAL AMERICA":1, "MANANTIALES II":1, "JARDIN":1, "VILLA ALLENDE":1 },
-    "LANGOSTINOS REBOZADOS": { "NUEVA CORDOBA":21, "CERRO":17, "ROSARIO":16, "GENERAL PAZ":15, "VILLA ALLENDE":13, "RECTA":13, "ALTO ALBERDI":12, "SAN JUAN":12, "MANANTIALES I":11, "VILLA MARIA":10, "LA RIOJA":10, "ALTA CORDOBA":9, "COLON":9, "JARDIN":8, "SABATTINI":8, "RECOLETA":8, "SAN RAFAEL":8, "MANANTIALES II":7, "CARLOS PAZ":7, "RESIDENCIAL AMERICA":7, "PALERMO":7, "MONSEÑOR":7, "RIO IV":7, "SANTA LUCIA":6, "CALERA":5, "FORTE MALL":4, "MENDOZA":3, "GODOY CRUZ":3 },
-    "PASTA DE HONEY": { "ROSARIO":4, "SAN JUAN":4, "NUEVA CORDOBA":3, "MENDOZA":3, "GODOY CRUZ":3, "SANTA LUCIA":3, "CERRO":3, "MANANTIALES I":2, "VILLA MARIA":2, "RECOLETA":2, "COLON":2, "VILLA ALLENDE":2, "LA RIOJA":2, "JARDIN":2, "GENERAL PAZ":2, "ALTO ALBERDI":2, "RESIDENCIAL AMERICA":1, "SAN RAFAEL":1, "CALERA":1, "RIO IV":1, "MONSEÑOR":1, "MANANTIALES II":1, "PALERMO":1, "ALTA CORDOBA":1, "CARLOS PAZ":1, "FORTE MALL":1, "RECTA":1 },
-    "POLLO TERIYAKI": { "ROSARIO":10, "NUEVA CORDOBA":8, "PALERMO":7, "RECOLETA":6, "CERRO":5, "RECTA":5, "LA RIOJA":5, "GENERAL PAZ":4, "ALTO ALBERDI":4, "MONSEÑOR":4, "ALTA CORDOBA":3, "RESIDENCIAL AMERICA":3, "COLON":3, "VILLA ALLENDE":3, "SANTA LUCIA":3, "SAN JUAN":3, "CARLOS PAZ":3, "MANANTIALES II":2, "MANANTIALES I":2, "VILLA MARIA":2, "MENDOZA":2, "RIO IV":2, "JARDIN":2, "SABATTINI":2, "GODOY CRUZ":1, "SAN RAFAEL":1, "CALERA":1 },
-    "REDUCCIÓN DE TERIYAKI": { "ROSARIO":22, "PALERMO":18, "NUEVA CORDOBA":15, "ALTO ALBERDI":10, "CERRO":10, "RECOLETA":10, "RESIDENCIAL AMERICA":9, "RECTA":9, "LA RIOJA":8, "SAN RAFAEL":7, "SANTA LUCIA":7, "GODOY CRUZ":6, "ALTA CORDOBA":5, "VILLA MARIA":5, "VILLA ALLENDE":5, "MONSEÑOR":4, "SAN JUAN":4, "JARDIN":4, "CARLOS PAZ":3, "MANANTIALES I":3, "GENERAL PAZ":2, "FORTE MALL":2, "MANANTIALES II":1, "CALERA":1 },
-    "SALSA NARANJA Y MIEL": { "ROSARIO":4, "LA RIOJA":4, "ALTO ALBERDI":3, "MANANTIALES I":2, "SABATTINI":2, "SAN RAFAEL":2, "CERRO":2, "RESIDENCIAL AMERICA":2, "SANTA LUCIA":1, "SAN JUAN":1, "NUEVA CORDOBA":1, "RECTA":1, "CARLOS PAZ":1, "VILLA ALLENDE":1 },
-    "TAMAGO": { "ALTO ALBERDI":17, "SAN JUAN":16, "MENDOZA":14, "ALTA CORDOBA":13, "GENERAL PAZ":13, "SAN RAFAEL":13, "CERRO":12, "MONSEÑOR":11, "MANANTIALES I":10, "COLON":10, "GODOY CRUZ":10, "JARDIN":9, "RESIDENCIAL AMERICA":9, "VILLA ALLENDE":9, "RECTA":9, "SANTA LUCIA":9, "SABATTINI":8, "RIO IV":8, "MANANTIALES II":7, "LA RIOJA":7, "CARLOS PAZ":6, "NUEVA CORDOBA":6, "FORTE MALL":4, "CALERA":4 },
-    "TIRA DE TRUCHA": { "ROSARIO":9, "NUEVA CORDOBA":8, "SAN JUAN":7, "ALTO ALBERDI":6, "RECOLETA":5, "CARLOS PAZ":4, "GENERAL PAZ":4, "VILLA MARIA":4, "COLON":4, "CERRO":4, "SAN RAFAEL":4, "VILLA ALLENDE":4, "RECTA":4, "LA RIOJA":4, "MANANTIALES I":3, "JARDIN":3, "ALTA CORDOBA":3, "SABATTINI":3, "PALERMO":3, "MONSEÑOR":3, "MENDOZA":3, "SANTA LUCIA":3, "RIO IV":3, "MANANTIALES II":2, "FORTE MALL":2, "GODOY CRUZ":2, "RESIDENCIAL AMERICA":2, "CALERA":1 },
-    "VINAGRETA": { "ROSARIO":18, "NUEVA CORDOBA":15, "ALTO ALBERDI":11, "CERRO":10, "SAN RAFAEL":10, "GENERAL PAZ":9, "RECOLETA":9, "SAN JUAN":9, "PALERMO":8, "RECTA":7, "ALTA CORDOBA":6, "VILLA MARIA":6, "MONSEÑOR":6, "RIO IV":6, "CARLOS PAZ":5, "JARDIN":5, "COLON":5, "MENDOZA":5, "VILLA ALLENDE":5, "LA RIOJA":5, "MANANTIALES I":4, "RESIDENCIAL AMERICA":4, "GODOY CRUZ":4, "SANTA LUCIA":4, "MANANTIALES II":3, "SABATTINI":3, "FORTE MALL":2, "CALERA":2 }
+    "CORTE DE TRUCHA": { "NEUQUEN":13, "NUEVA CORDOBA":7, "ROSARIO":6, "SAN RAFAEL":6, "SANTA FE":6, "MANANTIALES II":4, "JARDIN":4, "ALTO ALBERDI":4, "CERRO":4, "VILLA ALLENDE":4, "RECTA":4, "SAN JUAN":4, "LA RIOJA":4, "SALTA":4, "MANANTIALES I":3, "CARLOS PAZ":3, "ALTA CORDOBA":3, "GENERAL PAZ":3, "VILLA MARIA":3, "COLON":3, "MENDOZA":3, "GODOY CRUZ":3, "SANTA LUCIA":3, "TUCUMAN":3, "RAFAELA":3, "NEUQUEN OESTE 2":3, "SABATTINI":2, "RESIDENCIAL AMERICA":2, "RIO IV":2, "FORTE MALL":2, "MONSEÑOR":2, "RECOLETA":2, "YERBA BUENA":2, "CALERA":1, "PALERMO":1 },
+    "CUBOS DE TRUCHA": { "ROSARIO":5, "SANTA FE":5, "NUEVA CORDOBA":4, "PALERMO":4, "ALTO ALBERDI":4, "CERRO":4, "ALTA CORDOBA":3, "GENERAL PAZ":3, "MENDOZA":3, "RECTA":3, "RIO IV":3, "YERBA BUENA":3, "NEUQUEN":3, "CARLOS PAZ":2, "MONSEÑOR":2, "COLON":2, "SAN JUAN":2, "VILLA ALLENDE":2, "SALTA":2, "RAFAELA":2, "VILLA MARIA":1, "RECOLETA":1, "GODOY CRUZ":1, "SAN RAFAEL":1, "SANTA LUCIA":1, "LA RIOJA":1, "MANANTIALES I":1, "RESIDENCIAL AMERICA":1, "MANANTIALES II":1, "JARDIN":1, "NEUQUEN OESTE 2":1 },
+    "LANGOSTINOS REBOZADOS": { "NUEVA CORDOBA":26, "CERRO":23, "ALTO ALBERDI":21, "GENERAL PAZ":19, "VILLA ALLENDE":19, "TUCUMAN":19, "SANTA FE":18, "ROSARIO":16, "RECTA":16, "RIO IV":15, "NEUQUEN":15, "ALTA CORDOBA":12, "SAN JUAN":12, "MANANTIALES I":11, "JARDIN":11, "SABATTINI":11, "CARLOS PAZ":10, "VILLA MARIA":10, "LA RIOJA":10, "YERBA BUENA":10, "MANANTIALES II":9, "RESIDENCIAL AMERICA":9, "MONSEÑOR":9, "COLON":9, "RECOLETA":8, "SAN RAFAEL":8, "PALERMO":7, "FORTE MALL":6, "SANTA LUCIA":6, "RAFAELA":6, "CALERA":5, "SALTA":4, "MENDOZA":3, "GODOY CRUZ":3, "NEUQUEN OESTE 2":1 },
+    "PASTA DE HONEY": { "NEUQUEN":9, "NUEVA CORDOBA":4, "ROSARIO":4, "SAN JUAN":4, "SANTA FE":4, "MENDOZA":3, "GODOY CRUZ":3, "SANTA LUCIA":3, "CERRO":3, "NEUQUEN OESTE 2":3, "MANANTIALES I":2, "RESIDENCIAL AMERICA":2, "VILLA MARIA":2, "RECOLETA":2, "COLON":2, "VILLA ALLENDE":2, "RIO IV":2, "LA RIOJA":2, "JARDIN":2, "GENERAL PAZ":2, "ALTO ALBERDI":2, "TUCUMAN":2, "YERBA BUENA":2, "RAFAELA":2, "SAN RAFAEL":1, "CALERA":1, "MONSEÑOR":1, "MANANTIALES II":1, "PALERMO":1, "ALTA CORDOBA":1, "CARLOS PAZ":1, "FORTE MALL":1, "RECTA":1, "SALTA":1, "SABATTINI":1 },
+    "POLLO TERIYAKI": { "SANTA FE":14, "NUEVA CORDOBA":11, "NEUQUEN":11, "ROSARIO":10, "TUCUMAN":9, "CERRO":8, "YERBA BUENA":8, "PALERMO":7, "GENERAL PAZ":6, "RECOLETA":6, "ALTO ALBERDI":6, "SALTA":6, "ALTA CORDOBA":5, "MONSEÑOR":5, "RECTA":5, "RIO IV":5, "LA RIOJA":5, "VILLA ALLENDE":4, "RAFAELA":4, "NEUQUEN OESTE 2":4, "RESIDENCIAL AMERICA":3, "COLON":3, "SANTA LUCIA":3, "SAN JUAN":3, "JARDIN":3, "CARLOS PAZ":3, "MANANTIALES II":2, "MANANTIALES I":2, "VILLA MARIA":2, "MENDOZA":2, "SABATTINI":2, "CALERA":2, "GODOY CRUZ":1, "SAN RAFAEL":1, "FORTE MALL":1 },
+    "REDUCCIÓN DE TERIYAKI": { "NEUQUEN":27, "ROSARIO":22, "PALERMO":18, "SANTA FE":18, "YERBA BUENA":16, "NUEVA CORDOBA":15, "TUCUMAN":14, "SALTA":13, "RAFAELA":12, "ALTO ALBERDI":10, "CERRO":10, "RECTA":10, "RECOLETA":10, "RESIDENCIAL AMERICA":9, "MONSEÑOR":8, "LA RIOJA":8, "RIO IV":8, "GENERAL PAZ":7, "SAN RAFAEL":7, "SANTA LUCIA":7, "GODOY CRUZ":6, "ALTA CORDOBA":5, "VILLA MARIA":5, "VILLA ALLENDE":5, "JARDIN":5, "NEUQUEN OESTE 2":5, "SAN JUAN":4, "CARLOS PAZ":3, "MANANTIALES II":3, "MANANTIALES I":3, "FORTE MALL":2, "SABATTINI":2, "CALERA":1 },
+    "SALSA NARANJA Y MIEL": { "SANTA FE":7, "ALTO ALBERDI":5, "ROSARIO":4, "LA RIOJA":4, "TUCUMAN":4, "CERRO":3, "SALTA":3, "MANANTIALES I":2, "SABATTINI":2, "SAN RAFAEL":2, "NUEVA CORDOBA":2, "RESIDENCIAL AMERICA":2, "RAFAELA":2, "NEUQUEN OESTE 2":2, "SANTA LUCIA":1, "SAN JUAN":1, "RECTA":1, "CARLOS PAZ":1, "VILLA ALLENDE":1, "COLON":1, "NEUQUEN":1 },
+    "TAMAGO": { "NEUQUEN":33, "ALTO ALBERDI":23, "RIO IV":23, "CERRO":18, "ALTA CORDOBA":17, "GENERAL PAZ":17, "TUCUMAN":17, "SAN JUAN":16, "MONSEÑOR":14, "MENDOZA":14, "SAN RAFAEL":13, "VILLA ALLENDE":13, "JARDIN":12, "RESIDENCIAL AMERICA":12, "RECTA":12, "RAFAELA":12, "SABATTINI":11, "MANANTIALES I":10, "CARLOS PAZ":10, "COLON":10, "GODOY CRUZ":10, "YERBA BUENA":10, "SANTA LUCIA":9, "SALTA":9, "SANTA FE":9, "MANANTIALES II":8, "NEUQUEN OESTE 2":8, "LA RIOJA":7, "FORTE MALL":6, "NUEVA CORDOBA":6, "CALERA":4 },
+    "TIRA DE TRUCHA": { "SANTA FE":13, "NUEVA CORDOBA":11, "NEUQUEN":11, "ROSARIO":9, "ALTO ALBERDI":8, "SAN JUAN":7, "GENERAL PAZ":6, "COLON":6, "CERRO":6, "RIO IV":6, "CARLOS PAZ":5, "ALTA CORDOBA":5, "RECOLETA":5, "VILLA ALLENDE":5, "SALTA":5, "NEUQUEN OESTE 2":5, "SABATTINI":4, "VILLA MARIA":4, "MONSEÑOR":4, "SAN RAFAEL":4, "RECTA":4, "LA RIOJA":4, "YERBA BUENA":4, "RAFAELA":4, "MANANTIALES II":3, "FORTE MALL":3, "MANANTIALES I":3, "JARDIN":3, "PALERMO":3, "MENDOZA":3, "SANTA LUCIA":3, "RESIDENCIAL AMERICA":3, "TUCUMAN":3, "GODOY CRUZ":2, "CALERA":2 },
+    "VINAGRETA": { "SANTA FE":20, "NUEVA CORDOBA":18, "ROSARIO":18, "NEUQUEN":18, "ALTO ALBERDI":16, "TUCUMAN":14, "GENERAL PAZ":13, "CERRO":13, "RIO IV":11, "SAN RAFAEL":10, "YERBA BUENA":10, "RECOLETA":9, "RECTA":9, "SAN JUAN":9, "ALTA CORDOBA":8, "PALERMO":8, "SALTA":8, "RAFAELA":8, "JARDIN":7, "COLON":7, "VILLA ALLENDE":7, "CARLOS PAZ":6, "VILLA MARIA":6, "MONSEÑOR":6, "SABATTINI":5, "RESIDENCIAL AMERICA":5, "MENDOZA":5, "LA RIOJA":5, "MANANTIALES I":4, "GODOY CRUZ":4, "SANTA LUCIA":4, "MANANTIALES II":3, "FORTE MALL":3, "CALERA":2, "NEUQUEN OESTE 2":2 }
   }
 };
 
@@ -3753,19 +3767,24 @@ const CUMPL_STOCK = {
 // 11/11: col. MENSUAL de NOV 26 releída — Pedido sin cambios; Entregado Tamago 20→47 (S45) → 1.342 / 3.791 = 35,4%.
 // 12/11: col. MENSUAL de NOV 26 releída (gviz por gid) — Pedido sin cambios; Entregado sube por S45: Corte 55→68, Cubos
 // 63→76, Pasta Honey 20→60, Reducción 243→327, Tamago 47→95, Tira 126→145 → 1.559 / 3.791 = 41,1%.
+// 16/11 (a pedido de Debo): col. MENSUAL de NOV 26 releída (gviz por gid) — Pedido sube por un 4to bloque ("17/11 al 23/11")
+// y la revisión del 3ro: Corte 197→297, Cubos 185→195, Langostinos 760→924, Pasta Honey 125→170, Pollo 330→440, Reducción
+// 700→950, Salsa Naranja 96→136, Tamago 500→740, Tira 340→475, Vinagreta 558→762 (3.791→5.089 u). Entregado sube por S45 y
+// S46: Corte 68→82, Cubos 76→85, Langostinos 419→671, Pollo 102→155, Reducción 327→458, Salsa Naranja 46→70, Tamago 95→120,
+// Tira 145→198, Vinagreta 221→327 (Pasta Honey sin cambio) → 2.226 / 5.089 = 43,7%.
 const CUMPL_MESES = ["ENE 26","FEB 26","MAR 26","ABR 26","MAY 26","JUN 26","JUL 26","AGO 26","SEP 26","OCT 26","NOV 26"];
 const CUMPL_MES_PARCIAL = [false,false,false,false,false,false,false,false,false,false,true];
 const CUMPL_MENSUAL = {
-  "CORTE DE TRUCHA":       { pedido:[105,100,228,305,275,237,276,132,147,193,197], entregado:[97,97,210,258,223,214,256,132,146,190,68] },
-  "CUBOS DE TRUCHA":       { pedido:[193,180,218,267,217,184,230,130,140,179,185], entregado:[161,115,139,216,172,133,212,150,140,190,76] },
-  "LANGOSTINOS REBOZADOS": { pedido:[1305,1010,907,562,232,428,510,802,640,595,760], entregado:[1283,1004,847,548,232,481,548,768,683,582,419] },
-  "PASTA DE HONEY":        { pedido:[90,50,200,215,133,96,284,225,180,153,125], entregado:[127,54,159,208,139,98,265,218,177,141,60] },
-  "POLLO TERIYAKI":        { pedido:[327,300,370,441,321,321,361,259,402,421,330], entregado:[338,323,365,448,339,304,288,249,375,402,102] },
-  "REDUCCIÓN DE TERIYAKI": { pedido:[750,700,590,750,730,655,760,696,698,610,700], entregado:[754,689,591,750,730,644,741,696,673,583,327] },
-  "SALSA NARANJA Y MIEL":  { pedido:[235,157,30,30,90,100,235,69,140,125,96], entregado:[230,184,30,30,90,128,261,69,117,141,46] },
-  "TAMAGO":                { pedido:[915,1080,750,950,300,204,1039,900,1210,511,500], entregado:[929,1132,774,969,300,178,1023,892,1146,491,95] },
-  "TIRA DE TRUCHA":        { pedido:[205,265,307,350,277,293,340,323,491,378,340], entregado:[99,227,248,308,251,246,298,293,431,331,145] },
-  "VINAGRETA":             { pedido:[522,544,534,440,411,574,458,373,612,469,558], entregado:[533,534,490,485,411,541,484,406,586,438,221] }
+  "CORTE DE TRUCHA":       { pedido:[105,100,228,305,275,237,276,132,147,193,297], entregado:[97,97,210,258,223,214,256,132,146,190,82] },
+  "CUBOS DE TRUCHA":       { pedido:[193,180,218,267,217,184,230,130,140,179,195], entregado:[161,115,139,216,172,133,212,150,140,190,85] },
+  "LANGOSTINOS REBOZADOS": { pedido:[1305,1010,907,562,232,428,510,802,640,595,924], entregado:[1283,1004,847,548,232,481,548,768,683,582,671] },
+  "PASTA DE HONEY":        { pedido:[90,50,200,215,133,96,284,225,180,153,170], entregado:[127,54,159,208,139,98,265,218,177,141,60] },
+  "POLLO TERIYAKI":        { pedido:[327,300,370,441,321,321,361,259,402,421,440], entregado:[338,323,365,448,339,304,288,249,375,402,155] },
+  "REDUCCIÓN DE TERIYAKI": { pedido:[750,700,590,750,730,655,760,696,698,610,950], entregado:[754,689,591,750,730,644,741,696,673,583,458] },
+  "SALSA NARANJA Y MIEL":  { pedido:[235,157,30,30,90,100,235,69,140,125,136], entregado:[230,184,30,30,90,128,261,69,117,141,70] },
+  "TAMAGO":                { pedido:[915,1080,750,950,300,204,1039,900,1210,511,740], entregado:[929,1132,774,969,300,178,1023,892,1146,491,120] },
+  "TIRA DE TRUCHA":        { pedido:[205,265,307,350,277,293,340,323,491,378,475], entregado:[99,227,248,308,251,246,298,293,431,331,198] },
+  "VINAGRETA":             { pedido:[522,544,534,440,411,574,458,373,612,469,762], entregado:[533,534,490,485,411,541,484,406,586,438,327] }
 };
 
 function initCumplimiento() {
@@ -3787,7 +3806,7 @@ function initCumplimiento() {
     });
   }
   document.getElementById("selCumplSemana").addEventListener("change", function(){ buildCumplSemanal(+this.value); });
-  buildCumplSemanal(18);
+  buildCumplSemanal(19);
 
   // % Pedido/Salidas = pedido / salidas. Mide si lo que se pidió a CP estuvo bien calibrado contra
   // la demanda real de franquicias (salidas), sin importar si el CP llegó a entregarlo o no.
@@ -3844,7 +3863,7 @@ function initCumplimiento() {
     t.innerHTML = h;
   }
   document.getElementById("selCumplSemana").addEventListener("change", function(){ buildTablaCumpl(+this.value); });
-  buildTablaCumpl(18);
+  buildTablaCumpl(19);
 
   // Salidas por franquicia (S27-S32, con filtro opcional por mes calendario)
   const selFranquicia = document.getElementById("selCumplFranquicia");
