@@ -143,36 +143,36 @@ footer { text-align: center; color: #BBBBBB; font-size: 0.76rem; padding: 20px 0
 <main>
 
   <div class="alerta-ok">
-    ✅ <strong>S45 cerró (02–07/11) en 1.130,7 kg</strong>, 5 de 6 días activos (sábado 07/11 sin producción). Supera el objetivo semanal por 63,5 kg y mejora a S44 (+10,9 kg): 226,1 kg/día vs 224,0 de S44. Lunes 211,1 · martes 222,6 · miércoles 253,8 · jueves 234,0 · viernes 209,2 (incluye 83,8 kg sin embolsar). 46,2% uso (1.130,7 / 2.445 kg de entrada, 163 cajas).
-    <br>🟡 <strong>S46 (09–14/11, en curso):</strong> 357,4 kg en 2 días activos (178,7 kg/día) — lunes 09/11 181,1 kg (29 cajas; 2 ausencias) · martes 10/11 sin trucha (se hizo langostino) · miércoles 11/11 176,3 kg (39 cajas). 35,0% uso (357,4 / 1.020 kg de entrada). Noviembre va en 1.404,3 kg (S45 + S46 parcial, sin "sin embolsar").
-    <br>Acumulado S20–S46: 24.178,8 kg · 41,6% uso general. Objetivo semanal: 1.067,2 kg · por día: 213,4 kg.
+    ✅ <strong>S46 cerró (09–14/11) en 1.008,2 kg</strong>, 5 de 6 días activos (martes 10/11 sin trucha, se hizo langostino). Queda 59,0 kg debajo del objetivo semanal y 122,5 kg debajo de S45: 201,6 kg/día vs 226,1 de S45. Lunes 181,1 · miércoles 176,3 · jueves 206,0 · viernes 214,3 · sábado 230,4. 38,6% uso (1.008,2 / 2.610 kg de entrada, 174 cajas).
+    <br>Noviembre va en 2.055,1 kg (S45 + S46, sin "sin embolsar"). S47 (16/11) todavía sin carga en el sheet.
+    <br>Acumulado S20–S46: 24.829,5 kg · 41,6% uso general. Objetivo semanal: 1.067,2 kg · por día: 213,4 kg.
   </div>
 
   <div class="kpi-grid">
     <div class="kpi-card">
-      <div class="lbl">Última semana cerrada (S45)</div>
-      <div class="val">1.130,7 <span style="font-size:.85rem;color:#BBBBBB">kg</span></div>
+      <div class="lbl">Última semana cerrada (S46)</div>
+      <div class="val">1.008,2 <span style="font-size:.85rem;color:#BBBBBB">kg</span></div>
+      <div class="sub">5 días activos de 6 (09–14/11)</div>
+    </div>
+    <div class="kpi-card">
+      <div class="lbl">Semana anterior (S45)</div>
+      <div class="val" style="color:#221F1F">1.130,7 <span style="font-size:.85rem;color:#BBBBBB">kg</span></div>
       <div class="sub">5 días activos de 6 (02–07/11)</div>
     </div>
     <div class="kpi-card">
-      <div class="lbl">Semana anterior (S44)</div>
-      <div class="val" style="color:#221F1F">1.119,8 <span style="font-size:.85rem;color:#BBBBBB">kg</span></div>
-      <div class="sub">5 días activos de 6 (26–31/10)</div>
-    </div>
-    <div class="kpi-card">
-      <div class="lbl">kg/día S45 vs S44</div>
-      <div class="val" style="color:#33A392">226,1</div>
-      <div class="sub">vs 224,0 kg/día S44</div>
+      <div class="lbl">kg/día S46 vs S45</div>
+      <div class="val" style="color:#EF402F">201,6</div>
+      <div class="sub">vs 226,1 kg/día S45</div>
     </div>
     <div class="kpi-card">
       <div class="lbl">Acumulado total</div>
-      <div class="val" style="color:#1D4856">24.178,8 <span style="font-size:.85rem;color:#BBBBBB">kg</span></div>
+      <div class="val" style="color:#1D4856">24.829,5 <span style="font-size:.85rem;color:#BBBBBB">kg</span></div>
       <div class="sub">S20–S46</div>
     </div>
     <div class="kpi-card">
-      <div class="lbl">% uso S45</div>
-      <div class="val">46,2 <span style="font-size:.85rem;color:#BBBBBB">%</span></div>
-      <div class="sub">1.130,7 / 2445 kg entrada (163 cajas)</div>
+      <div class="lbl">% uso S46</div>
+      <div class="val">38,6 <span style="font-size:.85rem;color:#BBBBBB">%</span></div>
+      <div class="sub">1.008,2 / 2610 kg entrada (174 cajas)</div>
     </div>
     <div class="kpi-card">
       <div class="lbl">% uso general</div>
@@ -189,7 +189,7 @@ footer { text-align: center; color: #BBBBBB; font-size: 0.76rem; padding: 20px 0
   <div class="card">
     <h2>📆 Evolución mensual — kg producidos totales</h2>
     <div class="chart-wrap"><canvas id="chartMensual"></canvas></div>
-    <div style="font-size:0.75rem;color:#BBBBBB;margin-top:10px;">Fuente: pestaña "análisis mensual" de la planilla Trucha (suma de Tiras + cortes + tiras unidas + cubos por mes; no incluye "sin embolsar"). Las semanas van de lunes a sábado y no calzan justo con el calendario, así que cada mes agrupa una cantidad distinta: Mayo 3 semanas (S20–S22), Junio 4 (S23–S26), Julio 5 (S27–S31) — S31 cerró el 01/08, así que Julio ya está completo —, Agosto 4 (S32–S35) — S35 cerró el 29/08, así que Agosto también está completo — y Septiembre 5 (S36–S40) — S40 (28/09–03/10) cuenta entera para septiembre, como en la planilla — y Octubre arranca con S41 (05–10/10, cerrada), S42 (12–17/10, cerrada), S43 (19–24/10, cerrada) y S44 (26–31/10, cerrada), así que Octubre también está completo. Noviembre arranca con S45 (02–07/11, cerrada) y S46 (09–14/11, en curso).</div>
+    <div style="font-size:0.75rem;color:#BBBBBB;margin-top:10px;">Fuente: pestaña "análisis mensual" de la planilla Trucha (suma de Tiras + cortes + tiras unidas + cubos por mes; no incluye "sin embolsar"). Las semanas van de lunes a sábado y no calzan justo con el calendario, así que cada mes agrupa una cantidad distinta: Mayo 3 semanas (S20–S22), Junio 4 (S23–S26), Julio 5 (S27–S31) — S31 cerró el 01/08, así que Julio ya está completo —, Agosto 4 (S32–S35) — S35 cerró el 29/08, así que Agosto también está completo — y Septiembre 5 (S36–S40) — S40 (28/09–03/10) cuenta entera para septiembre, como en la planilla — y Octubre arranca con S41 (05–10/10, cerrada), S42 (12–17/10, cerrada), S43 (19–24/10, cerrada) y S44 (26–31/10, cerrada), así que Octubre también está completo. Noviembre arranca con S45 (02–07/11, cerrada) y S46 (09–14/11, cerrada).</div>
   </div>
 
   <div class="card">
@@ -2153,10 +2153,14 @@ const WEEKS = [
   // 12/11: + miércoles 11/11: 176,3 kg (39 cajas = 585 kg; tiras 8 bandejas, cortes 12,025, tiras rotas 7,075, tiras unidas
   // x2 8, cubos 14; sin "sin embolsar"). Martes 10/11 sigue en 0 (se hizo langostino). "KG TOTALES" del sheet 357,4. 12/11 en
   // adelante sin carga.
-  { label:"S46", dateRange:"09–14/11", isPartial:true, total:357.4275,
-    daily:[181.11,0,176.3175,0,0,0],
-    dailyByProd:{ "Tiras":[19.6,0,19.6,0,0,0], "cortes":[19.2,0,24.05,0,0,0], "tiras rotas":[47.04,0,34.6675,0,0,0], "tiras unidas x2":[34.79,0,39.2,0,0,0], "cubos":[60.48,0,58.8,0,0,0], "sin embolsar":[0,0,0,0,0,0] },
-    entradaBandejasDia:[29,0,39,0,0,0], activeDaysCount:2 }
+  // 16/11 (pedido de Debo): s46 releída (gviz, Chrome) — + jueves 12/11: 206,0 kg (34 cajas; tiras 19, cortes 11, tiras rotas
+  // 6,05, tiras unidas x2 10, cubos 14), viernes 13/11: 214,3 kg (34 cajas; tiras 15, cortes 0, tiras rotas 15, tiras unidas x2
+  // 10,095, cubos 13) y sábado 14/11: 230,4 kg (38 cajas; tiras 15,5, cortes 1, tiras rotas 14,5, tiras unidas x2 11, cubos 15,6).
+  // Sin "sin embolsar". Semana cerrada: 1.008,2 kg (igual a "KG TOTALES" del sheet), 174 cajas (2.610 kg). s47 sin carga.
+  { label:"S46", dateRange:"09–14/11", isPartial:false, total:1008.183,
+    daily:[181.11,0,176.3175,205.995,214.3155,230.445],
+    dailyByProd:{ "Tiras":[19.6,0,19.6,46.55,36.75,37.975], "cortes":[19.2,0,24.05,22,0,2], "tiras rotas":[47.04,0,34.6675,29.645,73.5,71.05], "tiras unidas x2":[34.79,0,39.2,49,49.4655,53.9], "cubos":[60.48,0,58.8,58.8,54.6,65.52], "sin embolsar":[0,0,0,0,0,0] },
+    entradaBandejasDia:[29,0,39,34,34,38], activeDaysCount:5 }
 ];
 
 // 29/09 (pedido de Debo): desde S39 el sheet separa "tiras rotas" y "tiras unidas x2" — se muestran como
@@ -2280,7 +2284,9 @@ const MESES_TRUCHA = [
   // 09/11: + jueves 05/11 (234,0 kg) + viernes 06/11 (209,2 kg), 68 cajas = 1.020 kg → 1.046,9 kg (igual al sheet). Entrada 2.445 kg.
   // 11/11: + S46 en curso, lunes 09/11 (181,1 kg; 29 cajas = 435 kg) → 1.228,0 kg. Entrada 2.880 kg.
   // 12/11: + miércoles 11/11 (176,3 kg; 39 cajas = 585 kg; martes 10/11 sin trucha) → 1.404,3 kg. Entrada 3.465 kg.
-  { label:"Noviembre", total:1404.31, entrada:3465, semanas:"S45–S46", cantSemanas:2, isPartial:true }
+  // 16/11: S46 cerrada — + jueves 12/11 (206,0 kg) + viernes 13/11 (214,3) + sábado 14/11 (230,4), 106 cajas = 1.590 kg
+  // → 2.055,1 kg. Entrada 5.055 kg. Mes sigue en curso (S47 sin carga).
+  { label:"Noviembre", total:2055.0655, entrada:5055, semanas:"S45–S46", cantSemanas:2, isPartial:true }
 ];
 new Chart(document.getElementById("chartMensual").getContext("2d"), {
   type:"bar",
