@@ -817,25 +817,22 @@ footer { text-align: center; color: #BBBBBB; font-size: 0.76rem; padding: 20px 0
             <tr><td>Bolsa de corte 20×30</td><td>0,01</td><td>un</td></tr>
           </tbody>
         </table>
-        <div style="padding:12px 14px 2px;font-size:0.72rem;font-weight:700;color:#999999;text-transform:uppercase;letter-spacing:0.05em;border-top:1px solid #f0f4f8;">Pasta de Honey × kg — L20000361, intermedio (rev. 003)</div>
+        <div style="padding:12px 14px 2px;font-size:0.72rem;font-weight:700;color:#999999;text-transform:uppercase;letter-spacing:0.05em;border-top:1px solid #f0f4f8;">Pasta de Honey × kg — L20000361, intermedio (rev. 004)</div>
         <table>
           <thead><tr><th>Ingrediente</th><th>Cantidad</th><th>Unidad</th></tr></thead>
           <tbody>
             <tr class="mp-row"><td>Pasta de trucha × kg (intermedio)</td><td>1,67</td><td>kg</td></tr>
-            <tr><td>Azúcar pack × 10 kg</td><td>0,42</td><td>kg</td></tr>
-            <tr><td>Miel bidón × 5 kg</td><td>0,17</td><td>kg</td></tr>
-            <tr><td>Salsa de soja bidón × 5L</td><td>0,1857</td><td>lt</td></tr>
-            <tr><td>Vino blanco × lt</td><td>0,285</td><td>lt</td></tr>
+            <tr><td>Salsa Teriyaki × 5 lt (L3000312)</td><td>0,5565</td><td>lt</td></tr>
           </tbody>
         </table>
         <div style="padding:12px 14px 2px;font-size:0.72rem;font-weight:700;color:#999999;text-transform:uppercase;letter-spacing:0.05em;border-top:1px solid #f0f4f8;">Pasta de trucha × kg — L200064, intermedio (rev. 001)</div>
         <table>
           <thead><tr><th>Ingrediente</th><th>Cantidad</th><th>Unidad</th></tr></thead>
           <tbody>
-            <tr class="mp-row"><td>Trucha filet trim A PBI fresco</td><td>1,27</td><td>kg</td></tr>
+            <tr class="mp-row"><td>Trucha filet trim A PBI fresco</td><td>3,7</td><td>kg</td></tr>
           </tbody>
         </table>
-        <div style="font-size:0.75rem;color:#BBBBBB;padding:8px 14px 0">Rev. 003 (TOTVS, corregida por Debo el 02/11/2026): suma la pasta de trucha a la estructura, 1,67 kg por kg de Pasta de Honey (antes no estaba en TOTVS y se mostraba el dato manual de 6,52 kg). La pasta de trucha tiene estructura propia desde el 02/11: 1,27 kg de trucha filet trim por kg. Resto sin cambios: miel en bidón × 5 kg (0,034 bidón = 0,17 kg), soja 0,03714 bidón × 5 = 0,1857 lt, vino 0,285 lt.</div>
+        <div style="font-size:0.75rem;color:#BBBBBB;padding:8px 14px 0">Rev. 004 (TOTVS, "recetas al 171126.xml", vigente desde 11/11/2026): la salsa se arma ahora con Salsa Teriyaki × 5 lt (0,1113 bidón × 5 = 0,5565 lt por kg) en lugar de azúcar, miel, soja y vino por separado. Pasta de trucha sigue en 1,67 kg por kg. Pasta de trucha × kg (rev. 001): 3,7 kg de trucha filet trim por kg (antes 1,27).</div>
       </div>
     </div>
 
@@ -2371,6 +2368,9 @@ buildTabla(27);
 // Teriyaki × 5 lt (L3000312, rev. 003 vigente desde 23/10/2026).
 // 08/10: actualizado con "estructuras de productos al 081026.xml" (última revisión de cada código). Insumos
 // en bidón/pack/caja: cantidad TOTVS (fracción del envase) × tamaño del envase (ej. 0,2 bidón × 5 = 1 kg).
+// 17/11 (pedido de Debo): Pasta de Honey actualizada con "recetas al 171126.xml". L20000361 rev. 004 (desde 11/11):
+// pasta de trucha 1,67 kg + Salsa Teriyaki × 5 lt (L3000312) 0,1113 bidón = 0,5565 lt por kg; salen azúcar, miel, soja
+// y vino (quedan solo hasta rev. 003). L200064 rev. 001: trucha filet trim 1,27 → 3,7 kg por kg. L2000036 rev. 006 sin cambios.
 const RECETAS = {
   "Reducción de Teriyaki": { unidadEnvase:"botella",
     packaging:[ {nombre:"Botella de plástico × 500cc", cantidad:1, unidad:"un"} ],
@@ -2418,10 +2418,7 @@ const RECETAS = {
     intermedioNombre:"Pasta de Honey × kg", intermedioPorUnidad:6,
     intermedio:[
       {nombre:"Pasta de trucha × kg", cantidad:1.67, unidad:"kg"},
-      {nombre:"Azúcar pack × 10 kg", cantidad:0.42, unidad:"kg", pack:{size:10, tipo:"pack"}},
-      {nombre:"Miel bidón × 5 kg", cantidad:0.17, unidad:"kg", pack:{size:5, tipo:"bidón"}},
-      {nombre:"Salsa de soja bidón × 5L", cantidad:0.1857, unidad:"lt", pack:{size:5, tipo:"bidón"}},
-      {nombre:"Vino blanco × lt", cantidad:0.285, unidad:"lt"}
+      {nombre:"Salsa Teriyaki × 5 lt", cantidad:0.5565, unidad:"lt", pack:{size:5, tipo:"bidón"}}
     ] },
   "Langostino Rebozado": { unidadEnvase:"caja",
     packaging:[
