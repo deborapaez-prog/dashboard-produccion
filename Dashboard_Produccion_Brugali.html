@@ -125,7 +125,7 @@ footer { text-align: center; color: #BBBBBB; font-size: 0.76rem; padding: 20px 0
       <div style="font-size:0.7rem;font-weight:700;color:rgba(255,255,255,0.6);text-transform:uppercase;letter-spacing:0.12em;margin-top:2px;">Dashboard de Producción</div>
     </div>
   </div>
-  <span class="badge">📅 Actualizado: 17/11/2026</span>
+  <span class="badge">📅 Actualizado: 18/11/2026</span>
 </header>
 
 <div class="tab-nav">
@@ -144,8 +144,8 @@ footer { text-align: center; color: #BBBBBB; font-size: 0.76rem; padding: 20px 0
 
   <div class="alerta-ok">
     ✅ <strong>S46 cerró (09–14/11) en 1.008,2 kg</strong>, 5 de 6 días activos (martes 10/11 sin trucha, se hizo langostino). Queda 59,0 kg debajo del objetivo semanal y 122,5 kg debajo de S45: 201,6 kg/día vs 226,1 de S45. Lunes 181,1 · miércoles 176,3 · jueves 206,0 · viernes 214,3 · sábado 230,4. 38,6% uso (1.008,2 / 2.610 kg de entrada, 174 cajas).
-    <br>🟡 <strong>S47 (16–21/11, en curso):</strong> lunes 16/11 cargado — 231,6 kg, 38 cajas de entrada (570 kg, 40,6% uso). Miércoles 18/11 con nota "se hace langostino". Noviembre va en 2.286,7 kg (S45 + S46 + lunes S47, sin "sin embolsar").
-    <br>Acumulado S20–S47: 25.061,1 kg · 41,6% uso general. Objetivo semanal: 1.067,2 kg · por día: 213,4 kg.
+    <br>🟡 <strong>S47 (16–21/11, en curso):</strong> lunes 16/11 231,6 kg y martes 17/11 261,1 kg (154,4 embolsados + 106,7 sin embolsar; sin cubos) → 492,8 kg en 2 días, 80 cajas de entrada (1.200 kg, 41,1% uso). Miércoles 18/11 con nota "se hace langostino". Noviembre va en 2.441,1 kg (S45 + S46 + lun–mar S47, sin "sin embolsar").
+    <br>Acumulado S20–S47: 25.322,3 kg · 41,6% uso general. Objetivo semanal: 1.067,2 kg · por día: 213,4 kg.
   </div>
 
   <div class="kpi-grid">
@@ -166,7 +166,7 @@ footer { text-align: center; color: #BBBBBB; font-size: 0.76rem; padding: 20px 0
     </div>
     <div class="kpi-card">
       <div class="lbl">Acumulado total</div>
-      <div class="val" style="color:#1D4856">25.061,1 <span style="font-size:.85rem;color:#BBBBBB">kg</span></div>
+      <div class="val" style="color:#1D4856">25.322,3 <span style="font-size:.85rem;color:#BBBBBB">kg</span></div>
       <div class="sub">S20–S47</div>
     </div>
     <div class="kpi-card">
@@ -2166,10 +2166,13 @@ const WEEKS = [
   // S47 (16–21/11) — 17/11: pestaña s47 (gviz, texto Chrome). Lunes 16/11: 231,6 kg (38 cajas = 570 kg; tiras 14 bandejas,
   // cortes 10,6, tiras rotas 8,5, tiras unidas x2 12,1, cubos 17,9; sin "sin embolsar"). Coincide con "KG TOTALES" del sheet
   // (231,6; 40,64% uso). 17/11 en adelante sin carga; miércoles 18/11 con nota "se hace langostino". s46 sin cambios.
-  { label:"S47", dateRange:"16–21/11", isPartial:true, total:231.62,
-    daily:[231.62,0,0,0,0,0],
-    dailyByProd:{ "Tiras":[34.3,0,0,0,0,0], "cortes":[21.2,0,0,0,0,0], "tiras rotas":[41.65,0,0,0,0,0], "tiras unidas x2":[59.29,0,0,0,0,0], "cubos":[75.18,0,0,0,0,0], "sin embolsar":[0,0,0,0,0,0] },
-    entradaBandejasDia:[38,0,0,0,0,0], activeDaysCount:1 }
+  // 18/11: + martes 17/11: 261,1 kg (42 cajas = 630 kg; tiras 14 bandejas, cortes 9,6, tiras rotas 8,5, tiras unidas x2 12,1,
+  // cubos sin bandejas (0); 154,4 embolsados + 106,7 sin embolsar). Total del día en la hoja 261,1 (41,44% uso); "KG TOTALES"
+  // de la semana 386,1 (no suma "sin embolsar"). Ojo: tiras / rotas / unidas x2 del martes tienen las mismas bandejas que el lunes.
+  { label:"S47", dateRange:"16–21/11", isPartial:true, total:492.76,
+    daily:[231.62,261.14,0,0,0,0],
+    dailyByProd:{ "Tiras":[34.3,34.3,0,0,0,0], "cortes":[21.2,19.2,0,0,0,0], "tiras rotas":[41.65,41.65,0,0,0,0], "tiras unidas x2":[59.29,59.29,0,0,0,0], "cubos":[75.18,0,0,0,0,0], "sin embolsar":[0,106.7,0,0,0,0] },
+    entradaBandejasDia:[38,42,0,0,0,0], activeDaysCount:2 }
 ];
 
 // 29/09 (pedido de Debo): desde S39 el sheet separa "tiras rotas" y "tiras unidas x2" — se muestran como
@@ -2296,7 +2299,8 @@ const MESES_TRUCHA = [
   // 16/11: S46 cerrada — + jueves 12/11 (206,0 kg) + viernes 13/11 (214,3) + sábado 14/11 (230,4), 106 cajas = 1.590 kg
   // → 2.055,1 kg. Entrada 5.055 kg. Mes sigue en curso (S47 sin carga).
   // 17/11: + S47 en curso, lunes 16/11 (231,6 kg; 38 cajas = 570 kg) → 2.286,7 kg. Entrada 5.625 kg.
-  { label:"Noviembre", total:2286.6855, entrada:5625, semanas:"S45–S47", cantSemanas:3, isPartial:true }
+  // 18/11: + martes 17/11 de S47 (154,4 kg embolsados, sin los 106,7 "sin embolsar"; 42 cajas = 630 kg) → 2.441,1 kg. Entrada 6.255 kg.
+{ label:"Noviembre", total:2441.1255, entrada:6255, semanas:"S45–S47", cantSemanas:3, isPartial:true }
 ];
 new Chart(document.getElementById("chartMensual").getContext("2d"), {
   type:"bar",
@@ -3487,17 +3491,18 @@ const CUMPL_FRANQUICIAS_MES = {
   // 11/11: recalculado con "salidas al 111126.xml" (+ 09/11 31 u, 10/11 299 u → 1.264 u; 02–06/11 re-sumados coinciden al u: 934 u).
   // 16/11 (a pedido de Debo): recalculado con "salidas al 161126.xml" (+ 11/11 244 u, 12/11 289 u, 13/11 268 u -> 2.065 u; 01-10/11 re-sumados coinciden al u: 1.264 u).
   // 17/11: recalculado con "salidas al 171126.xml" (13/11 sube 268 -> 322 u por movimientos retroactivos, + 16/11 281 u -> 2.400 u; 01-12/11 coinciden al u).
+  // 18/11: recalculado con "salidas al 181126.xml" (+ 17/11 239 u -> 2.639 u; 01-16/11 re-sumados coinciden al u: 2.400 u).
   "NOVIEMBRE": {
-    "CORTE DE TRUCHA": { "NEUQUEN":13, "NUEVA CORDOBA":8, "ROSARIO":8, "SAN RAFAEL":6, "SANTA FE":6, "JARDIN":5, "MANANTIALES II":4, "MANANTIALES I":4, "CARLOS PAZ":4, "GENERAL PAZ":4, "VILLA MARIA":4, "ALTO ALBERDI":4, "COLON":4, "CERRO":4, "VILLA ALLENDE":4, "RECTA":4, "SAN JUAN":4, "LA RIOJA":4, "SALTA":4, "ALTA CORDOBA":3, "SABATTINI":3, "MENDOZA":3, "GODOY CRUZ":3, "SANTA LUCIA":3, "RECOLETA":3, "TUCUMAN":3, "RAFAELA":3, "NEUQUEN OESTE 2":3, "RESIDENCIAL AMERICA":2, "RIO IV":2, "FORTE MALL":2, "MONSEÑOR":2, "PALERMO":2, "YERBA BUENA":2, "LOMAS DE ZAMORA":2, "CALERA":1 },
-    "CUBOS DE TRUCHA": { "ROSARIO":8, "PALERMO":6, "NUEVA CORDOBA":5, "SANTA FE":5, "GENERAL PAZ":4, "RECOLETA":4, "ALTO ALBERDI":4, "CERRO":4, "CARLOS PAZ":3, "ALTA CORDOBA":3, "MENDOZA":3, "RECTA":3, "RIO IV":3, "YERBA BUENA":3, "NEUQUEN":3, "VILLA MARIA":2, "MONSEÑOR":2, "COLON":2, "SAN JUAN":2, "VILLA ALLENDE":2, "SALTA":2, "RAFAELA":2, "LOMAS DE ZAMORA":2, "GODOY CRUZ":1, "SAN RAFAEL":1, "SANTA LUCIA":1, "LA RIOJA":1, "MANANTIALES I":1, "RESIDENCIAL AMERICA":1, "MANANTIALES II":1, "JARDIN":1, "NEUQUEN OESTE 2":1, "SABATTINI":1, "FORTE MALL":1 },
-    "LANGOSTINOS REBOZADOS": { "NUEVA CORDOBA":34, "GENERAL PAZ":25, "ROSARIO":24, "CERRO":23, "ALTO ALBERDI":21, "VILLA ALLENDE":19, "TUCUMAN":19, "SANTA FE":18, "RECTA":16, "MANANTIALES I":15, "RIO IV":15, "NEUQUEN":15, "ALTA CORDOBA":14, "VILLA MARIA":14, "JARDIN":13, "SABATTINI":13, "CARLOS PAZ":12, "SAN JUAN":12, "MANANTIALES II":11, "RESIDENCIAL AMERICA":11, "PALERMO":11, "RECOLETA":11, "COLON":11, "LA RIOJA":10, "YERBA BUENA":10, "MONSEÑOR":9, "FORTE MALL":8, "SAN RAFAEL":8, "SANTA LUCIA":6, "RAFAELA":6, "LOMAS DE ZAMORA":6, "CALERA":5, "SALTA":4, "MENDOZA":3, "GODOY CRUZ":3, "NEUQUEN OESTE 2":1 },
-    "PASTA DE HONEY": { "ROSARIO":9, "NEUQUEN":9, "NUEVA CORDOBA":5, "SAN JUAN":4, "SANTA FE":4, "VILLA MARIA":3, "RECOLETA":3, "COLON":3, "MENDOZA":3, "GODOY CRUZ":3, "SANTA LUCIA":3, "GENERAL PAZ":3, "CERRO":3, "NEUQUEN OESTE 2":3, "MANANTIALES I":2, "RESIDENCIAL AMERICA":2, "VILLA ALLENDE":2, "RIO IV":2, "LA RIOJA":2, "JARDIN":2, "ALTO ALBERDI":2, "MANANTIALES II":2, "PALERMO":2, "ALTA CORDOBA":2, "CARLOS PAZ":2, "TUCUMAN":2, "YERBA BUENA":2, "RAFAELA":2, "LOMAS DE ZAMORA":2, "SAN RAFAEL":1, "CALERA":1, "MONSEÑOR":1, "FORTE MALL":1, "RECTA":1, "SALTA":1, "SABATTINI":1 },
-    "POLLO TERIYAKI": { "ROSARIO":14, "SANTA FE":14, "NUEVA CORDOBA":13, "PALERMO":12, "NEUQUEN":11, "RECOLETA":9, "TUCUMAN":9, "GENERAL PAZ":8, "CERRO":8, "YERBA BUENA":8, "ALTA CORDOBA":6, "ALTO ALBERDI":6, "SALTA":6, "MONSEÑOR":5, "RECTA":5, "RIO IV":5, "LA RIOJA":5, "MANANTIALES I":4, "RESIDENCIAL AMERICA":4, "COLON":4, "VILLA ALLENDE":4, "CARLOS PAZ":4, "RAFAELA":4, "NEUQUEN OESTE 2":4, "MANANTIALES II":3, "VILLA MARIA":3, "SANTA LUCIA":3, "SAN JUAN":3, "JARDIN":3, "LOMAS DE ZAMORA":3, "MENDOZA":2, "SABATTINI":2, "CALERA":2, "GODOY CRUZ":1, "SAN RAFAEL":1, "FORTE MALL":1 },
-    "REDUCCIÓN DE TERIYAKI": { "PALERMO":30, "NEUQUEN":27, "ROSARIO":25, "RECOLETA":18, "SANTA FE":18, "YERBA BUENA":16, "NUEVA CORDOBA":15, "TUCUMAN":14, "GENERAL PAZ":13, "SALTA":13, "RESIDENCIAL AMERICA":12, "RAFAELA":12, "ALTO ALBERDI":10, "CERRO":10, "RECTA":10, "MONSEÑOR":8, "LA RIOJA":8, "RIO IV":8, "VILLA MARIA":7, "SAN RAFAEL":7, "SANTA LUCIA":7, "GODOY CRUZ":6, "MANANTIALES I":6, "LOMAS DE ZAMORA":6, "CARLOS PAZ":5, "ALTA CORDOBA":5, "VILLA ALLENDE":5, "JARDIN":5, "NEUQUEN OESTE 2":5, "SAN JUAN":4, "MANANTIALES II":3, "FORTE MALL":3, "SABATTINI":2, "CALERA":1 },
-    "SALSA NARANJA Y MIEL": { "SANTA FE":7, "ROSARIO":5, "ALTO ALBERDI":5, "LA RIOJA":4, "TUCUMAN":4, "NUEVA CORDOBA":3, "CERRO":3, "SALTA":3, "MANANTIALES I":2, "SABATTINI":2, "SAN RAFAEL":2, "RESIDENCIAL AMERICA":2, "RAFAELA":2, "NEUQUEN OESTE 2":2, "LOMAS DE ZAMORA":2, "VILLA MARIA":2, "SANTA LUCIA":1, "SAN JUAN":1, "RECTA":1, "CARLOS PAZ":1, "VILLA ALLENDE":1, "COLON":1, "NEUQUEN":1, "FORTE MALL":1 },
-    "TAMAGO": { "NEUQUEN":33, "ALTO ALBERDI":23, "GENERAL PAZ":23, "RIO IV":23, "ROSARIO":19, "CERRO":18, "ALTA CORDOBA":17, "TUCUMAN":17, "SABATTINI":16, "SAN JUAN":16, "MANANTIALES I":15, "RESIDENCIAL AMERICA":15, "MONSEÑOR":14, "COLON":14, "MENDOZA":14, "CARLOS PAZ":13, "JARDIN":13, "SAN RAFAEL":13, "VILLA ALLENDE":13, "NUEVA CORDOBA":12, "RECTA":12, "RAFAELA":12, "MANANTIALES II":11, "SANTA FE":11, "GODOY CRUZ":10, "YERBA BUENA":10, "FORTE MALL":9, "SANTA LUCIA":9, "SALTA":9, "NEUQUEN OESTE 2":8, "RECOLETA":8, "LA RIOJA":7, "LOMAS DE ZAMORA":7, "VILLA MARIA":5, "CALERA":4 },
-    "TIRA DE TRUCHA": { "ROSARIO":16, "NUEVA CORDOBA":14, "SANTA FE":13, "NEUQUEN":11, "ALTO ALBERDI":8, "GENERAL PAZ":8, "RECOLETA":8, "SAN JUAN":7, "CARLOS PAZ":6, "ALTA CORDOBA":6, "VILLA MARIA":6, "COLON":6, "CERRO":6, "RIO IV":6, "JARDIN":5, "SABATTINI":5, "VILLA ALLENDE":5, "SALTA":5, "NEUQUEN OESTE 2":5, "MANANTIALES II":4, "MANANTIALES I":4, "PALERMO":4, "MONSEÑOR":4, "SAN RAFAEL":4, "RECTA":4, "LA RIOJA":4, "YERBA BUENA":4, "RAFAELA":4, "FORTE MALL":3, "MENDOZA":3, "SANTA LUCIA":3, "RESIDENCIAL AMERICA":3, "TUCUMAN":3, "LOMAS DE ZAMORA":3, "GODOY CRUZ":2, "CALERA":2 },
-    "VINAGRETA": { "ROSARIO":27, "NUEVA CORDOBA":23, "SANTA FE":20, "NEUQUEN":18, "ALTO ALBERDI":16, "GENERAL PAZ":16, "TUCUMAN":14, "PALERMO":13, "CERRO":13, "RIO IV":11, "ALTA CORDOBA":10, "SAN RAFAEL":10, "YERBA BUENA":10, "VILLA MARIA":9, "RECOLETA":9, "RECTA":9, "SAN JUAN":9, "CARLOS PAZ":8, "COLON":8, "SALTA":8, "RAFAELA":8, "JARDIN":7, "VILLA ALLENDE":7, "MANANTIALES I":6, "SABATTINI":6, "RESIDENCIAL AMERICA":6, "MONSEÑOR":6, "MANANTIALES II":5, "MENDOZA":5, "LA RIOJA":5, "LOMAS DE ZAMORA":5, "FORTE MALL":4, "GODOY CRUZ":4, "SANTA LUCIA":4, "CALERA":2, "NEUQUEN OESTE 2":2 }
+    "CORTE DE TRUCHA": { "NEUQUEN":13, "SAN RAFAEL":10, "NUEVA CORDOBA":8, "ROSARIO":8, "SANTA FE":6, "JARDIN":5, "ALTO ALBERDI":5, "COLON":5, "MENDOZA":5, "GODOY CRUZ":5, "CERRO":5, "RECTA":5, "MANANTIALES II":4, "MANANTIALES I":4, "CARLOS PAZ":4, "GENERAL PAZ":4, "VILLA MARIA":4, "VILLA ALLENDE":4, "SAN JUAN":4, "LA RIOJA":4, "SALTA":4, "ALTA CORDOBA":3, "SABATTINI":3, "SANTA LUCIA":3, "MONSEÑOR":3, "RECOLETA":3, "TUCUMAN":3, "RAFAELA":3, "NEUQUEN OESTE 2":3, "RESIDENCIAL AMERICA":2, "CALERA":2, "RIO IV":2, "FORTE MALL":2, "PALERMO":2, "YERBA BUENA":2, "LOMAS DE ZAMORA":2 },
+    "CUBOS DE TRUCHA": { "ROSARIO":8, "PALERMO":6, "NUEVA CORDOBA":5, "MENDOZA":5, "CERRO":5, "SANTA FE":5, "GENERAL PAZ":4, "RECOLETA":4, "ALTO ALBERDI":4, "RECTA":4, "CARLOS PAZ":3, "ALTA CORDOBA":3, "GODOY CRUZ":3, "RIO IV":3, "YERBA BUENA":3, "NEUQUEN":3, "VILLA MARIA":2, "MONSEÑOR":2, "COLON":2, "SAN RAFAEL":2, "SAN JUAN":2, "VILLA ALLENDE":2, "SALTA":2, "RAFAELA":2, "LOMAS DE ZAMORA":2, "SANTA LUCIA":1, "LA RIOJA":1, "MANANTIALES I":1, "RESIDENCIAL AMERICA":1, "MANANTIALES II":1, "JARDIN":1, "NEUQUEN OESTE 2":1, "SABATTINI":1, "FORTE MALL":1 },
+    "LANGOSTINOS REBOZADOS": { "NUEVA CORDOBA":34, "CERRO":26, "GENERAL PAZ":25, "ALTO ALBERDI":25, "ROSARIO":24, "VILLA ALLENDE":23, "TUCUMAN":19, "SAN RAFAEL":18, "RECTA":18, "SANTA FE":18, "MANANTIALES I":15, "RIO IV":15, "NEUQUEN":15, "ALTA CORDOBA":14, "VILLA MARIA":14, "JARDIN":13, "SABATTINI":13, "COLON":13, "CARLOS PAZ":12, "SAN JUAN":12, "MANANTIALES II":11, "RESIDENCIAL AMERICA":11, "PALERMO":11, "RECOLETA":11, "MONSEÑOR":11, "LA RIOJA":10, "YERBA BUENA":10, "FORTE MALL":8, "CALERA":7, "MENDOZA":6, "GODOY CRUZ":6, "SANTA LUCIA":6, "RAFAELA":6, "LOMAS DE ZAMORA":6, "SALTA":4, "NEUQUEN OESTE 2":1 },
+    "PASTA DE HONEY": { "ROSARIO":9, "NEUQUEN":9, "MENDOZA":6, "GODOY CRUZ":6, "SAN RAFAEL":6, "NUEVA CORDOBA":5, "COLON":4, "SAN JUAN":4, "SANTA FE":4, "VILLA MARIA":3, "RECOLETA":3, "VILLA ALLENDE":3, "SANTA LUCIA":3, "GENERAL PAZ":3, "CERRO":3, "ALTO ALBERDI":3, "NEUQUEN OESTE 2":3, "MANANTIALES I":2, "RESIDENCIAL AMERICA":2, "CALERA":2, "RIO IV":2, "LA RIOJA":2, "JARDIN":2, "MONSEÑOR":2, "MANANTIALES II":2, "PALERMO":2, "ALTA CORDOBA":2, "CARLOS PAZ":2, "FORTE MALL":2, "TUCUMAN":2, "YERBA BUENA":2, "RAFAELA":2, "LOMAS DE ZAMORA":2, "RECTA":1, "SALTA":1, "SABATTINI":1 },
+    "POLLO TERIYAKI": { "ROSARIO":14, "SANTA FE":14, "NUEVA CORDOBA":13, "PALERMO":12, "NEUQUEN":11, "RECOLETA":9, "TUCUMAN":9, "GENERAL PAZ":8, "ALTO ALBERDI":8, "CERRO":8, "YERBA BUENA":8, "ALTA CORDOBA":6, "MONSEÑOR":6, "SALTA":6, "COLON":5, "MENDOZA":5, "RECTA":5, "RIO IV":5, "LA RIOJA":5, "MANANTIALES I":4, "RESIDENCIAL AMERICA":4, "GODOY CRUZ":4, "VILLA ALLENDE":4, "CARLOS PAZ":4, "RAFAELA":4, "NEUQUEN OESTE 2":4, "MANANTIALES II":3, "VILLA MARIA":3, "SAN RAFAEL":3, "SANTA LUCIA":3, "SAN JUAN":3, "JARDIN":3, "LOMAS DE ZAMORA":3, "SABATTINI":2, "CALERA":2, "FORTE MALL":1 },
+    "REDUCCIÓN DE TERIYAKI": { "PALERMO":30, "NEUQUEN":27, "ROSARIO":25, "ALTO ALBERDI":20, "RECOLETA":18, "SANTA FE":18, "YERBA BUENA":16, "NUEVA CORDOBA":15, "TUCUMAN":14, "GENERAL PAZ":13, "SALTA":13, "RESIDENCIAL AMERICA":12, "MONSEÑOR":12, "GODOY CRUZ":12, "RAFAELA":12, "RECTA":11, "CERRO":10, "VILLA ALLENDE":8, "LA RIOJA":8, "RIO IV":8, "VILLA MARIA":7, "SAN RAFAEL":7, "SANTA LUCIA":7, "MANANTIALES I":6, "LOMAS DE ZAMORA":6, "MENDOZA":6, "CARLOS PAZ":5, "ALTA CORDOBA":5, "JARDIN":5, "NEUQUEN OESTE 2":5, "SAN JUAN":4, "MANANTIALES II":3, "FORTE MALL":3, "CALERA":3, "SABATTINI":2 },
+    "SALSA NARANJA Y MIEL": { "SANTA FE":7, "ROSARIO":5, "ALTO ALBERDI":5, "LA RIOJA":4, "TUCUMAN":4, "NUEVA CORDOBA":3, "CERRO":3, "SALTA":3, "MANANTIALES I":2, "SABATTINI":2, "SAN RAFAEL":2, "RESIDENCIAL AMERICA":2, "RAFAELA":2, "NEUQUEN OESTE 2":2, "LOMAS DE ZAMORA":2, "VILLA MARIA":2, "SANTA LUCIA":1, "SAN JUAN":1, "RECTA":1, "CARLOS PAZ":1, "VILLA ALLENDE":1, "COLON":1, "NEUQUEN":1, "FORTE MALL":1, "CALERA":1 },
+    "TAMAGO": { "NEUQUEN":33, "SAN RAFAEL":31, "ALTO ALBERDI":25, "MENDOZA":24, "GENERAL PAZ":23, "RIO IV":23, "GODOY CRUZ":20, "COLON":19, "CERRO":19, "ROSARIO":19, "MONSEÑOR":18, "ALTA CORDOBA":17, "VILLA ALLENDE":17, "TUCUMAN":17, "SABATTINI":16, "SAN JUAN":16, "MANANTIALES I":15, "RESIDENCIAL AMERICA":15, "RECTA":14, "CARLOS PAZ":13, "JARDIN":13, "NUEVA CORDOBA":12, "RAFAELA":12, "MANANTIALES II":11, "SANTA FE":11, "YERBA BUENA":10, "FORTE MALL":9, "SANTA LUCIA":9, "SALTA":9, "NEUQUEN OESTE 2":8, "RECOLETA":8, "LA RIOJA":7, "LOMAS DE ZAMORA":7, "CALERA":6, "VILLA MARIA":5 },
+    "TIRA DE TRUCHA": { "ROSARIO":16, "NUEVA CORDOBA":14, "SANTA FE":13, "SAN RAFAEL":11, "NEUQUEN":11, "ALTO ALBERDI":10, "GENERAL PAZ":8, "RECOLETA":8, "COLON":7, "CERRO":7, "SAN JUAN":7, "CARLOS PAZ":6, "ALTA CORDOBA":6, "VILLA MARIA":6, "MENDOZA":6, "VILLA ALLENDE":6, "RECTA":6, "RIO IV":6, "JARDIN":5, "SABATTINI":5, "MONSEÑOR":5, "SALTA":5, "NEUQUEN OESTE 2":5, "MANANTIALES II":4, "MANANTIALES I":4, "PALERMO":4, "GODOY CRUZ":4, "LA RIOJA":4, "YERBA BUENA":4, "RAFAELA":4, "FORTE MALL":3, "SANTA LUCIA":3, "RESIDENCIAL AMERICA":3, "TUCUMAN":3, "LOMAS DE ZAMORA":3, "CALERA":2 },
+    "VINAGRETA": { "ROSARIO":27, "SAN RAFAEL":25, "NUEVA CORDOBA":23, "SANTA FE":20, "ALTO ALBERDI":19, "NEUQUEN":18, "GENERAL PAZ":16, "CERRO":16, "TUCUMAN":14, "PALERMO":13, "RECTA":12, "MENDOZA":11, "RIO IV":11, "ALTA CORDOBA":10, "MONSEÑOR":10, "YERBA BUENA":10, "VILLA MARIA":9, "RECOLETA":9, "COLON":9, "GODOY CRUZ":9, "VILLA ALLENDE":9, "SAN JUAN":9, "CARLOS PAZ":8, "SALTA":8, "RAFAELA":8, "JARDIN":7, "MANANTIALES I":6, "SABATTINI":6, "RESIDENCIAL AMERICA":6, "MANANTIALES II":5, "LA RIOJA":5, "LOMAS DE ZAMORA":5, "FORTE MALL":4, "SANTA LUCIA":4, "CALERA":3, "NEUQUEN OESTE 2":2 }
   }
 };
 
@@ -3910,7 +3915,7 @@ function initCumplimiento() {
     AGOSTO: 'Total real despachado del 01 al 31/08/2026, por fecha exacta de la transacción. Fuente: "salidas al 161026.xml", tipo de movimiento "PA".',
     SEPTIEMBRE: 'Total real despachado del 01 al 30/09/2026, por fecha exacta de la transacción. Fuente: "salidas al 161026.xml", tipo de movimiento "PA".',
     OCTUBRE: 'Total real despachado del 01 al 31/10/2026, por fecha exacta de la transacción. Fuente: "salidas al 021126.xml", tipo de movimiento "PA".',
-    NOVIEMBRE: 'Total real despachado desde el 01/11/2026 (mes en curso; por ahora 02 al 16/11), por fecha exacta de la transacción. Fuente: "salidas al 171126.xml", tipo de movimiento "PA".'
+    NOVIEMBRE: 'Total real despachado desde el 01/11/2026 (mes en curso; por ahora 02 al 17/11), por fecha exacta de la transacción. Fuente: "salidas al 181126.xml", tipo de movimiento "PA".'
   };
   function buildTablaFranquicias(prod, mes) {
     document.getElementById("notaFranquicias").textContent = NOTAS_FRANQUICIAS[mes];
