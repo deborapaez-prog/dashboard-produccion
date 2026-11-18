@@ -1740,7 +1740,7 @@ footer { text-align: center; color: #BBBBBB; font-size: 0.76rem; padding: 20px 0
       <div class="kpi-card">
         <div class="lbl">Cumplimiento producción (mensual)</div>
         <div class="val" style="color:#33A392">96,0 <span style="font-size:.85rem;color:#BBBBBB">%</span></div>
-        <div class="sub">3.489 / 3.634 u pedidas — OCT 26 cerrado (col. MENSUAL, 02/11). NOV 26 va en 48,1% (2.450 / 5.089 u, releída 17/11 — S44 a S46 con entregas, la 4ta semana solo con pedido)</div>
+        <div class="sub">3.489 / 3.634 u pedidas — OCT 26 cerrado (col. MENSUAL, 02/11). NOV 26 va en 48,1% (2.450 / 5.089 u, releída 18/11 — S46 cerrada; S47 solo con pedido)</div>
       </div>
       <div class="kpi-card">
         <div class="lbl">Pedido vs. Salidas</div>
@@ -1782,7 +1782,8 @@ footer { text-align: center; color: #BBBBBB; font-size: 0.76rem; padding: 20px 0
           <option value="16">S43 — 20–26/10 (abierta)</option>
           <option value="17">S44 — 27/10–02/11 (abierta)</option>
           <option value="18">S45 — 03–09/11 (abierta)</option>
-          <option value="19" selected>S46 — 10–16/11 (en curso)</option>
+          <option value="19">S46 — 10–16/11</option>
+          <option value="20" selected>S47 — 17–23/11 (en curso)</option>
         </select>
       </h2>
       <div class="chart-wrap" style="height:320px"><canvas id="chartCumplSemanal"></canvas></div>
@@ -2975,6 +2976,7 @@ const CUMPL_COLORES = {
 };
 // pedido = lo pedido a CP (Drive "Producción CP", pestaña JULIO 26) · entregado = lo que CP entregó (misma planilla)
 // salidas = lo que realmente salió a franquicias (TOTVS salidas, filtrado a estos 10 productos por código)
+// <!-- Cierre semanal S46 — cerrado 18/11 -->
 const CUMPL_WEEKS = [
   { label:"S27", dateRange:"30/06–06/07", isPartial:false,
     pedido:   { "CORTE DE TRUCHA":65, "CUBOS DE TRUCHA":55, "LANGOSTINOS REBOZADOS":10, "PASTA DE HONEY":50, "POLLO TERIYAKI":70, "REDUCCIÓN DE TERIYAKI":140, "SALSA NARANJA Y MIEL":55, "TAMAGO":199, "TIRA DE TRUCHA":70, "VINAGRETA":130 },
@@ -3351,10 +3353,18 @@ const CUMPL_WEEKS = [
   // 17/11: NOV 26 releída (gviz por gid, Chrome). S44 y S45 sin cambios; Pedido S46 sin cambios. S46 Entregado sube: Corte 8→35,
   // Cubos 0→34, Pasta Honey 0→34, Pollo 18→41, Tamago 0→69, Tira 39→76 → 625 / 1.211 u (51,6%). Salidas con "salidas al
   // 171126.xml": 13/11 sube 268→322 (retroactivo) + 16/11 281 u → 1.435 u (10–12/11 coinciden al u). 4to bloque sigue sin entregado.
-  { label:"S46", dateRange:"10–16/11", isPartial:true,
+  // 18/11 — cierre semanal: NOV 26 releída (gviz por gid, Chrome). S46 sin cambios en Pedido (1.211) ni Entregado (625, 51,6%)
+  // → se cierra (isPartial:false). Salidas re-sumadas con "salidas al 181126.xml": coinciden al u (1.435).
+  { label:"S46", dateRange:"10–16/11", isPartial:false,
     pedido:   { "CORTE DE TRUCHA":72, "CUBOS DE TRUCHA":60, "LANGOSTINOS REBOZADOS":164, "PASTA DE HONEY":45, "POLLO TERIYAKI":110, "REDUCCIÓN DE TERIYAKI":250, "SALSA NARANJA Y MIEL":40, "TAMAGO":200, "TIRA DE TRUCHA":120, "VINAGRETA":150 },
     entregado:{ "CORTE DE TRUCHA":35, "CUBOS DE TRUCHA":34, "LANGOSTINOS REBOZADOS":164, "PASTA DE HONEY":34, "POLLO TERIYAKI":41, "REDUCCIÓN DE TERIYAKI":93, "SALSA NARANJA Y MIEL":24, "TAMAGO":69, "TIRA DE TRUCHA":76, "VINAGRETA":55 },
-    salidas:  { "CORTE DE TRUCHA":77, "CUBOS DE TRUCHA":47, "LANGOSTINOS REBOZADOS":255, "PASTA DE HONEY":60, "POLLO TERIYAKI":129, "REDUCCIÓN DE TERIYAKI":220, "SALSA NARANJA Y MIEL":37, "TAMAGO":284, "TIRA DE TRUCHA":125, "VINAGRETA":201 } }
+    salidas:  { "CORTE DE TRUCHA":77, "CUBOS DE TRUCHA":47, "LANGOSTINOS REBOZADOS":255, "PASTA DE HONEY":60, "POLLO TERIYAKI":129, "REDUCCIÓN DE TERIYAKI":220, "SALSA NARANJA Y MIEL":37, "TAMAGO":284, "TIRA DE TRUCHA":125, "VINAGRETA":201 } },
+  // S47 — 18/11 (cierre semanal S46): NOV 26, bloque "17/11/2026 al 23/11" (S47 = 17–23/11, martes a lunes). Solo trae Pedido
+  // (1.384 u); Entregado todavía vacío → se carga en 0. Salidas con "salidas al 181126.xml": solo 17/11 (239 u). isPartial:true.
+  { label:"S47", dateRange:"17–23/11", isPartial:true,
+    pedido:   { "CORTE DE TRUCHA":100, "CUBOS DE TRUCHA":10, "LANGOSTINOS REBOZADOS":250, "PASTA DE HONEY":45, "POLLO TERIYAKI":110, "REDUCCIÓN DE TERIYAKI":250, "SALSA NARANJA Y MIEL":40, "TAMAGO":240, "TIRA DE TRUCHA":135, "VINAGRETA":204 },
+    entregado:{ "CORTE DE TRUCHA":0, "CUBOS DE TRUCHA":0, "LANGOSTINOS REBOZADOS":0, "PASTA DE HONEY":0, "POLLO TERIYAKI":0, "REDUCCIÓN DE TERIYAKI":0, "SALSA NARANJA Y MIEL":0, "TAMAGO":0, "TIRA DE TRUCHA":0, "VINAGRETA":0 },
+    salidas:  { "CORTE DE TRUCHA":14, "CUBOS DE TRUCHA":7, "LANGOSTINOS REBOZADOS":35, "PASTA DE HONEY":17, "POLLO TERIYAKI":12, "REDUCCIÓN DE TERIYAKI":32, "SALSA NARANJA Y MIEL":1, "TAMAGO":58, "TIRA DE TRUCHA":20, "VINAGRETA":43 } }
 ];
 // 02/11 (a pedido de Debo): se aplican los pedidos revisados del sheet OCT 26 — S40 Pollo 100→58, Tamago 210→150;
 // S41 Tamago 210→111, Tira 110→95; S42 Langostinos 250→215, Tamago 150→130, Vinagreta 153→59; S43 Pasta Honey 45→33.
@@ -3831,7 +3841,7 @@ function initCumplimiento() {
     });
   }
   document.getElementById("selCumplSemana").addEventListener("change", function(){ buildCumplSemanal(+this.value); });
-  buildCumplSemanal(19);
+  buildCumplSemanal(20);
 
   // % Pedido/Salidas = pedido / salidas. Mide si lo que se pidió a CP estuvo bien calibrado contra
   // la demanda real de franquicias (salidas), sin importar si el CP llegó a entregarlo o no.
@@ -3888,7 +3898,7 @@ function initCumplimiento() {
     t.innerHTML = h;
   }
   document.getElementById("selCumplSemana").addEventListener("change", function(){ buildTablaCumpl(+this.value); });
-  buildTablaCumpl(19);
+  buildTablaCumpl(20);
 
   // Salidas por franquicia (S27-S32, con filtro opcional por mes calendario)
   const selFranquicia = document.getElementById("selCumplFranquicia");
